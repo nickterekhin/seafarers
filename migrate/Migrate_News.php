@@ -1,6 +1,9 @@
 <?php
-
+require_once(ABSPATH.'/wp-admin/includes/taxonomy.php');
 require_once (CHILD_THEME_PATH.'/migrate/Migrate_Base.php');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 class Migrate_News extends Migrate_Base
 {
     private static $instance;
@@ -47,18 +50,27 @@ class Migrate_News extends Migrate_Base
 
     function migrate_categories()
     {
-        $categs = $this->alien_db_service->Query("SELECT * FROM topics WHERE id>0");
+        $categs = $this->alien_db_service->Query("SELECT * FROM topics WHERE id>0")->FetchAll();
+
         foreach($categs as $c)
         {
+
             $params = array(
-                'cat_name'=>$c->topic,
-                'category_description'=>$c->static_text,
+                'cat_name'=>$c['topic'],
+                'category_description'=>$c['static_text'],
+                'taxonomy'=>'category',
             );
-            $category_id = wp_insert_category($params);
-            if(!is_wp_error($category_id))
-            {
-                /** @var WP_Error $category_id */
-                var_dump($category_id->get_error_message());
+            if(!term_exists($c['topic'],'category')){
+                category_exists($c['topic']);
+                $category_id =wp_insert_category($params);
+                if(is_wp_error($category_id))
+                {
+
+                    var_dump($category_id->get_error_message());
+                }else
+                {
+                    var_dump($category_id);
+                }
             }
         }
     }
