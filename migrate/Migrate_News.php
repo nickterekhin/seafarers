@@ -40,28 +40,27 @@ class Migrate_News extends Migrate_Base
             $categories = $this->alien_db_service->Query("SELECT * FROM topics WHERE id=" . $res->topic_id);
             $tags = $this->alien_db_service->Query('SELECT t.* FROM tags t INNER JOIN tags_rel tr ON t.id = tr.tag_id INNER JOIN news n ON n.id = tr.news_id WHERE n.id=' . $res->id);
             var_dump($res);
-            var_dump($categories->FetchAll());
-            var_dump($tags->FetchAll());
+
         }
         $categs = $this->alien_db_service->Query("SELECT * FROM topics WHERE id>0");
-        var_dump($categs->FetchAll());
+        var_dump($categs);
     }
 
 
     function migrate_categories()
     {
-        $categs = $this->alien_db_service->Query("SELECT * FROM topics WHERE id>0")->FetchAll();
+        $categs = $this->alien_db_service->Query("SELECT * FROM topics WHERE id>0");
 
-        foreach($categs as $c)
+        while($c = $categs->FetchRow())
         {
-
+            var_dump($c);
             $params = array(
-                'cat_name'=>$c['topic'],
-                'category_description'=>$c['static_text'],
+                'cat_name'=>$c->topic,
+                'category_description'=>$c->static_text,
                 'taxonomy'=>'category',
             );
-            if(!term_exists($c['topic'],'category')){
-                category_exists($c['topic']);
+            if(!term_exists($c->topic,'category')){
+                category_exists($c->topic);
                 $category_id =wp_insert_category($params);
                 if(is_wp_error($category_id))
                 {
