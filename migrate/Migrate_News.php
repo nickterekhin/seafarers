@@ -39,11 +39,14 @@ class Migrate_News extends Migrate_Base
         if($res) {
             $categories = $this->alien_db_service->Query("SELECT * FROM topics WHERE id=" . $res->topic_id);
             $tags = $this->alien_db_service->Query('SELECT t.* FROM tags t INNER JOIN tags_rel tr ON t.id = tr.tag_id INNER JOIN news n ON n.id = tr.news_id WHERE n.id=' . $res->id);
-            var_dump($res);
+            //var_dump($tags);
 
         }
-        $categs = $this->alien_db_service->Query("SELECT * FROM topics WHERE id>0");
-        var_dump($categs);
+        $tags = $this->alien_db_service->Query("SELECT COUNT(t.id) as qty, t.tag,t.topic_id FROM tags t GROUP BY t.tag,t.topic_id
+HAVING COUNT(t.id)=1");
+        while($tag = $tags->FetchRow()) {
+            var_dump($tag);
+        }
     }
 
 
@@ -60,7 +63,6 @@ class Migrate_News extends Migrate_Base
                 'taxonomy'=>'category',
             );
             if(!term_exists($c->topic,'category')){
-                category_exists($c->topic);
                 $category_id =wp_insert_category($params);
                 if(is_wp_error($category_id))
                 {
@@ -104,6 +106,22 @@ class Migrate_News extends Migrate_Base
 
     function migrate_tags()
     {
+            $sql = $this->alien_db_service->Query("SELECT COUNT(t.id) as qty, t.tag,t.topic_id FROM tags t GROUP BY t.tag,t.topic_id
+HAVING COUNT(t.id)=1");
+        while($res = $sql->FetchRow()) {
+            if (!term_exists($res->tag, 'post_tag')) {
+                $term_id = wp_insert_term($res->tag,'post_tag');
+                if(is_wp_error($term_id))
+                {
+
+                    var_dump($term_id->get_error_message());
+                }else
+                {
+                    var_dump($term_id);
+                }
+            }
+
+        }
 
     }
     public function routes()
@@ -115,6 +133,9 @@ class Migrate_News extends Migrate_Base
                 break;
             case 'categories':
                 $this->migrate_categories();
+                break;
+            case 'tags':
+                $this->migrate_tags();
                 break;
         }
     }
