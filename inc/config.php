@@ -6,9 +6,13 @@ if(is_admin())
 
 function terekhin_dev_remove_elements()
 {
+    global $menu;
+
     if(!current_user_can('administrator'))
     {
         remove_menu_page('admin.php?page=vc-welcome');
+        remove_menu_page('admin.php?page=vc-general');
+
         remove_menu_page('tools.php');
     }
 }
