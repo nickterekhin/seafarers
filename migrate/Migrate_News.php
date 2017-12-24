@@ -40,7 +40,7 @@ class Migrate_News extends Migrate_Base
 
     function show()
     {
-
+        var_dump(CHILD_THEME_PATH);
         var_dump($this->image_folder);
         var_dump(get_the_post_thumbnail(14));
         var_dump(wp_get_attachment_url(14));
