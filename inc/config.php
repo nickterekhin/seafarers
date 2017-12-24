@@ -13,7 +13,7 @@ var_dump($menu);
         remove_menu_page('admin.php?page=vc-welcome');
         remove_menu_page('admin.php?page=vc-general');
         remove_menu_page('vc-general');
-
+        remove_menu_page('vc-welcome');
         remove_menu_page('tools.php');
     }
 }
