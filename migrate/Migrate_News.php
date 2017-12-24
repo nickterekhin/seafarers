@@ -29,24 +29,24 @@ class Migrate_News extends Migrate_Base
 
     function setPathToImages($path)
     {
-        $this->image_folder = $path;
+        if(file_exists($path)) {
+            $this->image_folder = $path;
+        }else
+        {
+            echo 'file or folder does not exists';
+        }
+
     }
 
     function show()
     {
 
-        $res = $this->alien_db_service->RowQuery("SELECT * FROM news WHERE id=2391 AND creator_id=1");
-        if($res) {
-            $categories = $this->alien_db_service->Query("SELECT * FROM topics WHERE id=" . $res->topic_id);
-            $tags = $this->alien_db_service->Query('SELECT t.* FROM tags t INNER JOIN tags_rel tr ON t.id = tr.tag_id INNER JOIN news n ON n.id = tr.news_id WHERE n.id=' . $res->id);
-            //var_dump($tags);
+        $sql = $this->alien_db_service->Query("SELECT n.* FROM news n WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) ORDER BY n.timestamp DESC;");
+        while($res=$sql->FetchRow())
+        {
+            var_dump($res);
+        }
 
-        }
-        $tags = $this->alien_db_service->Query("SELECT COUNT(t.id) as qty, t.tag,t.topic_id FROM tags t GROUP BY t.tag,t.topic_id
-HAVING COUNT(t.id)=1");
-        while($tag = $tags->FetchRow()) {
-            var_dump($tag);
-        }
     }
 
 

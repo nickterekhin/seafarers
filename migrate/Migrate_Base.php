@@ -1,13 +1,14 @@
 <?php
 
 require_once (CHILD_THEME_PATH.'/migrate/DBService.php');
+require_once (CHILD_THEME_PATH.'/migrate/init.php');
 abstract class Migrate_Base
 {
-    const ALIEN_HOST = '160.153.128.24';
-    const ALIEN_USER = 'seafarersj';
-    const ALIEN_PASS = 'mG_kBGf;GgX+';
-    const ALIEN_DB   = 'seafarersj_db';
-    const ALiEN_PREFIX = '';
+    const ALIEN_HOST = HOST;
+    const ALIEN_USER = USER;
+    const ALIEN_PASS = PASS;
+    const ALIEN_DB   = DB;
+    const ALiEN_PREFIX = PREFIX;
 
     protected $alien_db_service;
     protected $db;
