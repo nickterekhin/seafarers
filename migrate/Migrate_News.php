@@ -41,12 +41,115 @@ class Migrate_News extends Migrate_Base
     function show()
     {
 
-        $sql = $this->alien_db_service->Query("SELECT n.* FROM news n WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) ORDER BY n.timestamp DESC;");
+        var_dump($this->image_folder);
+        var_dump(get_the_post_thumbnail(14));
+        var_dump(wp_get_attachment_url(14));
+        $sql = $this->alien_db_service->Query("SELECT n.*, t.topic, u.username
+FROM news n
+INNEr JOIN topics t ON n.topic_id = t.id
+INNER JOIN users u ON n.creator_id = u.id
+
+WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH)
+AND n.id=39424
+ORDER BY n.timestamp DESC;");
         while($res=$sql->FetchRow())
         {
+            $arr_posts = array(
+
+                'comment_status' => 'open',
+                'ping_status'    => 'closed',
+                'post_author'    => 1,
+                'post_content'   => $res->text,
+                'post_date'      => $res->timestamp,
+                'post_date_gmt'  => $res->timestamp,
+                'post_excerpt'   => $res->short_text,
+                'post_name'      => $res->uri,
+                'post_status'    => 'publish',
+                'post_title'     => $res->title,
+                'meta_input'     => array(
+                    'keywords'=>$res->keywords,
+                    'description'=>$res->description
+                )
+            );
+            var_dump($arr_posts);
+
+
+            $sql_tags = $this->alien_db_service->Query("SELECT t.* FROM tags t INNER JOIN tags_rel tr ON tr.tag_id = t.id
+WHERE tr.news_id = ".$res->id);
+
             var_dump($res);
+            $user = get_user_by('login',$res->username);
+
+            $cat_slug = mb_strtolower(preg_replace('/\s+/isu','-',$res->topic));
+
+            /** @var WP_Term $category */
+            $category = get_category_by_slug($cat_slug);
+            var_dump($user->ID);
+            var_dump($category->term_id);
+            $tags = array();
+            while($res_tags=$sql_tags->FetchRow())
+            {
+                $tag_slug = mb_strtolower(preg_replace('/\s+/isu','-',$res_tags->tag));
+                $results_tag = get_term_by('slug',$tag_slug,'post_tag');
+                $tags[] = $results_tag->term_id;
+
+            }
+
+            var_dump($tags);
         }
 
+
+    }
+
+    function addPost($id=null)
+    {
+        $query_id = '';
+        if($id)
+            $query_id = ' AND n.id='.$id;
+
+        $sql = $this->alien_db_service->Query("SELECT n.*, t.topic, u.username
+FROM news n
+INNEr JOIN topics t ON n.topic_id = t.id
+INNER JOIN users u ON n.creator_id = u.id
+
+WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) $query_id ORDER BY n.timestamp DESC;");
+        while($res=$sql->FetchRow())
+        {
+            $arr_posts = array(
+
+                'comment_status' => 'open',
+                'ping_status'    => 'open',
+                'post_author'    => $this->getPostAuthor($res->username),
+                'post_content'   => $res->text,
+                'post_date'      => $res->timestamp,
+                'post_date_gmt'  => $res->timestamp,
+                'post_excerpt'   => $res->short_text,
+                'post_name'      => $res->uri,
+                'post_status'    => 'publish',
+                'post_title'     => $res->title,
+                'meta_input'     => array(
+                    'keywords'=>$res->keywords,
+                    'description'=>$res->description
+                )
+            );
+
+            $post_ID = wp_insert_post($arr_posts);
+            update_post_meta($post_ID,"keywords",$res->keywords);
+            update_post_meta($post_ID,"description",$res->description);
+
+            $tags = $this->getTags($res->id);
+            $category = $this->getCategoryByName($res->topic);
+
+            if($category)
+                wp_set_post_categories($post_ID,$category);
+
+            if($tags)
+            wp_set_post_terms($post_ID, $tags);
+
+            $this->addComment($post_ID,$res->id);
+            if($res->photo)
+            $this->addImageToPost($post_ID,$this->image_folder.'/'.$res->photo);
+        }
     }
 
 
@@ -74,34 +177,6 @@ class Migrate_News extends Migrate_Base
                 }
             }
         }
-    }
-
-    function migrate_news()
-    {
-        $res = $this->alien_db_service->RowQuery("SELECT * FROM news WHERE id=38 AND creator_id=1");
-
-
-        $arr_posts = array(
-
-            'comment_status' => 'open',
-            'ping_status'    => 'closed',
-            'post_author'    => 1,
-            'post_content'   => $res->text,
-            'post_date'      => $res->timestamp,
-            'post_date_gmt'  => $res->timestamp,
-            'post_excerpt'   => $res->short_text,
-            'post_name'      => $res->uri,
-            'post_status'    => 'publish',
-            'post_title'     => $res->title,
-            'post_type'      => 'place',
-            'meta_input'     => array(
-                'keywords'=>$res->keywords
-            )
-        );
-        $post_ID = wp_insert_post($arr_posts);
-        update_field("keywords",$res->keywords,$post_ID);
-
-        wp_set_post_terms($post_ID, $categories, 'place_category', false);
     }
 
     function migrate_tags()
@@ -137,6 +212,10 @@ HAVING COUNT(t.id)=1");
             case 'tags':
                 $this->migrate_tags();
                 break;
+            case 'post':
+                $this->addPost($_REQUEST['id']);
+                break;
+
         }
     }
 
