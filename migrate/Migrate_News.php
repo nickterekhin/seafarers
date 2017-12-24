@@ -107,7 +107,7 @@ WHERE tr.news_id = ".$res->id);
         if($id)
             $query_id = ' AND n.id='.$id;
 
-        $sql = $this->alien_db_service->Query("SELECT n.*, t.topic, u.username
+        $sql = $this->alien_db_service->Query("SELECT n.*, t.slug, u.username
 FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
@@ -119,7 +119,7 @@ WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY),
 
                 'comment_status' => 'open',
                 'ping_status'    => 'open',
-                'post_author'    => $this->getPostAuthor($res->username),
+                'post_author'    => $res->creator_id==1?$this->getPostAuthor('dmitriy@sj.com'):$this->getPostAuthor($res->username),
                 'post_content'   => $res->text,
                 'post_date'      => $res->timestamp,
                 'post_date_gmt'  => $res->timestamp,
@@ -138,7 +138,7 @@ WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY),
             update_post_meta($post_ID,"description",$res->description);
 
             $tags = $this->getTags($res->id);
-            $category = $this->getCategoryByName($res->topic);
+            $category = $this->getCategoryByName($res->slug);
 
             if($category)
                 wp_set_post_categories($post_ID,$category);
@@ -159,11 +159,11 @@ WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY),
 
         while($c = $categs->FetchRow())
         {
-            var_dump($c);
             $params = array(
                 'cat_name'=>$c->topic,
                 'category_description'=>$c->static_text,
                 'taxonomy'=>'category',
+                'category_nicename'=>$c->slug
             );
             if(!term_exists($c->topic,'category')){
                 $category_id =wp_insert_category($params);

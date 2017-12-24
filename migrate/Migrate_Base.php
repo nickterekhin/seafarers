@@ -23,9 +23,9 @@ abstract class Migrate_Base
         $this->alien_db_service = new DBService(self::ALIEN_HOST,self::ALIEN_USER,self::ALIEN_PASS,self::ALIEN_DB);
     }
 
-    protected function getCategoryByName($category_name)
+    protected function getCategoryByName($cat_slug)
     {
-        $cat_slug = mb_strtolower(preg_replace('/\s+/isu','-',$category_name));
+        //$cat_slug = mb_strtolower(preg_replace('/\s+/isu','-',$category_name));
 
         /** @var WP_Term $category */
         $category = get_category_by_slug($cat_slug);
