@@ -47,7 +47,7 @@ class Migrate_News extends Migrate_Base
 
     }
 
-    function addPostPaged($page=0,$qty=100)
+    function addPostPaged($page=1,$qty=100)
     {
         if($page>=0)
             $this->addPost(null,$page,$qty);
@@ -110,7 +110,6 @@ WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY),
                     if ($image)
                         $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
                 $index += 1;
-                echo $res->title;
             }else
             {
                 echo $post_ID->get_error_message();
