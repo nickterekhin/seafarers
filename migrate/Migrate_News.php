@@ -102,6 +102,11 @@ WHERE tr.news_id = ".$res->id);
 
     }
 
+    function addPostPaged($page=0,$qty=100)
+    {
+        $this->addPost(null,$page,$qty);
+    }
+
    function addPost($id=null,$page=0,$qty=1000,$image=true)
     {
         $query_id = '';
@@ -222,7 +227,7 @@ HAVING COUNT(t.id)=1");
                 $this->migrate_tags();
                 break;
             case 'post':
-                $this->addPost(isset($_REQUEST['id'])?$_REQUEST['id']:null,isset($_REQUEST['page'])?$_REQUEST['page']:null,isset($_REQUEST['qty'])?$_REQUEST['qty']:$_REQUEST['qty'],isset($_REQUEST['image'])?false:true);
+                $this->addPostPaged($_REQUEST['page'],$_REQUEST['qty']);
                 break;
 
         }
