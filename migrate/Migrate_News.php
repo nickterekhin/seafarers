@@ -149,7 +149,7 @@ WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), 
             $this->addComment($post_ID,$res->id);
         }
     }
-    function addPost($id=null,$page=null,$qty=1000,$image=true)
+    function addPost($id=null,$page=0,$qty=1000,$image=true)
     {
         $query_id = '';
         if($id)
