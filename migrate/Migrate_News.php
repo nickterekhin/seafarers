@@ -149,24 +149,29 @@ WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY),
             );
 
             $post_ID = wp_insert_post($arr_posts);
-            update_post_meta($post_ID,"keywords",$res->keywords);
-            update_post_meta($post_ID,"description",$res->description);
+            if(!is_wp_error($post_ID)) {
+                update_post_meta($post_ID, "keywords", $res->keywords);
+                update_post_meta($post_ID, "description", $res->description);
 
-            $tags = $this->getTags($res->id);
-            $category = $this->getCategoryByName($res->slug);
+                $tags = $this->getTags($res->id);
+                $category = $this->getCategoryByName($res->slug);
 
-            if($category)
-                wp_set_post_categories($post_ID,$category);
+                if ($category)
+                    wp_set_post_categories($post_ID, $category);
 
-            if($tags)
-            wp_set_post_terms($post_ID, $tags);
+                if ($tags)
+                    wp_set_post_terms($post_ID, $tags);
 
-            $this->addComment($post_ID,$res->id);
-            if($res->photo)
-                if($image)
-            $this->addImageToPost($post_ID,$this->image_folder.'/'.$res->photo);
-            $index+=1;
-            echo $res->title;
+                $this->addComment($post_ID, $res->id);
+                if ($res->photo)
+                    if ($image)
+                        $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
+                $index += 1;
+                echo $res->title;
+            }else
+            {
+                echo $post_ID->get_error_message();
+            }
         }
         echo $index;
     }
