@@ -60,16 +60,12 @@ class Migrate_News extends Migrate_Base
         if($id)
             $query_id = ' AND n.id='.$id;
 
-        $query_limit='';
-        if($page>=0)
-            $query_limit = " LIMIT ".($page*$qty).", $qty";
-
         $sql = $this->alien_db_service->Query("SELECT n.*, t.slug, u.username
 FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
-WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) $query_id ORDER BY n.timestamp DESC $query_limit");
+WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) $query_id ORDER BY n.timestamp DESC LIMIT 112,100");
         $index = 0;
         while($res=$sql->FetchRow())
         {
