@@ -71,7 +71,7 @@ FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
-WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 2 MONTH) $query_id ORDER BY n.timestamp DESC LIMIT 504,100");
+WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 2 MONTH) $query_id ORDER BY n.timestamp DESC LIMIT 604,100");
         $index = 0;
         while($res=$sql->FetchRow())
         {
