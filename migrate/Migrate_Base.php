@@ -44,10 +44,14 @@ WHERE tr.news_id = ".$news_id);
         {
             $tag_slug = mb_strtolower(preg_replace('/\s+/isu','-',$res_tags->tag));
             $results_tag = get_term_by('slug',$tag_slug,'post_tag');
-            $tags[] = $results_tag->term_id;
+            if($results_tag)
+                $tags[] = $results_tag->term_id;
 
         }
-        return $tags;
+        if($tags)
+            return $tags;
+
+        return null;
 
     }
 
