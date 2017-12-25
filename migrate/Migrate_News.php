@@ -97,8 +97,8 @@ WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), 
                     wp_set_post_terms($post_ID, $tags);
 
                 $this->addComment($post_ID, $res->id);
-               if ($res->photo)
-                    $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
+               /*if ($res->photo)
+                    $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);*/
                 $index += 1;
             }else
             {
