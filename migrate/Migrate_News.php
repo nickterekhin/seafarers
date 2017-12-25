@@ -43,35 +43,24 @@ class Migrate_News extends Migrate_Base
     {
         var_dump(CHILD_THEME_PATH);
 
-        $sql = $this->alien_db_service->Query("SELECT n.*, t.slug, u.username
-FROM news n
-INNEr JOIN topics t ON n.topic_id = t.id
-INNER JOIN users u ON n.creator_id = u.id
-
-WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) ORDER BY n.timestamp DESC LIMIT 0,100");
-
-        var_dump($sql->FetchAll());
 
     }
 
-    function addPostPaged($page=1,$qty=100)
+    function addPostPaged($qty=-1)
     {
-        if($page>=0)
-            $this->addPost(null,$page,$qty);
+        if($qty>=0)
+            $this->addPost($qty);
     }
 
-   function addPost($id=null,$page=0,$qty=1000,$image=true)
+   function addPost($qty=0)
     {
-        $query_id = '';
-        if($id)
-            $query_id = ' AND n.id='.$id;
 
         $sql = $this->alien_db_service->Query("SELECT n.*, t.slug, u.username
 FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
-WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 2 MONTH) $query_id ORDER BY n.timestamp DESC LIMIT 1088,100");
+WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 2 MONTH) ORDER BY n.timestamp DESC LIMIT $qty,1000");
         $index = 0;
         while($res=$sql->FetchRow())
         {
@@ -181,13 +170,13 @@ HAVING COUNT(t.id)=1");
                     $this->migrate_tags();
                     break;
                 case 'migrate-post':
-                    $this->addPostPaged();
+                    $this->addPostPaged(isset($_REQUEST['qty'])?$_REQUEST['qty']:-1);
                     break;
 
             }
         }catch(Exception $e)
         {
-            echo $e->getMessage();
+        echo $e->getMessage();
         }
     }
 
