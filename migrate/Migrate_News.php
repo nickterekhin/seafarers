@@ -43,7 +43,14 @@ class Migrate_News extends Migrate_Base
     {
         var_dump(CHILD_THEME_PATH);
 
+        $sql = $this->alien_db_service->Query("SELECT n.*, t.slug, u.username
+FROM news n
+INNEr JOIN topics t ON n.topic_id = t.id
+INNER JOIN users u ON n.creator_id = u.id
 
+WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) ORDER BY n.timestamp DESC LIMIT 0,100");
+
+        var_dump($sql->FetchAll());
 
     }
 
@@ -65,7 +72,7 @@ FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
-WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) $query_id ORDER BY n.timestamp DESC LIMIT 771,100");
+WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) $query_id ORDER BY n.timestamp DESC LIMIT 0,100");
         $index = 0;
         while($res=$sql->FetchRow())
         {
@@ -102,9 +109,9 @@ WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY),
                     wp_set_post_terms($post_ID, $tags);
 
                 $this->addComment($post_ID, $res->id);
-                if ($res->photo)
+               /* if ($res->photo)
                     if ($image)
-                        $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
+                        $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);*/
                 $index += 1;
             }else
             {
