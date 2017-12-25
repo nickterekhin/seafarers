@@ -233,7 +233,7 @@ HAVING COUNT(t.id)=1");
                 $this->migrate_tags();
                 break;
             case 'post':
-                $this->addPostPaged(isset($_GET['page'])?$_GET['page']:null);
+                $this->addPostPaged(isset($_GET['pq'])?$_GET['pq']:null);
                 break;
 
         }
