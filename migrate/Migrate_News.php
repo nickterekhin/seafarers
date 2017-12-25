@@ -44,7 +44,7 @@ class Migrate_News extends Migrate_Base
         var_dump($this->image_folder);
         var_dump(get_the_post_thumbnail(14));
         var_dump(wp_get_attachment_url(14));
-        $sql = $this->alien_db_service->Query("SELECT n.*, t.topic, u.username
+        $sql = $this->alien_db_service->Query("SELECT n.*, t.slug, u.username
 FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
