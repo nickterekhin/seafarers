@@ -118,6 +118,7 @@ INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
 WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) $query_id ORDER BY n.timestamp DESC $query_limit");
+        $index = 0;
         while($res=$sql->FetchRow())
         {
             $arr_posts = array(
@@ -155,7 +156,9 @@ WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY),
             if($res->photo)
                 if($image)
             $this->addImageToPost($post_ID,$this->image_folder.'/'.$res->photo);
+            $index+=1;
         }
+        echo $index;
     }
 
 
