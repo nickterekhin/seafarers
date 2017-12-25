@@ -94,13 +94,18 @@ WHERE tr.news_id = ".$news_id);
                 'post_status' => 'inherit'
             );
             $attach_id = wp_insert_attachment($arr_image, $upload_file['file'], $post_id);
-            require_once(ABSPATH . 'wp-admin/includes/image.php');
+            if(!is_wp_error($attach_id)) {
+                require_once(ABSPATH . 'wp-admin/includes/image.php');
 
 // Generate the metadata for the attachment, and update the database record.
-            $attach_data = wp_generate_attachment_metadata($attach_id, $upload_file['file']);
-            wp_update_attachment_metadata($attach_id, $attach_data);
+                $attach_data = wp_generate_attachment_metadata($attach_id, $upload_file['file']);
+                wp_update_attachment_metadata($attach_id, $attach_data);
 
-            set_post_thumbnail($post_id, $attach_id);
+                set_post_thumbnail($post_id, $attach_id);
+            }else
+            {
+                var_dump($attach_id->get_error_message());
+            }
         }
         else{
         var_dump($upload_file['error']);
