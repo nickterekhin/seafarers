@@ -102,61 +102,14 @@ WHERE tr.news_id = ".$res->id);
 
     }
 
-    function addPostsWithoutImage($page=0)
-    {
-
-        $limit = $page*$this->qty;
-        $sql = $this->alien_db_service->Query("SELECT n.*, t.slug, u.username
-FROM news n
-INNEr JOIN topics t ON n.topic_id = t.id
-INNER JOIN users u ON n.creator_id = u.id
-
-WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) ORDER BY n.timestamp DESC LIMIT $limit, $this->qty ;");
-
-        while($res=$sql->FetchRow())
-        {
-            $arr_posts = array(
-
-                'comment_status' => 'open',
-                'ping_status'    => 'open',
-                'post_author'    => $res->creator_id==1?$this->getPostAuthor('dmitriy@sj.com'):$this->getPostAuthor($res->username),
-                'post_content'   => $res->text,
-                'post_date'      => $res->timestamp,
-                'post_date_gmt'  => $res->timestamp,
-                'post_excerpt'   => $res->short_text,
-                'post_name'      => $res->uri,
-                'post_status'    => 'publish',
-                'post_title'     => $res->title,
-                'meta_input'     => array(
-                    'keywords'=>$res->keywords,
-                    'description'=>$res->description
-                )
-            );
-
-            $post_ID = wp_insert_post($arr_posts);
-            update_post_meta($post_ID,"keywords",$res->keywords);
-            update_post_meta($post_ID,"description",$res->description);
-
-            $tags = $this->getTags($res->id);
-            $category = $this->getCategoryByName($res->slug);
-
-            if($category)
-                wp_set_post_categories($post_ID,$category);
-
-            if($tags)
-                wp_set_post_terms($post_ID, $tags);
-
-            $this->addComment($post_ID,$res->id);
-        }
-    }
-    function addPost($id=null,$page=0,$qty=1000,$image=true)
+   function addPost($id=null,$page=0,$qty=1000,$image=true)
     {
         $query_id = '';
         if($id)
             $query_id = ' AND n.id='.$id;
 
         $query_limit='';
-        if($page)
+        if($page>=0)
             $query_limit = " LIMIT ".($page*$qty).", $qty";
 
         $sql = $this->alien_db_service->Query("SELECT n.*, t.slug, u.username
