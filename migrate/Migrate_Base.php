@@ -63,7 +63,7 @@ WHERE tr.news_id = ".$news_id);
 
     protected function addComment($post_id,$news_id)
     {
-        $sql_comments = $this->alien_db_service->Query("SELECT * FROM news_comments nc WHERE nc.id=".$news_id);
+        $sql_comments = $this->alien_db_service->Query("SELECT * FROM news_comments nc WHERE nc.news_id=".$news_id);
         while($res_comments = $sql_comments->FetchRow())
         {
             $comment_args = array(

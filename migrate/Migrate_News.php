@@ -9,6 +9,7 @@ class Migrate_News extends Migrate_Base
     private static $instance;
 
     private $image_folder;
+    private $qty = 1000;
 
     public static function getInstance()
     {
@@ -51,7 +52,7 @@ INNER JOIN users u ON n.creator_id = u.id
 
 WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH)
 AND n.id=39424
-ORDER BY n.timestamp DESC;");
+ORDER BY n.timestamp DESC");
         while($res=$sql->FetchRow())
         {
             $arr_posts = array(
@@ -101,18 +102,69 @@ WHERE tr.news_id = ".$res->id);
 
     }
 
-    function addPost($id=null)
+    function addPostsWithoutImage($page=0)
+    {
+
+        $limit = $page*$this->qty;
+        $sql = $this->alien_db_service->Query("SELECT n.*, t.slug, u.username
+FROM news n
+INNEr JOIN topics t ON n.topic_id = t.id
+INNER JOIN users u ON n.creator_id = u.id
+
+WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) ORDER BY n.timestamp DESC LIMIT $limit, $this->qty ;");
+
+        while($res=$sql->FetchRow())
+        {
+            $arr_posts = array(
+
+                'comment_status' => 'open',
+                'ping_status'    => 'open',
+                'post_author'    => $res->creator_id==1?$this->getPostAuthor('dmitriy@sj.com'):$this->getPostAuthor($res->username),
+                'post_content'   => $res->text,
+                'post_date'      => $res->timestamp,
+                'post_date_gmt'  => $res->timestamp,
+                'post_excerpt'   => $res->short_text,
+                'post_name'      => $res->uri,
+                'post_status'    => 'publish',
+                'post_title'     => $res->title,
+                'meta_input'     => array(
+                    'keywords'=>$res->keywords,
+                    'description'=>$res->description
+                )
+            );
+
+            $post_ID = wp_insert_post($arr_posts);
+            update_post_meta($post_ID,"keywords",$res->keywords);
+            update_post_meta($post_ID,"description",$res->description);
+
+            $tags = $this->getTags($res->id);
+            $category = $this->getCategoryByName($res->slug);
+
+            if($category)
+                wp_set_post_categories($post_ID,$category);
+
+            if($tags)
+                wp_set_post_terms($post_ID, $tags);
+
+            $this->addComment($post_ID,$res->id);
+        }
+    }
+    function addPost($id=null,$page=null,$qty=1000,$image=true)
     {
         $query_id = '';
         if($id)
             $query_id = ' AND n.id='.$id;
+
+        $query_limit='';
+        if($page)
+            $query_limit = " LIMIT ".($page*$qty).", $qty";
 
         $sql = $this->alien_db_service->Query("SELECT n.*, t.slug, u.username
 FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
-WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) $query_id ORDER BY n.timestamp DESC;");
+WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) $query_id ORDER BY n.timestamp DESC $query_limit");
         while($res=$sql->FetchRow())
         {
             $arr_posts = array(
@@ -148,6 +200,7 @@ WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY),
 
             $this->addComment($post_ID,$res->id);
             if($res->photo)
+                if($image)
             $this->addImageToPost($post_ID,$this->image_folder.'/'.$res->photo);
         }
     }
@@ -213,7 +266,7 @@ HAVING COUNT(t.id)=1");
                 $this->migrate_tags();
                 break;
             case 'post':
-                $this->addPost($_REQUEST['id']);
+                $this->addPost(isset($_REQUEST['id'])?$_REQUEST['id']:null,isset($_REQUEST['page'])?$_REQUEST['page']:null,isset($_REQUEST['qty'])?$_REQUEST['qty']:$_REQUEST['qty'],isset($_REQUEST['image'])?false:true);
                 break;
 
         }
