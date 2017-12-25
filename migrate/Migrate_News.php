@@ -104,7 +104,7 @@ WHERE tr.news_id = ".$res->id);
 
     function addPostPaged($page=0,$qty=50)
     {
-        if($page)
+        if($page>=0)
         $this->addPost(null,$page,$qty);
 
         echo $page;
