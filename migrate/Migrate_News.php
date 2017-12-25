@@ -52,8 +52,6 @@ class Migrate_News extends Migrate_Base
         if($page>=0)
             $this->addPost(null,$page,$qty);
 
-
-        echo $page;
     }
 
    function addPost($id=null,$page=0,$qty=1000,$image=true)
@@ -170,21 +168,26 @@ HAVING COUNT(t.id)=1");
     }
     public function routes()
     {
-        $_REQUEST['a'] = (isset($_REQUEST['a']) && !empty($_REQUEST['a'])) ? $_REQUEST['a'] : 'show';
-        switch($_REQUEST['a']) {
-            case 'show':
-                $this->show();
-                break;
-            case 'categories':
-                $this->migrate_categories();
-                break;
-            case 'tags':
-                $this->migrate_tags();
-                break;
-            case 'migrate-post':
-                $this->addPostPaged();
-                break;
+        try {
+            $_REQUEST['a'] = (isset($_REQUEST['a']) && !empty($_REQUEST['a'])) ? $_REQUEST['a'] : 'show';
+            switch ($_REQUEST['a']) {
+                case 'show':
+                    $this->show();
+                    break;
+                case 'categories':
+                    $this->migrate_categories();
+                    break;
+                case 'tags':
+                    $this->migrate_tags();
+                    break;
+                case 'migrate-post':
+                    $this->addPostPaged();
+                    break;
 
+            }
+        }catch(Exception $e)
+        {
+            echo $e->getMessage();
         }
     }
 
