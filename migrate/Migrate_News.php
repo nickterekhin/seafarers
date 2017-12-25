@@ -165,6 +165,7 @@ WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY),
                 if($image)
             $this->addImageToPost($post_ID,$this->image_folder.'/'.$res->photo);
             $index+=1;
+            echo $res->title;
         }
         echo $index;
     }
