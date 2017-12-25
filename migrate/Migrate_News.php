@@ -80,7 +80,7 @@ WHERE tr.news_id = ".$res->id);
             var_dump($res);
             $user = get_user_by('login',$res->username);
 
-            $cat_slug = mb_strtolower(preg_replace('/\s+/isu','-',$res->topic));
+            $cat_slug = mb_strtolower(preg_replace('/\s+/isu','-',$res->slug));
 
             /** @var WP_Term $category */
             $category = get_category_by_slug($cat_slug);
