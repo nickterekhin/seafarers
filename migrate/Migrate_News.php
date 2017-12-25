@@ -58,7 +58,6 @@ WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY),
     {
         if($page>=0)
             $this->addPost(null,$page,$qty);
-
     }
 
    function addPost($id=null,$page=0,$qty=1000,$image=true)
@@ -72,7 +71,7 @@ FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
-WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) $query_id ORDER BY n.timestamp DESC LIMIT 1,2000");
+WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH) $query_id ORDER BY n.timestamp DESC LIMIT 0,1000");
         $index = 0;
         while($res=$sql->FetchRow())
         {
@@ -109,9 +108,8 @@ WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), 
                     wp_set_post_terms($post_ID, $tags);
 
                 $this->addComment($post_ID, $res->id);
-               /* if ($res->photo)
-                    if ($image)
-                        $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);*/
+               if ($res->photo)
+                    $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
                 $index += 1;
             }else
             {
