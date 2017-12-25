@@ -102,7 +102,7 @@ WHERE tr.news_id = ".$res->id);
 
     }
 
-    function addPostPaged($page=0,$qty=100)
+    function addPostPaged($page=0,$qty=50)
     {
         $this->addPost(null,$page,$qty);
     }
@@ -227,7 +227,7 @@ HAVING COUNT(t.id)=1");
                 $this->migrate_tags();
                 break;
             case 'post':
-                $this->addPostPaged($_REQUEST['page'],$_REQUEST['qty']);
+                $this->addPostPaged($_GET['page']);
                 break;
 
         }
