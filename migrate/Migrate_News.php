@@ -42,67 +42,12 @@ class Migrate_News extends Migrate_Base
     function show()
     {
         var_dump(CHILD_THEME_PATH);
-        var_dump($this->image_folder);
-        var_dump(get_the_post_thumbnail(14));
-        var_dump(wp_get_attachment_url(14));
-        $sql = $this->alien_db_service->Query("SELECT n.*, t.slug, u.username
-FROM news n
-INNEr JOIN topics t ON n.topic_id = t.id
-INNER JOIN users u ON n.creator_id = u.id
 
-WHERE n.timestamp >= DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 1 MONTH)
-AND n.id=39424
-ORDER BY n.timestamp DESC");
-        while($res=$sql->FetchRow())
-        {
-            $arr_posts = array(
-
-                'comment_status' => 'open',
-                'ping_status'    => 'closed',
-                'post_author'    => 1,
-                'post_content'   => $res->text,
-                'post_date'      => $res->timestamp,
-                'post_date_gmt'  => $res->timestamp,
-                'post_excerpt'   => $res->short_text,
-                'post_name'      => $res->uri,
-                'post_status'    => 'publish',
-                'post_title'     => $res->title,
-                'meta_input'     => array(
-                    'keywords'=>$res->keywords,
-                    'description'=>$res->description
-                )
-            );
-            var_dump($arr_posts);
-
-
-            $sql_tags = $this->alien_db_service->Query("SELECT t.* FROM tags t INNER JOIN tags_rel tr ON tr.tag_id = t.id
-WHERE tr.news_id = ".$res->id);
-
-            var_dump($res);
-            $user = get_user_by('login',$res->username);
-
-            $cat_slug = mb_strtolower(preg_replace('/\s+/isu','-',$res->slug));
-
-            /** @var WP_Term $category */
-            $category = get_category_by_slug($cat_slug);
-            var_dump($user->ID);
-            var_dump($category->term_id);
-            $tags = array();
-            while($res_tags=$sql_tags->FetchRow())
-            {
-                $tag_slug = mb_strtolower(preg_replace('/\s+/isu','-',$res_tags->tag));
-                $results_tag = get_term_by('slug',$tag_slug,'post_tag');
-                $tags[] = $results_tag->term_id;
-
-            }
-
-            var_dump($tags);
-        }
 
 
     }
 
-    function addPostPaged($page=0,$qty=50)
+    function addPostPaged($page=0,$qty=100)
     {
         if($page>=0)
             $this->addPost(null,$page,$qty);
@@ -236,8 +181,8 @@ HAVING COUNT(t.id)=1");
             case 'tags':
                 $this->migrate_tags();
                 break;
-            case 'post':
-                $this->addPostPaged(isset($_GET['pq'])?$_GET['pq']:null);
+            case 'migrate-post':
+                $this->addPostPaged();
                 break;
 
         }
