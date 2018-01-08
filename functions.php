@@ -7,10 +7,10 @@ define("CHILD_THEME_UPLOAD_URI",wp_upload_dir()['baseurl']);
 
 include('inc/config.php');
 
-add_action('wp_enqueue_scripts', 'main_style_setup');
+add_action('wp_enqueue_scripts', 'main_style_setup',25);
 function main_style_setup()
 {
-    wp_register_style( 'custom-css', CHILD_THEME_PATH_URI.'/content/css/custom.css?1');
-    wp_enqueue_style( 'custom-css' );
+    wp_register_style( 'td_custom-css', CHILD_THEME_PATH_URI.'/content/css/custom.css');
+    wp_enqueue_style( 'td_custom-css' );
 
 }
