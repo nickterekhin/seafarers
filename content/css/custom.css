@@ -1,5 +1,7 @@
 header.scrolled .header_top {
   background-color: #0a0a0a !important; }
+header .header_top .q_social_icon_holder:hover .simple_social {
+  color: #dd9933 !important; }
 header .header_top .q_social_icon_holder a:hover {
   color: #dd9933 !important; }
 
