@@ -1,14 +1,14 @@
 header.scrolled .header_top {
-  background-color: #0a0a0a !important; }
+  background-color: #002f54 !important; }
 header .header_top .q_social_icon_holder:hover .simple_social {
-  color: #dd9933 !important; }
+  color: #02b0ea !important; }
 header .header_top .q_social_icon_holder a:hover {
-  color: #dd9933 !important; }
+  color: #02b0ea !important; }
 
 .header_top .header-widget.widget_nav_menu ul.menu > li > a:hover {
-  color: #dd9933 !important; }
+  color: #02b0ea !important; }
 .header_top .header-widget a:hover {
-  color: #dd9933 !important; }
+  color: #02b0ea !important; }
 
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
