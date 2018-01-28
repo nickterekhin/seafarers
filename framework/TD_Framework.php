@@ -17,12 +17,6 @@ class TD_Framework
         return self::$instance;
     }
 
-    public function replace_post_image_on_category_image($image, $attachment_id, $size, $icon)
-    {
-        //get_the_post_thumbnail_url()
-        return $image;
-    }
-
 
     public function add_socials()
     {
