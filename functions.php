@@ -17,4 +17,4 @@ function main_style_setup()
     wp_enqueue_style( 'td_custom-css' );
 
 }
-
+$_SESSION['qode_proya_header_top'] = 'no';
