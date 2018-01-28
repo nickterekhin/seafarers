@@ -13,6 +13,3 @@ header .header_top .q_social_icon_holder a:hover {
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
     display: none; } }
-@media only screen and (max-width: 1000px) {
-  header {
-    margin-bottom: -183px; } }
