@@ -60,9 +60,10 @@ function terekhin_rewrite_menu_items($items,$menu,$args)
             $t->url = home_url().'/'.$term->slug;
         }
     }
+
     return $items;
 }
-//add_filter("term_link","terekhin_rewrite_category_link",10,3);
+add_filter("term_link","terekhin_rewrite_category_link",10,3);
 
 function terekhin_rewrite_category_link($termlink, $term, $taxonomy)
 {
@@ -70,7 +71,7 @@ function terekhin_rewrite_category_link($termlink, $term, $taxonomy)
     if($taxonomy=='category')
     {
         $taxonomy_object = get_taxonomy($taxonomy);
-        $termlink = home_url().'/news-'.$term->slug;
+        $termlink = home_url().'/'.$term->slug;
 
         return $termlink;
     }
