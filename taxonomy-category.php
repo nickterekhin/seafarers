@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 <?php
-global $wp_query;
-echo $wp_query->request;
 ?>
+
+
+
+<h1>Hello</h1>
 <?php get_footer();?>
