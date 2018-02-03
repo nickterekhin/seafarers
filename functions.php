@@ -8,7 +8,7 @@ define("CHILD_THEME_UPLOAD_URI",wp_upload_dir()['baseurl']);
 include('inc/config.php');
 include('framework/TD_Framework.php');
 include('inc/social_config.php');
-include('inc/rewrite_rules.php');
+//include('inc/rewrite_rules.php');
 
 add_action('wp_enqueue_scripts', 'main_style_setup',25);
 function main_style_setup()
