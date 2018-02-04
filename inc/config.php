@@ -30,4 +30,19 @@ function terekhin_dev_category_template($single)
     return $single;
 
 }
+
 add_filter('category_template','terekhin_dev_category_template',11);
+function terekhin_dev_comments_template($single)
+{
+    global $post;
+
+    if(is_author() || $post->post_type == 'post') {
+        include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+        if ( is_plugin_active( 'disqus-comment-system/disqus.php' ) ) {
+            return WP_PLUGIN_DIR.'/disqus-comment-system/comments.php';
+        }
+
+    }
+    return $single;
+}
+add_filter('comments_template','terekhin_dev_comments_template');
