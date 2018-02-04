@@ -2,7 +2,6 @@
 <?php 
 global $wp_query;
 $id = $wp_query->get_queried_object_id();
-$obj = $wp_query->get_queried_object();
 
 if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
 elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
@@ -28,11 +27,15 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
             <div class="overlapping_content"><div class="overlapping_content_inner">
         <?php } ?>
 		<div class="container_inner default_template_holder clearfix">
+
+			<?php get_template_part( 'templates/opinion','single' ); ?>
+
 			<?php if(($sidebar == "default")||($sidebar == "")) : ?>
 				<?php 
 					get_template_part('templates/blog', 'structure');
 				?>
 			<?php elseif($sidebar == "1" || $sidebar == "2"): ?>
+
 				<div class="<?php if($sidebar == "1"):?>two_columns_66_33<?php elseif($sidebar == "2") : ?>two_columns_75_25<?php endif; ?> background_color_sidebar grid2 clearfix">
 					<div class="column1">
 						<div class="column_inner">
