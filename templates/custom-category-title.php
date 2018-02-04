@@ -606,7 +606,7 @@ if(qode_is_title_hidden()) { ?>
             <?php if($title_overlay_image != ""){ ?>
                 <div class="title_overlay" style="background-image:url('<?php echo $title_overlay_image; ?>');"></div>
             <?php } ?>
-            <?php if(qode_is_title_text_hidden()) { ?>
+            <?php if(!qode_is_title_text_hidden()) { ?>
                 <div class="title_holder" <?php print $page_title_content_animation_data; ?> <?php if($responsive_title_image != 'yes' && get_post_meta($id, "qode_show-page-title-image", true) == ""){ echo $title_holder_height; }?>>
                     <div class="container">
                         <div class="container_inner clearfix">
