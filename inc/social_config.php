@@ -1,5 +1,4 @@
 <?php
+global $terekhin_framework;
 
-$framework = TD_Framework::getInstance();
-
-add_action('wp_footer',array($framework,'add_socials'));
+add_action('wp_footer',array($terekhin_framework,'add_socials'));

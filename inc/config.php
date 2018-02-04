@@ -17,3 +17,17 @@ function terekhin_dev_remove_elements()
         remove_menu_page('tools.php');
     }
 }
+
+function terekhin_dev_category_template($single)
+{
+    global $post,$wp_query;
+
+        if(is_author() || $post->post_type == 'post') {
+            return CHILD_THEME_PATH.'/category.php';
+        }
+
+
+    return $single;
+
+}
+add_filter('category_template','terekhin_dev_category_template',11);

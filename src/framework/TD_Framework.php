@@ -1,6 +1,7 @@
 <?php
+namespace TerekhinDevelopment\framework;
 
-class TD_Framework
+class TD_Framework extends TD_Framework_Base
 {
     private static $instance;
 
@@ -17,6 +18,10 @@ class TD_Framework
         return self::$instance;
     }
 
+    public function getImageTitle($taxonomy,$term_id)
+    {
+        return get_field('header_image', $taxonomy . '_' . $term_id);
+    }
 
     public function add_socials()
     {
@@ -33,3 +38,13 @@ class TD_Framework
         <?php
     }
 }
+
+function init_framework()
+{
+    global $terekhin_framework;
+    if(!$terekhin_framework)
+        $terekhin_framework = TD_Framework::getInstance();
+
+    return $terekhin_framework;
+}
+init_framework();
