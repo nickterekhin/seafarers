@@ -599,14 +599,14 @@ if($title_content_animation == 'yes' || $title_animation == 'yes' || $separator_
     $animation = 'data-animation="yes"';
 }
 
-if(!qode_is_title_hidden()) { ?>
+if(qode_is_title_hidden()) { ?>
     <div class="title_outer <?php echo $animate_title_class.$title_text_shadow; if($responsive_title_image == 'yes' && $show_title_image == true){ echo ' with_image'; }?>"  <?php print $animation; ?>  <?php echo 'data-height="'.$title_height.'"'; if($title_height != '' && $animate_title_area == 'area_top_bottom'){ echo 'style="opacity:0;height:' . $header_height_padding .'px;"'; } ?>>
         <div class="title <?php echo $page_title_fontsize . " " . $page_title_position . " " . $page_title_border_bottom_in_grid_class; if($responsive_title_image == 'no' && $title_image != "" && ($fixed_title_image == "yes" || $fixed_title_image == "yes_zoom") && $show_title_image == true){ echo ' has_fixed_background '; if($fixed_title_image == "yes_zoom"){ echo 'zoom_out '; } } if($responsive_title_image == 'no' && $title_image != "" && $fixed_title_image == "no" && $show_title_image == true){ echo ' has_background'; }  ?>" style="<?php if($responsive_title_image == 'no' && $title_image != "" && $show_title_image == true){ if($title_image_width != ''){ echo 'background-size:'.$title_image_width.'px auto;'; } echo 'background-image:url('.$title_image.');';  } if($title_height != ''){ echo 'height:'.$title_height.'px;'; } if($title_background_color != ''){ echo 'background-color:'.$title_background_color.';'; } ?>">
             <div class="image <?php if($responsive_title_image == 'yes' && $title_image != "" && $show_title_image == true){ echo "responsive"; }else{ echo "not_responsive"; } ?>"><?php if($title_image != ""){ ?><img itemprop="image" src="<?php echo $title_image; ?>" alt="&nbsp;" /> <?php } ?></div>
             <?php if($title_overlay_image != ""){ ?>
                 <div class="title_overlay" style="background-image:url('<?php echo $title_overlay_image; ?>');"></div>
             <?php } ?>
-            <?php if(!qode_is_title_text_hidden()) { ?>
+            <?php if(qode_is_title_text_hidden()) { ?>
                 <div class="title_holder" <?php print $page_title_content_animation_data; ?> <?php if($responsive_title_image != 'yes' && get_post_meta($id, "qode_show-page-title-image", true) == ""){ echo $title_holder_height; }?>>
                     <div class="container">
                         <div class="container_inner clearfix">
