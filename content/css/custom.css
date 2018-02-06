@@ -10,6 +10,9 @@ header .header_top .q_social_icon_holder a:hover {
 .header_top .header-widget a:hover {
   color: #02b0ea !important; }
 
+.vertical_menu_area .q_social_icon_holder + .q_social_icon_holder {
+  margin: 0 8px 2px 0 !important; }
+
 .blog_holder article {
   box-shadow: 0px 2px 2px 0px rgba(0, 6, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.01);
   background: #fafafa; }
