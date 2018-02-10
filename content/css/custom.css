@@ -69,4 +69,8 @@ header .header_top .q_social_icon_holder a:hover {
     margin: 20px 0 0; }
 
   .q_logo_vertical img.normal {
-    height: 83px; } }
+    height: 83px; }
+
+  h3, .h3, h3 a {
+    font-size: 14px;
+    line-height: 25px; } }
