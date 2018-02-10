@@ -25,7 +25,7 @@ aside .widget a {
   background: #fafafa; }
 
 .qode-slider1-owl .owl-dots {
-  width: 450px; }
+  /*width:450px;*/ }
   .qode-slider1-owl .owl-dots .owl-dot {
     color: #d8edf0; }
 
@@ -101,6 +101,6 @@ aside .widget a {
 
   .qode-slider1-owl .owl-dots {
     width: 280px; } }
-@media only screen and (max-width: 1285px) {
+@media only screen and (max-width: 1280px) {
   .qode-slider1-owl .owl-dots {
     width: 280px; } }
