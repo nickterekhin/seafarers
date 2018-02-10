@@ -23,6 +23,11 @@ class TD_Framework extends TD_Framework_Base
         return get_field('header_image', $taxonomy . '_' . $term_id);
     }
 
+    public function translate_read_more($array)
+    {
+        $array['text'] = esc_html__('Читать', 'qode-news');
+        return $array;
+    }
     public function add_socials()
     {
         new \WP_Query()
