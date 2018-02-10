@@ -15,6 +15,11 @@ header .header_top .q_social_icon_holder a:hover {
 .vertical_menu_area .q_social_icon_holder + .q_social_icon_holder {
   margin: 0 0 2px 8px !important; }
 
+aside .widget a {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px; }
+
 .blog_holder article {
   box-shadow: 0px 2px 2px 0px rgba(0, 6, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.01);
   background: #fafafa; }
