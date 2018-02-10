@@ -25,5 +25,12 @@ function main_style_setup()
 
 function qode_get_button_v2_html($params)
 {
-    var_dump($params);
+    if(preg_match('/Read more/',$params['text'],$m)==1)
+    {
+        $params['text'] = preg_replace('/Read more/',' Читать далее',$params['text']);
+    }
+    $button_html = qode_execute_shortcode('qode_button_v2', $params);
+    $button_html = str_replace("\n", '', $button_html);
+    return $button_html;
+
 }
