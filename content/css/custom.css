@@ -76,4 +76,12 @@ header .header_top .q_social_icon_holder a:hover {
 
   h3, .h3, h3 a {
     font-size: 14px;
-    line-height: 25px; } }
+    line-height: 25px; }
+
+  h5, .h5, h5 a, .q_icon_with_title .icon_text_holder h5.icon_title {
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 800; }
+
+  .qode-slider1-owl .owl-dots .owl-dot {
+    font-size: 12px; } }
