@@ -13,6 +13,7 @@ include('inc/config.php');
 include('src/framework/TD_Framework.php');
 include('inc/social_config.php');
 include('inc/rewrite_rules.php');
+include('inc/news_config.php');
 
 add_action('wp_enqueue_scripts', 'main_style_setup',25);
 function main_style_setup()
