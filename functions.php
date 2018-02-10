@@ -22,3 +22,8 @@ function main_style_setup()
     wp_enqueue_style( 'td_custom-css' );
 
 }
+
+function qode_get_button_v2_html($params)
+{
+    var_dump($params);
+}
