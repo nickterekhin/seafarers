@@ -92,3 +92,6 @@ header .header_top .q_social_icon_holder a:hover {
   width: 450px; }
   .qode-slider1-owl .owl-dots .owl-dot {
     color: #d8edf0; }
+
+.qode-slider1-item .qode-post-excerpt-holder {
+  font-weight: 500; }
