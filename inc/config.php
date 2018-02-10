@@ -51,4 +51,4 @@ function edit_slider_query($posts,$obj)
     var_dump($posts);
     return $posts;
 }
-add_action('the_posts','edit_slider_query');
+add_action('the_posts','edit_slider_query',10,2);
