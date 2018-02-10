@@ -22,3 +22,49 @@ header .header_top .q_social_icon_holder a:hover {
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
     display: none; } }
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+  aside.vertical_menu_area {
+    width: 180px;
+    padding: 10px 20px; }
+    aside.vertical_menu_area .q_social_icon_holder a > span {
+      font-size: 14px !important;
+      border-width: 2px !important; }
+      aside.vertical_menu_area .q_social_icon_holder a > span > i {
+        font-size: 14px !important; }
+      aside.vertical_menu_area .q_social_icon_holder a > span > span {
+        font-size: 14px !important; }
+  aside .widget {
+    margin: 0 0 30px; }
+    aside .widget li {
+      margin: 0; }
+    aside .widget a {
+      text-transform: uppercase;
+      font-size: 9px;
+      line-height: 25px;
+      padding: 0 2px;
+      font-weight: 600;
+      letter-spacing: 1px; }
+
+  .vertical_menu_enabled .content .container,
+  .vertical_menu_enabled .full_width,
+  .vertical_menu_enabled .q_slider,
+  .vertical_menu_enabled .title_outer,
+  .vertical_menu_enabled footer {
+    padding-left: 180px; }
+
+  .vertical_area_background {
+    width: 180px; }
+
+  nav.vertical_menu {
+    margin: 20px 0 0; }
+    nav.vertical_menu > ul > li > a {
+      padding-right: 2px !important;
+      padding-left: 2px !important;
+      font-size: 9px;
+      line-height: 25px; }
+
+  .vertical_menu_area_widget_holder {
+    margin: 20px 0 0; }
+
+  .q_logo_vertical img.normal {
+    height: 83px; } }
