@@ -1,0 +1,58 @@
+@import "../vars/header-vars";
+header {
+  &.scrolled {
+    .header_top {
+      background-color: $top_header_bg_color !important;
+    }
+  }
+  .header_top{
+    .q_social_icon_holder{
+      &:hover{
+        .simple_social{
+          color: $top_header_hover_color !important;
+        }
+      }
+      a{
+        &:hover{
+          color: $top_header_hover_color !important;
+        }
+      }
+    }
+  }
+}
+
+.header_top{
+  .header-widget{
+    &.widget_nav_menu{
+      ul.menu>li>a{
+        &:hover{
+          color: $top_header_hover_color !important;
+        }
+      }
+    }
+    a{
+      &:hover{
+        color:$top_header_hover_color !important;
+      }
+    }
+  }
+}
+.vertical_menu_area {
+  .q_social_icon_holder{
+    margin: 0!important;
+  }
+  .q_social_icon_holder + .q_social_icon_holder{
+    margin: 0 0 2px 8px!important;
+  }
+}
+
+aside {
+
+  .widget{
+    a{
+      text-transform: uppercase;
+      font-weight:600;
+      letter-spacing:1px;
+    }
+  }
+}

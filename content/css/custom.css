@@ -24,6 +24,14 @@ aside .widget a {
   box-shadow: 0px 2px 2px 0px rgba(0, 6, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.01);
   background: #fafafa; }
 
+.qode-slider1-owl .owl-dots {
+  width: 450px; }
+  .qode-slider1-owl .owl-dots .owl-dot {
+    color: #d8edf0; }
+
+.qode-slider1-item .qode-post-excerpt-holder {
+  font-weight: 500; }
+
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
     display: none; } }
@@ -93,10 +101,3 @@ aside .widget a {
 
   .qode-slider1-owl .owl-dots {
     width: 280px; } }
-.qode-slider1-owl .owl-dots {
-  width: 450px; }
-  .qode-slider1-owl .owl-dots .owl-dot {
-    color: #d8edf0; }
-
-.qode-slider1-item .qode-post-excerpt-holder {
-  font-weight: 500; }
