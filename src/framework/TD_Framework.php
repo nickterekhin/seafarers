@@ -25,6 +25,7 @@ class TD_Framework extends TD_Framework_Base
 
     public function add_socials()
     {
+        new \WP_Query()
         ?>
         <div id="fb-root"></div>
         <script>(function(d, s, id) {

@@ -46,3 +46,8 @@ function terekhin_dev_comments_template($single)
     return $single;
 }
 add_filter('comments_template','terekhin_dev_comments_template');
+function edit_slider_query($obj)
+{
+    var_dump($obj);
+}
+add_action('pre_get_posts','edit_slider_query');
