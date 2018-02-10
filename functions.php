@@ -25,6 +25,7 @@ function main_style_setup()
 
 function qode_get_button_v2_html($params)
 {
+    var_dump($params);
     if(preg_match('/Read more/i',$params['text'],$m)==1)
     {
         $params['text'] = preg_replace('/Read more/',' Читать далее',$params['text']);
