@@ -100,7 +100,11 @@ aside .widget a {
     font-size: 12px; }
 
   .qode-slider1-owl .owl-dots {
-    width: 280px; } }
+    width: 280px; }
+
+  .qode-slider1-item .qode-post-excerpt-holder {
+    font-size: 13px;
+    line-height: 1.6; } }
 /*
 @media only screen and(max-width:1280px){
   .qode-slider1-owl .owl-dots{
