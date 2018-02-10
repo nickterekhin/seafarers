@@ -45,10 +45,10 @@ function terekhin_dev_comments_template($single)
     }
     return $single;
 }
-add_filter('comments_template','terekhin_dev_comments_template');
+/*add_filter('comments_template','terekhin_dev_comments_template');
 function edit_slider_query($posts,$obj)
 {
     var_dump($posts);
     return $posts;
 }
-add_action('the_posts','edit_slider_query',10,2);
+add_action('the_posts','edit_slider_query',10,2);*/
