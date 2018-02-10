@@ -33,6 +33,8 @@ header .header_top .q_social_icon_holder a:hover {
         font-size: 14px !important; }
       aside.vertical_menu_area .q_social_icon_holder a > span > span {
         font-size: 14px !important; }
+    aside.vertical_menu_area .q_social_icon_holder + .q_social_icon_holder {
+      margin: 0 0 2px 1px !important; }
   aside .widget {
     margin: 0 0 30px; }
     aside .widget li {
