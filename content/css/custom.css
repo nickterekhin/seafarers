@@ -38,7 +38,7 @@ aside .widget a {
 @media only screen and (max-width: 1060px) and (min-width: 1000px) {
   .boxed div.section .section_inner, .carousel-inner .slider_content_outer, .container_inner, .full_width .parallax_content, .steps_holder_inner, div.grid_section .section_inner, nav.content_menu {
     width: 768px; } }
-@media only screen and (max-width: 1024px) and (orientation: landscape) {
+@media only screen and (max-width: 1280px) and (orientation: landscape) {
   aside.vertical_menu_area {
     width: 180px;
     padding: 10px 20px; }
@@ -101,6 +101,9 @@ aside .widget a {
 
   .qode-slider1-owl .owl-dots {
     width: 280px; } }
-@media only screen and (max-width: 1280px) {
-  .qode-slider1-owl .owl-dots {
-    width: 280px; } }
+/*
+@media only screen and(max-width:1280px){
+  .qode-slider1-owl .owl-dots{
+    width:280px;
+  }
+}*/
