@@ -25,8 +25,7 @@ class TD_Framework extends TD_Framework_Base
 
     public function translate_read_more($array)
     {
-        var_dump($array);
-        $array['text'] = esc_html__('Читать', 'qode-news');
+        $array['text'] = esc_html__('Читать далее', 'qode-news');
         return $array;
     }
     public function add_socials()
