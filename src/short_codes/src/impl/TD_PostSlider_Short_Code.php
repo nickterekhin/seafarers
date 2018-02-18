@@ -10,27 +10,94 @@ namespace TerekhinDevelopment\short_codes\src\impl;
 
 use TerekhinDevelopment\short_codes\src\ITD_ShortCodes;
 use TerekhinDevelopment\short_codes\src\TD_ShortCodes;
+use WP_Query;
+use WP_Term;
 
 class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
 {
     private $default_attr = array(
-
+        'content_in_grid' => 'yes',
+        'column_number' => '1',
+        'space_between_items' => 'no',
+        'slider_size' => 'landscape',
+        'title_tag' => 'h2',
+        'title_length' => '',
+        'image_size' => 'full',
+        'custom_image_width' => '',
+        'custom_image_height' => '',
+        'excerpt_length' => '',
+        'date_format' => '',
+        'display_excerpt' => 'yes',
+        'display_categories' => 'yes',
+        'display_share' => 'yes',
+        'content_padding' => '',
+        'display_button' => 'yes',
+        'display_category_image'=>'',
     );
 
     function __construct($sc_name)
     {
         parent::__construct($sc_name);
+        $this->short_code_title = 'Post Slider';
+        $this->base = 'qode_slider1';
+        $this->css_class = 'qode-slider1';
 
     }
 
     function renderShortCode($attr)
     {
         $this->options = shortcode_atts($this->default_attr,$attr);
+        return $this->showNewsSlider();
     }
 
     function initShortCode()
     {
-        // TODO: Implement initShortCode() method.
+        $params = array(
+            array(
+                'type' => 'dropdown',
+                'heading' => esc_html__('Slider Size','qode-news'),
+                'param_name' => 'slider_size',
+                'value' => array(
+                    esc_html__('Default', 'qode-news') => '',
+                    esc_html__('Landscape', 'qode-news') => 'landscape',
+                    esc_html__('Square', 'qode-news') => 'square',
+                    esc_html__('Full Screen', 'qode-news') => 'full-screen'
+                ),
+                'group' => esc_html__('General','qode-news')
+            ),
+            array(
+                'type' => 'dropdown',
+                'heading' => esc_html__('Content in Grid','qode-news'),
+                'param_name' => 'content_in_grid',
+                'value' => array(
+                    esc_html__('Default', 'qode-news') => '',
+                    esc_html__('Yes', 'qode-news') => 'yes',
+                    esc_html__('No', 'qode-news') => 'no'
+                ),
+                'group' => esc_html__('General','qode-news')
+            ),
+            array(
+                'type' => 'dropdown',
+                'heading' => esc_html__('Use Only Category Image','qode-news'),
+                'param_name' => 'display_category_image',
+                'value' => array(
+                    esc_html__('Default', 'qode-news') => '',
+                    esc_html__('Yes', 'qode-news') => 'yes',
+                    esc_html__('No', 'qode-news') => 'no'
+                ),
+                'group' => esc_html__('General','qode-news')
+            ),
+            array(
+                'type' => 'textfield',
+                'heading' => esc_html__('Content Padding','qode-news'),
+                'param_name' => 'content_padding',
+                'description' => esc_html__('Insert content padding in (0px 5px 0px 5px) form','qode-news'),
+                'group' => esc_html__('General','qode-news')
+            )
+
+        );
+
+        return $params;
     }
 
     function initAttributes($value, $data)
@@ -38,4 +105,227 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
         // TODO: Implement initAttributes() method.
     }
 
+    private function showNewsSlider()
+    {
+        $html='';
+        $args = array(
+            "hide_empty"=>0,
+            'taxonomy'=> 'category',
+            'parent'=>0,
+        );
+
+        $categs = get_categories($args);
+        $q=array();
+        /** @var WP_Term $c */
+        foreach($categs as $c)
+        {
+            $args = array(
+                'post_type'=>"post",
+                'category_name'=>$c->slug,
+                'posts_per_page'=>1
+            );
+            $tmp_query = $this->news_get_query($args);//new WP_Query($args);
+            wp_reset_postdata();
+            if($tmp_query->posts)
+            $q = array_merge($q,$tmp_query->posts);
+        }
+
+        $query = new WP_Query();
+        $query->posts = $q;
+        $query->post_count = count($q);
+        $holder_classes = $this->getHolderClasses();
+        $html.='<div '.qode_get_class_attribute($holder_classes).'>';
+
+        $html.=$this->renderQuery($query);
+
+        $html.='</div>';
+
+
+        return $html;
+    }
+    private function getHolderInnerClass()
+    {
+        $holder_inner_classes = array();
+        $holder_inner_classes[] = 'qode-news-list-inner-holder';
+
+        $holder_inner_classes[] = 'qode-slider1-owl';
+        $holder_inner_classes[] = 'qode-owl-slider-style';
+
+        return implode(' ', $holder_inner_classes);
+    }
+
+    private function getHolderClasses() {
+        $holder_classes = array();
+        $holder_classes[] = 'qode-news-holder';
+        $holder_classes[] = $this->css_class;
+
+        if (isset($this->options['extra_class_name']) && $this->options['extra_class_name'] !== '') {
+            $holder_classes[] = $this->options['extra_class_name'];
+        }
+
+        if (isset($this->options['block_proportion']) && $this->options['block_proportion'] !== '') {
+            $holder_classes[] = 'qode-news-block-pp-'.$this->options['block_proportion'];
+        }
+
+        if ($this->isPaginationEnabled($this->options)) {
+            $holder_classes[] = 'qode-news-pag-' . $this->options['pagination_type'];
+        }
+
+        if (isset($this->options['column_number']) && ! $this->isSlider()) {
+            if ($this->options['column_number'] !== ''){
+                $holder_classes[] = 'qode-news-columns-' . $this->options['column_number'];
+            } else{
+                $holder_classes[] = 'qode-news-columns-3';
+            }
+        }
+
+        if (isset($this->options['space_between_items']) && $this->options['space_between_items'] !== ''){
+            $holder_classes[] = 'qode-nl-'.$this->options['space_between_items'].'-space';
+        }
+
+        $classes = array_merge($holder_classes, $this->getAdditionalHolderClasses());
+
+        return implode(' ', $classes);
+    }
+
+    private function isPaginationEnabled($params) {
+
+        return (isset($params['display_pagination'])
+            && isset($params['pagination_type'])
+            && $params['display_pagination'] == 'yes');
+
+    }
+
+    private function isSlider()
+    {
+        return true;
+    }
+
+    protected function getHolderInnerData() {
+        $holder_inner_data = array();
+
+        if (isset($this->options['display_navigation']) && $this->options['display_navigation'] !== ''){
+            $holder_inner_data[] = 'data-enable-navigation="'.$this->options['display_navigation'].'"';
+        }
+
+        if (isset($this->options['display_paging']) && $this->options['display_paging'] !== ''){
+            $holder_inner_data[] = 'data-enable-pagination="'.$this->options['display_paging'].'"';
+        }
+
+        if (isset($this->options['column_number'])){
+            if ($this->options['column_number'] !== ''){
+                $holder_inner_data[] = 'data-number-of-items="'.$this->options['column_number'].'"';
+            } else {
+                $holder_inner_data[] = 'data-number-of-items="4"';
+            }
+        }
+
+        return implode(' ', $holder_inner_data);
+    }
+    /**
+     * @param WP_Query $query
+     * @return string
+     */
+    private function renderQuery($query)
+    {
+        $html='';
+        $post_count =0;
+        $inner_classes = $this->getHolderInnerClass();
+        $inner_data = $this->getHolderInnerData();
+            if($query->have_posts())
+            {
+                $html.='<div '.qode_get_class_attribute($inner_classes).' '.$inner_data.' >';
+                while($query->have_posts()):$query->the_post();
+                    $post_count++;
+                $this->options['post_number']=$post_count;
+                $html.=$this->render();
+                endwhile;
+                $html .= '<div>';
+            }
+        wp_reset_postdata();
+        return $html;
+
+    }
+    private function render()
+    {
+        $this->options['item_classes'] = $this->getClasses();
+        $this->options['background_style'] = $this->getBackgroundStyle();
+        $this->options['content_style'] = $this->getContentStyle();
+
+        $this->options['item_data_params'] = $this->getItemDataParams();
+
+        return $this->View('post_slider_template',array_merge(array('obj'=>$this,'posts'=>null),$this->options));
+    }
+    private function getBackgroundStyle(){
+        $background_image = '';
+        $image_size = 'full';
+        $background_style = array();
+
+        if ($this->options['image_size'] !== ''){
+            $image_size = $this->options['image_size'];
+        }
+
+        $featured_image_meta = get_post_meta(get_the_ID(), 'qode_blog_list_featured_image_meta', true);
+
+        if ($featured_image_meta !== ''){
+            $background_image = $featured_image_meta;
+        } else {
+            $background_image = get_the_post_thumbnail_url(get_the_ID(),$image_size);
+        }
+
+        if(!empty($this->options['display_category_image']) && $this->options['display_category_image']=='yes' || !$background_image)
+            $background_image = $this->getCategoryImage(get_the_ID());
+
+        $background_style[] = 'background-image: url('.esc_url($background_image).')';
+
+        return implode(';', $background_style);
+    }
+
+    private function getClasses(){
+        $classes = array();
+
+        if ($this->options['slider_size'] !== ''){
+            $classes[] = 'qode-slider-size-'.$this->options['slider_size'];
+        } else {
+            $classes[] = 'qode-slider-size-landscape';
+        }
+
+        if($this->options['content_in_grid'] !== 'yes'){
+            $classes[] = 'qode-slider1-item-wide';
+        }
+
+        return implode(' ', $classes);
+    }
+
+    private function getContentStyle(){
+        $content_style = array();
+
+        if ($this->options['content_padding'] !== ''){
+            $content_style[] = 'padding: '.$this->options['content_padding'];
+        }
+
+        return implode(';', $content_style);
+    }
+    public function getItemDataParams() {
+
+
+        $thumbnail = get_the_post_thumbnail_url(null,'thumbnail');
+        if(!empty($this->options['display_category_image']) && $this->options['display_category_image']=='yes' || !$thumbnail)
+        {
+            $thumbnail = $this->getCategoryImage(get_the_ID());
+            $thumbnail = preg_replace('/(\.jpg)$/','-70x70$1',$thumbnail);
+        }
+
+        $data = 'data-thumb-url="'.$thumbnail.'" ';
+        $date_format = isset($date_format) && $date_format !== '' ? $date_format : 'published';
+        $difference = human_time_diff( get_the_time('U'), current_time('timestamp') ) . esc_html__(' ago','qode-news');
+        if ($date_format == 'published') {
+            $date = get_the_time(get_option('date_format'));
+        } else {
+            $date = esc_html($difference);
+        }
+
+        $data .= 'data-date="'. $date .'"';
+        return $data;
+    }
 }

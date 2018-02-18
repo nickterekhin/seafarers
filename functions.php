@@ -11,7 +11,7 @@ define("CHILD_THEME_UPLOAD_URI",wp_upload_dir()['baseurl']);
 include('src/terekhin.php');
 include('inc/config.php');
 include('src/framework/TD_Framework.php');
-include('src/news_vc/news_vc.php');
+include('src/short_codes/short_codes.php');
 
 include('inc/social_config.php');
 include('inc/rewrite_rules.php');
