@@ -32,7 +32,7 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
         'display_share' => 'yes',
         'content_padding' => '',
         'display_button' => 'yes',
-        'display_category_image'=>'',
+        'display_category_image'=>'yes',
     );
 
     function __construct($sc_name)
@@ -122,19 +122,21 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
             $args = array(
                 'post_type'=>"post",
                 'category_name'=>$c->slug,
-                'posts_per_page'=>1
+                'posts_per_page'=>1,
+                'post_status'=>'publish'
             );
             $tmp_query = $this->news_get_query($args);//new WP_Query($args);
             wp_reset_postdata();
             if($tmp_query->posts)
-            $q = array_merge($q,$tmp_query->posts);
+                $q = array_merge($q,$tmp_query->posts);
         }
-
+        wp_reset_postdata();
         $query = new WP_Query();
         $query->posts = $q;
         $query->post_count = count($q);
+
         $holder_classes = $this->getHolderClasses();
-        $html.='<div '.qode_get_class_attribute($holder_classes).'>';
+        $html.='<div '.qode_get_class_attribute($holder_classes).' '.$this->getNewsShortCodesHolderDataParams().' >';
 
         $html.=$this->renderQuery($query);
 
@@ -254,7 +256,7 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
 
         $this->options['item_data_params'] = $this->getItemDataParams();
 
-        return $this->View('post_slider_template',array_merge(array('obj'=>$this,'posts'=>null),$this->options));
+        return $this->View('post_slider_template',array_merge(array('obj'=>$this),$this->options));
     }
     private function getBackgroundStyle(){
         $background_image = '';
@@ -327,5 +329,21 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
 
         $data .= 'data-date="'. $date .'"';
         return $data;
+    }
+
+    public function getNewsShortCodesHolderDataParams() {
+
+        $data_params_string='';
+
+        if($this->options['content_in_grid'] == 'yes'){
+            $data_params_string .= ' data-content-in-grid=yes ';
+        }
+
+        if($this->options['content_padding'] !== ''){
+            $data_params_string .= ' data-content-padding='.str_replace(" ", ",", $this->options['content_padding']).'';
+        }
+
+        return $data_params_string;
+
     }
 }
