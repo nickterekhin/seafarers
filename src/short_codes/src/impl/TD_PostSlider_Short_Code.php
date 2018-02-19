@@ -21,7 +21,7 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
         'column_number' => '1',
         'space_between_items' => 'no',
         'slider_size' => 'landscape',
-        'title_tag' => 'h2',
+        'title_tag' => 'h3',
         'title_length' => '',
         'image_size' => 'full',
         'custom_image_width' => '',
@@ -251,8 +251,89 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
                     esc_html__('Date of Publication','qode-news') => 'published'
                 ),
                 'group' 	  => esc_html__('Post Item','qode-news'),
-            )
+            ),
 
+            array (
+                  'type' => 'dropdown',
+                  'param_name' =>  'title_tag' ,
+                  'heading' =>  'Title Tag' ,
+                  'value' =>
+                        array (
+                          'Default' =>  '' ,
+                          'h1' =>  'h1' ,
+                          'h2' =>  'h2' ,
+                          'h3' =>  'h3' ,
+                          'h4' =>  'h4' ,
+                          'h5' =>  'h5' ,
+                          'h6' =>  'h6' ,
+                          'p' =>  'p' ,
+                        ),
+                      'group' =>  'Post Item' ,
+                  ),
+            array (
+                  'type' => 'dropdown' ,
+                  'param_name' => 'image_size' ,
+                  'heading' => 'Image Size' ,
+                  'value' =>
+                    array (
+                      'Default' => '' ,
+                      'Thumbnail' => 'thumbnail' ,
+                      'Medium' => 'medium' ,
+                      'Large' => 'large' ,
+                      'Landscape' => 'portfolio-landscape' ,
+                      'Portrait' => 'portfolio-portrait' ,
+                      'Square' => 'portfolio-square' ,
+                      'Full' => 'full' ,
+                      'Custom' => 'custom' ,
+                    ),
+                  'description' => 'Choose image size' ,
+                  'group' => 'Post Item' ,
+            ),
+            array (
+                  'type' => 'dropdown' ,
+                  'param_name' => 'display_categories' ,
+                  'heading' => 'Display Categories' ,
+                  'value' =>
+                    array (
+                      'Default' => '' ,
+                      'No' => 'no' ,
+                      'Yes' => 'yes' ,
+                    ),
+                  'group' => 'Post Item' ,
+              ),
+            array (
+              'type' => 'dropdown' ,
+              'param_name' => 'display_excerpt' ,
+              'heading' => 'Display Excerpt' ,
+              'value' =>
+                array (
+                  'Default' => '' ,
+                  'No' => 'no' ,
+                  'Yes' => 'yes' ,
+                ),
+              'group' => 'Post Item' ,
+          ),
+            array (
+              'type' => 'textfield' ,
+              'heading' => 'Max. Excerpt Length' ,
+              'param_name' => 'excerpt_length' ,
+              'description' => 'Enter max of words that can be shown for excerpt' ,
+              'dependency' =>
+                  array('element' => 'display_excerpt', 'value' => array('','yes')),
+              'group' => 'Post Item' ,
+          ),
+            array (
+              'type' => 'dropdown' ,
+              'param_name' => 'display_share' ,
+              'heading' => 'Display Share' ,
+              'value' =>
+                array (
+                  'Default' => '' ,
+                  'No' => 'no' ,
+                  'Yes' => 'yes' ,
+                ),
+              'group' => 'Post Item' ,
+            )
         );
 
         return array_merge($params,$item_array);
