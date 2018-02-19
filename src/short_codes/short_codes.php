@@ -31,6 +31,7 @@ class TD_News_ShortCodes_VC_Service
         {
             add_action("admin_enqueue_scripts", array($this,'init_resources'));
         }
+        add_action('wp_enqueue_scripts', array($this,'td_styles'));
         add_action('vc_before_init',array($this,'init_short_codes'));
     }
 
@@ -47,6 +48,10 @@ class TD_News_ShortCodes_VC_Service
     public function init_resources()
     {
 
+    }
+    public function td_styles()
+    {
+        wp_enqueue_script( 'tdev_news_script', CHILD_THEME_PATH_URI . '/src/short_codes/content/js/td-slider.js');
     }
 
 

@@ -10,6 +10,7 @@ namespace TerekhinDevelopment\short_codes\src\impl;
 
 use TerekhinDevelopment\short_codes\src\ITD_ShortCodes;
 use TerekhinDevelopment\short_codes\src\TD_ShortCodes;
+use TerekhinDevelopment\tools\WP_Union_Query;
 use WP_Query;
 use WP_Term;
 
@@ -39,14 +40,15 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
     {
         parent::__construct($sc_name);
         $this->short_code_title = 'Post Slider';
-        $this->base = 'qode_slider1';
-        $this->css_class = 'qode-slider1';
+        $this->css_class = 'qode-slider-td';
 
     }
 
     function renderShortCode($attr)
     {
-        $this->options = shortcode_atts($this->default_attr,$attr);
+        $sc_params_names = $this->short_codes_tools->get_short_code_params_name($this->initShortCode());
+        $opts = $this->short_codes_tools->news_shortcode_atts($sc_params_names,$this->default_attr);
+        $this->options = shortcode_atts($opts,$attr);
         return $this->showNewsSlider();
     }
 
@@ -93,11 +95,167 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
                 'param_name' => 'content_padding',
                 'description' => esc_html__('Insert content padding in (0px 5px 0px 5px) form','qode-news'),
                 'group' => esc_html__('General','qode-news')
+            ),
+            array (
+                  'type' =>'textfield' ,
+                  'heading' =>'Extra Class Name' ,
+                  'param_name' =>'extra_class_name' ,
+                  'group' =>'General' ,
+  ),
+    array (
+      'type' =>'autocomplete' ,
+      'heading' =>'Category' ,
+      'param_name' =>'category_name' ,
+      'settings' =>
+        array (
+          'multiple' => true,
+          'sortable' => true,
+          'unique_values' => true,
+        ),
+      'description' =>'Enter the categories of the posts you want to display (leave empty for showing all categories)' ,
+      'group' =>'General' ,
+  ),
+    array (
+      'type' =>'autocomplete' ,
+      'heading' =>'Author' ,
+      'param_name' =>'author_id' ,
+      'settings' =>
+        array (
+          'multiple' => true,
+          'sortable' => true,
+          'unique_values' => true,
+        ),
+      'description' =>'Enter the authors of the posts you want to display (leave empty for showing all authors)' ,
+      'group' =>'General' ,
+  ),
+    array (
+      'type' =>'autocomplete' ,
+      'heading' =>'Tag' ,
+      'param_name' =>'tag' ,
+      'settings' => 
+        array (
+          'multiple' => true,
+          'sortable' => true,
+          'unique_values' => true,
+        ),
+      'description' =>'Enter the tags of the posts you want to display (leave empty for showing all tags)' ,
+      'group' =>'General' ,
+  ),
+    array (
+      'type' =>'autocomplete' ,
+      'heading' =>'Include Posts' ,
+      'param_name' =>'post_in' ,
+      'settings' => 
+        array (
+          'multiple' => true,
+          'sortable' => true,
+          'unique_values' => true,
+        ),
+      'description' =>'Enter the IDs or Titles of the posts you want to display' ,
+      'group' =>'General' ,
+
+  ),
+    array (
+      'type' =>'autocomplete' ,
+      'heading' =>'Exclude Posts' ,
+      'param_name' =>'post_not_in' ,
+      'settings' => 
+        array (
+          'multiple' => true,
+          'sortable' => true,
+          'unique_values' => true,
+        ),
+      'description' =>'Enter the IDs or Titles of the posts you want to exclude' ,
+      'group' =>'General' ,
+
+  ),
+    array (
+      'type' =>'dropdown' ,
+      'heading' =>'Sort' ,
+      'param_name' =>'sort' ,
+      'value' => 
+        array (
+          '' =>'' ,
+          'Latest' =>'latest' ,
+          'Random' =>'random' ,
+          'Random Posts Today' =>'random_today' ,
+          'Random in Last 7 Days' =>'random_seven_days' ,
+          'Most Commented' =>'comments' ,
+          'Title' =>'title' ,
+          'Popular' =>'popular' ,
+          'Featured Posts First' =>'featured_first' ,
+          'Trending Posts First' =>'trending_first' ,
+          'Hot Posts First' =>'hot_first' ,
+          'By Reaction' =>'reactions' ,
+        ),
+      'description' =>'' ,
+      'group' =>'General' ,
+
+  ),
+        array(
+            'type' => 'autocomplete',
+            'heading' => esc_html__('Reaction','qode-news'),
+            'param_name' => 'reaction',
+            'settings'    => array(
+                'multiple'      => false,
+                'sortable'      => true,
+                'unique_values' => true
+            ),
+            'dependency'    => array(
+                'element' => 'sort',
+                'value' => array(
+                    'reactions'
+                )
+            ),
+            'description' => esc_html__('Choose the reaction which you would like to use for sorting your posts. The posts that have the greatest number of your chosen reaction will be displayed first.','qode-news'),
+            'group' => esc_html__('General','qode-news')
+        ),
+        array(
+            'type'       => 'dropdown',
+            'param_name' => 'order',
+            'heading'    => esc_html__('Order', 'qode-news'),
+            'value'      => array_flip(qode_get_query_order_array()),
+            'dependency'    => array(
+                'element' => 'sort',
+                'value' => array(
+                    'title'
+                )
+            ),
+            'save_always' => true,
+            'group' => esc_html__('General','qode-news')
+        ),
+        array(
+            'type'       => 'textfield',
+            'param_name' => 'offset',
+            'heading'    => esc_html__('Offset', 'qode-news'),
+            'save_always' => true,
+            'group' => esc_html__('General','qode-news')
+        )
+    );
+
+        $item_array = array(
+            array(
+                'type'		  => 'dropdown',
+                'param_name'  => 'display_button',
+                'heading'	  => esc_html__("Display 'Read More' Button",'qode-news'),
+                'value'		  => array_flip(qode_get_yes_no_select_array()),
+                'group' 	  => esc_html__('Post Item','qode-news'),
+            ),
+            array( //has to be here since it will not work without 'show date' field
+                'type'        => 'dropdown',
+                'heading'	  => esc_html__('Publication Date Format','qode-news'),
+                'param_name'  => 'date_format',
+                'value' 	  => array(
+                    esc_html__('Default','qode-news') => '',
+                    esc_html__('Time from Publication','qode-news') => 'difference',
+                    esc_html__('Date of Publication','qode-news') => 'published'
+                ),
+                'group' 	  => esc_html__('Post Item','qode-news'),
             )
 
         );
 
-        return $params;
+        return array_merge($params,$item_array);
     }
 
     function initAttributes($value, $data)
@@ -108,32 +266,31 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
     private function showNewsSlider()
     {
         $html='';
-        $args = array(
-            "hide_empty"=>0,
-            'taxonomy'=> 'category',
-            'parent'=>0,
-        );
-
-        $categs = get_categories($args);
-        $q=array();
+        $categs = $this->short_codes_tools->get_new_categories($this->options);
+        unset($this->options['category_name']);
+        $q_args=array();
         /** @var WP_Term $c */
         foreach($categs as $c)
         {
             $args = array(
                 'post_type'=>"post",
-                'category_name'=>$c->slug,
+                'category_name'=>$c,
                 'posts_per_page'=>1,
                 'post_status'=>'publish'
             );
-            $tmp_query = $this->news_get_query($args);//new WP_Query($args);
-            wp_reset_postdata();
-            if($tmp_query->posts)
-                $q = array_merge($q,$tmp_query->posts);
+            $args = array_merge($this->options,$args);
+
+            $tmp_query_args = $this->short_codes_tools->news_get_query($args,false);
+            $q_args[] = $tmp_query_args;
         }
-        wp_reset_postdata();
-        $query = new WP_Query();
-        $query->posts = $q;
-        $query->post_count = count($q);
+
+        $args = array(
+            'posts_per_page'=>count($categs),
+            'sublimit'=>1,
+            'args'=>$q_args
+        );
+
+        $query = new WP_Union_Query($args);
 
         $holder_classes = $this->getHolderClasses();
         $html.='<div '.qode_get_class_attribute($holder_classes).' '.$this->getNewsShortCodesHolderDataParams().' >';
@@ -151,6 +308,7 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
         $holder_inner_classes[] = 'qode-news-list-inner-holder';
 
         $holder_inner_classes[] = 'qode-slider1-owl';
+        $holder_inner_classes[] = 'td-slider-owl';
         $holder_inner_classes[] = 'qode-owl-slider-style';
 
         return implode(' ', $holder_inner_classes);
@@ -167,10 +325,6 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
 
         if (isset($this->options['block_proportion']) && $this->options['block_proportion'] !== '') {
             $holder_classes[] = 'qode-news-block-pp-'.$this->options['block_proportion'];
-        }
-
-        if ($this->isPaginationEnabled($this->options)) {
-            $holder_classes[] = 'qode-news-pag-' . $this->options['pagination_type'];
         }
 
         if (isset($this->options['column_number']) && ! $this->isSlider()) {
@@ -190,13 +344,6 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
         return implode(' ', $classes);
     }
 
-    private function isPaginationEnabled($params) {
-
-        return (isset($params['display_pagination'])
-            && isset($params['pagination_type'])
-            && $params['display_pagination'] == 'yes');
-
-    }
 
     private function isSlider()
     {
@@ -205,22 +352,7 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
 
     protected function getHolderInnerData() {
         $holder_inner_data = array();
-
-        if (isset($this->options['display_navigation']) && $this->options['display_navigation'] !== ''){
-            $holder_inner_data[] = 'data-enable-navigation="'.$this->options['display_navigation'].'"';
-        }
-
-        if (isset($this->options['display_paging']) && $this->options['display_paging'] !== ''){
-            $holder_inner_data[] = 'data-enable-pagination="'.$this->options['display_paging'].'"';
-        }
-
-        if (isset($this->options['column_number'])){
-            if ($this->options['column_number'] !== ''){
-                $holder_inner_data[] = 'data-number-of-items="'.$this->options['column_number'].'"';
-            } else {
-                $holder_inner_data[] = 'data-number-of-items="4"';
-            }
-        }
+         $holder_inner_data[] = 'data-number-of-items="'.$this->options['column_number'].'"';
 
         return implode(' ', $holder_inner_data);
     }
@@ -242,7 +374,7 @@ class TD_PostSlider_Short_Code extends TD_ShortCodes implements ITD_ShortCodes
                 $this->options['post_number']=$post_count;
                 $html.=$this->render();
                 endwhile;
-                $html .= '<div>';
+                $html .= '</div>';
             }
         wp_reset_postdata();
         return $html;
