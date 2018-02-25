@@ -16,11 +16,13 @@
     color:#ffffff;
   }
   .quform-button-submit-1_2{
-    background-color: #02b0ea;
-    color:#fff;
-    &:hover{
-      background-color: #81bf0b;
+    button {
+      background-color: #02b0ea;
       color: #fff;
+      &:hover {
+        background-color: #81bf0b;
+        color: #fff;
+      }
     }
   }
 }
