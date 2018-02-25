@@ -32,6 +32,9 @@ aside .widget a {
 .qode-slider1-item .qode-post-excerpt-holder {
   font-weight: 500; }
 
+.quform-form .sea-contact-text-field {
+  border: 3px solid #002f54; }
+
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
     display: none; } }
