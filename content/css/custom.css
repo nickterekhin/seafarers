@@ -36,7 +36,7 @@ aside .widget a {
   color: #fff;
   text-transform: uppercase; }
 .quform-1 .quform-field-text {
-  border: 3px solid #cbdfff; }
+  border: 1px solid #393e46; }
 
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
