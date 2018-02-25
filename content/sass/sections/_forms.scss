@@ -4,8 +4,15 @@
   .quform-label{
     color:#fff;
     text-transform: uppercase;
+    font-weight: 500;
+    .quform-required{
+      color: #cc0101;
+      font-weight: 500;
+    }
   }
   .quform-field-text, .quform-field-email, .quform-field-textarea{
     border: 1px solid #393e46;
+    background-color: rgba(35,58,75,.5);
+    color:#ffffff;
   }
 }
