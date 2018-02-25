@@ -45,7 +45,8 @@ aside .widget a {
   color: #ffffff; }
 .quform-1 .quform-button-submit-1_2 button {
   background-color: #02b0ea;
-  color: #fff; }
+  color: #fff;
+  text-transform: uppercase; }
   .quform-1 .quform-button-submit-1_2 button:hover {
     background-color: #81bf0b;
     color: #fff; }
