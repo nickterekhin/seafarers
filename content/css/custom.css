@@ -43,6 +43,12 @@ aside .widget a {
   border: 1px solid #393e46;
   background-color: rgba(35, 58, 75, 0.5);
   color: #ffffff; }
+.quform-1 .quform-button-submit-1_2 {
+  background-color: #02b0ea;
+  color: #fff; }
+  .quform-1 .quform-button-submit-1_2:hover {
+    background-color: #81bf0b;
+    color: #fff; }
 
 @media only screen and (min-device-width: 768px) {
   .visible-xs {

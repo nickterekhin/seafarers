@@ -15,4 +15,12 @@
     background-color: rgba(35,58,75,.5);
     color:#ffffff;
   }
+  .quform-button-submit-1_2{
+    background-color: #02b0ea;
+    color:#fff;
+    &:hover{
+      background-color: #81bf0b;
+      color: #fff;
+    }
+  }
 }
