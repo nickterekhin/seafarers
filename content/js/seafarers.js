@@ -6,8 +6,8 @@
         var opt = $.extend({
             container_id:"terekhindev-news-date-search"
         },options);
-        console.log(opt);
-        $("#"+opt.container_id).datepicker(opt);
+        var dp = $("#"+opt.container_id).datepicker(opt);
+        console.log(dp);
     }
 
 })(jQuery,window.seafarers=window.seafarers||{});
