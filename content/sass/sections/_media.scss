@@ -4,13 +4,15 @@
   .visible-xs {
     display: none;
   }
+
+}
+@media only screen and(max-width:768px){
   .qode-slider-td .qode-slider1-owl .owl-dots{
     width: 210px;
     height: 60%;
     min-height: 110px;
   }
 }
-
 @media only screen and(max-width:1000px)
 {
 

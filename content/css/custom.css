@@ -53,8 +53,8 @@ aside .widget a {
 
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
-    display: none; }
-
+    display: none; } }
+@media only screen and (max-width: 768px) {
   .qode-slider-td .qode-slider1-owl .owl-dots {
     width: 210px;
     height: 60%;
