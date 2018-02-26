@@ -20,6 +20,8 @@ include('inc/news_config.php');
 add_action('wp_enqueue_scripts', 'main_style_setup',25);
 function main_style_setup()
 {
+    wp_register_style( 'td_jquery-ui-css', CHILD_THEME_PATH_URI.'/content/css/jquery-ui.min.css');
+    wp_enqueue_style( 'td_jquery-ui-css' );
     wp_register_style( 'td_custom-css', CHILD_THEME_PATH_URI.'/content/css/custom.css');
     wp_enqueue_style( 'td_custom-css' );
     wp_register_script('td_seafarers-js',CHILD_THEME_PATH_URI.'/content/js/seafarers.js');
