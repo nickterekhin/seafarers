@@ -47,8 +47,20 @@
       -moz-box-sizing: border-box;
       box-sizing: border-box;
     }
+    button{
+      height: 47px;
+      box-sizing: border-box!important;
+      float: right;
+      white-space: nowrap;
+      box-shadow: none;
+      border: none;
+      border-radius: 0 2px 0 0;
+      outline: none;
+      cursor: pointer;
+    }
   }
 }
 div#ui-datepicker-div {
   z-index: 9999 !important;
 }
+
