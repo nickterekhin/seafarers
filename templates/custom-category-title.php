@@ -622,6 +622,9 @@ if(!qode_is_title_hidden()) { ?>
                                         <?php if($title_separator == "yes"){ ?>
                                             <span <?php qode_class_attribute(implode(' ', $separator_classes)) ?> <?php echo $separator_color; ?> <?php print $page_title_separator_animation_data; ?>></span>
                                         <?php } ?>
+                                            <!--Added Date filter for news-->
+
+                                        <?php include(locate_template('templates/category-date-filter-bar.php'));?>
 
                                         <?php if(get_post_meta($id, "qode_page_subtitle", true) != ""){ ?>
                                             <?php if(get_post_meta($id, "qode_page_title_font_size", true) == "large") { ?>

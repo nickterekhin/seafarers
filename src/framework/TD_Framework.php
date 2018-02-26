@@ -43,6 +43,20 @@ class TD_Framework extends TD_Framework_Base
 
         <?php
     }
+
+    function getFormAction($obj)
+    {
+        if($obj)
+        {
+            $filter_value = '';
+            if(isset($_GET['news-date']) && !empty($_GET['news-date']))
+            {
+                $filter_value = '?news-date='.$_GET['filter'];
+            }
+            return home_url($obj->slug).$filter_value;
+        }
+        return get_home_url();
+    }
 }
 
 function init_framework()

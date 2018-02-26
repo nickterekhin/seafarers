@@ -32,7 +32,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 
 			<?php if(($sidebar == "default")||($sidebar == "")) : ?>
 				<?php 
-					get_template_part('templates/blog', 'structure');
+					get_template_part('templates/category_blog', 'structure');
 				?>
 			<?php elseif($sidebar == "1" || $sidebar == "2"): ?>
 
@@ -40,7 +40,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 					<div class="column1">
 						<div class="column_inner">
 							<?php 
-								get_template_part('templates/blog', 'structure');
+								get_template_part('templates/category_blog', 'structure');
 							?>
 						</div>
 					</div>
@@ -56,7 +56,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 					<div class="column2">
 						<div class="column_inner">
 							<?php 
-								get_template_part('templates/blog', 'structure');
+								get_template_part('templates/category_blog', 'structure');
 							?>
 						</div>
 					</div>

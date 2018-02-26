@@ -32,6 +32,10 @@ aside .widget a {
 .qode-slider1-item .qode-post-excerpt-holder {
   font-weight: 500; }
 
+.terekhindev-news-date-filter {
+  max-width: 500px;
+  margin: 40px auto; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
