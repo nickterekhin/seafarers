@@ -52,7 +52,7 @@ aside .widget a {
     color: #fff; }
 
 .terekhindev-news-date-filter {
-  max-width: 00px;
+  max-width: 300px;
   margin: 40px auto; }
   .terekhindev-news-date-filter form input[type=text] {
     width: 100%;
