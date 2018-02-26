@@ -6,6 +6,7 @@
         var opt = $.extend({
             container_id:"terekhindev-news-date-search"
         },options);
+        console.log(opt);
         $("#"+opt.container_id).datepicker(opt);
     }
 
