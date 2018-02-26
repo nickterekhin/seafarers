@@ -22,7 +22,7 @@ var dpOptions = {
     obj.news_date_filter = function(options)
     {
         var opt = $.extend({
-            container_id:"terekhindev-news-date-search"
+            container_id:"terekhindev-news-date-search",
         },options);
         opt = $.extend(opt,dpOptions);
         var dp = $("#"+opt.container_id).datepicker(opt);

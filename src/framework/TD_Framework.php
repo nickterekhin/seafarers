@@ -49,9 +49,9 @@ class TD_Framework extends TD_Framework_Base
         if($obj)
         {
             $filter_value = '';
-            if(isset($_GET['news-date']) && !empty($_GET['news-date']))
+            if(isset($_GET['date-filter']) && !empty($_GET['date-filter']))
             {
-                $filter_value = '?news-date='.$_GET['filter'];
+                $filter_value = '?date-filter='.$_GET['filter'];
             }
             return home_url($obj->slug).$filter_value;
         }
