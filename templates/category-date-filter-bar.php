@@ -16,7 +16,7 @@ global $terekhin_framework,$wp_query;
             <i class="fa fa-2x fa-search"></i>
         </button>
         <div style="overflow: hidden">
-            <input id="terekhindev-news-date-search" value="" placeholder="Select date" name="search-news-date" readonly="readonly" class="datepicker">
+            <input id="terekhindev-news-date-search" value="" placeholder="Select date" name="search-news-date" readonly="readonly" class="datepicker" type="text">
         </div>
 
     </form>
