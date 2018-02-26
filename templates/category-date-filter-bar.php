@@ -43,7 +43,7 @@ $obj = $wp_query->get_queried_object();
         ?>'" title="Сбросить фильтр" class="terekhindev-clear-search"><i class="fa fa-remove"></i></button>
         <?php } ?>
         <div style="overflow: hidden">
-            <input id="terekhindev-news-date-search" value="<?php echo isset($_GET['date-filter'])?$_GET['date-filter']:'';?>" placeholder="Select date" name="search-news-date" readonly="readonly" class="datepicker" type="text">
+            <input id="terekhindev-news-date-search" value="<?php echo isset($_GET['date-filter'])?$_GET['date-filter']:'';?>" placeholder="Выбрать дату" name="search-news-date" readonly="readonly" class="datepicker" type="text">
         </div>
 
     </form>
