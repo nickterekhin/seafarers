@@ -79,6 +79,8 @@ aside .widget a {
     border-radius: 0 2px 0 0;
     outline: none;
     cursor: pointer; }
+    .terekhindev-news-date-filter form button i {
+      margin: 8px 0 0 5px; }
 
 div#ui-datepicker-div {
   z-index: 9999 !important; }
