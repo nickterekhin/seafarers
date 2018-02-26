@@ -30,9 +30,11 @@
 
 .terekhindev-news-date-filter
 {
+  max-width:300px;
+  margin:40px auto;
   form {
     input[type=text]{
-      width: 50%;
+      width: 100%;
       margin: 0;
       padding: 15px 12px;
       border: 0;

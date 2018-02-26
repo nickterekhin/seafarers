@@ -32,10 +32,6 @@ aside .widget a {
 .qode-slider1-item .qode-post-excerpt-holder {
   font-weight: 500; }
 
-.terekhindev-news-date-filter {
-  max-width: 500px;
-  margin: 40px auto; }
-
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
@@ -55,31 +51,34 @@ aside .widget a {
     background-color: #81bf0b;
     color: #fff; }
 
-.terekhindev-news-date-filter form input[type=text] {
-  width: 50;
-  margin: 0;
-  padding: 15px 12px;
-  border: 0;
-  border-radius: 0;
-  outline: 0;
-  resize: none;
-  font-size: 13px;
-  line-height: 17px;
-  background-color: #fff;
-  color: #818181;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-.terekhindev-news-date-filter form button {
-  height: 47px;
-  box-sizing: border-box !important;
-  float: right;
-  white-space: nowrap;
-  box-shadow: none;
-  border: none;
-  border-radius: 0 2px 0 0;
-  outline: none;
-  cursor: pointer; }
+.terekhindev-news-date-filter {
+  max-width: 00px;
+  margin: 40px auto; }
+  .terekhindev-news-date-filter form input[type=text] {
+    width: 100%;
+    margin: 0;
+    padding: 15px 12px;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    resize: none;
+    font-size: 13px;
+    line-height: 17px;
+    background-color: #fff;
+    color: #818181;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+  .terekhindev-news-date-filter form button {
+    height: 47px;
+    box-sizing: border-box !important;
+    float: right;
+    white-space: nowrap;
+    box-shadow: none;
+    border: none;
+    border-radius: 0 2px 0 0;
+    outline: none;
+    cursor: pointer; }
 
 div#ui-datepicker-div {
   z-index: 9999 !important; }
