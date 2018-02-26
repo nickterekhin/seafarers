@@ -71,6 +71,9 @@ aside .widget a {
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
+div#ui-datepicker-div {
+  z-index: 9999 !important; }
+
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
     display: none; } }
