@@ -55,7 +55,7 @@ aside .widget a {
   .visible-xs {
     display: none; }
 
-  .qode-slider1 .qode-slider1-owl .owl-dots {
+  .qode-slider-td .qode-slider1-owl .owl-dots {
     width: 210px;
     height: 60%;
     min-height: 110px; } }
@@ -168,8 +168,8 @@ aside .widget a {
   }
 }*/
 @media only screen and (max-width: 1024px) {
-  .qode-slider1-owl .owl-dots .qode-slider1-pag-thumb {
+  .qode-slider-td .qode-slider1-owl .owl-dots .qode-slider1-pag-thumb {
     display: none; }
 
-  .qode-slider1-owl .owl-dots .qode-slider1-pag-info-holder {
+  .qode-slider-td .qode-slider1-owl .owl-dots .qode-slider1-pag-info-holder {
     padding-left: 0; } }
