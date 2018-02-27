@@ -113,7 +113,13 @@ div#ui-datepicker-div {
   .blog_holder.masonry.news-category-blog-holder.td-four-item .blog_holder_grid_gutter {
     width: 3%; }
   .blog_holder.masonry.news-category-blog-holder.td-four-item article {
-    width: 22%; } }
+    width: 22%; }
+  .blog_holder.masonry.news-category-blog-holder.td-three-item .blog_holder_grid_sizer {
+    width: 33.1%; }
+  .blog_holder.masonry.news-category-blog-holder.td-three-item .blog_holder_grid_gutter {
+    width: 3.2%; }
+  .blog_holder.masonry.news-category-blog-holder.td-three-item article {
+    width: 33.1%; } }
 @media only screen and (min-width: 1024px) and (max-width: 1280px) and (orientation: landscape) {
   aside.vertical_menu_area {
     width: 180px;

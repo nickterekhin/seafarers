@@ -151,7 +151,7 @@ if(in_array($blog_list, array('blog_masonry','blog_masonry_date_in_image','blog_
 }
 $sidebar = $qode_options_proya['category_blog_sidebar'];
 ?>
-    <div class="blog_holder <?php echo $blog_list_class; ?> news-category-blog-holder <?php if(($sidebar == "default")||($sidebar == "")){echo 'td-four-item';}?>">
+    <div class="blog_holder <?php echo $blog_list_class; ?> news-category-blog-holder <?php if(($sidebar == "default")||($sidebar == "")){echo 'td-four-item';}else{echo 'td-three-item';}?>">
 
         <?php
         if(in_array($blog_list, array('blog_masonry','blog_masonry_date_in_image','blog_masonry_gallery','blog_pinterest','blog_gallery','blog_chequered'))){ ?>

@@ -27,18 +27,31 @@
 {
   .blog_holder{
     &.masonry {
-      &.news-category-blog-holder.td-four-item{
-        .blog_holder_grid_sizer{
-          width:22%
+      &.news-category-blog-holder {
+
+        &.td-four-item {
+          .blog_holder_grid_sizer {
+            width: 22%
+          }
+          .blog_holder_grid_gutter {
+            width: 3%
+          }
+          article {
+            width: 22%;
+          }
         }
-        .blog_holder_grid_gutter{
-          width:3%
-        }
-        article{
-          width:22%;
+        &.td-three-item {
+          .blog_holder_grid_sizer {
+            width: 33.1%
+          }
+          .blog_holder_grid_gutter {
+            width: 3.2%
+          }
+          article {
+            width: 33.1%;
+          }
         }
       }
-
     }
   }
 }
