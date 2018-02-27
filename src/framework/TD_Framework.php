@@ -73,6 +73,13 @@ class TD_Framework extends TD_Framework_Base
 
         echo do_shortcode('[vc_separator type="transparent" up="20" down="20"][vc_text_separator title="'.$text.'" i_icon_monosocial="vc-mono vc-mono-star" css_animation="fadeInLeft" border="no" el_class="td-news-separator"][vc_separator type="transparent" up="20" down="20"]');
     }
+
+    function show_grid_post($obj)
+    {
+        global $shortcode_tags;
+        var_dump($shortcode_tags);
+        var_dump($shortcode_tags['vc_basic_grid']);
+    }
 }
 
 function init_framework()
