@@ -31,4 +31,14 @@ abstract class TD_Framework_Base
 
         return $ret_obj;
     }
+    public function getCategoryImage($postId)
+    {
+
+        $terms = get_the_terms($postId,'category');
+        $background_image = '';
+        if(count($terms)>0 && function_exists('get_field'))
+            $background_image = get_field('header_image','category_'.$terms[0]->term_id,true);
+
+        return $background_image;
+    }
 }
