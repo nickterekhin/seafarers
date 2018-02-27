@@ -1,7 +1,10 @@
 <?php get_header(); ?>
 <?php 
-global $wp_query;
+global $wp_query,$terekhin_framework;
+$wp_query->query_vars['posts_per_page'] = 30;
+$wp_query = new WP_Query(($wp_query->query_vars));
 $id = $wp_query->get_queried_object_id();
+$obj = $wp_query->get_queried_object();
 
 if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
 elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
@@ -29,6 +32,8 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 		<div class="container_inner default_template_holder clearfix">
 
 			<?php get_template_part( 'templates/opinion','single' ); ?>
+
+			<?php $terekhin_framework->showSeparator('Все Новости в разделе',$obj);?>
 
 			<?php if(($sidebar == "default")||($sidebar == "")) : ?>
 				<?php 
