@@ -8,6 +8,7 @@ $featured_image_meta = get_post_meta($post->ID, 'qode_blog_list_featured_image_m
 $has_featured = !empty($featured_image_meta) || has_post_thumbnail($post->ID);
 
 $blog_list_image_src = !empty($featured_image_meta) ? $featured_image_meta : '';
+var_dump($blog_list_image_src);
 if(!$has_featured) {
 	/** @var TD_Framework $class */
 	$blog_list_image_src = $class->getCategoryImage($post->ID);
