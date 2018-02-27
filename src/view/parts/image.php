@@ -8,11 +8,12 @@ $featured_image_meta = get_post_meta($post->ID, 'qode_blog_list_featured_image_m
 $has_featured = !empty($featured_image_meta) || has_post_thumbnail($post->ID);
 
 $blog_list_image_src = !empty($featured_image_meta) ? $featured_image_meta : '';
-var_dump($blog_list_image_src);
+print_r($featured_image_meta);
+$url=null;
 if(!$has_featured) {
 	/** @var TD_Framework $class */
-	$blog_list_image_src = $class->getCategoryImage($post->ID);
-	if($blog_list_image_src)$has_featured=true;
+	$url = $class->getCategoryImage($post->ID);
+	if($url)$has_featured=true;
 		}
 ?>
 <?php if ( $has_featured ) { ?>
@@ -28,9 +29,9 @@ if(!$has_featured) {
             <?php }
         }elseif ( $custom_image_width != '' && $custom_image_height != '' ) {
 			if ( ! empty( $blog_list_image_src ) ) {
-				echo qode_generate_thumbnail( $blog_list_image_src, null, $custom_image_width, $custom_image_height );
+				echo qode_generate_thumbnail( $blog_list_image_src, $url, $custom_image_width, $custom_image_height );
 			} else {
-				echo qode_generate_thumbnail( get_post_thumbnail_id( $post->ID ), null, $custom_image_width, $custom_image_height );
+				echo qode_generate_thumbnail( get_post_thumbnail_id( $post->ID ), $url, $custom_image_width, $custom_image_height );
 			}
 		}?>
 	    </a>
