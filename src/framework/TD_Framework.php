@@ -90,49 +90,50 @@ class TD_Framework extends TD_Framework_Base
 
         /** @var WP_Term $tax */
         $tax = get_term_by('slug',$category_slug,'category');
+        if($tax) {
             $argv = array(
-                'post_type'=>$post_type,
-                'posts_per_page'=>$post_per_pages,
-                'oderby'=>'date',
-                'order'=>'DESC',
-                'tax_query'=>array(
-                    'relation'=>'OR',
+                'post_type' => $post_type,
+                'posts_per_page' => $post_per_pages,
+                'oderby' => 'date',
+                'order' => 'DESC',
+                'tax_query' => array(
+                    'relation' => 'OR',
                     array(
-                        'taxonomy'=>'category',
-                        'field'=>'slug',
-                        'terms'=>array($obj->slug,$tax->slug),
-                        'operator'=>'AND'
+                        'taxonomy' => 'category',
+                        'field' => 'slug',
+                        'terms' => array($obj->slug, $tax->slug),
+                        'operator' => 'AND'
                     ),
                     array(
-                        'taxonomy'=>'category',
-                        'field'=>'slug',
-                        'terms'=>$tax->slug
+                        'taxonomy' => 'category',
+                        'field' => 'slug',
+                        'terms' => $tax->slug
                     )
                 )
             );
 
-        $posts = (new \WP_Query($argv))->posts;
+            $posts = (new \WP_Query($argv))->posts;
 
-         wp_reset_postdata();
-        $params= array();
-        $params['obj']=$this;
-        $params['posts']=$posts;
-        $params['layout_title']=$title;
-        $params['single']=array(
-            'post'=>null,
-            'image_size'=>'custom',
-            'custom_image_height'=>'70px',
-            'custom_image_width'=>'70px',
-            'display_categories'=>'no',
-            'title_tag'=>'h5',
-            'display_excerpt'=>'no',
-            'display_author'=>'no'
+            wp_reset_postdata();
+            $params = array();
+            $params['obj'] = $this;
+            $params['posts'] = $posts;
+            $params['layout_title'] = $title;
+            $params['single'] = array(
+                'post' => null,
+                'image_size' => 'custom',
+                'custom_image_height' => '70px',
+                'custom_image_width' => '70px',
+                'display_categories' => 'no',
+                'title_tag' => 'h5',
+                'display_excerpt' => 'no',
+                'display_author' => 'no'
 
-        );
+            );
 
 
-        echo $this->View('layout2-news',$params);
-
+            echo $this->View('layout2-news', $params);
+        }
     }
 }
 
