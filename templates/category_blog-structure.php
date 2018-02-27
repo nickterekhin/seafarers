@@ -172,7 +172,7 @@ if(in_array($blog_list, array('blog_masonry','blog_masonry_date_in_image','blog_
 }
 
 ?>
-    <div class="blog_holder <?php echo $blog_list_class; ?>">
+    <div class="blog_holder <?php echo $blog_list_class; ?> news-category-blog-holder">
 
         <?php
         if(in_array($blog_list, array('blog_masonry','blog_masonry_date_in_image','blog_masonry_gallery','blog_pinterest','blog_gallery','blog_chequered'))){ ?>

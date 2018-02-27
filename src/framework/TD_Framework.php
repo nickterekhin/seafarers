@@ -57,6 +57,11 @@ class TD_Framework extends TD_Framework_Base
         }
         return get_home_url();
     }
+    //show news int category
+    function getPopularInSection($category_slug)
+    {
+
+    }
 }
 
 function init_framework()
