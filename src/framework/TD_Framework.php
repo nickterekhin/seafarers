@@ -64,10 +64,7 @@ class TD_Framework extends TD_Framework_Base
     }
     function format_post_date_masonry($date,$format,$post)
     {
-        if(is_category())
-        {
-            return '12';
-        }
+
         return $date;
     }
 }
