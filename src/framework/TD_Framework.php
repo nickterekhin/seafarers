@@ -77,11 +77,29 @@ class TD_Framework extends TD_Framework_Base
         echo do_shortcode('[vc_separator type="transparent" up="20" down="20"][vc_text_separator title="'.$text.'" i_icon_monosocial="vc-mono vc-mono-star" css_animation="fadeInLeft" border="no" el_class="td-news-separator"][vc_separator type="transparent" up="20" down="20"]');
     }
 
+    /**
+     * @param WP_Term $obj
+     */
     function show_hot_news_in_section($obj)
     {
         $args = array(
             'sort'=>'hort_first',
+            'layout_title'=>'Горячие новости',
+            'posts_per_page'=>6,
+            'category_name'=>$obj->slug,
         );
+        $args['single'] = array(
+            'post' => null,
+            'image_size' => 'custom',
+            'custom_image_height' => '70px',
+            'custom_image_width' => '70px',
+            'display_categories' => 'no',
+            'title_tag' => 'h5',
+            'display_excerpt' => 'no',
+            'display_author' => 'no'
+
+        );
+        $this->show_grid_post($args);
 
     }
 
