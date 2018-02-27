@@ -27,7 +27,7 @@
 {
   .blog_holder{
     &.masonry {
-      &.news-category-blog-holder{
+      &.news-category-blog-holder.td-four-item{
         .blog_holder_grid_sizer{
           width:22%
         }

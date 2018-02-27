@@ -149,9 +149,9 @@ if(in_array($blog_list, array('blog_masonry','blog_masonry_date_in_image','blog_
     get_template_part('templates/masonry', 'filter');
 
 }
-
+$sidebar = $qode_options_proya['category_blog_sidebar'];
 ?>
-    <div class="blog_holder <?php echo $blog_list_class; ?> news-category-blog-holder">
+    <div class="blog_holder <?php echo $blog_list_class; ?> news-category-blog-holder <?php if(($sidebar == "default")||($sidebar == "")){echo 'td-four-item';}?>">
 
         <?php
         if(in_array($blog_list, array('blog_masonry','blog_masonry_date_in_image','blog_masonry_gallery','blog_pinterest','blog_gallery','blog_chequered'))){ ?>
