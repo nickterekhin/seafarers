@@ -83,7 +83,7 @@ class TD_Framework extends TD_Framework_Base
     function show_hot_news_in_section($obj)
     {
         $args = array(
-            'sort'=>'hort_first',
+            'sort'=>'hot_first',
             'layout_title'=>'Горячие новости',
             'posts_per_page'=>6,
             'category_name'=>$obj->slug,
