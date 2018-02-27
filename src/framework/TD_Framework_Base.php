@@ -1,8 +1,21 @@
 <?php
 namespace TerekhinDevelopment\framework;
 
+use TerekhinDevelopment\helpers\TD_Theme_Tools;
+use TerekhinDevelopment\short_codes\helpers\TD_Short_Codes_Tools;
+
 abstract class TD_Framework_Base
 {
+
+    protected $tools;
+    /**
+     * TD_Framework_Base constructor.
+     */
+    protected function __construct()
+    {
+        $this->tools = TD_Theme_Tools::getInstance();
+    }
+
     function View($viewName, array $params=array())
     {
 
