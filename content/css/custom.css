@@ -27,6 +27,8 @@ aside .widget a {
   width: 22%; }
 .blog_holder.masonry.news-category-blog-holder .blog_holder_grid_gutter {
   width: 3%; }
+.blog_holder.masonry article {
+  width: 22%; }
 
 .qode-slider1-owl .owl-dots {
   /*width:450px;*/ }
