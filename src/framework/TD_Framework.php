@@ -1,6 +1,8 @@
 <?php
 namespace TerekhinDevelopment\framework;
 
+use WP_Term;
+
 class TD_Framework extends TD_Framework_Base
 {
     private static $instance;
@@ -74,11 +76,63 @@ class TD_Framework extends TD_Framework_Base
         echo do_shortcode('[vc_separator type="transparent" up="20" down="20"][vc_text_separator title="'.$text.'" i_icon_monosocial="vc-mono vc-mono-star" css_animation="fadeInLeft" border="no" el_class="td-news-separator"][vc_separator type="transparent" up="20" down="20"]');
     }
 
-    function show_grid_post($obj)
+    /**
+     * @param WP_Term $obj
+     * @param $title
+     * @param $category_slug
+     * @param string $post_type
+     * @param int $post_per_pages
+     * @return string
+     */
+    function show_grid_post($obj,$title,$category_slug,$post_type='post',$post_per_pages=6)
     {
         global $shortcode_tags;
-        var_dump($shortcode_tags);
-        var_dump($shortcode_tags['vc_basic_grid']);
+
+        /** @var WP_Term $tax */
+        $tax = get_term_by('slug',$category_slug,'category');
+            $argv = array(
+                'post_type'=>$post_type,
+                'posts_per_page'=>$post_per_pages,
+                'oderby'=>'date',
+                'order'=>'DESC',
+                'tax_query'=>array(
+                    'relation'=>'OR',
+                    array(
+                        'taxonomy'=>'category',
+                        'field'=>'slug',
+                        'terms'=>array($obj->slug,$tax->slug),
+                        'operator'=>'AND'
+                    ),
+                    array(
+                        'taxonomy'=>'category',
+                        'field'=>'slug',
+                        'terms'=>$tax->slug
+                    )
+                )
+            );
+
+        $posts = (new \WP_Query($argv))->posts;
+
+         wp_reset_postdata();
+        $params= array();
+        $params['obj']=$this;
+        $params['posts']=$posts;
+        $params['layout_title']=$title;
+        $params['single']=array(
+            'post'=>null,
+            'image_size'=>'custom',
+            'custom_image_height'=>'70px',
+            'custom_image_width'=>'70px',
+            'display_categories'=>'no',
+            'title_tag'=>'h5',
+            'display_excerpt'=>'no',
+            'display_author'=>'no'
+
+        );
+
+
+        echo $this->View('layout2-news',$params);
+
     }
 }
 
