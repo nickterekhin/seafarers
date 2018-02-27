@@ -1,7 +1,7 @@
 <?php
 /**
  * @var WP_Post[] $posts
- * @var TD_Framework $obj
+ * @var TD_Framework $class
 **/
 use TerekhinDevelopment\framework\TD_Framework;
 ?>
@@ -18,7 +18,8 @@ use TerekhinDevelopment\framework\TD_Framework;
                     <div class="qode-news-item-image-holder-inner">
                         <?php
                             $single['post']=$p;
-                            echo $obj->View('parts/image',$single);
+                            $single['class']=$class;
+                            echo $class->View('parts/image',$single);
                         ?>
                         <div class="qode-news-image-info-holder-left">
                         </div>
@@ -28,11 +29,11 @@ use TerekhinDevelopment\framework\TD_Framework;
                     </div>
                 </div>
                 <div class="qode-ni-content">
-                <?php echo $obj->View('parts/category',$single); ?>
-                <?php echo $obj->View('parts/title',$single); ?>
-                <?php echo $obj->View('parts/date',$single); ?>
-                <?php echo $obj->View('parts/excerpt',$single); ?>
-                <?php echo $obj->View('parts/author',$single); ?>
+                <?php echo $class->View('parts/category',$single); ?>
+                <?php echo $class->View('parts/title',$single); ?>
+                <?php echo $class->View('parts/date',$single); ?>
+                <?php echo $class->View('parts/excerpt',$single); ?>
+                <?php echo $class->View('parts/author',$single); ?>
 
                 </div>
             </div>

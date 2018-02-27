@@ -2,6 +2,7 @@
 global $terekhin_framework,$wp_query;
 /** @var WP_Term $obj */
 $obj=$wp_query->get_queried_object();
+
 ?>
 <div class="column_inner">
     <?php $terekhin_framework->show_hot_news_in_section($obj);?>

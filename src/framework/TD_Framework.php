@@ -150,7 +150,7 @@ class TD_Framework extends TD_Framework_Base
             $posts_query = $this->tools->get_post_query($argv);
             $posts = $posts_query->posts;
 
-            $params['obj'] = $this;
+            $params['class'] = $this;
             $params['posts'] = $posts;
 
             echo $this->View('layout2-news', $params);

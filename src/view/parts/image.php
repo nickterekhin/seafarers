@@ -9,8 +9,8 @@ $has_featured = !empty($featured_image_meta) || has_post_thumbnail($post->ID);
 
 $blog_list_image_src = !empty($featured_image_meta) ? $featured_image_meta : '';
 if(!$has_featured) {
-	/** @var TD_Framework $obj */
-	$blog_list_image_src = $obj->getCategoryImage($post->ID);
+	/** @var TD_Framework $class */
+	$blog_list_image_src = $class->getCategoryImage($post->ID);
 	if($blog_list_image_src)$has_featured=true;
 		}
 ?>
