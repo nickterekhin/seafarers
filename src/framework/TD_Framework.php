@@ -69,7 +69,7 @@ class TD_Framework extends TD_Framework_Base
     }
     function showSeparator($text,$obj)
     {
-        echo do_shortcode('[vc_separator type="transparent" up="20" down="20"][vc_text_separator title="'.$text.'" i_icon_monosocial="vc-mono vc-mono-star" css_animation="fadeInLeft" border="no"][vc_separator type="transparent" up="20" down="20"]');
+        echo do_shortcode('[vc_separator type="transparent" up="20" down="20"][vc_text_separator title="'.$text.'" i_icon_monosocial="vc-mono vc-mono-star" css_animation="fadeInLeft" border="no" el_class="td-news-separator"][vc_separator type="transparent" up="20" down="20"]');
     }
 }
 

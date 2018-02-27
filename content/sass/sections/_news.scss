@@ -14,3 +14,12 @@
     font-weight: 500;
   }
 }
+
+.td-news-separator{
+  span{
+    text-transform: uppercase;
+  }
+  &>div{
+    background-color: #bf0434!important;
+  }
+}

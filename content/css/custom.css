@@ -32,6 +32,11 @@ aside .widget a {
 .qode-slider1-item .qode-post-excerpt-holder {
   font-weight: 500; }
 
+.td-news-separator span {
+  text-transform: uppercase; }
+.td-news-separator > div {
+  background-color: #bf0434 !important; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
