@@ -1,10 +1,26 @@
 <?php get_header(); ?>
 <?php 
 global $wp_query,$terekhin_framework;
-$wp_query->query_vars['posts_per_page'] = 30;
-$wp_query = new WP_Query(($wp_query->query_vars));
 $id = $wp_query->get_queried_object_id();
 $obj = $wp_query->get_queried_object();
+
+$wp_query->query_vars['posts_per_page'] = 30;
+$wp_query = new WP_Query(($wp_query->query_vars));
+
+if(isset($_GET['date-filter']) && !empty($_GET['date-filter'])) {
+
+	$wp_query->query_vars['date_query']=array(
+		array(
+			'after' => $_GET['date-filter'] . ' 00:00',
+			//'before' => $_GET['date_filter'] . ' 23:59',
+			'inclusive' => true
+		),
+
+	);
+	$wp_query = new WP_Query($wp_query->query_vars);
+}
+
+
 
 if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
 elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }

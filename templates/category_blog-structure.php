@@ -5,28 +5,7 @@ global $qode_template_name;
 $id = $wp_query->get_queried_object_id();
 
 
-if(isset($_GET['date-filter']) && !empty($_GET['date-filter'])) {
-    /*$args = array(
-        'date_query' => array(
-            array(
-                'after' => $_GET['date-filter'] . ' 00:00',
-                //'before' => $_GET['date_filter'] . ' 23:59',
-                'inclusive' => true
-            ),
 
-        ),
-
-    );*/
-    $wp_query->query_vars['date_query']=array(
-        array(
-            'after' => $_GET['date-filter'] . ' 00:00',
-            //'before' => $_GET['date_filter'] . ' 23:59',
-            'inclusive' => true
-        ),
-
-    );
-    $wp_query = new WP_Query($wp_query->query_vars);
-}
 
 if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
 elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
