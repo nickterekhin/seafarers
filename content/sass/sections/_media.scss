@@ -23,7 +23,7 @@
     width:768px;
   }
 }
-@media only screen and (max-width:1280px) and (orientation: landscape)
+@media only screen and (min-width:1280px) and (orientation: landscape)
 {
   .blog_holder{
     &.masonry {
