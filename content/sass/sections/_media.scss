@@ -23,7 +23,7 @@
     width:768px;
   }
 }
-@media only screen and (min-width:1280px)
+@media only screen and (min-device-width:1280px)
 {
   .blog_holder{
     &.masonry {
@@ -34,10 +34,11 @@
         .blog_holder_grid_gutter{
           width:3%
         }
+        article{
+          width:22%;
+        }
       }
-      article{
-        width:22%;
-      }
+
     }
   }
 }

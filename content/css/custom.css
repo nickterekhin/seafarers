@@ -107,12 +107,12 @@ div#ui-datepicker-div {
 @media only screen and (max-width: 1060px) and (min-width: 1000px) {
   .boxed div.section .section_inner, .carousel-inner .slider_content_outer, .container_inner, .full_width .parallax_content, .steps_holder_inner, div.grid_section .section_inner, nav.content_menu {
     width: 768px; } }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-device-width: 1280px) {
   .blog_holder.masonry.news-category-blog-holder .blog_holder_grid_sizer {
     width: 22%; }
   .blog_holder.masonry.news-category-blog-holder .blog_holder_grid_gutter {
     width: 3%; }
-  .blog_holder.masonry article {
+  .blog_holder.masonry.news-category-blog-holder article {
     width: 22%; } }
 @media only screen and (min-width: 1024px) and (max-width: 1280px) and (orientation: landscape) {
   aside.vertical_menu_area {
