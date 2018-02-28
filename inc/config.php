@@ -35,12 +35,11 @@ add_filter('category_template','terekhin_dev_category_template',11);
 function terekhin_dev_comments_template($single)
 {
     global $post;
-    var_dump($post);
-    var_dump(is_single());
+
     if(is_single() && (is_author() || $post->post_type == 'post')) {
         include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
         if ( is_plugin_active( 'disqus-comment-system/disqus.php' ) ) {
-            return WP_PLUGIN_DIR.'/disqus-comment-system/partials/disqus-public-display.php';
+            return WP_PLUGIN_DIR.'/disqus-comment-system/public/partials/disqus-public-display.php';
         }
 
     }
