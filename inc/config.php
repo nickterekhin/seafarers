@@ -36,16 +36,17 @@ function terekhin_dev_comments_template($single)
 {
     global $post;
 
-    if(is_author() || $post->post_type == 'post') {
+    if(is_single() && (is_author() || $post->post_type == 'post')) {
         include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
         if ( is_plugin_active( 'disqus-comment-system/disqus.php' ) ) {
-            return WP_PLUGIN_DIR.'/disqus-comment-system/comments.php';
+            return WP_PLUGIN_DIR.'/disqus-comment-system/partials/disqus-public-display.php';
         }
 
     }
     return $single;
 }
-/*add_filter('comments_template','terekhin_dev_comments_template');
+add_filter('comments_template','terekhin_dev_comments_template');
+/*
 function edit_slider_query($posts,$obj)
 {
     var_dump($posts);

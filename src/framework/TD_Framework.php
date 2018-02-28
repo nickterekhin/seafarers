@@ -154,7 +154,6 @@ class TD_Framework extends TD_Framework_Base
             $params['posts'] = $posts;
 
             echo $this->View('layout2-news', $params);
-
     }
 }
 
