@@ -227,7 +227,8 @@ WHERE n.is_video=1 ".$limit);
                     update_post_meta($res_wp->ID,'qode_seo_keywords',$res->keywords);
                     update_post_meta($res_wp->ID,'qode_seo_description',$res->description);
                     update_post_meta($res_wp->ID,'qode_count_post_views_meta',$res->views);
-                    wp_set_post_categories($res_wp->ID,array($tax_video->term_id),true);
+
+                    set_post_format($res_wp->ID,'video');
 
                     $added_posts[]=$res_wp->ID;
                 }else
@@ -250,7 +251,8 @@ WHERE n.is_video=1 ".$limit);
                         if ($category)
                             wp_set_post_categories($post_ID, $category);
 
-                        wp_set_post_categories($post_ID,array($tax_video->term_id),true);
+                        set_post_format($post_ID,'video');
+
 
                         if ($tags)
                             wp_set_post_terms($post_ID, $tags);
