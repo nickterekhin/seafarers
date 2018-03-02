@@ -256,8 +256,8 @@ WHERE n.is_video=1 ".$limit);
                             wp_set_post_terms($post_ID, $tags);
 
                         $this->addComment($post_ID, $res->id);
-                        if ($res->photo)
-                            $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
+                       /* if ($res->photo)
+                            $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);*/
 
                         $index += 1;
                         $added_posts[] = $post_ID;
