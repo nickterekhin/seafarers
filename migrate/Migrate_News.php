@@ -165,7 +165,7 @@ HAVING COUNT(t.id)=1");
     function addVideoPaged($qty=-1)
     {
         $limit = ' LIMIT 1';
-        if($qty>0) {
+        if($qty>=0) {
             $limit = ' LIMIT ' . $qty . ', 1000 ';
         }
 
