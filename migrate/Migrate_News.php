@@ -192,7 +192,7 @@ WHERE n.is_video=1 ".$limit);
         while($res=$sql->FetchRow())
         {
             echo $res->source;
-            $res_p = preg_match('/http:\/\/www.(.*?).com\/embed\/(.*?)(?:\?|$)(?:.*?)$/',$res->source,$m);
+            $res_p = preg_match('/\"http:\/\/www.(.*?).com\/embed\/(.*?)(?:\?|$)(?:.*?)\"$/',$res->source,$m);
             var_dump($m);
 
 
