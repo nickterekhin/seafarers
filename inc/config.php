@@ -22,7 +22,7 @@ function terekhin_dev_category_template($single)
 {
     global $post,$wp_query;
 
-        if(is_author() || $post->post_type == 'post') {
+        if(is_author() || ($post && $post->post_type == 'post')) {
             return CHILD_THEME_PATH.'/category.php';
         }
 
