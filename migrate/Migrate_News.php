@@ -284,12 +284,13 @@ WHERE n.is_video=1 ".$limit);
                        /* if ($res->photo)
                             $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);*/
 
-                        $index += 1;
+
                         $added_posts[] = $post_ID;
                     }else
                     {
                         echo $post_ID->get_error_message();
                     }
+                    $index += 1;
 
                 }
             }
