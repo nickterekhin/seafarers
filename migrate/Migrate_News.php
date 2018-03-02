@@ -218,7 +218,7 @@ WHERE n.is_video=1 ".$limit);
                 $res_wp = $this->db->get_row($sql_wp);
                 /** @var WP_Term $tax_video */
                 $tax_video = get_term_by('slug','post-format-video','post_format');
-
+                var_dump($tax_video);
                 /** @var WP_Post $res_wp */
                 if($res_wp)
                 {
