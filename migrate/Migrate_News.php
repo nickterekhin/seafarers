@@ -191,7 +191,9 @@ WHERE n.is_video=1 ".$limit);
         $added_posts = array();
         while($res=$sql->FetchRow())
         {
-            if(preg_match('/http:\/\/www.(.*?).com\/embed\/(.*?)\?+/',$res->source,$m)==1) {
+            $res_p = preg_match('/http:\/\/www.(.*?).com\/embed\/(.*?)\?+/',$res->source,$m);
+            var_dump($m);
+            if($res_p==1) {
                 $arr_posts = array(
 
                     'comment_status' => 'open',
