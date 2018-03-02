@@ -239,8 +239,8 @@ WHERE n.is_video=1 ".$limit);
                         update_post_meta($post_ID, "qode_seo_keywords", $res->keywords);
                         update_post_meta($post_ID, "qode_seo_description", $res->description);
                         update_post_meta($post_ID, "qode_count_post_views_meta", $res->views);
-                        update_post_meta($res->ID,'video_format_link',$m[2]);
-                        update_post_meta($res->ID,'video_format_choose',$m[1]);
+                        update_post_meta($post_ID,'video_format_link',$m[2]);
+                        update_post_meta($post_ID,'video_format_choose',$m[1]);
 
 
                         $tags = $this->getTags($res->id);
