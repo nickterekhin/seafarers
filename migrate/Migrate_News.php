@@ -216,8 +216,7 @@ WHERE n.is_video=1 ".$limit);
 
                 $sql_wp = $this->db->prepare("SELECT * FROM ".$this->db->prefix."posts p WHERE p.post_title='%s'",$res->uri);
                 $res_wp = $this->db->get_row($sql_wp);
-                /** @var WP_Term $tax */
-                $tax = get_term_by('slug','videos','category');
+                /** @var WP_Term $tax_video */
                 $tax_video = get_term_by('slug','post-format-video','post_format');
 
                 /** @var WP_Post $res_wp */
@@ -228,7 +227,7 @@ WHERE n.is_video=1 ".$limit);
                     update_post_meta($res_wp->ID,'qode_seo_keywords',$res->keywords);
                     update_post_meta($res_wp->ID,'qode_seo_description',$res->description);
                     update_post_meta($res_wp->ID,'qode_count_post_views_meta',$res->views);
-                    wp_set_post_categories($res_wp->ID,array($tax->term_id,$tax_video->term_id),true);
+                    wp_set_post_categories($res_wp->ID,array($tax_video->term_id),true);
 
                     $added_posts[]=$res_wp->ID;
                 }else
@@ -246,12 +245,12 @@ WHERE n.is_video=1 ".$limit);
 
 
                         $tags = $this->getTags($res->id);
-                        $category = $this->getCategoryByName($res->slug);
+                        $category = $this->getCategoryByName('videos');
 
                         if ($category)
                             wp_set_post_categories($post_ID, $category);
 
-                        wp_set_post_categories($res->ID,array($tax->term_id,$tax_video->term_id),true);
+                        wp_set_post_categories($res->ID,array($tax_video->term_id),true);
 
                         if ($tags)
                             wp_set_post_terms($post_ID, $tags);
