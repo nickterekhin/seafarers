@@ -164,9 +164,10 @@ HAVING COUNT(t.id)=1");
     }
     function addVideoPaged($qty=-1)
     {
-        $limit = '';
-        if($qty>0)
-            $limit = ' LIMIT '.$qty;
+        $limit = ' LIMIT 1';
+        if($qty>0) {
+            $limit = ' LIMIT ' . $qty . ', 1000 ';
+        }
 
         $sql = $this->alien_db_service->Query("SELECT
  n.uri,
