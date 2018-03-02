@@ -214,7 +214,7 @@ WHERE n.is_video=1 ".$limit);
                     )
                 );
 
-                $sql_wp = $this->db->prepare("SELECT * FROM ".$this->db->prefix."posts p WHERE p.post_title='%s'",$res->uri);
+                $sql_wp = $this->db->prepare("SELECT * FROM ".$this->db->prefix."posts p WHERE p.post_name='%s'",$res->uri);
                 $res_wp = $this->db->get_row($sql_wp);
                 /** @var WP_Term $tax_video */
                 $tax_video = get_term_by('slug','post-format-video','post_format');
