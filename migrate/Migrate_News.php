@@ -170,6 +170,7 @@ HAVING COUNT(t.id)=1");
         }
 
         $sql = $this->alien_db_service->Query("SELECT
+n.id,
  n.uri,
 n.title,
 n.text,
