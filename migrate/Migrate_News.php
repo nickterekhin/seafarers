@@ -250,7 +250,7 @@ WHERE n.is_video=1 ".$limit);
                         if ($category)
                             wp_set_post_categories($post_ID, $category);
 
-                        wp_set_post_categories($res->ID,array($tax_video->term_id),true);
+                        wp_set_post_categories($post_ID,array($tax_video->term_id),true);
 
                         if ($tags)
                             wp_set_post_terms($post_ID, $tags);
