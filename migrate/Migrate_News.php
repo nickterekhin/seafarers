@@ -187,6 +187,7 @@ INNER JOIN videos v ON n.id = v.news_id
 
 WHERE n.is_video=1 ".$limit);
         $index=0;
+        echo $sql->NumRows();
         $added_posts = array();
         while($res=$sql->FetchRow())
         {
