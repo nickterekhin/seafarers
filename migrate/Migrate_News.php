@@ -60,7 +60,7 @@ FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
-WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 2 MONTH) ORDER BY n.timestamp DESC LIMIT $qty,1000");
+WHERE (n.opinion ='' OR n.opinion = '0') AND n.is_video!=1 AND n.timestamp  > DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 2 MONTH) ORDER BY n.timestamp DESC LIMIT $qty,1000");
         $index = 0;
         while($res=$sql->FetchRow())
         {
@@ -78,7 +78,10 @@ WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), 
                 'post_title'     => $res->title,
                 'meta_input'     => array(
                     'keywords'=>$res->keywords,
-                    'description'=>$res->description
+                    'description'=>$res->description,
+                    'qode_seo_keywords'=>$res->keywords,
+                    'qode_seo_description'=>$res->description,
+                    'qode_count_post_views_meta'=>$res->views
                 )
             );
 
@@ -86,6 +89,10 @@ WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), 
             if(!is_wp_error($post_ID)) {
                 update_post_meta($post_ID, "keywords", $res->keywords);
                 update_post_meta($post_ID, "description", $res->description);
+                update_post_meta($post_ID, "qode_seo_keywords", $res->keywords);
+                update_post_meta($post_ID, "qode_seo_description", $res->description);
+                update_post_meta($post_ID, "qode_count_post_views_meta", $res->views);
+
 
                 $tags = $this->getTags($res->id);
                 $category = $this->getCategoryByName($res->slug);
@@ -97,8 +104,8 @@ WHERE n.timestamp < DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), 
                     wp_set_post_terms($post_ID, $tags);
 
                 $this->addComment($post_ID, $res->id);
-               /*if ($res->photo)
-                    $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);*/
+               if ($res->photo)
+                    $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
                 $index += 1;
             }else
             {
@@ -155,6 +162,11 @@ HAVING COUNT(t.id)=1");
         }
 
     }
+    function addVideoPaged($qty=-1)
+    {
+
+    }
+
     public function routes()
     {
         try {
@@ -171,6 +183,14 @@ HAVING COUNT(t.id)=1");
                     break;
                 case 'migrate-post':
                     $this->addPostPaged(isset($_REQUEST['qty'])?$_REQUEST['qty']:-1);
+                    break;
+                case 'migrate-video':
+                    $this->addVideoPaged(isset($_REQUEST['qty'])?$_REQUEST['qty']:-1);
+                    break;
+                case 'migrate-opinion':
+                    $this->addOpinonPaged(isset($_REQUEST['qty'])?$_REQUEST['qty']:-1);
+                    break;
+                case 'set-post-as video':
                     break;
 
             }

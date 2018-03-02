@@ -48,7 +48,10 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 		<div class="container_inner default_template_holder clearfix">
 
 			<?php get_template_part( 'templates/opinion','single' ); ?>
-
+			<?php $terekhin_framework->showSeparator('Популярное в разделе',$obj);?>
+					<?php
+						get_template_part('template/')
+					?>
 			<?php $terekhin_framework->showSeparator('Все Новости в разделе',$obj);?>
 
 			<?php if(($sidebar == "default")||($sidebar == "")) : ?>

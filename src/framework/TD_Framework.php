@@ -103,6 +103,17 @@ class TD_Framework extends TD_Framework_Base
 
     }
 
+    function show_popular_news_in_section($obj)
+    {
+        $args = array(
+            'sort'=>'popular',
+            'post_per_page'=>6,
+            'category_name'=>$obj->slug,
+        );
+
+
+
+    }
     function show_post_in_section($obj,$title,$category_slug)
     {
         $args = array(
