@@ -18,8 +18,8 @@ abstract class Migrate_Base
      */
     protected function __construct()
     {
-        global $db;
-        $this->db=$db;
+        global $wpdb;
+        $this->db=$wpdb;
         $this->alien_db_service = new DBService(self::ALIEN_HOST,self::ALIEN_USER,self::ALIEN_PASS,self::ALIEN_DB);
     }
 

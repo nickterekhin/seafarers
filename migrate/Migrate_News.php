@@ -164,7 +164,110 @@ HAVING COUNT(t.id)=1");
     }
     function addVideoPaged($qty=-1)
     {
+        $limit = '';
+        if($qty>0)
+            $limit = ' LIMIT '.$qty;
 
+        $sql = $this->alien_db_service->Query("SELECT
+ n.uri,
+n.title,
+n.text,
+n.short_text,
+n.timestamp,
+n.photo,
+n.keywords,
+n.description,
+n.views,
+ 'videos',
+v.source
+FROM news n
+INNER JOIN videos v ON n.id = v.news_id
+
+WHERE n.is_video=1 ".$limit);
+        $index=0;
+        $added_posts = array();
+        while($res=$sql->FetchRow())
+        {
+            if(preg_match('/http:\/\/www.(.*?)\/embed\/(.*?)\?+/',$res->source,$m)==1) {
+                $arr_posts = array(
+
+                    'comment_status' => 'open',
+                    'ping_status' => 'open',
+                    'post_author' => 1,
+                    'post_content' => $res->text,
+                    'post_date' => $res->timestamp,
+                    'post_date_gmt' => $res->timestamp,
+                    'post_excerpt' => $res->short_text,
+                    'post_name' => $res->uri,
+                    'post_status' => 'publish',
+                    'post_title' => $res->title,
+                    'meta_input' => array(
+                        'keywords' => $res->keywords,
+                        'description' => $res->description,
+                        'qode_seo_keywords' => $res->keywords,
+                        'qode_seo_description' => $res->description,
+                        'qode_count_post_views_meta' => $res->views,
+                        'video_format_choose' => $m[0],
+                        'video_format_link' => $m[1]
+                    )
+                );
+
+                $sql_wp = $this->db->prepare("SELECT * FROM ".$this->db->prefix."posts p WHERE p.post_title='%s'",$res->uri);
+                $res_wp = $this->db->get_row($sql_wp);
+                /** @var WP_Term $tax */
+                $tax = get_term_by('slug','videos','category');
+
+                /** @var WP_Post $res_wp */
+                if($res_wp)
+                {
+                    update_post_meta($res_wp->ID,'video_format_link',$m[2]);
+                    update_post_meta($res_wp->ID,'video_format_choose',$m[1]);
+                    update_post_meta($res_wp->ID,'qode_seo_keywords',$res->keywords);
+                    update_post_meta($res_wp->ID,'qode_seo_description',$res->description);
+                    update_post_meta($res_wp->ID,'qode_count_post_views_meta',$res->views);
+                    wp_set_post_categories($res_wp->ID,array($tax->term_id),true);
+
+                    $added_posts[]=$res_wp->ID;
+                }else
+                {
+
+                    $post_ID = wp_insert_post($arr_posts);
+                    if(!is_wp_error($post_ID)) {
+                        update_post_meta($post_ID, "keywords", $res->keywords);
+                        update_post_meta($post_ID, "description", $res->description);
+                        update_post_meta($post_ID, "qode_seo_keywords", $res->keywords);
+                        update_post_meta($post_ID, "qode_seo_description", $res->description);
+                        update_post_meta($post_ID, "qode_count_post_views_meta", $res->views);
+                        update_post_meta($res->ID,'video_format_link',$m[2]);
+                        update_post_meta($res->ID,'video_format_choose',$m[1]);
+
+
+                        $tags = $this->getTags($res->id);
+                        $category = $this->getCategoryByName($res->slug);
+
+                        if ($category)
+                            wp_set_post_categories($post_ID, $category);
+
+                        wp_set_post_categories($res->ID,array($tax->term_id),true);
+
+                        if ($tags)
+                            wp_set_post_terms($post_ID, $tags);
+
+                        $this->addComment($post_ID, $res->id);
+                        if ($res->photo)
+                            $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
+
+                        $index += 1;
+                        $added_posts[] = $post_ID;
+                    }else
+                    {
+                        echo $post_ID->get_error_message();
+                    }
+
+                }
+            }
+        }
+        echo $index.' ['.join(',',$added_posts).']';
     }
 
     public function routes()

@@ -5,6 +5,7 @@ class DBService {
     function __construct($host,$user,$pass,$db)
     {
         $this->handler = @mysqli_connect($host,$user,$pass,$db);
+        //var_dump($this->handler);
         if(!$this->handler)
         {
             $this->Error('connect');
