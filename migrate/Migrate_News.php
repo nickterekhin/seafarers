@@ -191,8 +191,8 @@ WHERE n.is_video=1 ".$limit);
         $added_posts = array();
         while($res=$sql->FetchRow())
         {
-            echo '<pre>'.$res->source.'</pre>';
-            $res_p = preg_match('/\"http:\/\/www.(.*?).com\/embed\/(.*?)(?:\?|$)(?:.*?)\"$/',$res->source,$m);
+            //echo '<pre>'.$res->source.'</pre>';
+            $res_p = preg_match('/\"http:\/\/www.(.*?).com\/embed\/(.*?)(?:\?|$)(?:.*?)\"/',$res->source,$m);
             var_dump($m);
 
 
