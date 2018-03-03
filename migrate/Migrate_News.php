@@ -60,7 +60,7 @@ FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
-WHERE (n.opinion ='' OR n.opinion = '0') AND n.is_video!=1 AND n.timestamp  > DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 2 MONTH) ORDER BY n.timestamp DESC LIMIT $qty,1000");
+WHERE (n.opinion ='' OR n.opinion = '0') AND n.is_video!=1 AND n.timestamp  > DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-2 DAY), INTERVAL 2 MONTH) ORDER BY n.timestamp DESC LIMIT $qty,1000");
         $index = 0;
         while($res=$sql->FetchRow())
         {
@@ -299,6 +299,127 @@ WHERE n.is_video=1 ".$limit);
         }
         echo $index.' ['.join(',',$added_posts).']';
     }
+    function addOpinionPaged($qty)
+    {
+        $limit = ' LIMIT 1';
+        if($qty>=0) {
+            $limit = ' LIMIT ' . $qty . ', 1000 ';
+        }
+
+        $sql = $this->alien_db_service->Query("SELECT
+                                        n.id,
+                                         n.uri,
+                                        n.title,
+                                        n.text,
+                                        n.short_text,
+                                        n.timestamp,
+                                        n.photo,
+                                        n.keywords,
+                                        n.description,
+                                        n.views,
+                                        n.creator_id,
+                                        t.slug,
+                                        u.username
+
+
+                                        FROM news n
+                                        INNEr JOIN topics t ON n.topic_id = t.id
+                                        INNER JOIN users u ON n.creator_id = u.id
+                                        #INNER JOIN videos v ON n.id = v.news_id
+
+                                        WHERE n.opinion != '' AND n.is_video=0 ".$limit);
+        $index = 0;
+        $added_posts = array();
+        while($res = $sql->FetchRow())
+        {
+            $sql_wp = $this->db->prepare("SELECT * FROM ".$this->db->prefix."posts p WHERE p.post_name='%s'",$res->uri);
+            $res_wp = $this->db->get_row($sql_wp);
+            if($res_wp) {
+                $category = $this->getCategoryByName('opinions');
+                if($category)
+                    wp_set_post_categories($res_wp->ID,$category,true);
+
+                $added_posts[] = $res_wp->ID;
+
+            }else
+            {
+                $arr_posts = array(
+
+                    'comment_status' => 'open',
+                    'ping_status' => 'open',
+                    'post_author' => $res->creator_id==1?$this->getPostAuthor('dmitriy@sj.com'):$this->getPostAuthor($res->username),
+                    'post_content' => $res->text,
+                    'post_date' => $res->timestamp,
+                    'post_date_gmt' => $res->timestamp,
+                    'post_excerpt' => $res->short_text,
+                    'post_name' => $res->uri,
+                    'post_status' => 'publish',
+                    'post_title' => $res->title,
+                    'meta_input' => array(
+                        'keywords' => $res->keywords,
+                        'description' => $res->description,
+                        'qode_seo_keywords' => $res->keywords,
+                        'qode_seo_description' => $res->description,
+                        'qode_count_post_views_meta' => $res->views,
+                        'qode_show-sidebar'=>'default',
+                        'qode_news_post_hot_meta'=>'no',
+                        'qode_news_post_trending_meta'=>'no',
+                        'qode_news_post_featured_meta'=>'no',
+                        'qode_post_style_masonry_date_image'=>'full',
+                        'qode_post_style_masonry_gallery'=>'default',
+                        'qode_hide-featured-image'=>'no',
+                        'qode_page_background_image_fixed'=>'yes'
+
+                    )
+                );
+                $post_ID = wp_insert_post($arr_posts);
+                if(!is_wp_error($post_ID)) {
+                    update_post_meta($post_ID, "keywords", $res->keywords);
+                    update_post_meta($post_ID, "description", $res->description);
+                    update_post_meta($post_ID, "qode_seo_keywords", $res->keywords);
+                    update_post_meta($post_ID, "qode_seo_description", $res->description);
+                    update_post_meta($post_ID, "qode_count_post_views_meta", $res->views);
+                    update_post_meta($post_ID,'qode_show-sidebar','default');
+                    update_post_meta($post_ID,'qode_news_post_hot_meta','no');
+                    update_post_meta($post_ID,'qode_news_post_trending_meta','no');
+                    update_post_meta($post_ID,'qode_news_post_featured_meta','no');
+                    update_post_meta($post_ID,'qode_post_style_masonry_date_image','full');
+                    update_post_meta($post_ID,'qode_post_style_masonry_gallery','default');
+                    update_post_meta($post_ID,'qode_hide-featured-image','no');
+                    update_post_meta($post_ID,'qode_page_background_image_fixed','yes');
+
+
+                    $tags = $this->getTags($res->id);
+                    $category = $this->getCategoryByName($res->slug);
+
+                    if ($category)
+                        wp_set_post_categories($post_ID, $category);
+
+                    $category = $this->getCategoryByName('opinions');
+
+                    if($category)
+                        wp_set_post_categories($res_wp->ID,$category,true);
+
+                    if ($tags)
+                        wp_set_post_terms($post_ID, $tags);
+
+                    $this->addComment($post_ID, $res->id);
+                     if ($res->photo)
+                         $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
+
+
+                    $added_posts[] = $post_ID;
+                }else
+                {
+                    echo $post_ID->get_error_message();
+                }
+
+            }
+            $index += 1;
+
+        }
+        echo $index;
+    }
 
     public function routes()
     {
@@ -321,7 +442,7 @@ WHERE n.is_video=1 ".$limit);
                     $this->addVideoPaged(isset($_REQUEST['qty'])?$_REQUEST['qty']:-1);
                     break;
                 case 'migrate-opinion':
-                    $this->addOpinonPaged(isset($_REQUEST['qty'])?$_REQUEST['qty']:-1);
+                    $this->addOpinionPaged(isset($_REQUEST['qty'])?$_REQUEST['qty']:-1);
                     break;
                 case 'set-post-as video':
                     break;
