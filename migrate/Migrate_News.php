@@ -418,7 +418,7 @@ WHERE n.is_video=1 ".$limit);
             $index += 1;
 
         }
-        echo $index;
+        echo $index.' ['.join(',',$added_posts).']';
     }
 
     public function routes()
