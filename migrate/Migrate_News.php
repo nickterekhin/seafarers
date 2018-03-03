@@ -398,7 +398,7 @@ WHERE n.is_video=1 ".$limit);
                     $category = $this->getCategoryByName('opinions');
 
                     if($category)
-                        wp_set_post_categories($res_wp->ID,$category,true);
+                        wp_set_post_categories($post_ID,$category,true);
 
                     if ($tags)
                         wp_set_post_terms($post_ID, $tags);
