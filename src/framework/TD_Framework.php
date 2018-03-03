@@ -124,7 +124,7 @@ class TD_Framework extends TD_Framework_Base
         $tax = get_term_by('slug',$category_slug,'category');
         if($tax) {
             $args['tax_query'] = array(
-                'relation' => 'AND',
+                'relation' => 'OR',
                 array(
                     'taxonomy' => 'category',
                     'field' => 'slug',
