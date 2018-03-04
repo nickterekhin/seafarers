@@ -9,7 +9,7 @@ use TerekhinDevelopment\framework\TD_Framework;
     <div class="qode-news-list-inner-holder" data-number-of-items="3">
         <?php foreach($posts as $p){ ?>
         <div class="qode-news-item qode-layout2-item" >
-            <div class="qode-news-item-inner">
+            <div class="qode-news-item-inner" style="font-size:0">
                 <div class="qode-news-item-image-holder">
                     <div class="qode-news-item-image-holder-inner">
                         <div class="qode-post-image">
