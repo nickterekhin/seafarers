@@ -1,5 +1,4 @@
 <?php
-var_dump($post->ID);
 $month = get_the_time('m',$post->ID);
 $year = get_the_time('Y',$post->ID);
 $title = get_the_title($post->ID);
@@ -18,7 +17,8 @@ if ($display_date == 'yes'){ ?>
 	    <?php } ?>
         <i class="dripicons-alarm"></i>
     	<?php if ($date_format == 'published') {
-    		get_the_time(get_option('date_format'),$post->ID);
+
+    		echo get_the_time(get_option('date_format'),$post->ID);
     	} else {
     		echo esc_html($difference);
     	} ?>
