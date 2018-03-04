@@ -157,9 +157,11 @@ WHERE tr.news_id = ".$news_id);
             {
                 update_post_meta($res_wp->ID, $k, $v);
             }
+            echo $res->ID." - edit\n";
             return $res_wp->ID;
         }else
         {
+            echo "new\n";
            /* $post_ID = wp_insert_post($arr_posts);
             if(!is_wp_error($post_ID)) {
                 foreach($arr_posts['meta_input'] as $k=>$v)
