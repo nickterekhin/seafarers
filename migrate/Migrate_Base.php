@@ -148,7 +148,7 @@ WHERE tr.news_id = ".$news_id);
             ))
         ));
 
-        $sql_wp = $this->db->prepare("SELECT * FROM ".$this->db->prefix."posts p WHERE p.post_name='%s'",$res->uri);
+        $sql_wp = $this->db->prepare("SELECT * FROM ".$this->db->prefix."posts p WHERE p.post_name=%s",$res->uri);
         $res_wp = $this->db->get_row($sql_wp);
 
         if($res_wp)

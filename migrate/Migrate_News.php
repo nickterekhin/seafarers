@@ -73,7 +73,7 @@ WHERE (n.opinion ='' OR n.opinion = '0') AND n.is_video!=1 AND n.timestamp  > DA
                 $index+=1;
             }catch(Exception $e)
             {
-                echo $e;
+                echo $e->getMessage();
             }
         }
         echo $index;
@@ -264,7 +264,8 @@ WHERE n.is_video=1 ".$limit);
                 case 'migrate-opinion':
                     $this->addOpinionPaged(isset($_REQUEST['qty'])?$_REQUEST['qty']:-1);
                     break;
-                case 'set-post-as video':
+                case 'set-post-views':
+                    $this->addViewsToPost(isset($_REQUEST['qty'])?$_REQUEST['qty']:-1);
                     break;
 
             }
