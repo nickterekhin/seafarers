@@ -252,6 +252,7 @@ WHERE pm.meta_value IS NULL AND p.post_date >'2018-01-01' and n.is_video = 0");
         {
             //$this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
             echo $res->photo."\n";
+            $this->addImageToPost($res->ID,$this->image_folder.'/'.$res->photo);
             var_dump(file_exists($this->image_folder.'/'.$res->photo));
         }
     }
