@@ -13,6 +13,7 @@ abstract class Migrate_Base
     protected $alien_db_service;
     protected $db;
     protected $image_folder;
+    protected $counter= 0;
 
     /**
      * Migrate_Base constructor.
@@ -159,6 +160,7 @@ WHERE tr.news_id = ".$news_id);
                 update_post_meta($res_wp->ID, $k, $v);
             }
             echo $res_wp->ID." - edit\n";
+            $this->counter+=1;
             return $res_wp->ID;
         }else
         {

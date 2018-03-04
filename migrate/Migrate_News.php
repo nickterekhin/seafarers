@@ -76,6 +76,7 @@ WHERE (n.opinion ='' OR n.opinion = '0') AND n.is_video!=1 AND n.timestamp  > DA
                 echo $e->getMessage();
             }
         }
+        echo $this->counter."\n";
         echo $index;
     }
 
