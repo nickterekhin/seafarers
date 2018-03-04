@@ -8,7 +8,7 @@ class Migrate_News extends Migrate_Base
 {
     private static $instance;
 
-    private $image_folder;
+
     private $qty = 1000;
 
     public static function getInstance()
@@ -42,7 +42,11 @@ class Migrate_News extends Migrate_Base
     function show()
     {
         var_dump(CHILD_THEME_PATH);
+        $params = array('three'=>3);
+        $second_params = array('subthree'=>23);
+        $opt = wp_parse_args($params, array('first'=>'1','second'=>wp_parse_args($second_params,array('subsecond'=>2))));
 
+        var_dump($opt);
 
     }
 
@@ -60,56 +64,16 @@ FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
-WHERE (n.opinion ='' OR n.opinion = '0') AND n.is_video!=1 AND n.timestamp  > DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-3 DAY), INTERVAL 2 MONTH) ORDER BY n.timestamp DESC LIMIT $qty,1000");
+WHERE (n.opinion ='' OR n.opinion = '0') AND n.is_video!=1 AND n.timestamp  > DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-4 DAY), INTERVAL 2 MONTH) ORDER BY n.timestamp DESC LIMIT $qty,1000");
         $index = 0;
         while($res=$sql->FetchRow())
         {
-            $arr_posts = array(
-
-                'comment_status' => 'open',
-                'ping_status'    => 'open',
-                'post_author'    => $res->creator_id==1?$this->getPostAuthor('dmitriy@sj.com'):$this->getPostAuthor($res->username),
-                'post_content'   => $res->text,
-                'post_date'      => $res->timestamp,
-                'post_date_gmt'  => $res->timestamp,
-                'post_excerpt'   => $res->short_text,
-                'post_name'      => $res->uri,
-                'post_status'    => 'publish',
-                'post_title'     => $res->title,
-                'meta_input'     => array(
-                    'keywords'=>$res->keywords,
-                    'description'=>$res->description,
-                    'qode_seo_keywords'=>$res->keywords,
-                    'qode_seo_description'=>$res->description,
-                    'qode_count_post_views_meta'=>$res->views
-                )
-            );
-
-            $post_ID = wp_insert_post($arr_posts);
-            if(!is_wp_error($post_ID)) {
-                update_post_meta($post_ID, "keywords", $res->keywords);
-                update_post_meta($post_ID, "description", $res->description);
-                update_post_meta($post_ID, "qode_seo_keywords", $res->keywords);
-                update_post_meta($post_ID, "qode_seo_description", $res->description);
-                update_post_meta($post_ID, "qode_count_post_views_meta", $res->views);
-
-
-                $tags = $this->getTags($res->id);
-                $category = $this->getCategoryByName($res->slug);
-
-                if ($category)
-                    wp_set_post_categories($post_ID, $category);
-
-                if ($tags)
-                    wp_set_post_terms($post_ID, $tags);
-
-                $this->addComment($post_ID, $res->id);
-               if ($res->photo)
-                    $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
-                $index += 1;
-            }else
+            try {
+                $this->add_post($res);
+                $index+=1;
+            }catch(Exception $e)
             {
-                echo $post_ID->get_error_message();
+                echo $e;
             }
         }
         echo $index;
@@ -194,107 +158,20 @@ WHERE n.is_video=1 ".$limit);
             $res_p = preg_match('/"http:\/\/www.(.*?).com\/embed\/(.*?)(?:\?(?:.*))?"/',$res->source,$m);
 
             if($res_p==1) {
-                $arr_posts = array(
 
-                    'comment_status' => 'open',
-                    'ping_status' => 'open',
-                    'post_author' => 1,
-                    'post_content' => $res->text,
-                    'post_date' => $res->timestamp,
-                    'post_date_gmt' => $res->timestamp,
-                    'post_excerpt' => $res->short_text,
-                    'post_name' => $res->uri,
-                    'post_status' => 'publish',
-                    'post_title' => $res->title,
-                    'meta_input' => array(
-                        'keywords' => $res->keywords,
-                        'description' => $res->description,
-                        'qode_seo_keywords' => $res->keywords,
-                        'qode_seo_description' => $res->description,
-                        'qode_count_post_views_meta' => $res->views,
+                $arr_meta_posts = array(
                         'video_format_choose' => $m[0],
                         'video_format_link' => $m[1],
-                        'qode_show-sidebar'=>'default',
-                        'qode_news_post_hot_meta'=>'no',
-                        'qode_news_post_trending_meta'=>'no',
-                        'qode_news_post_featured_meta'=>'no',
-                        'qode_post_style_masonry_date_image'=>'full',
-                        'qode_post_style_masonry_gallery'=>'default',
-                        'qode_hide-featured-image'=>'no',
-                        'qode_page_background_image_fixed'=>'yes'
-
-                    )
                 );
-
-                $sql_wp = $this->db->prepare("SELECT * FROM ".$this->db->prefix."posts p WHERE p.post_name='%s'",$res->uri);
-                $res_wp = $this->db->get_row($sql_wp);
-                /** @var WP_Post $res_wp */
-                if($res_wp)
-                {
-                    update_post_meta($res_wp->ID,'video_format_link',$m[2]);
-                    update_post_meta($res_wp->ID,'video_format_choose',$m[1]);
-                    update_post_meta($res_wp->ID,'qode_seo_keywords',$res->keywords);
-                    update_post_meta($res_wp->ID,'qode_seo_description',$res->description);
-                    update_post_meta($res_wp->ID,'qode_count_post_views_meta',$res->views);
-                    update_post_meta($res_wp->ID,'qode_show-sidebar','default');
-                    update_post_meta($res_wp->ID,'qode_news_post_hot_meta','no');
-                    update_post_meta($res_wp->ID,'qode_news_post_trending_meta','no');
-                    update_post_meta($res_wp->ID,'qode_news_post_featured_meta','no');
-                    update_post_meta($res_wp->ID,'qode_post_style_masonry_date_image','full');
-                    update_post_meta($res_wp->ID,'qode_post_style_masonry_gallery','default');
-                    update_post_meta($res_wp->ID,'qode_hide-featured-image','no');
-                    update_post_meta($res_wp->ID,'qode_page_background_image_fixed','yes');
-
-                    set_post_format($res_wp->ID,'video');
-
-                    $added_posts[]=$res_wp->ID;
-                }else
-                {
-
-                    $post_ID = wp_insert_post($arr_posts);
-                    if(!is_wp_error($post_ID)) {
-                        update_post_meta($post_ID, "keywords", $res->keywords);
-                        update_post_meta($post_ID, "description", $res->description);
-                        update_post_meta($post_ID, "qode_seo_keywords", $res->keywords);
-                        update_post_meta($post_ID, "qode_seo_description", $res->description);
-                        update_post_meta($post_ID, "qode_count_post_views_meta", $res->views);
-                        update_post_meta($post_ID,'video_format_link',$m[2]);
-                        update_post_meta($post_ID,'video_format_choose',$m[1]);
-                        update_post_meta($post_ID,'qode_show-sidebar','default');
-                        update_post_meta($post_ID,'qode_news_post_hot_meta','no');
-                        update_post_meta($post_ID,'qode_news_post_trending_meta','no');
-                        update_post_meta($post_ID,'qode_news_post_featured_meta','no');
-                        update_post_meta($post_ID,'qode_post_style_masonry_date_image','full');
-                        update_post_meta($post_ID,'qode_post_style_masonry_gallery','default');
-                        update_post_meta($post_ID,'qode_hide-featured-image','no');
-                        update_post_meta($post_ID,'qode_page_background_image_fixed','yes');
+                $arr_posts = array(
+                    'post_author'=>1
+                );
+                $post_id = $this->add_post($res,$arr_posts,$arr_meta_posts,false);
+                set_post_format($post_id,'video');
+                $added_posts[]=$post_id;
+                $index += 1;
 
 
-                        $tags = $this->getTags($res->id);
-                        $category = $this->getCategoryByName('videos');
-
-                        if ($category)
-                            wp_set_post_categories($post_ID, $category);
-
-                        set_post_format($post_ID,'video');
-
-
-                        if ($tags)
-                            wp_set_post_terms($post_ID, $tags);
-
-                        $this->addComment($post_ID, $res->id);
-                       /* if ($res->photo)
-                            $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);*/
-
-
-                        $added_posts[] = $post_ID;
-                    }else
-                    {
-                        echo $post_ID->get_error_message();
-                    }
-                    $index += 1;
-
-                }
             }
         }
         echo $index.' ['.join(',',$added_posts).']';
@@ -343,76 +220,19 @@ WHERE n.is_video=1 ".$limit);
 
             }else
             {
-                $arr_posts = array(
-
-                    'comment_status' => 'open',
-                    'ping_status' => 'open',
-                    'post_author' => $res->creator_id==1?$this->getPostAuthor('dmitriy@sj.com'):$this->getPostAuthor($res->username),
-                    'post_content' => $res->text,
-                    'post_date' => $res->timestamp,
-                    'post_date_gmt' => $res->timestamp,
-                    'post_excerpt' => $res->short_text,
-                    'post_name' => $res->uri,
-                    'post_status' => 'publish',
-                    'post_title' => $res->title,
-                    'meta_input' => array(
-                        'keywords' => $res->keywords,
-                        'description' => $res->description,
-                        'qode_seo_keywords' => $res->keywords,
-                        'qode_seo_description' => $res->description,
-                        'qode_count_post_views_meta' => $res->views,
-                        'qode_show-sidebar'=>'default',
-                        'qode_news_post_hot_meta'=>'no',
-                        'qode_news_post_trending_meta'=>'no',
-                        'qode_news_post_featured_meta'=>'no',
-                        'qode_post_style_masonry_date_image'=>'full',
-                        'qode_post_style_masonry_gallery'=>'default',
-                        'qode_hide-featured-image'=>'no',
-                        'qode_page_background_image_fixed'=>'yes'
-
-                    )
-                );
-                $post_ID = wp_insert_post($arr_posts);
-                if(!is_wp_error($post_ID)) {
-                    update_post_meta($post_ID, "keywords", $res->keywords);
-                    update_post_meta($post_ID, "description", $res->description);
-                    update_post_meta($post_ID, "qode_seo_keywords", $res->keywords);
-                    update_post_meta($post_ID, "qode_seo_description", $res->description);
-                    update_post_meta($post_ID, "qode_count_post_views_meta", $res->views);
-                    update_post_meta($post_ID,'qode_show-sidebar','default');
-                    update_post_meta($post_ID,'qode_news_post_hot_meta','no');
-                    update_post_meta($post_ID,'qode_news_post_trending_meta','no');
-                    update_post_meta($post_ID,'qode_news_post_featured_meta','no');
-                    update_post_meta($post_ID,'qode_post_style_masonry_date_image','full');
-                    update_post_meta($post_ID,'qode_post_style_masonry_gallery','default');
-                    update_post_meta($post_ID,'qode_hide-featured-image','no');
-                    update_post_meta($post_ID,'qode_page_background_image_fixed','yes');
-
-
-                    $tags = $this->getTags($res->id);
-                    $category = $this->getCategoryByName($res->slug);
-
-                    if ($category)
-                        wp_set_post_categories($post_ID, $category);
-
+                try {
+                    $post_id = $this->add_post($res);
                     $category = $this->getCategoryByName('opinions');
 
-                    if($category)
-                        wp_set_post_categories($post_ID,$category,true);
+                    if ($category)
+                        wp_set_post_categories($post_id, $category, true);
+                    $added_posts[] = $post_id;
 
-                    if ($tags)
-                        wp_set_post_terms($post_ID, $tags);
-
-                    $this->addComment($post_ID, $res->id);
-                     if ($res->photo)
-                         $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
-
-
-                    $added_posts[] = $post_ID;
-                }else
+                }catch(Exception $e)
                 {
-                    echo $post_ID->get_error_message();
+                    echo $e->getMessage();
                 }
+
 
             }
             $index += 1;

@@ -12,6 +12,7 @@ abstract class Migrate_Base
 
     protected $alien_db_service;
     protected $db;
+    protected $image_folder;
 
     /**
      * Migrate_Base constructor.
@@ -115,6 +116,80 @@ WHERE tr.news_id = ".$news_id);
         var_dump($upload_file['error']);
         }
     }
+
+    function add_post($res,$params=array(),$meta_params=array(),$add_image=true)
+    {
+        $arr_posts = wp_parse_args($params,array(
+
+            'comment_status' => 'open',
+            'ping_status'    => 'open',
+            'post_author'    => $res->creator_id==1?$this->getPostAuthor('dmitriy@sj.com'):$this->getPostAuthor($res->username),
+            'post_content'   => $res->text,
+            'post_date'      => $res->timestamp,
+            'post_date_gmt'  => $res->timestamp,
+            'post_excerpt'   => $res->short_text,
+            'post_name'      => $res->uri,
+            'post_status'    => 'publish',
+            'post_title'     => $res->title,
+            'meta_input'     => wp_parse_args($meta_params,array(
+                'keywords'=>$res->keywords,
+                'description'=>$res->description,
+                'qode_seo_keywords'=>$res->keywords,
+                'qode_seo_description'=>$res->description,
+                'qode_count_post_views_meta'=>$res->views,
+                 'qode_show-sidebar'=>'default',
+                        'qode_news_post_hot_meta'=>'no',
+                        'qode_news_post_trending_meta'=>'no',
+                        'qode_news_post_featured_meta'=>'no',
+                        'qode_post_style_masonry_date_image'=>'full',
+                        'qode_post_style_masonry_gallery'=>'default',
+                        'qode_hide-featured-image'=>'no',
+                        'qode_page_background_image_fixed'=>'yes'
+            ))
+        ));
+
+        $sql_wp = $this->db->prepare("SELECT * FROM ".$this->db->prefix."posts p WHERE p.post_name='%s'",$res->uri);
+        $res_wp = $this->db->get_row($sql_wp);
+
+        if($res_wp)
+        {
+            foreach($arr_posts['meta_input'] as $k=>$v)
+            {
+                update_post_meta($res_wp->ID, $k, $v);
+            }
+            return $res_wp->ID;
+        }else
+        {
+            $post_ID = wp_insert_post($arr_posts);
+            if(!is_wp_error($post_ID)) {
+                foreach($arr_posts['meta_input'] as $k=>$v)
+                {
+                    update_post_meta($post_ID, $k, $v);
+                }
+
+
+                $tags = $this->getTags($res->id);
+                $category = $this->getCategoryByName($res->slug);
+
+                if ($category)
+                    wp_set_post_categories($post_ID, $category);
+
+                if ($tags)
+                    wp_set_post_terms($post_ID, $tags);
+
+                $this->addComment($post_ID, $res->id);
+                if ($res->photo && $add_image)
+                    $this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
+                return $post_ID;
+            }else
+            {
+                throw new Exception($post_ID->get_error_message());
+            }
+        }
+
+
+    }
+
 
     /*
      $config['dbhost'] = "localhost";
