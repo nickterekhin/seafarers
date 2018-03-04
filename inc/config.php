@@ -32,6 +32,7 @@ function terekhin_dev_category_template($single)
 }
 
 add_filter('category_template','terekhin_dev_category_template',11);
+add_filter('archive_template','terekhin_dev_category_template',11);
 function terekhin_dev_comments_template($single)
 {
     global $post;
