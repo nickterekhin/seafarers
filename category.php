@@ -50,7 +50,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 			<?php get_template_part( 'templates/opinion','single' ); ?>
 			<?php $terekhin_framework->showSeparator('Популярное в разделе',$obj);?>
 					<?php
-						$terekhin_framework->show_popular_news_in_section($obj);
+						//$terekhin_framework->show_popular_news_in_section($obj);
 					?>
 			<?php $terekhin_framework->showSeparator('Все Новости в разделе',$obj);?>
 
