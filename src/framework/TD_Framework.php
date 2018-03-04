@@ -101,7 +101,7 @@ class TD_Framework extends TD_Framework_Base
             'columns_number' =>3
         );
 
-        $this->show_grid_post($args);
+        $this->show_grid_post($args,'layout2-news-vertical');
     }
     function show_post_in_section($obj,$title,$category_slug)
     {
@@ -129,9 +129,12 @@ class TD_Framework extends TD_Framework_Base
         }
         $this->show_grid_post($args);
     }
+
     /**
+     * @param $params
+     * @param string $view_name
      */
-    private function show_grid_post($params)
+    private function show_grid_post($params,$view_name='layout2-news')
     {
 
             $params = wp_parse_args($params,array('columns_number'=>1));
@@ -153,7 +156,7 @@ class TD_Framework extends TD_Framework_Base
                 'display_author' => 'no',
             ));
 
-            echo $this->View('layout2-news', $params);
+            echo $this->View($view_name, $params);
     }
 }
 
