@@ -30,7 +30,10 @@ if(get_post_meta($id, "qode_title-image", true) != ""){
 }else{
     $title_image = $qode_options_proya['title_image'];
 }
-$title_image = $terekhin_framework->getImageTitle($obj->taxonomy,$obj->term_id);
+$title_image_custom = $terekhin_framework->getImageTitle($obj->taxonomy,$obj->term_id);
+if(isset($title_image_custom) && !empty($title_image_custom))
+    $title_image =$title_image_custom;
+
 
 $title_image_height = "";
 $title_image_width = "";
