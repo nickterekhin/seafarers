@@ -10,11 +10,11 @@ $has_featured = !empty($featured_image_meta) || has_post_thumbnail($post->ID);
 $blog_list_image_src = !empty($featured_image_meta) ? $featured_image_meta : '';
 print_r($featured_image_meta);
 $url=null;
-if(!$has_featured) {
+/*if(!$has_featured) {
 	/** @var TD_Framework $class */
-	$url = $class->getCategoryImage($post->ID);
+	/*$url = $class->getCategoryImage($post->ID);
 	if($url)$has_featured=true;
-		}
+		}*/
 ?>
 <?php if ( $has_featured ) { ?>
 	<div class="qode-post-image">
