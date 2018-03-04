@@ -155,6 +155,7 @@ WHERE tr.news_id = ".$news_id);
 
         if($res_wp)
         {
+            $arr_posts['ID']=$res_wp->ID;
             $post_ID = wp_update_post($arr_posts);
             if(!is_wp_error($post_ID)) {
                 foreach ($arr_posts['meta_input'] as $k => $v) {
