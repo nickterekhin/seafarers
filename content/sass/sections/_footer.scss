@@ -3,5 +3,12 @@
 .footer_top{
   .menu-item{
     display:inline-block;
+    &:not(last-child) {
+      a:after{
+        margin: 0 3px 0 8px;
+        content: ' | ';
+      }
+    }
+
   }
 }

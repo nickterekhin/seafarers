@@ -98,6 +98,9 @@ div#ui-datepicker-div {
 
 .footer_top .menu-item {
   display: inline-block; }
+  .footer_top .menu-item:not(last-child) a:after {
+    margin: 0 3px 0 8px;
+    content: ' | '; }
 
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
