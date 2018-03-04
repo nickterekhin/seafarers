@@ -94,11 +94,13 @@ class TD_Framework extends TD_Framework_Base
 
     }
 
-    function show_popular_news_in_section($obj)
+    function show_popular_news_in_section($obj,$title=null,$title_align='separator_align_left')
     {
         $args = array(
             'sort'=>'popular',
             'posts_per_page'=>6,
+            'layout_title'=>$title,
+            'title_align'=>$title_align,
             'category_name'=>$obj->slug,
             'columns_number' =>3
         );
