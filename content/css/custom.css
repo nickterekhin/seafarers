@@ -103,7 +103,7 @@ div#ui-datepicker-div {
     content: ' | '; }
   .footer_top .menu-item a {
     display: inline-block !important; }
-.footer_top .td-copyright-info li span {
+.footer_top .td-copyright-info li p {
   font-size: 11px;
   line-height: 1.7;
   font-weight: 500;
