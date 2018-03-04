@@ -1,8 +1,11 @@
 <?php
 
 use TerekhinDevelopment\framework\TD_Framework;
-
+var_dump($post->ID);
+var_dump(has_post_thumbnail($post->ID));
+get_the_post_thumbnail($post->ID);
 $image_size = isset($image_size) ? $image_size : 'thumbnail';
+
 $featured_image_meta = get_post_meta($post->ID, 'qode_blog_list_featured_image_meta', true);
 
 $has_featured = !empty($featured_image_meta) || has_post_thumbnail($post->ID);

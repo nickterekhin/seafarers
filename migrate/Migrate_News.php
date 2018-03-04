@@ -268,6 +268,9 @@ WHERE n.is_video=1 ".$limit);
                 case 'set-post-views':
                     $this->addViewsToPost(isset($_REQUEST['qty'])?$_REQUEST['qty']:-1);
                     break;
+                case 'add-image':
+                    $this->addImageForPost();
+                    break;
 
             }
         }catch(Exception $e)
