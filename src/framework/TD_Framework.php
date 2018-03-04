@@ -98,11 +98,9 @@ class TD_Framework extends TD_Framework_Base
             'sort'=>'popular',
             'post_per_page'=>6,
             'category_name'=>$obj->slug,
-        );
-
-        $args['single'] = array(
             'columns_number' =>3
         );
+
         $this->show_grid_post($args);
     }
     function show_post_in_section($obj,$title,$category_slug)
@@ -139,6 +137,8 @@ class TD_Framework extends TD_Framework_Base
             $argv = wp_parse_args($params,array());
 
             $posts_query = $this->tools->get_post_query($argv);
+
+        var_dump($posts_query);
             $posts = $posts_query->posts;
 
             $params['columns_number']=1;
