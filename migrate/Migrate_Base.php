@@ -157,7 +157,7 @@ WHERE tr.news_id = ".$news_id);
             {
                 update_post_meta($res_wp->ID, $k, $v);
             }
-            echo $res->ID." - edit\n";
+            echo $res_wp->ID." - edit\n";
             return $res_wp->ID;
         }else
         {
