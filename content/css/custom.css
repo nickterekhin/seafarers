@@ -96,6 +96,9 @@ aside .widget a {
 div#ui-datepicker-div {
   z-index: 9999 !important; }
 
+.footer_top .menu_item {
+  display: inline-block; }
+
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
     display: none; } }
