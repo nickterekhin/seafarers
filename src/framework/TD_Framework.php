@@ -134,13 +134,12 @@ class TD_Framework extends TD_Framework_Base
     private function show_grid_post($params)
     {
 
-            $argv = wp_parse_args($params,array());
+            $params = wp_parse_args($params,array('columns-number'=>1));
 
-            $posts_query = $this->tools->get_post_query($argv);
+            $posts_query = $this->tools->get_post_query($params);
 
             $posts = $posts_query->posts;
 
-            $params['columns_number']=1;
             $params['class'] = $this;
             $params['posts'] = $posts;
             $params['single'] = wp_parse_args(isset($params['single'])?$params['single']:array(),array(
