@@ -56,7 +56,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 								<div class="wpb_wrapper">
 									<?php //$terekhin_framework->showSeparator('Популярное в разделе','separator_align_left');?>
 									<?php
-									$terekhin_framework->show_popular_news_in_section($obj);
+									$terekhin_framework->show_popular_news_in_section($obj,'Популрное в разделе');
 									?>
 								</div>
 							</div>
@@ -65,7 +65,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 				</div>
 			</div>
 
-			<?php //$terekhin_framework->showSeparator('Все Новости в разделе','separator_align_left');?>
+			<?php $terekhin_framework->showSeparator('Все Новости в разделе','separator_align_left');?>
 
 			<?php if(($sidebar == "default")||($sidebar == "")) : ?>
 				<?php 
