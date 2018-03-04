@@ -65,7 +65,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 				</div>
 			</div>
 
-			<?php $terekhin_framework->showSeparator('Все Новости в разделе',$obj);?>
+			<?php $terekhin_framework->showSeparator('Все Новости в разделе',$obj,'separator_align_left');?>
 
 			<?php if(($sidebar == "default")||($sidebar == "")) : ?>
 				<?php 
