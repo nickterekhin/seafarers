@@ -142,7 +142,7 @@ class TD_Framework extends TD_Framework_Base
     private function show_grid_post($params,$view_name='layout2-news')
     {
 
-            $params = wp_parse_args($params,array('columns_number'=>1));
+            $params = wp_parse_args($params,array('columns_number'=>1,'title_align'=>'separator_align_left'));
 
             $posts_query = $this->tools->get_post_query($params);
 
