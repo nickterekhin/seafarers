@@ -36,7 +36,6 @@ use TerekhinDevelopment\framework\TD_Framework;
                     </div>
                 </div>
             </div>
-        </div>
     <?php } ?>
         </div>
 </div>
