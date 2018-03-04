@@ -160,7 +160,7 @@ WHERE tr.news_id = ".$news_id);
             return $res_wp->ID;
         }else
         {
-            $post_ID = wp_insert_post($arr_posts);
+           /* $post_ID = wp_insert_post($arr_posts);
             if(!is_wp_error($post_ID)) {
                 foreach($arr_posts['meta_input'] as $k=>$v)
                 {
@@ -184,7 +184,7 @@ WHERE tr.news_id = ".$news_id);
             }else
             {
                 throw new Exception($post_ID->get_error_message());
-            }
+            }*/
         }
 
 
