@@ -48,10 +48,23 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 		<div class="container_inner default_template_holder clearfix">
 
 			<?php get_template_part( 'templates/opinion','single' ); ?>
-			<?php $terekhin_framework->showSeparator('Популярное в разделе',$obj);?>
-					<?php
-						$terekhin_framework->show_popular_news_in_section($obj);
-					?>
+			<div class="vc_row wpb_row section vc_row-fluid  grid_section" style=" text-align:left;">
+				<div class=" section_inner clearfix">
+					<div class="section_inner_margin clearfix">
+						<div class="wpb_column vc_column_container vc_col-sm-12">
+							<div class="vc_column-inner ">
+								<div class="wpb_wrapper">
+									<?php $terekhin_framework->showSeparator('Популярное в разделе',$obj);?>
+									<?php
+									$terekhin_framework->show_popular_news_in_section($obj);
+									?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<?php $terekhin_framework->showSeparator('Все Новости в разделе',$obj);?>
 
 			<?php if(($sidebar == "default")||($sidebar == "")) : ?>
