@@ -71,9 +71,8 @@ class TD_Framework extends TD_Framework_Base
 
         return $date;
     }
-    function showSeparator($text,$obj,$title_align=null)
+    function showSeparator($text,$title_align=null)
     {
-        global $shortcode_tags;
 
         $title_align = $title_align?'title_align="'.$title_align.'"':'';
         echo do_shortcode('[vc_separator type="transparent" up="20" down="20"][vc_text_separator title="'.$text.'" i_icon_monosocial="vc-mono vc-mono-star" css_animation="fadeInLeft" border="no" el_class="td-news-separator" '.$title_align.'][vc_separator type="transparent" up="20" down="20"]');

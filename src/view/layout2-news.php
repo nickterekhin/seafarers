@@ -13,7 +13,7 @@ use TerekhinDevelopment\framework\TD_Framework;
     <div class="qode-news-list-title-holder">
         <!--<h3 class="qode-news-layout-title"><?php /*echo $layout_title;*/?></h3>-->
 
-        <?php $class->showSeparator($layout_title,$obj,$title_align); ?>
+        <?php $class->showSeparator($layout_title,$title_align); ?>
     </div>
         <?php } ?>
     <div class="qode-news-list-inner-holder" data-number-of-items="<?php echo $columns_number;?>">
