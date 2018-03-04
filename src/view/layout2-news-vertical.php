@@ -5,6 +5,11 @@
  **/
 use TerekhinDevelopment\framework\TD_Framework;
 ?>
+
+<?php if(count($posts)>0) {
+    if(isset($layout_title))
+        $class->showSeparator($layout_title,$obj,'separator_align_left');
+?>
 <div class="qode-news-holder qode-layout2 qode-news-columns-3 qode-nl-small-space">
     <div class="qode-news-list-inner-holder" data-number-of-items="3" style="font-size:0">
         <?php foreach($posts as $p){ ?>
@@ -39,3 +44,4 @@ use TerekhinDevelopment\framework\TD_Framework;
     <?php } ?>
         </div>
 </div>
+<?php } ?>

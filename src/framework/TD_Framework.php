@@ -81,12 +81,13 @@ class TD_Framework extends TD_Framework_Base
 
     /**
      * @param WP_Term $obj
+     * @param string $title
      */
-    function show_hot_news_in_section($obj)
+    function show_hot_news_in_section($obj,$title="Горячие новости")
     {
         $args = array(
             'sort'=>'hot_first',
-            'layout_title'=>'Горячие новости',
+            'layout_title'=>$title,
             'posts_per_page'=>6,
             'category_name'=>$obj->slug,
         );
@@ -105,11 +106,12 @@ class TD_Framework extends TD_Framework_Base
 
         $this->show_grid_post($args,'layout2-news-vertical');
     }
-    function show_post_in_section($obj,$title,$category_slug)
+    function show_post_in_section($obj,$title,$category_slug,$title_align='separator_align_left')
     {
         $args = array(
             'sort'=>'latest',
             'layout_title'=>$title,
+            'title_align'=>$title_align,
             'posts_per_page'=>6
         );
         $tax = get_term_by('slug',$category_slug,'category');
