@@ -103,6 +103,11 @@ div#ui-datepicker-div {
     content: ' | '; }
   .footer_top .menu-item a {
     display: inline-block !important; }
+.footer_top .td-copyright-info li span {
+  font-size: 11px;
+  line-height: 1.7;
+  font-weight: 500;
+  color: #888; }
 
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
