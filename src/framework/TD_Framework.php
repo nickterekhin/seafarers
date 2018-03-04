@@ -96,7 +96,7 @@ class TD_Framework extends TD_Framework_Base
     {
         $args = array(
             'sort'=>'popular',
-            'post_per_page'=>6,
+            'posts_per_page'=>6,
             'category_name'=>$obj->slug,
             'columns_number' =>3
         );

@@ -4,6 +4,7 @@
  * @var TD_Framework $class
 **/
 use TerekhinDevelopment\framework\TD_Framework;
+var_dump($columns_number);
 ?>
 <?php if(count($posts)>0){ ?>
 <div class="qode-news-holder qode-layout2 qode-news-columns-<?php echo $columns_number;?> qode-nl-normal-space" data-post-status="publish" data-category-name="fyre-festival" data-ignore-sticky-posts="1" data-orderby="date" data-posts-per-page="6" data-sort="latest" data-paged="1" data-max-num-pages="2" data-next-page="2" data-title-tag="h5" data-image-size="custom" data-custom-image-width="70" data-custom-image-height="70" data-display-categories="no" data-display-excerpt="no" data-excerpt-length="10" data-display-date="yes" data-date-format="published" data-display-author="yes" data-display-share="no" data-display-hot-trending-icons="no" data-layout="qode_layout2">
