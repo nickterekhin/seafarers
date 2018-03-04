@@ -242,6 +242,19 @@ WHERE n.is_video=1 ".$limit);
         echo $index.' ['.join(',',$added_posts).']';
     }
 
+    function addImageForPost()
+    {
+        $sql = $this->alien_db_service->Query("SELECT p.ID,p.post_name,n.uri,n.photo FROM i4208320_wp2.wp_posts p
+LEFT JOIN i4208320_wp2.wp_postmeta pm ON p.ID = pm.post_id AND pm.meta_key = '_thumbnail_id'
+INNER JOIN seafarersj_db.news n ON n.uri = p.post_name
+WHERE pm.meta_value IS NULL AND p.post_date >'2018-01-01' and n.is_video = 0");
+        while($res = $sql->FetchRow())
+        {
+            //$this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
+            echo $res->photo."\n";
+            var_dump(file_exists($this->image_folder.'/'.$res->photo));
+        }
+    }
     public function routes()
     {
         try {
