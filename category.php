@@ -62,7 +62,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 						</div>
 					</div>
 				</div>
-				<div class="separator  normal   " style="margin:20px 0 40px 0;"></div>
+			<!--	<div class="separator  normal   " style="margin:20px 0 40px 0;"></div>-->
 			<?php endif;?>
 			<?php //get_template_part( 'templates/opinion','single' ); ?>
 			<div class="vc_row wpb_row section vc_row-fluid  grid_section" style=" text-align:left;">
