@@ -138,7 +138,6 @@ class TD_Framework extends TD_Framework_Base
 
             $posts_query = $this->tools->get_post_query($argv);
 
-        var_dump($posts_query);
             $posts = $posts_query->posts;
 
             $params['columns_number']=1;
