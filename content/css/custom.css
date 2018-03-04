@@ -102,7 +102,7 @@ div#ui-datepicker-div {
     margin: 0 3px 0 8px;
     content: ' | '; }
   .footer_top .menu-item a {
-    display: inline-block; }
+    display: inline-block !important; }
 
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
