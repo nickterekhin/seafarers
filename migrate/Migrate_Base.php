@@ -157,7 +157,7 @@ WHERE tr.news_id = ".$news_id);
         {
 
                 foreach ($arr_posts['meta_input'] as $k => $v) {
-                    update_post_meta($post_ID, $k, $v);
+                    update_post_meta($res_wp->ID, $k, $v);
                 }
                 echo $res_wp->ID . " - edit\n";
                 $this->counter += 1;
