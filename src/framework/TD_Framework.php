@@ -88,17 +88,6 @@ class TD_Framework extends TD_Framework_Base
             'posts_per_page'=>6,
             'category_name'=>$obj->slug,
         );
-        $args['single'] = array(
-            'post' => null,
-            'image_size' => 'custom',
-            'custom_image_height' => '70px',
-            'custom_image_width' => '70px',
-            'display_categories' => 'no',
-            'title_tag' => 'h5',
-            'display_excerpt' => 'no',
-            'display_author' => 'no'
-
-        );
         $this->show_grid_post($args);
 
     }
@@ -111,8 +100,10 @@ class TD_Framework extends TD_Framework_Base
             'category_name'=>$obj->slug,
         );
 
-
-
+        $args['single'] = array(
+            'columns_number' =>3
+        );
+        $this->show_grid_post($args);
     }
     function show_post_in_section($obj,$title,$category_slug)
     {
@@ -138,17 +129,6 @@ class TD_Framework extends TD_Framework_Base
                 )
             );
         }
-        $args['single'] = array(
-            'post' => null,
-            'image_size' => 'custom',
-            'custom_image_height' => '70px',
-            'custom_image_width' => '70px',
-            'display_categories' => 'no',
-            'title_tag' => 'h5',
-            'display_excerpt' => 'no',
-            'display_author' => 'no'
-
-        );
         $this->show_grid_post($args);
     }
     /**
@@ -161,8 +141,19 @@ class TD_Framework extends TD_Framework_Base
             $posts_query = $this->tools->get_post_query($argv);
             $posts = $posts_query->posts;
 
+            $params['columns_number']=1;
             $params['class'] = $this;
             $params['posts'] = $posts;
+            $params['single'] = wp_parse_args(isset($params['single'])?$params['single']:array(),array(
+                'post' => null,
+                'image_size' => 'custom',
+                'custom_image_height' => '70px',
+                'custom_image_width' => '70px',
+                'display_categories' => 'no',
+                'title_tag' => 'h5',
+                'display_excerpt' => 'no',
+                'display_author' => 'no',
+            ));
 
             echo $this->View('layout2-news', $params);
     }
