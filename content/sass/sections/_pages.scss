@@ -1,7 +1,7 @@
 @import "../vars/pages_vars";
 body{
-  .page-id-30631{
-    .vertical-menu-enabled{
+  &.page-id-30631{
+    &.vertical-menu-enabled{
       .full_screen_holder{
         padding-left:0;
       }
