@@ -180,8 +180,7 @@ class TD_Framework extends TD_Framework_Base
     {
         global $post;
 
-        if(is_front_page())
-        {
+
             var_dump($output);
             if(preg_match('/url(\'(.*?vc_gitem_image_\.png\')/',$output,$m)==1) {
                 var_dump($m);
@@ -191,7 +190,7 @@ class TD_Framework extends TD_Framework_Base
                     $output = 'background-image: url(\'' . $img . '\') !important';
                 }
             }
-        }
+
         return $output;
     }
 }
