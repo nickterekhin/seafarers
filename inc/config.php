@@ -54,6 +54,3 @@ function edit_slider_query($posts,$obj)
     return $posts;
 }
 add_action('the_posts','edit_slider_query',10,2);*/
-global $terekhin_framework;
-
-add_filter('the_content',array($terekhin_framework,'about_page_content'));

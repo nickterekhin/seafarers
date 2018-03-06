@@ -16,6 +16,7 @@ include('src/short_codes/short_codes.php');
 include('inc/social_config.php');
 include('inc/rewrite_rules.php');
 include('inc/news_config.php');
+include('inc/pages_config.php');
 
 add_action('wp_enqueue_scripts', 'main_style_setup',25);
 function main_style_setup()
