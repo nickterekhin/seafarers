@@ -45,6 +45,12 @@ aside .widget a {
   margin-top: 10px;
   margin-bottom: 10px; }
 
+.td-all-news-btn {
+  height: 32px;
+  line-height: 32px; }
+  .td-all-news-btn .qode-button-v2-icon-holder {
+    font-size: 22px; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
