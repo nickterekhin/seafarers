@@ -1,6 +1,7 @@
 <?php
 namespace TerekhinDevelopment\framework;
 
+use WP_Post;
 use WP_Term;
 
 class TD_Framework extends TD_Framework_Base
@@ -65,10 +66,16 @@ class TD_Framework extends TD_Framework_Base
     {
 
     }
+
+    /**
+     * @param $date
+     * @param $format
+     * @param WP_Post $post
+     * @return mixed
+     */
     function format_post_date_masonry($date,$format,$post)
     {
 
-        var_dump($date);
         return $date;
     }
     function showSeparator($text,$title_align=null)
