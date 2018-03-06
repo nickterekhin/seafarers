@@ -46,11 +46,9 @@
   &.qode-btn-icon{
     &.td-all-news-btn{
       height: 32px;
+      .qode-button-v2-icon-holder{
+        font-size:22px;
+      }
     }
-  }
-}
-.td-all-news-btn{
-  .qode-button-v2-icon-holder{
-    font-size:22px;
   }
 }
