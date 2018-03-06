@@ -179,9 +179,16 @@ class TD_Framework extends TD_Framework_Base
     function set_post_image_css_value_from_category($output)
     {
         global $post;
-        var_dump($post->ID);
-        $cat = wp_get_post_terms($post->ID,'category');
-            var_dump(get_field('header_image','category_'.$cat[0]->term_id));
+        if(!is_admin())
+        {
+            if(preg_match('/url(\'(.*?vc_gitem_image_\.png\')/',$output,$m)==1) {
+                $cat = wp_get_post_terms($post->ID, 'category');
+                $img = get_field('header_image', 'category_' . $cat[0]->term_id);
+                if ($img) {
+                    $output = 'background-image: url(\'' . $img . '\') !important';
+                }
+            }
+        }
         return $output;
     }
 }
