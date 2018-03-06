@@ -38,9 +38,8 @@ aside .widget a {
   background-color: #bf0434 !important; }
 
 .td-header {
-  margin-top: 29px;
-  padding-bottom: 19px;
-  border: 1px dotted #a9a9a9; }
+  padding-bottom: 14px;
+  border-bottom: 1px dotted #a9a9a9; }
 
 .quform-1 .quform-label {
   color: #fff;
