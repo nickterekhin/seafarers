@@ -72,6 +72,11 @@ aside .widget a {
 .vc_custom_heading a:focus {
   color: #bf0434; }
 
+.qode-news-holder .qode-post-info-date a {
+  font-size: 13px;
+  color: #8c8c8c;
+  font-weight: 400; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
