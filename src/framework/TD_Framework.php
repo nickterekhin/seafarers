@@ -180,7 +180,7 @@ class TD_Framework extends TD_Framework_Base
     {
         global $post;
 
-        if(!is_front_page())
+        if(is_front_page())
         {
 
             if(preg_match('/url(\'(.*?vc_gitem_image_\.png\')/',$output,$m)==1) {
