@@ -204,7 +204,7 @@ class TD_Framework extends TD_Framework_Base
             'font_size'=>28,
             'text'=>'Статей'
         );
-        $content.=qode_execute_shortcode('counter',$attr);
+        //$content.=qode_execute_shortcode('counter',$attr);
         //$content.=do_shortcode('[counter type="zero" box="no" position="center" text_font_weight="500" text_transform="uppercase" separator="yes" digit="1524" font_size="28" text="Статей" separator_color="#ffffff" element_appearance="100"]');
         return $content;
     }
