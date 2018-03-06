@@ -182,7 +182,7 @@ class TD_Framework extends TD_Framework_Base
 
 
             var_dump($output);
-        $res = preg_match('/url(\'(.*?vc_gitem_image_\.png\')\)/',$output,$m);
+        $res = preg_match('/url\(\'(.*?vc_gitem_image_\.png\')\)/',$output,$m);
             var_dump($res);
             var_dump($m);
             if($res==1) {
