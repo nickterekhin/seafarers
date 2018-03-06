@@ -152,6 +152,16 @@ div#ui-datepicker-div {
 body.page-id-30631.vertical_menu_enabled .full_screen_holder {
   padding-left: 0; }
 
+.td-about-text-block {
+  text-align: left; }
+  .td-about-text-block p {
+    font-size: 13px;
+    color: #fff;
+    font-family: 'Roboto, sans';
+    letter-spacing: 0.2px;
+    font-weight: 500;
+    line-height: 20px; }
+
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
     display: none; } }

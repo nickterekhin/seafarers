@@ -173,7 +173,6 @@ class TD_Framework extends TD_Framework_Base
     function set_post_image_url_value_by_category($output)
     {
         global $post;
-        //var_dump($posFt->ID);
         return $output;
     }
     function set_post_image_css_value_from_category($output)
