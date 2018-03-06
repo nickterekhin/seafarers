@@ -41,6 +41,10 @@ aside .widget a {
   padding-bottom: 14px;
   border-bottom: 1px dotted #a9a9a9; }
 
+.qode-layout1-item .qode-post-title {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
