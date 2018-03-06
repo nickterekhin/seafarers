@@ -181,6 +181,7 @@ class TD_Framework extends TD_Framework_Base
         global $post;
         if(!is_admin())
         {
+            var_dump($output);
             if(preg_match('/url(\'(.*?vc_gitem_image_\.png\')/',$output,$m)==1) {
                 var_dump($m);
                 $cat = wp_get_post_terms($post->ID, 'category');
