@@ -193,6 +193,7 @@ class TD_Framework extends TD_Framework_Base
     {
 
         global $post;
+        var_dump($post);
         if($post->ID==30631) {
             $attr = array(
                 'type' => 'zero',
