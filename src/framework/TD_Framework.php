@@ -170,6 +170,12 @@ class TD_Framework extends TD_Framework_Base
 
             echo $this->View($view_name, $params);
     }
+    function set_post_image_url_value_by_category($output)
+    {
+        global $post;
+        var_dump($post->ID);
+        return $output;
+    }
 }
 
 function init_framework()
