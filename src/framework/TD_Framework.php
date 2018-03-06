@@ -182,9 +182,9 @@ class TD_Framework extends TD_Framework_Base
 
         if(is_front_page())
         {
-
+            var_dump($output);
             if(preg_match('/url(\'(.*?vc_gitem_image_\.png\')/',$output,$m)==1) {
-
+                var_dump($m);
                 $cat = wp_get_post_terms($post->ID, 'category');
                 $img = get_field('header_image', 'category_' . $cat[0]->term_id);
                 if ($img) {
