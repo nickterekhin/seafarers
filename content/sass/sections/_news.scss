@@ -75,3 +75,19 @@
 .qode-news-layout-title{
   /*border-bottom:1px dotted #bf0434 !important;*/
 }
+.vc_custom_heading {
+  a{
+    &:hover
+    {
+      color:#bf0434;
+    }
+    &:visited
+    {
+      color:#bf0434;
+    }
+    &:focus
+    {
+      color:#bf0434;
+    }
+  }
+}

@@ -65,6 +65,13 @@ aside .widget a {
 .qode-news-layout-title {
   /*border-bottom:1px dotted #bf0434 !important;*/ }
 
+.vc_custom_heading a:hover {
+  color: #bf0434; }
+.vc_custom_heading a:visited {
+  color: #bf0434; }
+.vc_custom_heading a:focus {
+  color: #bf0434; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
