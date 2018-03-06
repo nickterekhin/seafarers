@@ -25,7 +25,7 @@
 }
 
 .td-header{
-  padding-bottom:14px;
+  padding-bottom:21px;
   border-bottom:1px dotted #a9a9a9;
 }
 .qode-layout1-item {
@@ -59,4 +59,8 @@
     font-weight: 600;
     font-size: 16px;
   }
+}
+.td-grid-item{
+  box-shadow: 0px 2px 2px 0px rgba(0, 6, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.01);
+  background: #fafafa;
 }
