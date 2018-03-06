@@ -52,6 +52,12 @@ aside .widget a {
   .qode-btn.qode-btn-icon.td-all-news-btn .qode-button-v2-icon-holder {
     font-size: 22px; }
 
+.td-date-in-grid-item span {
+  background-color: #fff;
+  padding: 5px;
+  font-weight: 600;
+  font-size: 16px; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
