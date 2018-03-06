@@ -34,9 +34,22 @@
     margin-bottom: 10px;
   }
 }
+.qode-btn
+{
+  &.qode-btn-icon{
+    &.qode-btn-solid{
+      &.td-all-news-btn{
+        line-height:32px;
+      }
+    }
+  }
+  &.qode-btn-icon{
+    &.td-all-news-btn{
+      height: 32px;
+    }
+  }
+}
 .td-all-news-btn{
-  height: 32px;
-  line-height:32px;
   .qode-button-v2-icon-holder{
     font-size:22px;
   }
