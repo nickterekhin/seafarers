@@ -37,6 +37,11 @@ aside .widget a {
 .td-news-separator > div {
   background-color: #bf0434 !important; }
 
+.td-header {
+  margin-top: 29px;
+  padding-bottom: 19px;
+  border: 1px dotted #a9a9a9; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
