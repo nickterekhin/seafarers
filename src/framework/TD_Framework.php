@@ -213,7 +213,7 @@ class TD_Framework extends TD_Framework_Base
             $counter = qode_execute_shortcode('counter', $attr);
             $wrapper_content.=$counter;
             $wrapper->innertext = $wrapper_content;
-            $content.=$html->save();
+            $content=$html->save();
         }
 
         return $content;
