@@ -162,6 +162,9 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
     font-weight: 500;
     line-height: 20px; }
 
+.td-counter-holder p {
+  font-family: Oswald,sans-serif; }
+
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
     display: none; } }
