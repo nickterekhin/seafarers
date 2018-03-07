@@ -203,7 +203,7 @@ class TD_Framework extends TD_Framework_Base
                 'text_font-weight' => '500',
                 'text_transform' => 'uppercase',
                 'separator' => 'yes',
-                'digit' => 1245,//$this->get_news_quantity_in_section('marine-news'),
+                'digit' => $this->get_news_quantity_in_section('marine-news'),
                 'font_size' => 28,
                 'text' => 'Статей'
             );
@@ -223,7 +223,7 @@ class TD_Framework extends TD_Framework_Base
             'category_name'=>$section_slug
         );
             $query = $this->tools->get_post_query($args);
-
+        wp_reset_postdata();
         return $query->post_count;
     }
 
