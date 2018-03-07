@@ -207,7 +207,7 @@ class TD_Framework extends TD_Framework_Base
                 'font_size' => 28,
                 'text' => 'Статей'
             );
-            $attr['digit'] = $this->get_news_quantity_in_section('marine-news');
+            $attr['digit'] = $this->get_news_quantity_in_section('marine_news');
             var_dump($attr);
             var_dump($content);
             $counter = qode_execute_shortcode('counter', $attr);
