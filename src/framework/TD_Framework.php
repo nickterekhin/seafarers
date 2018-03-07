@@ -224,6 +224,7 @@ class TD_Framework extends TD_Framework_Base
         );
             $query = $this->tools->get_post_query($args);
         wp_reset_postdata();
+        var_dump($query->post_count);
         return $query->post_count;
     }
 
