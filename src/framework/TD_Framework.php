@@ -195,7 +195,7 @@ class TD_Framework extends TD_Framework_Base
 
         global $post;
 
-        if($post->ID==338) {
+        if($post->ID==30631) {
             $attr = array(
                 'type' => 'zero',
                 'box' => 'no',
@@ -221,7 +221,7 @@ class TD_Framework extends TD_Framework_Base
             'category_name'=>$section_slug
         );
             $query = $this->tools->get_post_query($args);
-        var_dump($query->post_count);
+
         return $query->post_count;
     }
 
