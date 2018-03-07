@@ -223,7 +223,7 @@ class TD_Framework extends TD_Framework_Base
         $args = array(
             'category_name'=>$section_slug
         );
-        var_dump($args);
+
             $query = $this->tools->get_post_query($args);
         return $query->post_count;
     }

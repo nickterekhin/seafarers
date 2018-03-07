@@ -266,7 +266,7 @@ class TD_Theme_Tools
                 $query_array['offset'] = $params['offset'];
             }
         }
-
+        var_dump($query_array);
         $list_query = new WP_Query($query_array);
 
         if (!empty($params['offset']) && $params['offset'] > '0') {
