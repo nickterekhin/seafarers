@@ -222,7 +222,7 @@ class TD_Framework extends TD_Framework_Base
     {
         $args = array(
             'post_type'=>'post',
-            'category'=>array(5),
+            'category'=>5,
             'posts_per_page'=>'-1'
         );
             $query = get_posts($args);
