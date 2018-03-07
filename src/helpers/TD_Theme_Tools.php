@@ -268,7 +268,7 @@ class TD_Theme_Tools
         }
         var_dump($query_array);
         $list_query = new WP_Query($query_array);
-
+        var_dump($list_query);
         if (!empty($params['offset']) && $params['offset'] > '0') {
             $list_query->max_num_pages = ceil(($list_query->found_posts - $params['offset']) / $params['posts_per_page']);
         }
