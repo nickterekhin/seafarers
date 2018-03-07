@@ -142,7 +142,8 @@ div#ui-datepicker-div {
     margin: 0 3px 0 8px;
     content: ' | '; }
   .footer_top .menu-item a {
-    display: inline-block !important; }
+    display: inline-block !important;
+    text-transform: uppercase; }
 .footer_top .td-copyright-info li p {
   font-size: 11px;
   line-height: 1.7;
