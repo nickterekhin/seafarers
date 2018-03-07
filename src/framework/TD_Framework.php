@@ -3,7 +3,7 @@ namespace TerekhinDevelopment\framework;
 
 use WP_Post;
 use WP_Term;
-
+include(CHILD_THEME_PATH.'/libs/simple_html_dom.php');
 class TD_Framework extends TD_Framework_Base
 {
     private static $instance;
@@ -193,8 +193,12 @@ class TD_Framework extends TD_Framework_Base
     {
 
         global $post;
-        var_dump($post);
+
         if($post->ID==30631) {
+            $html = str_get_html($content);
+            $wrapper = $html->find('div.fp-table div.wpb_wrapper',0);
+             $wrapper_content = $wrapper->innertext;
+
             $attr = array(
                 'type' => 'zero',
                 'box' => 'no',
@@ -206,8 +210,12 @@ class TD_Framework extends TD_Framework_Base
                 'font_size' => 28,
                 'text' => 'Статей'
             );
-            $content .= qode_execute_shortcode('counter', $attr);
+            $counter = qode_execute_shortcode('counter', $attr);
+            $wrapper_content.=$counter;
+            $wrapper->innertext = $wrapper_content;
+            $content.=$html->save();
         }
+
         return $content;
     }
 }
