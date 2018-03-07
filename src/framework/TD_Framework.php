@@ -203,7 +203,7 @@ class TD_Framework extends TD_Framework_Base
                 'text_font-weight' => '500',
                 'text_transform' => 'uppercase',
                 'separator' => 'yes',
-                'digit' => $this->get_news_quantity_in_section('marine-news'),
+                'digit' => 1245,//$this->get_news_quantity_in_section('marine-news'),
                 'font_size' => 28,
                 'text' => 'Статей'
             );
