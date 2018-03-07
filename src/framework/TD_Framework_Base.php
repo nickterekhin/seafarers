@@ -8,11 +8,14 @@ abstract class TD_Framework_Base
 {
 
     protected $tools;
+    protected $db;
     /**
      * TD_Framework_Base constructor.
      */
     protected function __construct()
     {
+        global $wpdb;
+        $this->db = $wpdb;
         $this->tools = TD_Theme_Tools::getInstance();
     }
 

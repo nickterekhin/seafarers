@@ -2,6 +2,7 @@
 namespace TerekhinDevelopment\framework;
 
 use WP_Post;
+use WP_Query;
 use WP_Term;
 include(CHILD_THEME_PATH.'/libs/simple_html_dom.php');
 class TD_Framework extends TD_Framework_Base
@@ -202,7 +203,7 @@ class TD_Framework extends TD_Framework_Base
                 'text_font-weight' => '500',
                 'text_transform' => 'uppercase',
                 'separator' => 'yes',
-                'digit' => 15247,
+                'digit' => $this->get_news_quantity_in_section('marine_news'),
                 'font_size' => 28,
                 'text' => 'Статей'
             );
@@ -213,6 +214,16 @@ class TD_Framework extends TD_Framework_Base
 
         return $content;
     }
+
+    private function get_news_quantity_in_section($section_slug)
+    {
+        $args = array(
+            'category_name'=>$section_slug
+        );
+            $query = $this->tools->get_post_query($args);
+        return $query->post_count;
+    }
+
 }
 
 function init_framework()
