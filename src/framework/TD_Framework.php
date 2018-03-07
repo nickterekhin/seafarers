@@ -207,6 +207,7 @@ class TD_Framework extends TD_Framework_Base
                 'font_size' => 28,
                 'text' => 'Статей'
             );
+            var_dump($content);
             $counter = qode_execute_shortcode('counter', $attr);
             $content = preg_replace('/(\[vc_column_inner width="1\/4" el_id="counter_1"\])/','$1'.$counter,$content);
 
