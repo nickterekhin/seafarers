@@ -203,15 +203,13 @@ class TD_Framework extends TD_Framework_Base
                 'text_font-weight' => '500',
                 'text_transform' => 'uppercase',
                 'separator' => 'yes',
-                'digit' => 0,
+                'digit' => $this->get_news_quantity_in_section('marine-news'),
                 'font_size' => 28,
                 'text' => 'Статей'
             );
-            $attr['digit'] = $this->get_news_quantity_in_section('marine-news');
-            var_dump($attr);
-            var_dump($content);
-            //$counter = qode_execute_shortcode('counter', $attr);
-            //$content = preg_replace('/(el_id="counter_1"\])/','$1'.$counter,$content);
+
+            $counter = qode_execute_shortcode('counter', $attr);
+            $content = preg_replace('/(el_id="counter_1"\])/','$1'.$counter,$content);
 
         }
 
