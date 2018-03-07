@@ -195,10 +195,6 @@ class TD_Framework extends TD_Framework_Base
         global $post;
 
         if($post->ID==30631) {
-            $html = str_get_html($content);
-            $wrapper = $html->find('div.fp-table div.wpb_wrapper',0);
-             $wrapper_content = $wrapper->innertext;
-
             $attr = array(
                 'type' => 'zero',
                 'box' => 'no',
@@ -211,9 +207,8 @@ class TD_Framework extends TD_Framework_Base
                 'text' => 'Статей'
             );
             $counter = qode_execute_shortcode('counter', $attr);
-            $wrapper_content.=$counter;
-            $wrapper->innertext = $wrapper_content;
-            $content=$html->save();
+            $content = preg_replace('/(\[\/vc_column\])/',$counter.'$1',$content);
+
         }
 
         return $content;
