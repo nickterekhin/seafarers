@@ -225,10 +225,10 @@ class TD_Framework extends TD_Framework_Base
             'category_name'=>$section_slug,
             'posts_per_page'=>'-1'
         );
-            $query = new WP_Query($args);
+            $query = get_posts($args);
 
-        var_dump($query->post_count);
-        return $query->post_count;
+        var_dump(count($query));
+        return count($query);
     }
 
 }
