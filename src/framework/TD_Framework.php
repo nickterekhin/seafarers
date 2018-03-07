@@ -227,7 +227,7 @@ class TD_Framework extends TD_Framework_Base
         );
 
         $counter = qode_execute_shortcode('counter', $attr);
-        $counter = preg_replace('/class="(qode_counter_holder)"/','class="$1 td-counter-holder"',$counter);
+        $counter = preg_replace('/class="(q_counter_holder)/','class="$1 td-counter-holder',$counter);
         return preg_replace('/(el_id="counter_'.$counter_id.'"\])/','$1'.$counter,$content);
     }
     public function get_news_quantity_in_section($section_slug)
