@@ -221,10 +221,12 @@ class TD_Framework extends TD_Framework_Base
     private function get_news_quantity_in_section($section_slug)
     {
         $args = array(
-            'category_name'=>$section_slug
+            'post_type'=>'post',
+            'category_name'=>$section_slug,
+            'posts_per_page'=>'-1'
         );
-            $query = $this->tools->get_post_query($args);
-        wp_reset_postdata();
+            $query = new WP_Query($args);
+
         var_dump($query->post_count);
         return $query->post_count;
     }
