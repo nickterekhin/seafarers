@@ -214,15 +214,15 @@ class TD_Framework extends TD_Framework_Base
             'type' => 'zero',
             'box' => 'no',
             'position' => 'center',
-            'font-color'=>'#fff',
+            'font_color'=>'#fff',
             'text_font-weight' => '500',
             'text_transform' => 'uppercase',
             'separator' => 'yes',
             'digit' => $this->get_news_quantity_in_section($section_slug),
             'font_size' => 28,
             'text' => $text,
-            'text-size'=>14,
-            'text-color'=>'#fff',
+            'text_size'=>14,
+            'text_color'=>'#fff',
             'separator_color'=>'#fff'
         );
 
