@@ -218,17 +218,13 @@ class TD_Framework extends TD_Framework_Base
         return $content;
     }
 
-    private function get_news_quantity_in_section($section_slug)
+    public function get_news_quantity_in_section($section_slug)
     {
         $args = array(
-            'post_type'=>'post',
-            'category'=>5,
-            'posts_per_page'=>'-1'
+            'category_name'=>$section_slug
         );
-            $query = get_posts($args);
-
-        var_dump(count($query));
-        return count($query);
+            $query = $this->tools->get_post_query($args);
+        return $query->post_count;
     }
 
 }
