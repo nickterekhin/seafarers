@@ -220,12 +220,13 @@ class TD_Framework extends TD_Framework_Base
 
     public function get_news_quantity_in_section($section_slug)
     {
-        $args = array(
-            'category_name'=>$section_slug
-        );
-
-            $query = $this->tools->get_post_query($args);
-        return $query->post_count;
+        $sql = $this->db->prepare("SELECT COUNT(p.ID) as qty FROM wp_posts p
+INNER JOIN wp_term_relationships r ON p.ID = r.object_id
+INNER JOIN wp_term_taxonomy tt ON tt.term_taxonomy_id = r.term_taxonomy_id AND tt.taxonomy = 'category'
+INNER JOIN wp_terms t ON tt.term_id = t.term_id
+WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_slug);
+        $res = $this->db->get_row($sql);
+        return $res->qty;
     }
 
 }
