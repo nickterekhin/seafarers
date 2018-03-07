@@ -209,7 +209,7 @@ class TD_Framework extends TD_Framework_Base
             );
             var_dump($content);
             $counter = qode_execute_shortcode('counter', $attr);
-            $content = preg_replace('/(el_id="counter_1"\])/','$1'.$counter,$content);
+            //$content = preg_replace('/(el_id="counter_1"\])/','$1'.$counter,$content);
 
         }
 
