@@ -196,26 +196,32 @@ class TD_Framework extends TD_Framework_Base
         global $post;
 
         if($post->ID==30631) {
-            $attr = array(
-                'type' => 'zero',
-                'box' => 'no',
-                'position' => 'center',
-                'text_font-weight' => '500',
-                'text_transform' => 'uppercase',
-                'separator' => 'yes',
-                'digit' => $this->get_news_quantity_in_section('marine-news'),
-                'font_size' => 28,
-                'text' => 'Статей'
-            );
 
-            $counter = qode_execute_shortcode('counter', $attr);
-            $content = preg_replace('/(el_id="counter_1"\])/','$1'.$counter,$content);
 
+
+            $content = $this->set_counter($content,1,"Морские новости",'marine-news');
         }
 
         return $content;
     }
 
+    private function set_counter($content,$counter_id,$text,$section_slug)
+    {
+        $attr = array(
+            'type' => 'zero',
+            'box' => 'no',
+            'position' => 'center',
+            'text_font-weight' => '500',
+            'text_transform' => 'uppercase',
+            'separator' => 'yes',
+            'digit' => $this->get_news_quantity_in_section($section_slug),
+            'font_size' => 28,
+            'text' => $text
+        );
+
+        $counter = qode_execute_shortcode('counter', $attr);
+        return preg_replace('/(el_id="counter_'.$counter_id.'"\])/','$1'.$counter,$content);
+    }
     public function get_news_quantity_in_section($section_slug)
     {
         $sql = $this->db->prepare("SELECT COUNT(p.ID) as qty FROM wp_posts p
