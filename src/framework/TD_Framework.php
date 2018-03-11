@@ -401,9 +401,9 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
 
         }
 
-        if(isset($_REQUEST['filter-search']) && !empty($_REQUEST['filter-search']))
+        if(isset($_REQUEST['filter_search']) && !empty($_REQUEST['filter_search']))
         {
-            $where.=" AND '.$this->db->prefix.'posts.post_title REGEXP '[[:<:]]'".sanitize_text_field($_REQUEST['filter-search'])."'[[:>:]]' ";
+            $where.=" AND ".$this->db->prefix."posts.post_title REGEXP '[[:<:]]".sanitize_text_field($_REQUEST['filter_search'])."[[:>:]]' ";
         }
 
         return $where;
@@ -412,10 +412,10 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
     public function add_search_params_to_pagination($result)
     {
 
-        $result .= $this->setPaginationParam($_REQUEST,'filter-search',$result);
-        $result .= $this->setPaginationParam($_REQUEST,'date_year',$result);
-        $result .= $this->setPaginationParam($_REQUEST,'date_month',$result);
-        $result .= $this->setPaginationParam($_REQUEST,'date_day',$result);
+        $result = $this->setPaginationParam($_REQUEST,'filter-search',$result);
+        /*$result = $this->setPaginationParam($_REQUEST,'date_year',$result);
+        $result = $this->setPaginationParam($_REQUEST,'date_month',$result);
+        $result = $this->setPaginationParam($_REQUEST,'date_day',$result);*/
 
         return $result;
     }

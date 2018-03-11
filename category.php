@@ -4,10 +4,10 @@ global $wp_query,$terekhin_framework;
 $id = $wp_query->get_queried_object_id();
 $obj = $wp_query->get_queried_object();
 
-$wp_query->query_vars['posts_per_page'] = 15;
+$wp_query->query_vars['posts_per_page'] = 5;
 
 
-if((isset($_GET['date_year']) && !empty($_GET['date_year'])) || (isset($_GET['date_month']) && !empty($_GET['date_month'])) || (isset($_GET['date_day']) && !empty($_GET['date_day']))) {
+if((isset($_GET['date_year']) && !empty($_GET['date_year'])) || (isset($_GET['date_month']) && !empty($_GET['date_month'])) || (isset($_GET['date_day']) && !empty($_GET['date_day'])) || (isset($_REQUEST['filter_search']) && !empty($_REQUEST['filter_search']))) {
 
 	/*$wp_query->query_vars['date_query']=array(
 		array(
@@ -29,7 +29,7 @@ if((isset($_GET['date_year']) && !empty($_GET['date_year'])) || (isset($_GET['da
 	add_filter('posts_where',array($terekhin_framework,'search_bar_where_filter'));
 	$wp_query = new WP_Query($wp_query->query_vars);
 	remove_filter('posts_where',array($terekhin_framework,'search_bar_where_filter'));
-	print_r($wp_query->request);
+
 }else
 {
 	$wp_query = new WP_Query(($wp_query->query_vars));
