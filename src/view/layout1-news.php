@@ -3,7 +3,7 @@
     <?php if(isset($layout_title)):?>
         <div class="qode-news-list-title-holder">
             <h3 class="qode-news-layout-title"><?php echo $layout_title;?></h3>
-        </div><?php endif;?><div class="qode-news-list-inner-holder" data-number-of-items="3">
+        </div><?php endif;?><div class="qode-news-list-inner-holder" data-number-of-items="3" style="font-size: 0;">
         <?php foreach($posts as $p): ?>
         <div class="qode-news-item qode-layout1-item"><div class="qode-news-item-image-holder">
                 <div class="qode-post-image">
