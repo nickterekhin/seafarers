@@ -119,8 +119,12 @@ class TD_Framework extends TD_Framework_Base
             'layout_title'=>$title,
             'posts_per_page'=>9
         );
-        if($obj)
-            $args['category_name']=$obj->slug;
+        if($obj && $obj->taxonomy=='category') {
+            $args['category_name'] = $obj->slug;
+        }else if($obj && $obj->taxonomy=='post_tags')
+        {
+            $args['tag']=$obj->slug;
+        }
 
         if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year'] && $wp_query->query_vars['monthnum']) {
             $args['year'] = $wp_query->query_vars['year'];
@@ -144,8 +148,12 @@ class TD_Framework extends TD_Framework_Base
             'layout_title'=>$title,
             'posts_per_page'=>6
         );
-        if($obj)
-            $args['category_name']=$obj->slug;
+        if($obj && $obj->taxonomy=='category') {
+            $args['category_name'] = $obj->slug;
+        }else if($obj && $obj->taxonomy=='post_tags')
+        {
+            $args['tag']=$obj->slug;
+        }
 
         if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year'] && $wp_query->query_vars['monthnum']) {
             $args['year'] = $wp_query->query_vars['year'];
@@ -169,8 +177,12 @@ class TD_Framework extends TD_Framework_Base
             'columns_number' =>3
         );
 
-        if($obj)
-            $args['category_name']=$obj->slug;
+        if($obj && $obj->taxonomy=='category') {
+            $args['category_name'] = $obj->slug;
+        }else if($obj && $obj->taxonomy=='post_tags')
+        {
+            $args['tag']=$obj->slug;
+        }
 
         if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year'] && $wp_query->query_vars['monthnum']) {
             $args['year'] = $wp_query->query_vars['year'];
@@ -193,12 +205,16 @@ class TD_Framework extends TD_Framework_Base
         );
         $tax = get_term_by('slug', $category_slug, 'category');
         if ($tax) {
+            if($tax->slug=='videos')
+                $args['only_videos']='yes';
+
             if ($obj) {
                 $args['tax_query'] = array(
                     'relation' => 'OR'
                 );
                 if($obj->taxonomy!='category')
                 {
+                    $args['tax_query']['relation']='AND';
                     $args['tax_query'][]=
                         array(
                             'taxonomy' => $obj->taxonomy,
