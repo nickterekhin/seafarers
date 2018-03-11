@@ -38,6 +38,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 	<?php if(get_post_meta($id, "qode_page_scroll_amount_for_sticky", true)) { ?>
 		<script>
 		var page_scroll_amount_for_sticky = <?php echo get_post_meta($id, "qode_page_scroll_amount_for_sticky", true); ?>;
+			console.log(page_scroll_amount_for_sticky);
 		</script>
 	<?php } ?>
 		<?php get_template_part( 'templates/custom-category','title' ); ?>
