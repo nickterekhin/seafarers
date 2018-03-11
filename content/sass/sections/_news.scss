@@ -156,7 +156,7 @@
       display: inline-block;
       color:#a97a74;
       i{
-        margin-right: 5px;
+        margin-right: 5px !important;
       }
 
     }
@@ -165,11 +165,11 @@
     }
   }
   a{
-    color:#a97a74;
+    color:#a97a74 !important;
     i{
-      font-size: 14px;
-      top:2px;
-      color:#a97a74;
+      font-size: 14px !important;
+      top:2px !important;
+      color:#a97a74 !important;
     }
   }
 
