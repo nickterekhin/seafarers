@@ -74,7 +74,10 @@
 										?> 
 									</div>
 								</div>	
-								<div class="column2"> 
+								<div class="column2">
+									<div class="column_inner">
+										<?php get_template_part('templates/td_sidebar','news_parts');?>
+									</div>
 									<?php get_sidebar(); ?>
 								</div>
 							</div>
