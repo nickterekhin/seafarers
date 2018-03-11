@@ -458,14 +458,14 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
 
     public function get_post_featured_image($post_id)
     {
-        $thumb_url = get_the_post_thumbnail_url($post_id);
-        if(!$thumb_url){
+        $images = array();
+        $images['featured'] = get_the_post_thumbnail_url($post_id);
             $args = get_the_terms($post_id,'category');
             if($args && count($args)>0)
-                return $this->getImageTitle($args[0]->taxonomy,$args[0]->term_id);
-        }
+                $images['category']= $this->getImageTitle($args[0]->taxonomy,$args[0]->term_id);
 
-        return $thumb_url;
+
+        return $images;
     }
 }
 
