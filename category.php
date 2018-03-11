@@ -15,7 +15,6 @@ if((isset($_GET['date_year']) && !empty($_GET['date_year'])) || (isset($_GET['da
 	add_filter('posts_join',array($terekhin_framework,'search_bar_join_post_tag_filter'));
 	$wp_query = new WP_Query($wp_query->query_vars);
 	remove_filter('posts_where',array($terekhin_framework,'search_bar_where_filter'));
-	print_r($wp_query->request);
 }else
 {
 	$wp_query = new WP_Query(($wp_query->query_vars));
