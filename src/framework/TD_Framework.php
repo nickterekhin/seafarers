@@ -227,8 +227,9 @@ class TD_Framework extends TD_Framework_Base
 
             $params = wp_parse_args($params,array('columns_number'=>1,'title_align'=>'separator_align_left'));
 
+            add_filter('posts_where',array($this,'custom_where_filter_posts'));
             $posts_query = $this->tools->get_post_query($params);
-
+            remove_filter('posts_where',array($this,'custom_where_filter_posts'));
             $posts = $posts_query->posts;
 
             $params['class'] = $this;
@@ -245,6 +246,12 @@ class TD_Framework extends TD_Framework_Base
             ));
 
             echo $this->View($view_name, $params);
+    }
+    function custom_where_filter_posts($where)
+    {
+        $today = date("Y-m-d",time());
+        $where .= " AND post_date >= '2017-01-01' AND post_date <= '".$today."'";
+        return $where;
     }
     function set_post_image_url_value_by_category($output)
     {
