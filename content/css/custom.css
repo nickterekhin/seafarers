@@ -134,6 +134,15 @@ aside .widget a {
     top: 2px !important;
     color: #8d8d8d !important; }
 
+article .td-single-post-info {
+  font-family: 'Oswald', 'sans-serif';
+  text-transform: uppercase;
+  color: #909090 !important; }
+  article .td-single-post-info span {
+    letter-spacing: 1px; }
+  article .td-single-post-info a {
+    color: #909090 !important; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
