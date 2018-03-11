@@ -30,7 +30,6 @@ var_dump($responsive_title_image);
 var_dump($fixed_title_image);
 
 if($custom_title_image) {
-	$responsive_title_image = 'yes';
 	$title_image = $custom_title_image;
 }
 
