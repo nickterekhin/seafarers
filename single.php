@@ -1,7 +1,7 @@
 <?php  extract(qode_get_blog_single_params()); ?>
 <?php
 	$single_loop = 'custom_blog_single';
-
+	var_dump($single_type);
 ?>
 <?php get_header(); ?>
 <?php if (have_posts()) : ?>
