@@ -44,4 +44,10 @@ abstract class TD_Framework_Base
 
         return $background_image;
     }
+    protected function get_sql_by_taxonomy($taxonomy_slug)
+    {
+        return "SELECT tr.object_id, t.name as tag_name FROM ".$this->db->terms." t
+INNER JOIN ".$this->db->term_taxonomy." tt ON t.term_id = tt.term_id AND tt.taxonomy = '".$taxonomy_slug."'
+INNER JOIN ".$this->db->term_relationships." tr ON tt.term_taxonomy_id = tr.term_taxonomy_id";
+    }
 }

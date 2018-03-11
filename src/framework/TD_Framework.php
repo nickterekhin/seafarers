@@ -386,6 +386,9 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
 
     public function search_bar_where_filter($where)
     {
+        global $wp_query;
+        $obj = $wp_query->get_queried_object();
+
         if((isset($_GET['date_year']) && !empty($_GET['date_year'])) || (isset($_GET['date_month']) && !empty($_GET['date_month'])) || (isset($_GET['date_day']) && !empty($_GET['date_day']))) {
 
             $where .= ' AND (';
@@ -403,7 +406,13 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
 
         if(isset($_REQUEST['filter_search']) && !empty($_REQUEST['filter_search']))
         {
-            $where.=" AND ".$this->db->prefix."posts.post_title REGEXP '[[:<:]]".sanitize_text_field($_REQUEST['filter_search'])."[[:>:]]' ";
+            $where .=" AND (";
+            $where.=" ".$this->db->prefix."posts.post_title REGEXP '[[:<:]]".sanitize_text_field($_REQUEST['filter_search'])."[[:>:]]' OR ";
+            if($obj && $obj->taxonomy=='category') {
+                $where .= " pm_tag.tag_name REGEXP '[[:<:]]" . $_REQUEST['filter_search'] . "[[:>:]]' OR ";
+            }
+            $where.=" ".$this->db->prefix."posts.post_excerpt REGEXP '[[:<:]]".sanitize_text_field($_REQUEST['filter_search'])."[[:>:]]' )";
+
         }
 
         return $where;
@@ -433,6 +442,16 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
             }
         }
         return $result;
+    }
+
+    public function search_bar_join_post_tag_filter($join)
+    {
+        if(isset($_REQUEST['filter_search']) && !empty($_REQUEST['filter_search']))
+        {
+            $sql_tags = $this->get_sql_by_taxonomy('post_tag');
+            $join .=" LEFT JOIN (".$sql_tags.") pm_tag ON (".$this->db->prefix."posts.ID = pm_tag.object_id)";
+        }
+        return $join;
     }
 }
 
