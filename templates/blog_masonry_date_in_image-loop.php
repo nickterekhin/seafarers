@@ -74,6 +74,23 @@ switch ($thumb_size_temp) {
 						<?php if($blog_enable_social_share == "yes"){
 							echo do_shortcode('[social_share_list]');
 						} ?>
+						<?php
+						$comments_qty = get_comments_number(get_the_ID());
+						$views_qty = get_post_meta(get_the_ID(),'qode_count_post_views_meta',true);
+						?>
+						<?php if($comments_qty>0 || $views_qty>0){ ?>
+							<div class="td-additional-post-info">
+
+								<ul>
+									<?php if($comments_qty>0){ ?>
+										<li><i class="fa fa-eye"></i><?php echo $comments_qty;?></li>
+									<?php } ?>
+									<?php if($views_qty>0){ ?>
+										<li><i class="fa fa-comments"></i><?php echo $views_qty;?></li>
+									<?php }?>
+								</ul>
+							</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -105,6 +122,23 @@ switch ($thumb_size_temp) {
 						<?php if($blog_enable_social_share == "yes"){
 							echo do_shortcode('[social_share_list]');
 						} ?>
+						<?php
+						$comments_qty = get_comments_number(get_the_ID());
+						$views_qty = get_post_meta(get_the_ID(),'qode_count_post_views_meta',true);
+						?>
+						<?php if($comments_qty>0 || $views_qty>0){ ?>
+							<div class="td-additional-post-info">
+
+								<ul>
+									<?php if($comments_qty>0){ ?>
+										<li><i class="fa fa-eye"></i><?php echo $comments_qty;?></li>
+									<?php } ?>
+									<?php if($views_qty>0){ ?>
+										<li><i class="fa fa-comments"></i><?php echo $views_qty;?></li>
+									<?php }?>
+								</ul>
+							</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -125,6 +159,23 @@ switch ($thumb_size_temp) {
 								<?php if($blog_enable_social_share == "yes"){
 									echo do_shortcode('[social_share_list]');
 								} ?>
+								<?php
+								$comments_qty = get_comments_number(get_the_ID());
+								$views_qty = get_post_meta(get_the_ID(),'qode_count_post_views_meta',true);
+								?>
+								<?php if($comments_qty>0 || $views_qty>0){ ?>
+									<div class="td-additional-post-info">
+
+										<ul>
+											<?php if($comments_qty>0){ ?>
+												<li><i class="fa fa-eye"></i><?php echo $comments_qty;?></li>
+											<?php } ?>
+											<?php if($views_qty>0){ ?>
+												<li><i class="fa fa-comments"></i><?php echo $views_qty;?></li>
+											<?php }?>
+										</ul>
+									</div>
+								<?php } ?>
 							</div>	
 						</div>
 					</div>
@@ -162,6 +213,23 @@ switch ($thumb_size_temp) {
 							<?php if($blog_enable_social_share == "yes"){
 								echo do_shortcode('[social_share_list]');
 							} ?>
+							<?php
+							$comments_qty = get_comments_number(get_the_ID());
+							$views_qty = get_post_meta(get_the_ID(),'qode_count_post_views_meta',true);
+							?>
+							<?php if($comments_qty>0 || $views_qty>0){ ?>
+								<div class="td-additional-post-info">
+
+									<ul>
+										<?php if($comments_qty>0){ ?>
+											<li><i class="fa fa-eye"></i><?php echo $comments_qty;?></li>
+										<?php } ?>
+										<?php if($views_qty>0){ ?>
+											<li><i class="fa fa-comments"></i><?php echo $views_qty;?></li>
+										<?php }?>
+									</ul>
+								</div>
+							<?php } ?>
 						</div>
 					</div>
 				</div>
@@ -183,6 +251,23 @@ switch ($thumb_size_temp) {
 							<?php if($blog_enable_social_share == "yes"){
 								echo do_shortcode('[social_share_list]');
 							} ?>
+							<?php
+							$comments_qty = get_comments_number(get_the_ID());
+							$views_qty = get_post_meta(get_the_ID(),'qode_count_post_views_meta',true);
+							?>
+							<?php if($comments_qty>0 || $views_qty>0){ ?>
+								<div class="td-additional-post-info">
+
+									<ul>
+										<?php if($comments_qty>0){ ?>
+											<li><i class="fa fa-eye"></i><?php echo $comments_qty;?></li>
+										<?php } ?>
+										<?php if($views_qty>0){ ?>
+											<li><i class="fa fa-comments"></i><?php echo $views_qty;?></li>
+										<?php }?>
+									</ul>
+								</div>
+							<?php } ?>
 						</div>	
 					</div>
 				</div>
@@ -218,6 +303,23 @@ switch ($thumb_size_temp) {
 						<?php if($blog_enable_social_share == "yes"){
 							echo do_shortcode('[social_share_list]');
 						} ?>
+						<?php
+						$comments_qty = get_comments_number(get_the_ID());
+						$views_qty = get_post_meta(get_the_ID(),'qode_count_post_views_meta',true);
+						?>
+						<?php if($comments_qty>0 || $views_qty>0){ ?>
+						<div class="td-additional-post-info">
+
+							<ul>
+								<?php if($comments_qty>0){ ?>
+								<li><i class="fa fa-eye"></i><?php echo $comments_qty;?></li>
+								<?php } ?>
+								<?php if($views_qty>0){ ?>
+								<li><i class="fa fa-comments"></i><?php echo $views_qty;?></li>
+								<?php }?>
+							</ul>
+						</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
