@@ -4,7 +4,7 @@ $obj = $wp_query->get_queried_object();
 if($obj){
     $today = time();
     $today_year = date("Y",$today);
-    $today_month = date("F",$today);
+    $today_month = $terekhin_framework->getMonth(date("n",$today));
     $today_day = date("d",$today);
 ?>
 <script type="text/javascript">
@@ -77,9 +77,9 @@ if($obj){
                 {
                     ?>
                     <li>
-                        <?php $dateObj = DateTime::createFromFormat('!m',$i); ?>
-                        <a href="#" data-item-value="<?php echo $i;?>" data-item-text="<?php echo $dateObj->format('F')?>"><?php
-                            echo $dateObj->format('F');
+
+                        <a href="#" data-item-value="<?php echo $i;?>" data-item-text="<?php echo $terekhin_framework->getMonth($i);?>"><?php
+                            echo $terekhin_framework->getMonth($i);
                             ?></a>
                     </li>
                     <?php

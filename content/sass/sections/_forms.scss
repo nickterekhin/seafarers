@@ -96,7 +96,7 @@
       background: #fff;
       text-align: center;
       color: #333;
-      padding: 0px 20px 0px 10px;
+      padding: 0 10px 0 10px;
       white-space: nowrap;
       vertical-align: middle;
       touch-action: manipulation;
@@ -124,7 +124,8 @@
       background-clip: padding-box;
       border-left: 1px solid #e5e5e5 !important;
       border-radius: 0;
-      overflow: hidden;
+      overflow: auto;
+      max-height:500px;
       &::-webkit-scrollbar{
         width:10px;
         height:10px;

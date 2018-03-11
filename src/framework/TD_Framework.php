@@ -371,6 +371,16 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         return $title;
     }
 
+    public function getMonth($n,$rus=true)
+    {
+        $ruMonths = array( 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' );
+        $enMonths = array( 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' );
+        if($rus)
+        return $ruMonths[$n-1];
+
+        return $enMonths[$n-1];
+    }
+
 }
 
 function init_framework()
