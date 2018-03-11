@@ -467,7 +467,8 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
                 $args = array_filter($args, function ($e) {
                     return $e->slug != 'opinions' && $e->slug != 'videos';
                 });
-                var_dump($args);
+                var_dump(array_values($args));
+                $args = array_values($args);
             }
             $image_category = $this->getImageTitle($args[0]->taxonomy, $args[0]->term_id);
         }
