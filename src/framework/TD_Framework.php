@@ -424,7 +424,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
     {
         if((isset($param_method[$query_string]) && !empty($param_method[$query_string])) && preg_match('/'.$query_string.'=/',$result,$m)==0)
         {
-            if(preg_match('/\?/',$result,$m))
+            if(preg_match('/\?/',$result,$m)==1)
             {
                 $result.='&'.$query_string.'='.$param_method[$query_string];
             }else
