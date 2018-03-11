@@ -139,6 +139,7 @@
     li{
       color:#8d8d8d;
       display: inline-block;
+
       i{
         margin-right:5px;
       }
@@ -155,9 +156,13 @@
     li{
       display: inline-block;
       color:#8d8d8d;
-      i{
-        margin-right: 5px !important;
+      span{
+        font-size: 13px;
+        i{
+          margin-right: 5px !important;
+        }
       }
+
 
     }
     li+li{

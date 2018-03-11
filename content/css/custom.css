@@ -121,8 +121,10 @@ aside .widget a {
   .td-additional-post-info-layouts ul li {
     display: inline-block;
     color: #8d8d8d; }
-    .td-additional-post-info-layouts ul li i {
-      margin-right: 5px !important; }
+    .td-additional-post-info-layouts ul li span {
+      font-size: 13px; }
+      .td-additional-post-info-layouts ul li span i {
+        margin-right: 5px !important; }
   .td-additional-post-info-layouts ul li + li {
     margin-left: 10px; }
 .td-additional-post-info-layouts a {
