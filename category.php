@@ -106,8 +106,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 								get_template_part('templates/category_blog', 'structure');
 							?>
 
-						<?php $terekhin_framework->showSeparator('20','20',null,'transparent'); ?>
-						<?php $terekhin_framework->show_most_comments_in_section($obj);?>
+
 					</div>
 					<div class="column2">
 						<div class="column_inner">
@@ -130,6 +129,20 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 					</div>
 				</div>
 			<?php endif; ?>
+			<div class="vc_row wpb_row section vc_row-fluid  grid_section" style=" text-align:left;">
+				<div class=" section_inner clearfix">
+					<div class="section_inner_margin clearfix">
+						<div class="wpb_column vc_column_container vc_col-sm-12">
+							<div class="vc_column-inner ">
+								<div class="wpb_wrapper">
+									<?php $terekhin_framework->showSeparator('20','20',null,'transparent'); ?>
+									<?php $terekhin_framework->show_most_comments_in_section($obj);?>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
         <?php if(isset($qode_options_proya['overlapping_content']) && $qode_options_proya['overlapping_content'] == 'yes') {?>
             </div></div>
