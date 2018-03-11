@@ -85,7 +85,9 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 
 
 			<?php if(($sidebar == "default")||($sidebar == "")) : ?>
-				<?php $terekhin_framework->showSeparator('Все Новости в разделе','separator_align_left');?>
+				<?php
+				$terekhin_framework->showHeader('Все Новости в разделе',3,'left','td-header');
+				?>
 				<?php 
 					get_template_part('templates/category_blog', 'structure');
 				?>
@@ -93,7 +95,9 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 
 				<div class="<?php if($sidebar == "1"):?>two_columns_66_33<?php elseif($sidebar == "2") : ?>two_columns_75_25<?php endif; ?> background_color_sidebar grid2 clearfix">
 					<div class="column1">
-						<?php $terekhin_framework->showSeparator('Все Новости в разделе','separator_align_left');?>
+						<?php
+						$terekhin_framework->showHeader('Все Новости в разделе',3,'left','td-header');
+						?>
 							<?php 
 								get_template_part('templates/category_blog', 'structure');
 							?>

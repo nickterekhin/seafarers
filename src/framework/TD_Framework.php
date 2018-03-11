@@ -79,7 +79,30 @@ class TD_Framework extends TD_Framework_Base
 
         return $date;
     }
-    function showSeparator($text,$title_align=null)
+    function showHeader($text,$header_num,$align='left',$css_class='')
+    {
+        $attr = array(
+            'font_container'=>'tag:h'.$header_num.'|text_align:'.$align,
+            'use_theme_fonts'=>'yes',
+            'text'=>$text,
+            'el_class'=>$css_class
+        );
+            echo qode_execute_shortcode('vc_custom_heading',$attr);
+    }
+
+    function showSeparator($margin_top='20',$margin_bottom='20',$color='#a9a9a9',$type='normal')
+    {
+        $attr= array(
+            'type'=>$type,
+            'color'=>$color,
+            'up'=>$margin_top,
+            'down'=>$margin_bottom,
+            'el_class'=>'td-news-simple-separator'
+        );
+        echo qode_execute_shortcode('vc_separator',$attr);
+    }
+
+    function showSeparatorWithText($text,$title_align=null)
     {
 
         $title_align = $title_align?'title_align="'.$title_align.'"':'';
