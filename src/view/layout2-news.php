@@ -11,9 +11,9 @@ use TerekhinDevelopment\framework\TD_Framework;
 <div class="qode-news-holder qode-layout2 qode-news-columns-<?php echo $columns_number;?> qode-nl-normal-space">
     <?php if(isset($layout_title)){ ?>
     <div class="qode-news-list-title-holder">
-        <!--<h3 class="qode-news-layout-title"><?php /*echo $layout_title;*/?></h3>-->
+        <h3 class="qode-news-layout-title"><?php echo $layout_title;?></h3>
 
-        <?php $class->showSeparator($layout_title,$title_align); ?>
+        <?php //$class->showSeparator($layout_title,$title_align); ?>
     </div>
         <?php } ?>
     <div class="qode-news-list-inner-holder" data-number-of-items="<?php echo $columns_number;?>">
