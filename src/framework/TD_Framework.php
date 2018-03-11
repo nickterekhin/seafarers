@@ -168,7 +168,7 @@ class TD_Framework extends TD_Framework_Base
             'title_align'=>$title_align,
             'columns_number' =>3
         );
-        var_dump($obj);
+
         if($obj)
             $args['category_name']=$obj->slug;
 
