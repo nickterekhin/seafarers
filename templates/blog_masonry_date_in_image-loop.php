@@ -199,6 +199,9 @@ switch ($thumb_size_temp) {
 			<div class="post_text">
 				<div class="post_text_inner">
 					<h5 itemprop="name" class="entry_title"><a itemprop="url" href="<?php the_permalink(); ?>" target="_self" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h5>
+					<div class="qode-post-info-category td-categories-list td-vertical-list">
+						<?php foreach(get_the_category() as $category){  echo qode_category_color_name($category);} ?>
+					</div>
 					<?php qode_excerpt(); ?>
 					<div class="post_info">
 						<?php if($blog_enable_social_share == "yes"){

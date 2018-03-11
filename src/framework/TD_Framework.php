@@ -128,6 +128,7 @@ class TD_Framework extends TD_Framework_Base
         if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum'])) {
             $args['year'] = $wp_query->query_vars['year'];
             $args['monthnum'] = $wp_query->query_vars['monthnum'];
+            $args['single']=array( 'display_categories' => 'yes');
         }
 
         $this->show_grid_post($args);
@@ -152,6 +153,7 @@ class TD_Framework extends TD_Framework_Base
         if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum'])) {
             $args['year'] = $wp_query->query_vars['year'];
             $args['monthnum'] = $wp_query->query_vars['monthnum'];
+            $args['single']=array( 'display_categories' => 'yes');
         }
 
 
@@ -185,6 +187,7 @@ class TD_Framework extends TD_Framework_Base
             } else if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum'])) {
                 $args['year'] = $wp_query->query_vars['year'];
                 $args['monthnum'] = $wp_query->query_vars['monthnum'];
+                $args['single']=array( 'display_categories' => 'yes');
             }
             $args['tax_query'][]= array(
                         'taxonomy' => 'category',
