@@ -170,7 +170,7 @@ $sidebar = $qode_options_proya['category_blog_sidebar'];
             <?php } ?>
         <?php else: //If no posts are present ?>
             <div class="entry">
-                <p><?php _e('No posts were found.', 'qode'); ?></p>
+                <p><?php _e('Новостей не нейдено.', 'qode'); ?></p>
             </div>
         <?php endif; ?>
     </div>
