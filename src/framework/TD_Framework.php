@@ -362,7 +362,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
 
         $obj = $wp_query->get_queried_object();
 
-        if($obj->taxonomy=='post_tag')
+        if($obj && $obj->taxonomy=='post_tag')
         {
             $title = preg_replace('/tag/i','',$title);
             $title = preg_replace('/(^\s+|\s+$)/','',$title);
