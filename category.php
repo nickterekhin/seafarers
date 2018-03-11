@@ -87,7 +87,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 			<?php if(($sidebar == "default")||($sidebar == "")) : ?>
 				<?php
 				$terekhin_framework->showHeader('Все Новости в разделе',3,'left','td-header');
-				$terekhin_framework->showSeparator('10','10');
+				$terekhin_framework->showSeparator('10','30',null,'transparent');
 				?>
 				<?php 
 					get_template_part('templates/category_blog', 'structure');
@@ -98,7 +98,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 					<div class="column1">
 						<?php
 						$terekhin_framework->showHeader('Все Новости в разделе',3,'left','td-header');
-						$terekhin_framework->showSeparator('10','10');
+						$terekhin_framework->showSeparator('10','30',null,'transparent');
 						?>
 							<?php 
 								get_template_part('templates/category_blog', 'structure');
