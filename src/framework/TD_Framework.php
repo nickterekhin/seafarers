@@ -421,7 +421,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
     public function add_search_params_to_pagination($result)
     {
 
-        $result = $this->setPaginationParam($_REQUEST,'filter-search',$result);
+        $result = $this->setPaginationParam($_REQUEST,'filter_search',$result);
         /*$result = $this->setPaginationParam($_REQUEST,'date_year',$result);
         $result = $this->setPaginationParam($_REQUEST,'date_month',$result);
         $result = $this->setPaginationParam($_REQUEST,'date_day',$result);*/
