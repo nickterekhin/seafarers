@@ -179,14 +179,20 @@
   }
 
 }
-article .td-single-post-info{
-  font-family: 'Oswald', 'sans-serif';
-  text-transform: uppercase;
-  color:#909090 !important;
-  span{
-    letter-spacing: 1px;
+article {
+  .td-single-post-text-inner{
+    padding-top:0 !important;
   }
-  a{
-    color:#909090 !important;
+  .td-single-post-info {
+    font-family: 'Oswald', 'sans-serif';
+    text-transform: uppercase;
+    color: #909090 !important;
+    span {
+      letter-spacing: 1px;
+    }
+    a {
+      color: #909090 !important;
+    }
   }
+
 }

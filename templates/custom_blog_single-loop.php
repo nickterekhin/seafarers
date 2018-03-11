@@ -242,7 +242,7 @@ $_post_format = get_post_format();
 						</div>
 				--><?php /*} } */?>
 				<div class="post_text">
-					<div class="post_text_inner">
+					<div class="post_text_inner td-single-post-text-inner">
 						<!--<h2 itemprop="name" class="entry_title"><span itemprop="dateCreated" class="date entry_date updated"><?php /*the_time('d M'); */?><meta itemprop="interactionCount" content="UserComments: <?php /*echo get_comments_number(qode_get_page_id()); */?>"/></span> <?php /*the_title(); */?></h2>-->
 						<div class="post_info td-single-post-info">
 							<span class="time"><?php echo 'Опубликовано'; ?> <?php the_time('d-m-Y H:i'); ?></span><span class="dots"><i class="fa fa-square"></i></span
