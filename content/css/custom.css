@@ -120,11 +120,17 @@ aside .widget a {
   list-style: none; }
   .td-additional-post-info-layouts ul li {
     display: inline-block;
-    color: #969696; }
+    color: #a97a74; }
     .td-additional-post-info-layouts ul li i {
       margin-right: 5px; }
   .td-additional-post-info-layouts ul li + li {
     margin-left: 10px; }
+.td-additional-post-info-layouts a {
+  color: #a97a74; }
+  .td-additional-post-info-layouts a i {
+    font-size: 14px;
+    top: 2px;
+    color: #a97a74; }
 
 .quform-1 .quform-label {
   color: #fff;
