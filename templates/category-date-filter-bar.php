@@ -111,7 +111,7 @@ if($obj){
                 ?>
             </ul>
         </div>
-        <?php if(isset($_REQUEST['date_year']) || isset($_REQUEST['date-month'])|| isset($_REQUEST['date-day'])|| isset($_REQUEST['filter-search'])) {?>
+        <?php if(isset($_REQUEST['date_year']) || isset($_REQUEST['date-month'])|| isset($_REQUEST['date-day'])|| isset($_REQUEST['filter_search'])) {?>
         <button type="button" onclick="location.href='<?php
 
 
@@ -122,7 +122,7 @@ if($obj){
         ?>'" title="Сбросить фильтр" class="terekhindev-clear-search"><i class="fa fa-remove"></i></button>
         <?php } ?>
         <div style="overflow: hidden">
-            <input id="terekhindev-news-text-search" value="<?php echo isset($_GET['filter-search'])?$_GET['filter-search']:'';?>" placeholder="Поиск" name="filter_search" type="text">
+            <input id="terekhindev-news-text-search" value="<?php echo isset($_REQUEST['filter_search'])?$_REQUEST['filter_search']:'';?>" placeholder="Поиск" name="filter_search" type="text">
         </div>
 
     </form>
