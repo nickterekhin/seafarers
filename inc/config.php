@@ -21,7 +21,6 @@ function terekhin_dev_remove_elements()
 function terekhin_dev_category_template($single)
 {
     global $post,$wp_query;
-
         if(is_author() || ($post && $post->post_type == 'post')) {
             return CHILD_THEME_PATH.'/category.php';
         }

@@ -168,7 +168,7 @@ class TD_Framework extends TD_Framework_Base
             'title_align'=>$title_align,
             'columns_number' =>3
         );
-
+        var_dump($obj);
         if($obj)
             $args['category_name']=$obj->slug;
 
@@ -184,6 +184,7 @@ class TD_Framework extends TD_Framework_Base
     {
         global $wp_query;
 
+
         $args = array(
             'sort'=>'latest',
             'layout_title'=>$title,
@@ -193,16 +194,29 @@ class TD_Framework extends TD_Framework_Base
         $tax = get_term_by('slug', $category_slug, 'category');
         if ($tax) {
             if ($obj) {
-
                 $args['tax_query'] = array(
-                    'relation' => 'OR',
-                    array(
-                        'taxonomy' => 'category',
-                        'field' => 'slug',
-                        'terms' => array($obj->slug, $tax->slug),
-                        'operator' => 'AND'
-                    )
+                    'relation' => 'OR'
                 );
+                if($obj->taxonomy!='category')
+                {
+                    $args['tax_query'][]=
+                        array(
+                            'taxonomy' => $obj->taxonomy,
+                            'field' => 'slug',
+                            'terms' => array($obj->slug),
+                        );
+
+                }else {
+                 $args['tax_query'][]=
+                        array(
+                            'taxonomy' => 'category',
+                            'field' => 'slug',
+                            'terms' => array($obj->slug, $tax->slug),
+                            'operator' => 'AND'
+                        );
+
+                }
+
 
             } else if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year']!=0 && $wp_query->query_vars['monthnum']!=0) {
                 $args['year'] = $wp_query->query_vars['year'];
