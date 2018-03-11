@@ -136,7 +136,7 @@ class TD_Theme_Tools
 
             case 'popular':
                 $query_array['meta_key'] = 'qode_count_post_views_meta';
-                $query_array['orderby'] = 'meta_value_num';
+                $query_array['orderby'] = 'meta_value_num date';
                 $query_array['order'] = 'DESC';
                 break;
 
