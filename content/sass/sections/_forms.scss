@@ -30,7 +30,7 @@
 
 .terekhindev-news-date-filter
 {
-  max-width:300px;
+  max-width:600px;
   margin:40px auto;
   form {
     input[type=text]{
@@ -71,6 +71,86 @@
       }
     }
 
+  }
+  ul{
+    list-style: none;
+  }
+  .td-search-dropdown{
+    position: relative;
+    float:right;
+    &.open{
+      button{
+        color:#fff !important;
+        background-color: #bf0434;
+      }
+      ul{
+        display: block;
+      }
+    }
+    button{
+      display: block;
+      width: 100px;
+      border-left: 1px solid #e5e5e5 !important;
+      border-radius: 0;
+      box-shadow: none;
+      background: #fff;
+      text-align: left;
+      color: #333;
+      padding: 0px 20px 0px 10px;
+      white-space: nowrap;
+      vertical-align: middle;
+      touch-action: manipulation;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      transition: 0.3s;
+    }
+    ul{
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 210px;
+      margin: 0;
+      height: auto;
+      z-index: 1000;
+      display: none;
+      min-width: 160px;
+      padding: 0;
+      text-align: left;
+      background-color: #bf0434;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      border-left: 1px solid #e5e5e5 !important;
+      border-radius: 0;
+      overflow: hidden;
+      &::-webkit-scrollbar{
+        width:10px;
+        height:10px;
+        background: #797676;
+      }
+      &::-webkit-scrollbar-thumb{
+        background:#fff;
+      }
+      & > li {
+        & > a{
+          display: block;
+          padding: 10px 15px;
+          clear: both;
+          font-size: 15px;
+          line-height: normal;
+          white-space: nowrap;
+          color: #fff;
+          &:hover{
+            text-decoration: none;
+            background: #fff;
+            color: #bf0434;
+          }
+        }
+      }
+
+    }
   }
 }
 div#ui-datepicker-div {

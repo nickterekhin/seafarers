@@ -17,7 +17,7 @@ var dpOptions = {
 
 (function($,obj){
 
-
+    obj.query_params = {};
 
     obj.news_date_filter = function(options)
     {
@@ -26,7 +26,39 @@ var dpOptions = {
         },options);
         opt = $.extend(opt,dpOptions);
         var dp = $("#"+opt.container_id).datepicker(opt);
-        console.log(dp);
+
+    };
+
+    obj.drop_down_element = function(element_id)
+    {
+        var _self = this,
+            current_value_node = $("#"+element_id+" button span span");
+        $("#"+element_id+" button[data-toggle='dropdown']").on('click',function(){
+            if($j(this).parent().hasClass("open"))
+            {
+                $j(this).parent().removeClass("open");
+            }
+            else
+            {
+                $j(this).parent().addClass("open");
+                $j(this).focus();
+            }
+        });
+
+        $("#"+element_id+" ul li a").each(function(i,v){
+
+            $(this).click(function(){
+                _self.query_params[element_id] =  $(this).attr('data-item-value');
+                console.log(_self.query_params);
+                current_value_node.text($(this).attr('data-item-text'));
+            });
+        });
+        $(document).on("click",function(e){
+            if($(e.target).closest("#"+element_id+" button[data-toggle='dropdown']").length===0)
+            {
+                $("#"+element_id+" button[data-toggle='dropdown']").parent().removeClass("open");
+            }
+        });
     }
 
 })(jQuery,window.seafarers=window.seafarers||{});
