@@ -121,7 +121,7 @@ class TD_Framework extends TD_Framework_Base
         );
         if($obj && $obj->taxonomy=='category') {
             $args['category_name'] = $obj->slug;
-        }else if($obj && $obj->taxonomy=='post_tags')
+        }else if($obj && $obj->taxonomy=='post_tag')
         {
             $args['tag']=$obj->slug;
             $args['single']=array( 'display_categories' => 'yes');
@@ -151,7 +151,7 @@ class TD_Framework extends TD_Framework_Base
         );
         if($obj && $obj->taxonomy=='category') {
             $args['category_name'] = $obj->slug;
-        }else if($obj && $obj->taxonomy=='post_tags')
+        }else if($obj && $obj->taxonomy=='post_tag')
         {
             $args['tag']=$obj->slug;
             $args['single']=array( 'display_categories' => 'yes');
@@ -181,7 +181,7 @@ class TD_Framework extends TD_Framework_Base
 
         if($obj && $obj->taxonomy=='category') {
             $args['category_name'] = $obj->slug;
-        }else if($obj && $obj->taxonomy=='post_tags')
+        }else if($obj && $obj->taxonomy=='post_tag')
         {
             $args['tag']=$obj->slug;
             $args['single']=array( 'display_categories' => 'yes');
