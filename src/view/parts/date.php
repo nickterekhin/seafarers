@@ -25,8 +25,8 @@ if ($display_date == 'yes'){ ?>
 									echo esc_html($difference);
 								} ?>
 							</a></li>
-					<li><i class="fa fa-eye"></i>44567</li>
-					<li><i class="fa fa-comments"></i>456879</li>
+					<li><span><i class="fa fa-eye"></i>44567</span></li>
+					<li><span><i class="fa fa-comments"></i>456879</span></li>
 				</ul>
 	    <meta itemprop="interactionCount" content="UserComments: <?php echo get_comments_number(qode_get_page_id()); ?>"/>
 	</div>
