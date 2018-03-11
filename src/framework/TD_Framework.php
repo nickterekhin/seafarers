@@ -257,6 +257,27 @@ class TD_Framework extends TD_Framework_Base
     }
 
     /**
+     * @param $category_slug
+     * @param $title
+     * @param string $sort_type
+     * @param int $posts_qty
+     * @param string $layout
+     * @internal param WP_Post $post
+     */
+    public function show_news_in_single_post($category_slug,$title,$sort_type='latest',$posts_qty=6,$layout='layout2-news')
+    {
+        $args = array(
+            'sort'=>$sort_type,
+            'layout_title'=>$title,
+            'posts_per_page'=>$posts_qty,
+            'category_name'=>$category_slug
+        );
+        $args['single']=array('custom_image_height' => '190px',
+            'custom_image_width' => '310px');
+        $this->show_grid_post($args,$layout);
+    }
+
+    /**
      * @param $params
      * @param string $view_name
      */

@@ -3,7 +3,20 @@ global $terekhin_framework,$wp_query;
 /** @var WP_Term $obj */
 $obj=$wp_query->get_queried_object();
 $sub_title = null;
-var_dump($obj);
+if(is_single())
+{
+?>
+    <div class="column_inner">
+        <?php $terekhin_framework->show_news_in_single_post('','Горячие Новости','hot_first');?>
+        <?php $terekhin_framework->show_news_in_single_post('opinions','Мнения');?>
+        <?php $terekhin_framework->show_news_in_single_post('videos','Видео');?>
+    </div>
+
+<?php
+}else
+{
+
+
 if($obj) {
     $sub_title = $obj->name;
 
@@ -21,3 +34,4 @@ if($obj) {
     <?php $terekhin_framework->show_post_in_section($obj,($sub_title?$sub_title.' - ':'')."Видеo в разделе",'videos');?>
 
 </div>
+<?php } ?>

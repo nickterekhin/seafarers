@@ -1,12 +1,23 @@
 <?php
 ?>
 <div class="qode-news-holder qode-layout1 qode-news-columns-3 qode-nl-normal-space qode-center-alignment" >
+    <?php if(isset($layout_title)){ ?>
+        <div class="qode-news-list-title-holder">
+            <h3 class="qode-news-layout-title"><?php echo $layout_title;?></h3>
+
+            <?php //$class->showSeparator($layout_title,$title_align); ?>
+        </div>
+    <?php } ?>
     <div class="qode-news-list-inner-holder" data-number-of-items="3">
+        <?php foreach($posts as $p){ ?>
         <div class="qode-news-item qode-layout1-item">
             <div class="qode-news-item-image-holder">
                 <div class="qode-post-image">
-                    <a itemprop="url" href="http://dev.seafarersjournal.com/abroad/indusov-na-sudah-stalo-eshhe-bolshe/" title="Индусов на судах стало еще больше">
-                        <img src="http://dev.seafarersjournal.com/wp-content/uploads/2018/03/indusov-na-sudah-stalo-eshhe-bolshe-310x190.jpg" alt="" width="310" height="190">	    </a>
+                    <?php
+                    $single['post']=$p;
+                    $single['class']=$class;
+                    echo $class->View('parts/image',$single);
+                    ?>
                 </div>
                 <div class="qode-news-image-info-holder-left">
                 </div>
@@ -14,17 +25,14 @@
                 </div>
             </div>
             <div class="qode-ni-content">
+                <?php echo $class->View('parts/category',$single); ?>
+                <?php echo $class->View('parts/title',$single); ?>
+                <?php echo $class->View('parts/excerpt',$single); ?>
+                <?php echo $class->View('parts/date',$single); ?>
+                <?php echo $class->View('parts/author',$single); ?>
 
-                <h5 itemprop="name" class="entry-title qode-post-title">
-                    <a itemprop="url" href="http://dev.seafarersjournal.com/abroad/indusov-na-sudah-stalo-eshhe-bolshe/" title="Индусов на судах стало еще больше">
-                        Индусов на судах стало еще больше    </a>
-                </h5>					<div itemprop="dateCreated" class="qode-post-info-date entry-date published updated">
-                    <a itemprop="url" href="http://dev.seafarersjournal.com/2018/03/">
-                        <i class="dripicons-alarm"></i>
-                        02.03.2018        </a>
-                    <meta itemprop="interactionCount" content="UserComments: 0">
-                </div>
             </div>
         </div>
+        <?php } ?>
     </div>
 </div>

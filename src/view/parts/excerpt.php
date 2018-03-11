@@ -1,5 +1,5 @@
 <?php
-$display_excerpt = isset($display_excerpt) && $display_excerpt !== '' ? $display_excerpt : 'yes';
+$display_excerpt = isset($display_excerpt) && $display_excerpt !== '' ? $display_excerpt : 'no';
 if ($display_excerpt == 'yes'){
     if(post_password_required()) {
         echo get_the_password_form();
