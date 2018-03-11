@@ -109,6 +109,28 @@ class TD_Framework extends TD_Framework_Base
         echo do_shortcode('[vc_separator type="transparent" up="20" down="20"][vc_text_separator title="'.$text.'" i_icon_monosocial="vc-mono vc-mono-star" css_animation="fadeInLeft" border="no" el_class="td-news-separator" '.$title_align.'][vc_separator type="transparent" up="20" down="20"]');
     }
 
+
+    function show_most_comments_in_section($obj,$title='Комментируют в разделе')
+    {
+        global $wp_query;
+
+        $args = array(
+            'sort'=>'comments',
+            'layout_title'=>$title,
+            'posts_per_page'=>9
+        );
+        if($obj)
+            $args['category_name']=$obj->slug;
+
+        if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year'] && $wp_query->query_vars['monthnum']) {
+            $args['year'] = $wp_query->query_vars['year'];
+            $args['monthnum'] = $wp_query->query_vars['monthnum'];
+            $args['single']=array( 'display_categories' => 'yes');
+        }
+
+        $this->show_grid_post($args,'layout2-news-vertical');
+    }
+
     /**
      * @param WP_Term $obj
      * @param string $title

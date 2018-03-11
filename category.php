@@ -106,6 +106,8 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 								get_template_part('templates/category_blog', 'structure');
 							?>
 
+						<?php $terekhin_framework->showSeparator('20','20',null,'transparent'); ?>
+						<?php $terekhin_framework->show_most_comments_in_section($obj);?>
 					</div>
 					<div class="column2">
 						<div class="column_inner">
