@@ -48,7 +48,7 @@ class TD_Theme_Tools
                 'next_page' => '1'
             ));
         $query_array = array();
-        if (isset($params['year']) && isset($params['monthnum'])) {
+        if (isset($params['year']) && isset($params['monthnum']) && $params['year']!=0 && $params['monthnum']!=0) {
             $query_array['year'] = $params['year'];
             $query_array['monthnum'] = $params['monthnum'];
         }

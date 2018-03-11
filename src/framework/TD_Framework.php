@@ -125,7 +125,7 @@ class TD_Framework extends TD_Framework_Base
         if($obj)
             $args['category_name']=$obj->slug;
 
-        if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum'])) {
+        if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year'] && $wp_query->query_vars['monthnum']) {
             $args['year'] = $wp_query->query_vars['year'];
             $args['monthnum'] = $wp_query->query_vars['monthnum'];
             $args['single']=array( 'display_categories' => 'yes');
@@ -150,13 +150,11 @@ class TD_Framework extends TD_Framework_Base
         if($obj)
             $args['category_name']=$obj->slug;
 
-        if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum'])) {
+        if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year'] && $wp_query->query_vars['monthnum']) {
             $args['year'] = $wp_query->query_vars['year'];
             $args['monthnum'] = $wp_query->query_vars['monthnum'];
             $args['single']=array( 'display_categories' => 'yes');
         }
-
-
 
         $this->show_grid_post($args,'layout2-news-vertical');
     }
@@ -184,7 +182,7 @@ class TD_Framework extends TD_Framework_Base
                     )
                 );
 
-            } else if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum'])) {
+            } else if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year']!=0 && $wp_query->query_vars['monthnum']!=0) {
                 $args['year'] = $wp_query->query_vars['year'];
                 $args['monthnum'] = $wp_query->query_vars['monthnum'];
                 $args['single']=array( 'display_categories' => 'yes');
