@@ -31,9 +31,10 @@ if($obj){
             };
             seafarers.news_date_filter(opt);
 
-            seafarers.drop_down_element('year');
-            seafarers.drop_down_element('month');
-            seafarers.drop_down_element('day');
+            seafarers.set_form_action($('#terekhindev-news-date-search-form'));
+            seafarers.drop_down_element('date_year');
+            seafarers.drop_down_element('date_month');
+            seafarers.drop_down_element('date_day');
 
         });
 
@@ -44,10 +45,10 @@ if($obj){
         <button type="submit" class="qbutton default" name="submit" title="search">
             <i class="fa fa-2x fa-search"></i>
         </button>
-        <div class="td-search-dropdown" id="year">
+        <div class="td-search-dropdown" id="date_year">
             <button type="button" data-toggle="dropdown" aria-expanded="false">
                 <span>
-                    <span><?php echo $today_year;?></span>
+                    <span><?php echo 'Год';?></span>
                     </span>
             </button>
             <ul role="menu">
@@ -64,10 +65,10 @@ if($obj){
                 ?>
             </ul>
         </div>
-        <div class="td-search-dropdown" id="month">
+        <div class="td-search-dropdown" id="date_month">
             <button type="button" data-toggle="dropdown" aria-expanded="false">
                 <span>
-                    <span><?php echo $today_month;?></span>
+                    <span><?php echo 'Месяц';?></span>
                     </span>
             </button>
             <ul role="menu">
@@ -87,10 +88,10 @@ if($obj){
                 ?>
             </ul>
         </div>
-        <div class="td-search-dropdown" id="day">
+        <div class="td-search-dropdown" id="date_day">
             <button type="button" data-toggle="dropdown" aria-expanded="false">
                 <span>
-                    <span><?php echo $today_day;?></span>
+                    <span><?php echo 'День';?></span>
                     </span>
             </button>
             <ul role="menu">
@@ -110,10 +111,12 @@ if($obj){
                 ?>
             </ul>
         </div>
-        <?php if(isset($_REQUEST['date-filter']) && !empty($_REQUEST['date-filter'])) {?>
+        <?php if(isset($_REQUEST['date_year']) || isset($_REQUEST['date-month'])|| isset($_REQUEST['date-day'])|| isset($_REQUEST['filter-search'])) {?>
         <button type="button" onclick="location.href='<?php
 
-            echo get_home_url().'/'.$wp_query->query_vars['category_name'];
+
+                echo get_home_url() . '/' . $obj->slug;
+
 
 
         ?>'" title="Сбросить фильтр" class="terekhindev-clear-search"><i class="fa fa-remove"></i></button>

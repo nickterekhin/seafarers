@@ -5,19 +5,34 @@ $id = $wp_query->get_queried_object_id();
 $obj = $wp_query->get_queried_object();
 
 $wp_query->query_vars['posts_per_page'] = 15;
-$wp_query = new WP_Query(($wp_query->query_vars));
 
-if(isset($_GET['date-filter']) && !empty($_GET['date-filter'])) {
 
-	$wp_query->query_vars['date_query']=array(
+if((isset($_GET['date_year']) && !empty($_GET['date_year'])) || (isset($_GET['date_month']) && !empty($_GET['date_month'])) || (isset($_GET['date_day']) && !empty($_GET['date_day']))) {
+
+	/*$wp_query->query_vars['date_query']=array(
 		array(
 			'after' => $_GET['date-filter'] . ' 00:00',
 			//'before' => $_GET['date_filter'] . ' 23:59',
 			'inclusive' => true
 		),
 
-	);
+	);*/
+	/*if(isset($_GET['date_year']))
+		$wp_query->query_vars['date_query'][]=array('year'=>$_GET['date_year'],'compare'=>'=');
+	if(isset($_GET['date_month']))
+		$wp_query->query_vars['date_query'][]=array('month'=>$_GET['date_month'],'compare'=>'=');
+	if(isset($_GET['date_day']))
+		$wp_query->query_vars['date_query'][]=array('day'=>$_GET['date_day'],'compare'=>'=');*/
+
+	add_filter('get_pagenum_link',array($terekhin_framework, 'add_search_params_to_pagination'));
+
+	add_filter('posts_where',array($terekhin_framework,'search_bar_where_filter'));
 	$wp_query = new WP_Query($wp_query->query_vars);
+	remove_filter('posts_where',array($terekhin_framework,'search_bar_where_filter'));
+	print_r($wp_query->request);
+}else
+{
+	$wp_query = new WP_Query(($wp_query->query_vars));
 }
 
 

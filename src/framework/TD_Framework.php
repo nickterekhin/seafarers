@@ -58,6 +58,9 @@ class TD_Framework extends TD_Framework_Base
             {
                 $filter_value = '?date-filter='.$_GET['date-filter'];
             }
+            if($obj->taxonomy!='category' && $obj->taxonomy=='post_tag')
+                $obj->slug = 'tag/'.$obj->slug;
+
             return home_url($obj->slug).$filter_value;
         }
         return get_home_url();
@@ -381,6 +384,56 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         return $enMonths[$n-1];
     }
 
+    public function search_bar_where_filter($where)
+    {
+        if((isset($_GET['date_year']) && !empty($_GET['date_year'])) || (isset($_GET['date_month']) && !empty($_GET['date_month'])) || (isset($_GET['date_day']) && !empty($_GET['date_day']))) {
+
+            $where .= ' AND (';
+            $where_date = array();
+            if(isset($_GET['date_year']))
+                $where_date[]=$this->db->prepare('YEAR( wp_posts.post_date ) = %d',$_GET['date_year']);
+            if(isset($_GET['date_month']))
+                $where_date[]=$this->db->prepare('MONTH( wp_posts.post_date ) = %d',$_GET['date_month']);
+            if(isset($_GET['date_day']))
+                $where_date[]=$this->db->prepare('DAYOFMONTH( wp_posts.post_date ) = %d',$_GET['date_day']);
+
+            $where.= implode(' AND ',$where_date).')';
+
+        }
+
+        if(isset($_REQUEST['filter-search']) && !empty($_REQUEST['filter-search']))
+        {
+            $where.=" AND '.$this->db->prefix.'posts.post_title REGEXP '[[:<:]]'".sanitize_text_field($_REQUEST['filter-search'])."'[[:>:]]' ";
+        }
+
+        return $where;
+    }
+
+    public function add_search_params_to_pagination($result)
+    {
+
+        $result .= $this->setPaginationParam($_REQUEST,'filter-search',$result);
+        $result .= $this->setPaginationParam($_REQUEST,'date_year',$result);
+        $result .= $this->setPaginationParam($_REQUEST,'date_month',$result);
+        $result .= $this->setPaginationParam($_REQUEST,'date_day',$result);
+
+        return $result;
+    }
+
+    private function setPaginationParam($param_method,$query_string,$result)
+    {
+        if((isset($param_method[$query_string]) && !empty($param_method[$query_string])) && preg_match('/'.$query_string.'=/',$result,$m)==0)
+        {
+            if(preg_match('/\?/',$result,$m))
+            {
+                $result.='&'.$query_string.'='.$param_method[$query_string];
+            }else
+            {
+                $result.='?'.$query_string.'='.$param_method[$query_string];
+            }
+        }
+        return $result;
+    }
 }
 
 function init_framework()

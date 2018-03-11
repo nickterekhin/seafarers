@@ -18,7 +18,8 @@ var dpOptions = {
 (function($,obj){
 
     obj.query_params = {};
-
+    obj.form = null;
+    obj.form_url = null;
     obj.news_date_filter = function(options)
     {
         var opt = $.extend({
@@ -51,6 +52,7 @@ var dpOptions = {
                 _self.query_params[element_id] =  $(this).attr('data-item-value');
                 console.log(_self.query_params);
                 current_value_node.text($(this).attr('data-item-text'));
+                _self.set_form_action();
             });
         });
         $(document).on("click",function(e){
@@ -59,6 +61,21 @@ var dpOptions = {
                 $("#"+element_id+" button[data-toggle='dropdown']").parent().removeClass("open");
             }
         });
+    };
+    obj.set_form_action = function(form)
+    {
+        obj.form = form || obj.form;
+
+        obj.form_url = obj.form_url || obj.form.attr('action');
+
+
+        var arr = $.map(obj.query_params,function(v,i){
+            return i+'='+v;
+        });
+        console.log(arr);
+        if(arr.length>0) {
+            obj.form.attr("action", obj.form_url + "?" + arr.join('&'));
+        }
     }
 
 })(jQuery,window.seafarers=window.seafarers||{});
