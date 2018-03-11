@@ -6,11 +6,11 @@ $sub_title = null;
 if(is_single())
 {
 ?>
-    <div class="column_inner">
+
         <?php $terekhin_framework->show_news_in_single_post('','Горячие Новости','hot_first');?>
         <?php $terekhin_framework->show_news_in_single_post('opinions','Мнения');?>
         <?php $terekhin_framework->show_news_in_single_post('videos','Видео');?>
-    </div>
+
 
 <?php
 }else
