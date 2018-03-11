@@ -93,6 +93,26 @@ class TD_Framework extends TD_Framework_Base
             echo qode_execute_shortcode('vc_custom_heading',$attr);
     }
 
+    function showQ2Button($slug,$title='Еще новости')
+    {
+        $args = array(
+            'target'=>"_self",
+            'icon_pack'=>'font_awesome',
+            'icon'=>"fa-newspaper-o",
+            'hover_effect'=>'icon_rotate',
+            'gradient'=>'no',
+            'text'=>$title,
+            'link'=>'/'.$slug,
+            'icon_border_color'=>"#ffffff",
+            'icon_border_hover_color'=>'#ffffff',
+            'icon_background_color'=>'#085e89',
+            'icon_background_hover_color'=>"#a6d430",
+            'custom_class'=>'td-all-news-btn'
+
+        );
+        echo qode_execute_shortcode('qode_button_v2',$args);
+
+    }
     function showSeparator($margin_top='20',$margin_bottom='20',$color='#a9a9a9',$type='normal')
     {
         $attr= array(
