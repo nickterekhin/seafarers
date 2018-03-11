@@ -116,6 +116,16 @@ aside .widget a {
     .td-additional-post-info ul li + li {
       margin-left: 10px; }
 
+.td-additional-post-info-layouts ul {
+  list-style: none; }
+  .td-additional-post-info-layouts ul li {
+    display: inline-block;
+    color: #969696; }
+    .td-additional-post-info-layouts ul li i {
+      margin-right: 5px; }
+  .td-additional-post-info-layouts ul li + li {
+    margin-left: 10px; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
