@@ -134,25 +134,18 @@ aside .widget a {
     top: 2px !important;
     color: #8d8d8d !important; }
 
-/*
-article {
-  .td-single-post-text-inner{
-    padding-top:0 !important;
-  }
-  .td-single-post-info {
-    font-family: 'Oswald', 'sans-serif';
-    text-transform: uppercase;
-    color: #909090 !important;
-    font-size: 17px;
-    span {
-      letter-spacing: 1px;
-    }
-    a {
-      color: #909090 !important;
-    }
-  }
+article .td-single-post-text-inner {
+  padding-top: 0 !important; }
+article .td-single-post-info {
+  font-family: 'Oswald', 'sans-serif';
+  text-transform: uppercase;
+  color: #909090 !important;
+  font-size: 17px; }
+  article .td-single-post-info span {
+    letter-spacing: 1px; }
+  article .td-single-post-info a {
+    color: #909090 !important; }
 
-}*/
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
