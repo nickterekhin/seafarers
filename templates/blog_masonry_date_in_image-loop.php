@@ -82,11 +82,11 @@ switch ($thumb_size_temp) {
 							<div class="td-additional-post-info">
 
 								<ul>
-									<?php if($comments_qty>0){ ?>
-										<li><i class="fa fa-eye"></i><?php echo $comments_qty;?></li>
-									<?php } ?>
 									<?php if($views_qty>0){ ?>
-										<li><i class="fa fa-comments"></i><?php echo $views_qty;?></li>
+										<li><i class="fa fa-eye"></i><?php echo $views_qty;?></li>
+									<?php } ?>
+									<?php if($comments_qty>0){ ?>
+										<li><i class="fa fa-comments"></i><?php echo $comments_qty;?></li>
 									<?php }?>
 								</ul>
 							</div>
