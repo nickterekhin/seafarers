@@ -7,7 +7,7 @@ $terms = get_the_terms($obj->ID,'category');
 
 ?>
 <?php foreach($terms as $term){ ?>
-<?php $terekhin_framework->show_news_in_single_post($term->slug,'Читать так же в '.$term->name,'latest',6,'layout1-news');?>
+<?php $terekhin_framework->show_news_in_single_post($term->slug,'Читать так же в '.$term->name,'latest',6,'layout1-news','310px','190px');?>
     <?php $terekhin_framework->showSeparator('20','20',null,'transparent');?>
     <div style="text-align:right">
         <?php $terekhin_framework->showQ2Button($term->slug)?>

@@ -282,9 +282,11 @@ class TD_Framework extends TD_Framework_Base
      * @param string $sort_type
      * @param int $posts_qty
      * @param string $layout
+     * @param string $width
+     * @param string $height
      * @internal param WP_Post $post
      */
-    public function show_news_in_single_post($category_slug,$title,$sort_type='latest',$posts_qty=6,$layout='layout2-news')
+    public function show_news_in_single_post($category_slug,$title,$sort_type='latest',$posts_qty=6,$layout='layout2-news',$width='70px',$height='70px')
     {
         $args = array(
             'sort'=>$sort_type,
@@ -292,8 +294,8 @@ class TD_Framework extends TD_Framework_Base
             'posts_per_page'=>$posts_qty,
             'category_name'=>$category_slug
         );
-        $args['single']=array('custom_image_height' => '190px',
-            'custom_image_width' => '310px');
+        $args['single']=array('custom_image_height' => $height,
+            'custom_image_width' => $width);
         $this->show_grid_post($args,$layout);
     }
 
