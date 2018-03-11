@@ -89,12 +89,12 @@
     }
     button{
       display: block;
-      width: 100px;
+      width: 80px;
       border-left: 1px solid #e5e5e5 !important;
       border-radius: 0;
       box-shadow: none;
       background: #fff;
-      text-align: left;
+      text-align: center;
       color: #333;
       padding: 0px 20px 0px 10px;
       white-space: nowrap;
@@ -136,9 +136,9 @@
       & > li {
         & > a{
           display: block;
-          padding: 10px 15px;
+          padding: 7px 15px;
           clear: both;
-          font-size: 15px;
+          font-size: 10px;
           line-height: normal;
           white-space: nowrap;
           color: #fff;
