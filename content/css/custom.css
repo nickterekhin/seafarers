@@ -139,7 +139,8 @@ article .td-single-post-text-inner {
 article .td-single-post-info {
   font-family: 'Oswald', 'sans-serif';
   text-transform: uppercase;
-  color: #909090 !important; }
+  color: #909090 !important;
+  font-size: 17px; }
   article .td-single-post-info span {
     letter-spacing: 1px; }
   article .td-single-post-info a {
