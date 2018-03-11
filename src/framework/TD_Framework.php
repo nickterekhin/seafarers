@@ -128,6 +128,8 @@ class TD_Framework extends TD_Framework_Base
 
     function show_popular_news_in_section($obj,$title=null,$title_align='separator_align_left')
     {
+        global $wp_query;
+
         $args = array(
             'sort'=>'popular',
             'posts_per_page'=>6,
@@ -138,6 +140,11 @@ class TD_Framework extends TD_Framework_Base
 
         if($obj)
             $args['category_name']=$obj->slug;
+
+        if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum'])) {
+            $args['year'] = $wp_query->query_vars['year'];
+            $args['monthnum'] = $wp_query->query_vars['monthnum'];
+        }
 
         $this->show_grid_post($args,'layout2-news-vertical');
     }
