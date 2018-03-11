@@ -353,6 +353,21 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         return $res->qty;
     }
 
+    public function format_page_title($title)
+    {
+        global $wp_query;
+
+        $obj = $wp_query->get_queried_object();
+
+        if($obj->taxonomy=='post_tag')
+        {
+            $title = preg_replace('/tag/i','',$title);
+            $title = preg_replace('/(^\s+|\s+$)/','',$title);
+
+        }
+        return $title;
+    }
+
 }
 
 function init_framework()
