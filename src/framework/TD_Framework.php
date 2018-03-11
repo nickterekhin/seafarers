@@ -458,14 +458,27 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
 
     public function get_post_featured_image($post_id)
     {
-        $images = array();
-        $images['featured'] = get_the_post_thumbnail_url($post_id);
-            $args = get_the_terms($post_id,'category');
-            if($args && count($args)>0)
-                $images['category']= $this->getImageTitle($args[0]->taxonomy,$args[0]->term_id);
 
+        $image_category = null;
+        $args = get_the_terms($post_id,'category');
+        if($args && count($args)>0)
+            $image_category= $this->getImageTitle($args[0]->taxonomy,$args[0]->term_id);
 
-        return $images;
+        $image = get_the_post_thumbnail_url($post_id);
+        if($image) {
+            $image_url_obj = parse_url($image);
+            if (file_exists($_SERVER['DOCUMENT_ROOT'].$image_url_obj['path'])) {
+                list($image_width, $image_height, $image_type, $image_attr) = getimagesize($_SERVER['DOCUMENT_ROOT'] . $image_url_obj['path']);
+
+                if ($image_width < 1920 && $image_height < 640)
+                {
+                    $image = $image_category;
+                }
+            }
+
+        }
+
+        return $image;
     }
 }
 

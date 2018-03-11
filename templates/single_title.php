@@ -27,11 +27,8 @@ if(get_post_meta($id, "qode_title-image", true) != ""){
 $custom_title_image = $terekhin_framework->get_post_featured_image($id);
 
 
-if($custom_title_image['featured']) {
-	$title_image = $custom_title_image['featured'];
-}else if(isset($custom_title_image['category']))
-{
-	$title_image = $custom_title_image['featured'];
+if($custom_title_image) {
+	$title_image = $custom_title_image;
 }
 
 $title_image_height = "";
@@ -41,7 +38,10 @@ if(!empty($title_image)){
   if (file_exists($_SERVER['DOCUMENT_ROOT'].$title_image_url_obj['path']))
 		list($title_image_width, $title_image_height, $title_image_type, $title_image_attr) = getimagesize($_SERVER['DOCUMENT_ROOT'].$title_image_url_obj['path']);
 }
-var_dump($title_image_height,$title_image_width);
+if($title_image_width<1920 && $title_image_height<640)
+{
+	$title_image = $custom_title_image['featured'];
+}
 
 if(get_post_meta($id, "qode_title-overlay-image", true) != ""){
  $title_overlay_image = get_post_meta($id, "qode_title-overlay-image", true);
