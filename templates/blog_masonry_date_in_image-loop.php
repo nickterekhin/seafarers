@@ -1,11 +1,18 @@
 <?php 
-global $qode_options_proya;
+global $qode_options_proya, $wp_query;
 $blog_enable_social_share = "";
 if(isset($qode_options_proya['enable_social_share'])){
 	$blog_enable_social_share = $qode_options_proya['enable_social_share'];
 }
 ?>
+
+
 <?php
+
+$show_category = false;
+if(isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year']!=0 && $wp_query->query_vars['monthnum']!=0)
+	$show_category=true;
+
 $_post_format = get_post_format();
 $thumb_size = 'full';
 $thumb_size_temp = get_post_meta(get_the_ID(),"qode_post_style_masonry_date_image",true);
@@ -199,9 +206,11 @@ switch ($thumb_size_temp) {
 			<div class="post_text">
 				<div class="post_text_inner">
 					<h5 itemprop="name" class="entry_title"><a itemprop="url" href="<?php the_permalink(); ?>" target="_self" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h5>
+					<?php if($show_category) { ?>
 					<div class="td-categories-list td-vertical-list">
 						<?php foreach(get_the_category() as $category){  echo qode_category_color_name($category);} ?>
 					</div>
+					<?php } ?>
 					<?php qode_excerpt(); ?>
 					<div class="post_info">
 						<?php if($blog_enable_social_share == "yes"){
