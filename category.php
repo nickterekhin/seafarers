@@ -3,7 +3,7 @@
 global $wp_query,$terekhin_framework;
 $id = $wp_query->get_queried_object_id();
 $obj = $wp_query->get_queried_object();
-
+var_dump($wp_query);
 $wp_query->query_vars['posts_per_page'] = 15;
 $wp_query = new WP_Query(($wp_query->query_vars));
 
@@ -88,7 +88,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 
 			<?php if(($sidebar == "default")||($sidebar == "")) : ?>
 				<?php
-				$terekhin_framework->showHeader('Все Новости в разделе',3,'left','td-header');
+				$terekhin_framework->showHeader('Все Новости',3,'left','td-header');
 				$terekhin_framework->showSeparator('10','30',null,'transparent');
 				?>
 				<?php 
@@ -99,7 +99,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 				<div class="<?php if($sidebar == "1"):?>two_columns_66_33<?php elseif($sidebar == "2") : ?>two_columns_75_25<?php endif; ?> background_color_sidebar grid2 clearfix">
 					<div class="column1">
 						<?php
-						$terekhin_framework->showHeader('Все Новости в разделе',3,'left','td-header');
+						$terekhin_framework->showHeader('Все Новости',3,'left','td-header');
 						$terekhin_framework->showSeparator('10','30',null,'transparent');
 						?>
 							<?php 

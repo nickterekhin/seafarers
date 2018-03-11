@@ -118,9 +118,10 @@ class TD_Framework extends TD_Framework_Base
         $args = array(
             'sort'=>'hot_first',
             'layout_title'=>$title,
-            'posts_per_page'=>6,
-            'category_name'=>$obj->slug,
+            'posts_per_page'=>6
         );
+        if($obj)
+            $args['category_name']=$obj->slug;
         $this->show_grid_post($args);
 
     }
@@ -132,36 +133,47 @@ class TD_Framework extends TD_Framework_Base
             'posts_per_page'=>6,
             'layout_title'=>$title,
             'title_align'=>$title_align,
-            'category_name'=>$obj->slug,
             'columns_number' =>3
         );
+
+        if($obj)
+            $args['category_name']=$obj->slug;
 
         $this->show_grid_post($args,'layout2-news-vertical');
     }
     function show_post_in_section($obj,$title,$category_slug,$title_align='separator_align_left')
     {
+        global $wp_query;
+
         $args = array(
             'sort'=>'latest',
             'layout_title'=>$title,
             'title_align'=>$title_align,
             'posts_per_page'=>6
         );
-        $tax = get_term_by('slug',$category_slug,'category');
-        if($tax) {
-            $args['tax_query'] = array(
-                'relation' => 'OR',
-                array(
-                    'taxonomy' => 'category',
-                    'field' => 'slug',
-                    'terms' => array($obj->slug, $tax->slug),
-                    'operator' => 'AND'
-                ),
-                array(
-                    'taxonomy' => 'category',
-                    'field' => 'slug',
-                    'terms' => $tax->slug
-                )
-            );
+        $tax = get_term_by('slug', $category_slug, 'category');
+        if ($tax) {
+            if ($obj) {
+
+                $args['tax_query'] = array(
+                    'relation' => 'OR',
+                    array(
+                        'taxonomy' => 'category',
+                        'field' => 'slug',
+                        'terms' => array($obj->slug, $tax->slug),
+                        'operator' => 'AND'
+                    )
+                );
+
+            } else if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum'])) {
+                $args['year'] = $wp_query->query_vars['year'];
+                $args['monthnum'] = $wp_query->query_vars['monthnum'];
+            }
+            $args['tax_query'][]= array(
+                        'taxonomy' => 'category',
+                        'field' => 'slug',
+                        'terms' => $tax->slug
+                    );
         }
         $this->show_grid_post($args);
     }

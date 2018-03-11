@@ -8,7 +8,6 @@ $featured_image_meta = get_post_meta($post->ID, 'qode_blog_list_featured_image_m
 $has_featured = !empty($featured_image_meta) || has_post_thumbnail($post->ID);
 
 $blog_list_image_src = !empty($featured_image_meta) ? $featured_image_meta : '';
-print_r($featured_image_meta);
 $url=null;
 /*if(!$has_featured) {
 	/** @var TD_Framework $class */
