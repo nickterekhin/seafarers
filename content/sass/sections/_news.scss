@@ -102,3 +102,29 @@
     }
   }
 }
+
+.td-categories-list{
+  margin-bottom:20px;
+  &.td-vertical-list{
+    a{
+      display: block;
+      margin:7px auto;
+    }
+  }
+  a{
+    text-transform: uppercase;
+    display:inline-block;
+    vertical-align: middle;
+    color:#fff;
+    letter-spacing: 1px;
+    font-size:10px;
+    margin:0 5px 10px;
+    span{
+      background-color: #bf0434;
+      display:block;
+      position:relative;
+      line-height: 22px;
+      padding:0 5px;
+    }
+  }
+}

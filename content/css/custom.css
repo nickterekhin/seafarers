@@ -80,6 +80,26 @@ aside .widget a {
   color: #8c8c8c;
   font-weight: 400; }
 
+.td-categories-list {
+  margin-bottom: 20px; }
+  .td-categories-list.td-vertical-list a {
+    display: block;
+    margin: 7px auto; }
+  .td-categories-list a {
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    letter-spacing: 1px;
+    font-size: 10px;
+    margin: 0 5px 10px; }
+    .td-categories-list a span {
+      background-color: #bf0434;
+      display: block;
+      position: relative;
+      line-height: 22px;
+      padding: 0 5px; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
