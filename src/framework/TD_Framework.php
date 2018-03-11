@@ -267,6 +267,7 @@ class TD_Framework extends TD_Framework_Base
 
             add_filter('posts_where',array($this,'custom_where_filter_posts'));
             $posts_query = $this->tools->get_post_query($params);
+        print_r($posts_query->request);
             remove_filter('posts_where',array($this,'custom_where_filter_posts'));
             $posts = $posts_query->posts;
 
