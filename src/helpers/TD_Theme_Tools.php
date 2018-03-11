@@ -48,6 +48,11 @@ class TD_Theme_Tools
                 'next_page' => '1'
             ));
         $query_array = array();
+        if (isset($params['year']) && isset($params['monthnum'])) {
+            $query_array['year'] = $params['year'];
+            $query_array['monthnum'] = $params['monthnum'];
+        }
+
         $query_array['post_type']=$params['post_type'];
         $query_array['post_status'] = $params['post_status']; //to ensure that ajax call will not return 'private' posts
         if(!empty($params['tax_query']))

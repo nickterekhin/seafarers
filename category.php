@@ -3,7 +3,7 @@
 global $wp_query,$terekhin_framework;
 $id = $wp_query->get_queried_object_id();
 $obj = $wp_query->get_queried_object();
-var_dump($wp_query);
+
 $wp_query->query_vars['posts_per_page'] = 15;
 $wp_query = new WP_Query(($wp_query->query_vars));
 

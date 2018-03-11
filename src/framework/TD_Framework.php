@@ -146,6 +146,8 @@ class TD_Framework extends TD_Framework_Base
             $args['monthnum'] = $wp_query->query_vars['monthnum'];
         }
 
+        var_dump($args);
+
         $this->show_grid_post($args,'layout2-news-vertical');
     }
     function show_post_in_section($obj,$title,$category_slug,$title_align='separator_align_left')
