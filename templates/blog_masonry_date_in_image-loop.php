@@ -12,6 +12,8 @@ if(isset($qode_options_proya['enable_social_share'])){
 $show_category = false;
 if(isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year']!=0 && $wp_query->query_vars['monthnum']!=0)
 	$show_category=true;
+if(isset($wp_query->query['tag']) && !empty($wp_query->query['tag']))
+	$show_category=true;
 
 $_post_format = get_post_format();
 $thumb_size = 'full';
