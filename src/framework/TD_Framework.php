@@ -124,6 +124,7 @@ class TD_Framework extends TD_Framework_Base
         }else if($obj && $obj->taxonomy=='post_tags')
         {
             $args['tag']=$obj->slug;
+            $args['single']=array( 'display_categories' => 'yes');
         }
 
         if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year'] && $wp_query->query_vars['monthnum']) {
@@ -153,6 +154,7 @@ class TD_Framework extends TD_Framework_Base
         }else if($obj && $obj->taxonomy=='post_tags')
         {
             $args['tag']=$obj->slug;
+            $args['single']=array( 'display_categories' => 'yes');
         }
 
         if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year'] && $wp_query->query_vars['monthnum']) {
@@ -182,6 +184,7 @@ class TD_Framework extends TD_Framework_Base
         }else if($obj && $obj->taxonomy=='post_tags')
         {
             $args['tag']=$obj->slug;
+            $args['single']=array( 'display_categories' => 'yes');
         }
 
         if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year'] && $wp_query->query_vars['monthnum']) {
@@ -221,7 +224,7 @@ class TD_Framework extends TD_Framework_Base
                             'field' => 'slug',
                             'terms' => array($obj->slug),
                         );
-
+                    $args['single']=array( 'display_categories' => 'yes');
                 }else {
                  $args['tax_query'][]=
                         array(
