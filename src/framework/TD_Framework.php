@@ -202,6 +202,8 @@ class TD_Framework extends TD_Framework_Base
     {
         global $wp_query;
 
+        if($obj->slug==$category_slug)
+            return;
 
         $args = array(
             'sort'=>'latest',
