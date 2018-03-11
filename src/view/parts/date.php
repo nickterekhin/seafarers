@@ -8,8 +8,8 @@ $difference = human_time_diff( get_the_time('U',$post->ID), current_time('timest
 
 $display_date = isset($display_date) && $display_date !== '' ? $display_date : 'yes';
 
-$comments_qty = get_comments_number(get_the_ID());
-$views_qty = get_post_meta(get_the_ID(),'qode_count_post_views_meta',true);
+$comments_qty = get_comments_number($post->ID);
+$views_qty = get_post_meta($post->ID,'qode_count_post_views_meta',true);
 
 
 
