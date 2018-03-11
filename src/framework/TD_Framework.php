@@ -115,6 +115,8 @@ class TD_Framework extends TD_Framework_Base
      */
     function show_hot_news_in_section($obj,$title="Горячие новости")
     {
+        global $wp_query;
+
         $args = array(
             'sort'=>'hot_first',
             'layout_title'=>$title,
@@ -122,6 +124,12 @@ class TD_Framework extends TD_Framework_Base
         );
         if($obj)
             $args['category_name']=$obj->slug;
+
+        if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum'])) {
+            $args['year'] = $wp_query->query_vars['year'];
+            $args['monthnum'] = $wp_query->query_vars['monthnum'];
+        }
+
         $this->show_grid_post($args);
 
     }
@@ -146,7 +154,7 @@ class TD_Framework extends TD_Framework_Base
             $args['monthnum'] = $wp_query->query_vars['monthnum'];
         }
 
-        var_dump($args);
+
 
         $this->show_grid_post($args,'layout2-news-vertical');
     }
