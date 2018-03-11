@@ -1,13 +1,18 @@
 <?php  extract(qode_get_blog_single_params()); ?>
+<?php
+	$single_loop = 'custom_blog_single';
+
+?>
 <?php get_header(); ?>
 <?php if (have_posts()) : ?>
 <?php while (have_posts()) : the_post(); ?>
-	<?php if(get_post_meta($id, "qode_page_scroll_amount_for_sticky", true)) { ?>
+	<?php
+	if(get_post_meta($id, "qode_page_scroll_amount_for_sticky", true)) { ?>
 		<script>
 		var page_scroll_amount_for_sticky = <?php echo get_post_meta($id, "qode_page_scroll_amount_for_sticky", true); ?>;
 		</script>
 	<?php } ?>
-	<?php get_template_part( 'title' ); ?>
+	<?php get_template_part( 'templates/single_title' ); ?>
 	<?php get_template_part( 'slider' ); ?>
 				<?php if($single_type == 'image-title-post') : //this post type is full width ?>
 					<div class="full_width" <?php if($background_color != "") { echo " style='background-color:". $background_color ."'";} ?>>
