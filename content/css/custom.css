@@ -83,7 +83,7 @@ aside .widget a {
 .td-categories-list {
   margin-bottom: 20px; }
   .td-categories-list.td-vertical-list a {
-    display: block;
+    display: table;
     margin: 7px auto; }
   .td-categories-list a {
     text-transform: uppercase;
