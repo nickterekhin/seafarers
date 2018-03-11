@@ -64,7 +64,11 @@
 											get_template_part('templates/' . $single_loop, 'loop');
 											?>
 										</div>
-										
+										<div class="td-additional-news">
+											<?php
+											get_template_part('templates/additional_news');
+											?>
+										</div>
 										<?php
 											if($blog_hide_comments != "yes"){
 												comments_template('', true); 
