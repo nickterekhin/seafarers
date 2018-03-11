@@ -8,6 +8,12 @@ $difference = human_time_diff( get_the_time('U',$post->ID), current_time('timest
 
 $display_date = isset($display_date) && $display_date !== '' ? $display_date : 'yes';
 
+$comments_qty = get_comments_number(get_the_ID());
+$views_qty = get_post_meta(get_the_ID(),'qode_count_post_views_meta',true);
+
+
+
+
 if ($display_date == 'yes'){ ?>
 	<div itemprop="dateCreated" class="qode-post-info-date entry-date published updated td-additional-post-info-layouts">
 
@@ -25,8 +31,14 @@ if ($display_date == 'yes'){ ?>
 									echo esc_html($difference);
 								} ?>
 							</a></li>
-					<li><span><i class="fa fa-eye"></i>44567</span></li>
-					<li><span><i class="fa fa-comments"></i>456879</span></li>
+			<?php if($comments_qty>0 || $views_qty>0){ ?>
+			<?php if($views_qty>0){ ?>
+					<li><span><i class="fa fa-eye"></i><?php echo $views_qty;?></php></span></li>
+			<?php } ?>
+			<?php if($comments_qty>0){ ?>
+					<li><span><i class="fa fa-comments"></i><?php echo $comments_qty;?></span></li>
+			<?php } ?>
+			<?php } ?>
 				</ul>
 	    <meta itemprop="interactionCount" content="UserComments: <?php echo get_comments_number(qode_get_page_id()); ?>"/>
 	</div>
