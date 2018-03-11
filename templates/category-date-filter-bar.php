@@ -1,6 +1,7 @@
 <?php
 global $terekhin_framework,$wp_query;
 $obj = $wp_query->get_queried_object();
+if($obj){
 ?>
 <script type="text/javascript">
     (function($){
@@ -48,3 +49,4 @@ $obj = $wp_query->get_queried_object();
 
     </form>
 </div>
+<?php } ?>
