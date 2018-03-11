@@ -409,7 +409,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
             $where .=" AND (";
             $where.=" ".$this->db->prefix."posts.post_title REGEXP '[[:<:]]".sanitize_text_field($_REQUEST['filter_search'])."[[:>:]]' OR ";
             if($obj && $obj->taxonomy=='category') {
-                $where .= " pm_tag.tag_name REGEXP '[[:<:]]" . $_REQUEST['filter_search'] . "[[:>:]]' OR ";
+                $where .= " pm_tag.tag_name REGEXP '[[:<:]]" . sanitize_text_field($_REQUEST['filter_search']) . "[[:>:]]' OR ";
             }
             $where.=" ".$this->db->prefix."posts.post_excerpt REGEXP '[[:<:]]".sanitize_text_field($_REQUEST['filter_search'])."[[:>:]]' )";
 
