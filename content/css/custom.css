@@ -101,7 +101,11 @@ aside .widget a {
       padding: 0 5px; }
 
 .td-additional-post-info {
-  margin-top: 10px; }
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dotted #a9a9a9;
+  position: relative;
+  top: 25px; }
   .td-additional-post-info ul {
     list-style: none; }
     .td-additional-post-info ul li {
