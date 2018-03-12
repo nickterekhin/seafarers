@@ -211,6 +211,11 @@ article .td-post-info-bottom {
   .td-grid-post .post_text_inner p {
     text-align: left; }
 
+.td-news-big-image-post .qode-news-item-image-holder {
+  width: 100%; }
+  .td-news-big-image-post .qode-news-item-image-holder img {
+    width: 100%; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
