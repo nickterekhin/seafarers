@@ -236,6 +236,18 @@ article .td-post-info-bottom {
   padding-top: 11px !important;
   padding-bottom: 11px !important; }
 
+.qode-slider-td .qode-post-excerpt {
+  background-color: rgba(0, 0, 0, 0.8); }
+.qode-slider-td .qode-slider1-pag-title {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400; }
+.qode-slider-td .qode-slider1-pag-date {
+  font-weight: 400;
+  font-size: 13px; }
+  .qode-slider-td .qode-slider1-pag-date i {
+    top: 1px; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
