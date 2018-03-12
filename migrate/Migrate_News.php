@@ -261,6 +261,7 @@ WHERE pm.meta_value IS NULL AND p.post_date >'2018-03-01' and n.is_video = 0");
         //AND p.post_content REGEXP '[[:digit:]]+.[[:space:]]*[[:digit:]]+.[[:space:]]*[[:digit:]]+[[:space:]]*-[[:space:]]*SEAFARERS[[:space:]]*JOURNAL'
         //$sql = $this->db->prepare("SELECT p.ID, p.post_content FROM ".$this->db->prefix."posts p WHERE p.post_type='post' AND (p.post_content !='' OR p.post_content is NOT NULL) LIMIT 0,5");
         $res = $this->db->get_results("SELECT p.ID, p.post_content FROM ".$this->db->prefix."posts p WHERE p.post_type='post' AND (p.post_content !='' OR p.post_content is NOT NULL) LIMIT 0,5");
+        var_dump($res);
         if($res)
         {
             if(preg_match('/(\d+\.\s?\d+\.\s?\d+\s?.\s?Seafarers\s?journal\.?)/',$res->post_content,$m)==1)
