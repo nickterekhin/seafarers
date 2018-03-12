@@ -21,7 +21,9 @@
 }
 @media only screen and(max-width:1000px)
 {
-
+  .content .container .container_inner.default_template_holder, .content .container .container_inner.page_container_inner{
+    padding-top:20px;
+  }
 }
 @media only screen and (max-width: 1060px) and (min-width: 1000px)
 {

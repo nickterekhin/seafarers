@@ -416,6 +416,9 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
   .td-news-big-image-post h2, .td-news-big-image-post h2 a {
     font-size: 13px;
     line-height: 23px; } }
+@media only screen and (max-width: 1000px) {
+  .content .container .container_inner.default_template_holder, .content .container .container_inner.page_container_inner {
+    padding-top: 20px; } }
 @media only screen and (max-width: 1060px) and (min-width: 1000px) {
   .boxed div.section .section_inner, .carousel-inner .slider_content_outer, .container_inner, .full_width .parallax_content, .steps_holder_inner, div.grid_section .section_inner, nav.content_menu {
     width: 768px; } }
