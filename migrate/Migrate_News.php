@@ -274,9 +274,9 @@ WHERE pm.meta_value IS NULL AND p.post_date >'2018-03-01' and n.is_video = 0");
                         var_dump($m1);
                         $terms = get_the_terms($r->ID, 'category');
                         if ($terms && count($terms) > 0) {
-                            $r->post_content = preg_replace("/$m1[2]/", $terms[0]->slug, $r->post_content);
+                            $r->post_content = preg_replace("#$m1[2]#", $terms[0]->slug, $r->post_content);
                         } else {
-                            $r->post_content = preg_replace('/\/' . $m1[2] . '\//', '/', $r->post_content);
+                            $r->post_content = preg_replace('#\/' . $m1[2] . '\/#', '/', $r->post_content);
                         }
 
                     }
