@@ -312,3 +312,14 @@ article {
     }
   }
 }
+.td-news-list{
+  .qode-news-item-image-holder{
+    display:none;
+  }
+  .qode-news-item{
+    &.qode-layout2-item{
+      padding-top: 11px!important;
+      padding-bottom: 11px!important
+    }
+  }
+}
