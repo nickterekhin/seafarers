@@ -126,7 +126,7 @@ class TD_Theme_Tools
                 break;
 
             case 'comments':
-                $query_array['orderby'] = 'comment_count';
+                $query_array['orderby'] = 'comment_count date';
                 $query_array['order'] = 'DESC';
                 break;
 

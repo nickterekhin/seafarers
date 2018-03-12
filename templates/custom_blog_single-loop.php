@@ -62,18 +62,19 @@ $_post_format = get_post_format();
 				</div>
 				<div class="post_text">
 					<div class="post_text_inner">
-						<h2 itemprop="name" class="entry_title"><span itemprop="dateCreated" class="date entry_date updated"><?php the_time('d M'); ?><meta itemprop="interactionCount" content="UserComments: <?php echo get_comments_number(qode_get_page_id()); ?>"/></span> <?php the_title(); ?></h2>
-						<div class="post_info">
-							<span class="time"><?php _e('Posted at','qode'); ?> <?php the_time('H:i'); ?><?php _e('h','qode'); ?></span>
-							<?php _e('in','qode'); ?> <?php the_category(', '); ?>
+						<!--<h2 itemprop="name" class="entry_title"><span itemprop="dateCreated" class="date entry_date updated"><?php /*the_time('d M'); */?><meta itemprop="interactionCount" content="UserComments: <?php /*echo get_comments_number(qode_get_page_id()); */?>"/></span> <?php /*the_title(); */?></h2>-->
+						<div class="post_info td-single-post-info">
+							<span class="time"><?php echo 'Опубликовано'; ?> <?php the_time('d-m-Y H:i'); ?></span><span class="dots"><i class="fa fa-square"></i></span>
+							<?php the_category(', '); ?>
+							<span class="dots"><i class="fa fa-square"></i></span>
 							<span class="post_author">
-								<?php _e('by','qode'); ?>
+								<?php _e('Автор','qode'); ?>
 								<a itemprop="author" class="post_author_link" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author_meta('display_name'); ?></a>
 							</span>
 							<?php if($blog_hide_comments != "yes"){ ?>
-								<span class="dots"><i class="fa fa-square"></i></span><a itemprop="url" class="post_comments" href="<?php comments_link(); ?>" target="_self"><?php comments_number('0 ' . __('Comments','qode'), '1 '.__('Comment','qode'), '% '.__('Comments','qode') ); ?></a>
+								<span class="dots"><i class="fa fa-square"></i></span><a itemprop="url" class="post_comments" href="<?php comments_link(); ?>" target="_self"><i class="fa fa-comments"></i><?php echo get_comments_number(get_the_ID()); ?></a>
 							<?php } ?>
-                            <?php qode_get_template_part('templates/blog-parts/blog','share-like-post-info',$params); ?>
+							<?php qode_get_template_part('templates/blog-parts/blog','share-like-post-info',$params); ?>
 						</div>
 						<?php the_content(); ?>
 					</div>
@@ -246,7 +247,7 @@ $_post_format = get_post_format();
 						<!--<h2 itemprop="name" class="entry_title"><span itemprop="dateCreated" class="date entry_date updated"><?php /*the_time('d M'); */?><meta itemprop="interactionCount" content="UserComments: <?php /*echo get_comments_number(qode_get_page_id()); */?>"/></span> <?php /*the_title(); */?></h2>-->
 						<div class="post_info td-single-post-info">
 							<span class="time"><?php echo 'Опубликовано'; ?> <?php the_time('d-m-Y H:i'); ?></span><span class="dots"><i class="fa fa-square"></i></span>
-							<?php _e('в','qode'); ?> <?php the_category(', '); ?>
+							<?php the_category(', '); ?>
 							<span class="dots"><i class="fa fa-square"></i></span>
 							<span class="post_author">
 								<?php _e('Автор','qode'); ?>
