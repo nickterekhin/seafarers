@@ -530,6 +530,23 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
 
         return $image;
     }
+
+    public function set_post_views($postID)
+    {
+        $views_key = 'qode_count_post_views_meta';
+
+        $count = get_post_meta($postID,$views_key,true);
+        if($count==''){
+            $count=0;
+            delete_post_meta($postID,$views_key);
+            add_post_meta($postID,$views_key,$count);
+        }
+        else
+        {
+            $count++;
+            update_post_meta($postID,$views_key,$count);
+        }
+    }
 }
 
 function init_framework()

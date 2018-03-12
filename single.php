@@ -1,3 +1,4 @@
+<?php global $terekhin_framework; ?>
 <?php  extract(qode_get_blog_single_params()); ?>
 <?php
 	$single_loop = 'custom_blog_single';
@@ -7,6 +8,8 @@
 <?php if (have_posts()) : ?>
 <?php while (have_posts()) : the_post(); ?>
 	<?php
+		$terekhin_framework->set_post_views($id);
+
 	if(get_post_meta($id, "qode_page_scroll_amount_for_sticky", true)) { ?>
 		<script>
 		var page_scroll_amount_for_sticky = <?php echo get_post_meta($id, "qode_page_scroll_amount_for_sticky", true); ?>;
