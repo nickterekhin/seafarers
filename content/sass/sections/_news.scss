@@ -192,7 +192,18 @@ article {
       letter-spacing: 1px;
     }
     a {
-      color: #909090 !important;
+      color: #fdfdfd !important;
+      background-color: #999;
+      padding: 0 5px;
+      border: 1px solid #999;
+      font-size: 15px;
+      position: relative;
+      top: -1px;
+      &:hover{
+        color: #bf0434 !important;
+        background: #fff;
+        border: 1px solid #bf0434;
+      }
     }
   }
 

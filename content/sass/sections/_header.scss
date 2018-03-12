@@ -44,6 +44,15 @@ header {
   .q_social_icon_holder + .q_social_icon_holder{
     margin: 0 0 2px 8px!important;
   }
+  .widget_nav_menu{
+    ul.menu{
+      &>li{
+        &>a:hover{
+          color: $top_header_hover_color !important;
+        }
+      }
+    }
+  }
 }
 
 aside {

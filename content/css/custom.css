@@ -14,6 +14,8 @@ header .header_top .q_social_icon_holder a:hover {
   margin: 0 !important; }
 .vertical_menu_area .q_social_icon_holder + .q_social_icon_holder {
   margin: 0 0 2px 8px !important; }
+.vertical_menu_area .widget_nav_menu ul.menu > li > a:hover {
+  color: #02b0ea !important; }
 
 aside .widget a {
   text-transform: uppercase;
@@ -144,7 +146,17 @@ article .td-single-post-info {
   article .td-single-post-info span {
     letter-spacing: 1px; }
   article .td-single-post-info a {
-    color: #909090 !important; }
+    color: #fdfdfd !important;
+    background-color: #999;
+    padding: 0 5px;
+    border: 1px solid #999;
+    font-size: 15px;
+    position: relative;
+    top: -1px; }
+    article .td-single-post-info a:hover {
+      color: #bf0434 !important;
+      background: #fff;
+      border: 1px solid #bf0434; }
 
 .quform-1 .quform-label {
   color: #fff;
