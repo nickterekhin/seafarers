@@ -262,23 +262,24 @@ WHERE pm.meta_value IS NULL AND p.post_date >'2018-03-01' and n.is_video = 0");
         //$sql = $this->db->prepare("SELECT p.ID, p.post_content FROM ".$this->db->prefix."posts p WHERE p.post_type='post' AND (p.post_content !='' OR p.post_content is NOT NULL) LIMIT 0,5");
         $limit = ' LIMIT 1';
         if($qty>=0) {
-            $limit = ' LIMIT ' . $qty . ', 5 ';
+            $limit = ' LIMIT ' . $qty . ', 5000 ';
         }
 
         $res = $this->db->get_results("SELECT p.ID, p.post_content FROM ".$this->db->prefix."posts p WHERE p.post_type='post' AND (p.post_content !='' OR p.post_content is NOT NULL) ORDER BY p.post_date DESC ".$limit);
-        var_dump($res);
+
 
         if($res)
         {
             $index = 0;
+            $success = 0;
             foreach($res as $r) {
                 if(!empty($r->post_content)) {
                     if (preg_match('/(\d+\.\s?\d+\.\s?\d+\s?.\s?Seafarers\s?journal\.?)/i', $r->post_content, $m) == 1) {
-                        var_dump($m);
+
                         $r->post_content = preg_replace('/' . $m[1] . '/', '', $r->post_content);
                     }
                     if (preg_match('/href="(.*?)\/(news\/view)\/(.*?)"/i', $r->post_content, $m1) == 1) {
-                        var_dump($m1);
+
                         $terms = get_the_terms($r->ID, 'category');
                         if ($terms && count($terms) > 0) {
                             $r->post_content = preg_replace("#$m1[1]/$m1[2]#", '/'.$terms[0]->slug, $r->post_content);
@@ -289,10 +290,11 @@ WHERE pm.meta_value IS NULL AND p.post_date >'2018-03-01' and n.is_video = 0");
                     }
                     $res = $this->db->query($this->db->prepare("UPDATE ".$this->db->prefix."posts p SET p.post_content=%s WHERE p.ID=%d",$r->post_content,$r->ID));
                     if($res)
-                        $index++;
+                        $success++;
                 }
+                $index++;
             }
-            echo $index;
+            echo $index.' - '.$success;
 
         }
     }
