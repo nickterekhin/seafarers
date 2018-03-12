@@ -186,12 +186,16 @@ article .td-share-blog .social_share_list_holder {
     line-height: 2em;
     vertical-align: middle;
     font-size: 24px;
-    border: 1px solid #a9a9a9;
-    padding: 5px;
+    border: 2px solid #a9a9a9;
+    padding: 0;
     text-align: center;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%; }
+    article .td-share-blog .social_share_list_holder a:hover {
+      border-color: #bf0434; }
+      article .td-share-blog .social_share_list_holder a:hover i {
+        color: #bf0434; }
 article .td-post-info-bottom {
   margin-top: 40px;
   padding-bottom: 30px;

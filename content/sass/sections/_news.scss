@@ -241,16 +241,19 @@ article {
         line-height: 2em;
         vertical-align: middle;
         font-size:24px;
-        border:1px solid #a9a9a9;
-        padding:5px;
+        border:2px solid #a9a9a9;
+        padding:0;
         text-align: center;
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
         border-radius: 50%;
-        i{
-
-
+        &:hover{
+          border-color:#bf0434;
+          i{
+           color:#bf0434;
+          }
         }
+
       }
     }
   }
