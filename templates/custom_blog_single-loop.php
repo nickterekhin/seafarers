@@ -267,22 +267,32 @@ $_post_format = get_post_format();
 do_action('qode_after_article_content');
 ?>
 	<?php if( has_tag()) { ?>
-		<div class="single_tags clearfix">
-            <div class="tags_text">
-				<h5><?php _e('Tags:','qode'); ?></h5>
-				<?php 
-				if ((isset($qode_options_proya['tags_border_style']) && $qode_options_proya['tags_border_style'] !== '') || (isset($qode_options_proya['tags_background_color']) && $qode_options_proya['tags_background_color'] !== '')){
-					the_tags('', ' ', '');
-				}
-				else{
-					the_tags('', ', ', '');
-				}
-				?>
+		<div class="td-post-info-bottom">
+			<div class="single_tags clearfix">
+				<div class="tags_text td-single-tags">
+					<h5><?php echo 'Тэги:'; ?></h5>
+					<?php
+					if ((isset($qode_options_proya['tags_border_style']) && $qode_options_proya['tags_border_style'] !== '') || (isset($qode_options_proya['tags_background_color']) && $qode_options_proya['tags_background_color'] !== '')){
+						the_tags('','','');
+					}
+					else{
+						the_tags('','','');
+					}
+					?>
+				</div>
 			</div>
 		</div>
+
 	<?php } ?>
-    <?php qode_get_template_part('templates/blog-parts/blog','share-like-below-text',$params); ?>
-	<?php 
+			<div class="td-post-info-bottom">
+				<div class="qode-blog-share td-share-blog">
+					<!--<h5 class="qode-share-title"><?php /*esc_html_e('','qode-news') */?></h5>-->
+					<?php echo do_shortcode('[social_share_list]'); ?>
+				</div>
+			</div>
+
+   <!-- --><?php /*qode_get_template_part('templates/blog-parts/blog','share-like-below-text',$params); */?>
+	<?php /*
 		$args_pages = array(
 			'before'           => '<p class="single_links_pages">',
 			'after'            => '</p>',
@@ -292,7 +302,7 @@ do_action('qode_after_article_content');
 		);
 
 		wp_link_pages($args_pages);
-	?>
+	*/?>
 <?php if($blog_author_info == "yes") { ?>
 	<div class="author_description">
 		<div class="author_description_inner">
