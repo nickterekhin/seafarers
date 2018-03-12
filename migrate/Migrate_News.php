@@ -256,11 +256,16 @@ WHERE pm.meta_value IS NULL AND p.post_date >'2018-03-01' and n.is_video = 0");
             var_dump(file_exists($this->image_folder.'/'.$res->photo));
         }
     }
-    function cleanPost_Content()
+    function cleanPost_Content($qty)
     {
         //AND p.post_content REGEXP '[[:digit:]]+.[[:space:]]*[[:digit:]]+.[[:space:]]*[[:digit:]]+[[:space:]]*-[[:space:]]*SEAFARERS[[:space:]]*JOURNAL'
         //$sql = $this->db->prepare("SELECT p.ID, p.post_content FROM ".$this->db->prefix."posts p WHERE p.post_type='post' AND (p.post_content !='' OR p.post_content is NOT NULL) LIMIT 0,5");
-        $res = $this->db->get_results("SELECT p.ID, p.post_content FROM ".$this->db->prefix."posts p WHERE p.post_type='post' AND (p.post_content !='' OR p.post_content is NOT NULL) ORDER BY p.post_date DESC LIMIT 0,5");
+        $limit = ' LIMIT 1';
+        if($qty>=0) {
+            $limit = ' LIMIT ' . $qty . ', 5 ';
+        }
+
+        $res = $this->db->get_results("SELECT p.ID, p.post_content FROM ".$this->db->prefix."posts p WHERE p.post_type='post' AND (p.post_content !='' OR p.post_content is NOT NULL) ORDER BY p.post_date DESC ".$limit);
         var_dump($res);
 
         if($res)
@@ -321,7 +326,7 @@ WHERE pm.meta_value IS NULL AND p.post_date >'2018-03-01' and n.is_video = 0");
                     $this->addImageForPost();
                     break;
                 case 'clean-content':
-                    $this->cleanPost_Content();
+                    $this->cleanPost_Content(isset($_REQUEST['qty'])?$_REQUEST['qty']:-1);
                     break;
 
             }
