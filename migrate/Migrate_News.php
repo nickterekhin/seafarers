@@ -64,7 +64,7 @@ FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
-WHERE (n.opinion ='' OR n.opinion = '0') AND n.is_video!=1 AND n.timestamp  > DATE_SUB(DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY), INTERVAL 2 MONTH) ORDER BY n.timestamp DESC LIMIT $qty,1000");
+WHERE (n.opinion ='' OR n.opinion = '0') AND n.is_video!=1 AND n.timestamp  > DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY) ORDER BY n.timestamp DESC LIMIT $qty,1000");
         $index = 0;
         while($res=$sql->FetchRow())
         {
@@ -247,7 +247,7 @@ WHERE n.is_video=1 ".$limit);
         $sql = $this->alien_db_service->Query("SELECT p.ID,p.post_name,n.uri,n.photo FROM i4208320_wp2.wp_posts p
 LEFT JOIN i4208320_wp2.wp_postmeta pm ON p.ID = pm.post_id AND pm.meta_key = '_thumbnail_id'
 INNER JOIN seafarersj_db.news n ON n.uri = p.post_name
-WHERE pm.meta_value IS NULL AND p.post_date >'2018-01-01' and n.is_video = 0");
+WHERE pm.meta_value IS NULL AND p.post_date >'2018-03-01' and n.is_video = 0");
         while($res = $sql->FetchRow())
         {
             //$this->addImageToPost($post_ID, $this->image_folder . '/' . $res->photo);
