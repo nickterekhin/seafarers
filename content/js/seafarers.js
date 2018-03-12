@@ -21,7 +21,7 @@ var dpOptions = {
         $('.qode-news-holder').each(function(i,v){
             if($(this).has('div.qode-news-list-inner-holder').length==0)
             {
-                var row = $(this).parent('.vc_row');
+                var row = $(this).parent('div.vc_row');
                 console.log(row);
                 row.css('padding-top','25px');
                 row.css('padding-bottom','25px');
