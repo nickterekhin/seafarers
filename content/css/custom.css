@@ -522,4 +522,4 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
     padding-left: 0; }
 
   .qode-news-item-image-holder {
-    display: none; } }
+    display: none !important; } }
