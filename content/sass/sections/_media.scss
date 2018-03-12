@@ -1,5 +1,7 @@
 @import "../vars/media_vars";
+@media only screen and (max-width: 1024px) and (min-width:768px) and (orientation: landscape){
 
+}
 @media only screen and (min-device-width: 768px) {
   .visible-xs {
     display: none;
@@ -17,6 +19,13 @@
       font-size: 13px;
       line-height: 23px;
     }
+  }
+  .qode-slider-td{
+    h3,h3 a{
+      font-size: 16px;
+      line-height:30px;
+    }
+
   }
 }
 @media only screen and(max-width:1000px)
