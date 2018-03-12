@@ -298,7 +298,10 @@ article {
 }
 .td-news-grid-article{
   .qode-layout1-item{
-    box-shadow: 0px 2px 2px 0px rgba(0, 6, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.01);
-    background: #fafafa;
+    .qode-ni-content {
+      box-shadow: 0px 2px 2px 0px rgba(0, 6, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.01);
+      background: #fafafa;
+      padding:10px;
+    }
   }
 }

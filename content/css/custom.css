@@ -220,9 +220,10 @@ article .td-post-info-bottom {
 .td-news-big-image-post h2 a {
   line-height: 50px !important; }
 
-.td-news-grid-article .qode-layout1-item {
+.td-news-grid-article .qode-layout1-item .qode-ni-content {
   box-shadow: 0px 2px 2px 0px rgba(0, 6, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.01);
-  background: #fafafa; }
+  background: #fafafa;
+  padding: 10px; }
 
 .quform-1 .quform-label {
   color: #fff;
