@@ -302,6 +302,13 @@ article {
       box-shadow: 0px 2px 2px 0px rgba(0, 6, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.01);
       background: #fafafa;
       padding:10px;
+      .qode-post-excerpt-holder{
+        text-align: left;
+        line-height: 23px;
+      }
+      .qode-post-info-date{
+        text-align:center;
+      }
     }
   }
 }
