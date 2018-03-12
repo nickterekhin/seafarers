@@ -271,7 +271,6 @@ do_action('qode_after_article_content');
 		<div class="td-post-info-bottom">
 			<div class="single_tags clearfix">
 				<div class="tags_text td-single-tags">
-					<h5><?php echo 'Тэги:'; ?></h5>
 					<?php
 					if ((isset($qode_options_proya['tags_border_style']) && $qode_options_proya['tags_border_style'] !== '') || (isset($qode_options_proya['tags_background_color']) && $qode_options_proya['tags_background_color'] !== '')){
 						the_tags('','','');
