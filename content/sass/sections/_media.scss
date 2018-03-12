@@ -191,9 +191,6 @@
     font-size:12px;
     padding:7px 20px;
   }
-  .qode-news-item-image-holder{
-    display:none;
-  }
 
 }
 
@@ -204,7 +201,13 @@
   .qode-slider-td .qode-slider1-owl .owl-dots .qode-slider1-pag-info-holder{
     padding-left:0;
   }
-  .qode-news-item-image-holder{
-    display:none !important;
+
+}
+@media only screen and (max-width:1280px)
+{
+  .td-news-list {
+    .qode-news-item-image-holder {
+      display: none !important;
+    }
   }
 }
