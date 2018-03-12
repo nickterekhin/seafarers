@@ -206,9 +206,9 @@ article .td-post-info-bottom {
   article .td-post-info-bottom:last-child {
     margin-bottom: 40px; }
 
-article .td-grid-post .post_text_inner {
+.td-grid-post .post_text_inner {
   padding: 20px 15px; }
-  article .td-grid-post .post_text_inner p {
+  .td-grid-post .post_text_inner p {
     text-align: left; }
 
 .quform-1 .quform-label {
