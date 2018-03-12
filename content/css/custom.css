@@ -519,4 +519,7 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
     padding-left: 0; } }
 @media only screen and (max-width: 1280px) {
   .td-news-list .qode-news-item-image-holder {
-    display: none !important; } }
+    display: none !important; }
+
+  .qode-slider-td .qode-slider1-nav-holder {
+    display: none; } }
