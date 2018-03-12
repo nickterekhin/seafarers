@@ -8,7 +8,7 @@ use TerekhinDevelopment\framework\TD_Framework;
 ?>
 
 <?php if(count($posts)>0){ ?>
-<div class="qode-news-holder qode-layout2 qode-news-columns-<?php echo $columns_number;?> qode-nl-normal-space">
+<div class="td-news-list qode-news-holder qode-layout2 qode-news-columns-<?php echo $columns_number;?> qode-nl-normal-space">
     <?php if(isset($layout_title)){ ?>
     <div class="qode-news-list-title-holder">
         <h3 class="qode-news-layout-title"><?php echo $layout_title;?></h3>

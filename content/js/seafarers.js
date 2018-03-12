@@ -23,8 +23,8 @@ var dpOptions = {
             {
                 var row = $(this).closest('div.vc_row');
                 console.log(row);
-                row.css('padding-top','25px !important');
-                row.css('padding-bottom','25px !important');
+                row.css('padding-top','25px');
+                row.css('padding-bottom','25px');
                 $(this).hide();
 
             }
