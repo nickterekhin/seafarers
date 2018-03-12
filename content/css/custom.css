@@ -110,7 +110,7 @@ h2, h3, h4, h5, h6 {
   padding-top: 10px;
   border-top: 1px dotted #a9a9a9;
   position: relative;
-  top: 25px; }
+  top: 10px; }
   .td-additional-post-info ul {
     list-style: none; }
     .td-additional-post-info ul li {
@@ -205,6 +205,11 @@ article .td-post-info-bottom {
   border-bottom: 1px dotted #a9a9a9; }
   article .td-post-info-bottom:last-child {
     margin-bottom: 40px; }
+
+article .td-grid-post .post_text_inner {
+  padding: 20px 15px; }
+  article .td-grid-post .post_text_inner p {
+    text-align: left; }
 
 .quform-1 .quform-label {
   color: #fff;

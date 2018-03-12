@@ -135,7 +135,7 @@ text-align:left;
   padding-top:10px;
   border-top:1px dotted #a9a9a9;
   position: relative;
-  top: 25px;
+  top:10px;
   ul{
     list-style: none;
     li{
@@ -268,4 +268,14 @@ article {
     }
   }
 
+}
+article{
+  .td-grid-post{
+    .post_text_inner{
+      padding:20px 15px;
+      p{
+        text-align:left;
+      }
+    }
+  }
 }
