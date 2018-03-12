@@ -22,6 +22,9 @@ var dpOptions = {
             if($(this).has('div.qode-news-list-inner-holder').length==0)
             {
                 $(this).hide();
+                var row = $(this).parent('.vc_row');
+            row.css('padding-top','25px');
+                row.css('padding-bottom','25px');
             }
         });
     });
