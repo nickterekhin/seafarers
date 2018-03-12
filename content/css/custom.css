@@ -215,6 +215,10 @@ article .td-post-info-bottom {
   width: 100%; }
   .td-news-big-image-post .qode-news-item-image-holder img {
     width: 100%; }
+.td-news-big-image-post .qode-post-title a {
+  background-color: rgba(255, 255, 255, 0.8) !important; }
+.td-news-big-image-post h2 a {
+  line-height: 50px !important; }
 
 .quform-1 .quform-label {
   color: #fff;
