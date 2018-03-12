@@ -264,26 +264,25 @@ WHERE pm.meta_value IS NULL AND p.post_date >'2018-03-01' and n.is_video = 0");
         var_dump($res);
         if($res)
         {
-            if(preg_match('/(\d+\.\s?\d+\.\s?\d+\s?.\s?Seafarers\s?journal\.?)/',$res->post_content,$m)==1)
-            {
-                var_dump($m);
-                $res->post_content = preg_replace('/'.$m[1].'/','',$res->post_content);
-            }
-            if(preg_match('/href="(.*?)(\/news\/view\/)(.*?)"/',$res->post_content,$m1)==1)
-            {
-                var_dump($m1);
-                $terms = get_the_terms($res->ID,'category');
-                if($terms && count($terms)>0) {
-                    $res->post_content = preg_replace('/' . $m1[2] . '/', '/'.$terms[0]->slug.'/', $res->post_content);
-                }else
-                {
-                    $res->post_content = preg_replace('/' . $m1[2] . '/', '/', $res->post_content);
+            foreach($res as $r) {
+                if (preg_match('/(\d+\.\s?\d+\.\s?\d+\s?.\s?Seafarers\s?journal\.?)/', $r->post_content, $m) == 1) {
+                    var_dump($m);
+                    $r->post_content = preg_replace('/' . $m[1] . '/', '', $r->post_content);
                 }
+                if (preg_match('/href="(.*?)(\/news\/view\/)(.*?)"/', $r->post_content, $m1) == 1) {
+                    var_dump($m1);
+                    $terms = get_the_terms($r->ID, 'category');
+                    if ($terms && count($terms) > 0) {
+                        $r->post_content = preg_replace('/' . $m1[2] . '/', '/' . $terms[0]->slug . '/', $r->post_content);
+                    } else {
+                        $r->post_content = preg_replace('/' . $m1[2] . '/', '/', $r->post_content);
+                    }
 
+                }
+                var_dump($r->post_content);
             }
 
 
-            var_dump($res->post_content);
         }
     }
     public function routes()
