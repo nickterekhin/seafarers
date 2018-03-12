@@ -224,8 +224,11 @@
   }
   .td-news-big-image-post{
     h2{
-      line-height: 33px;
+      a{
+        line-height: 33px;
+      }
     }
+
   }
   h2, .h2, h2 a{
     font-size:20px;
