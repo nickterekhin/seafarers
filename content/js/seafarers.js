@@ -17,6 +17,11 @@ var dpOptions = {
 
 (function($,obj){
 
+    $(document).ready(function(){
+        $('.qode-news-holder').each(function(i,v){
+            console.log($(this).has('div.qode-news-list-inner-holder'));
+        });
+    });
     obj.query_params = {};
     obj.form = null;
     obj.form_url = null;
