@@ -246,7 +246,7 @@ $_post_format = get_post_format();
 					<div class="post_text_inner td-single-post-text-inner">
 						<h2 itemprop="name" class="entry_title"><?php the_title(); ?></h2>
 						<div class="post_info td-single-post-info">
-							<span class="time"><?php echo 'Опубликовано'; ?> <?php the_time('d-m-Y H:i'); ?></span><span class="dots"><i class="fa fa-square"></i></span>
+							<span class="time"><?php the_time('d-m-Y H:i'); ?></span><span class="dots"><i class="fa fa-square"></i></span>
 							<?php the_category(', '); ?>
 							<span class="dots"><i class="fa fa-square"></i></span>
 							<span class="post_author">
