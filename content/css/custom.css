@@ -237,7 +237,8 @@ article .td-post-info-bottom {
   padding-bottom: 11px !important; }
 
 .qode-slider-td .qode-post-excerpt-holder {
-  background-color: rgba(0, 0, 0, 0.8); }
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px; }
 .qode-slider-td .qode-slider1-pag-title {
   font-size: 14px;
   line-height: 18px;
