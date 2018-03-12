@@ -19,7 +19,10 @@ var dpOptions = {
 
     $(document).ready(function(){
         $('.qode-news-holder').each(function(i,v){
-            console.log($(this).has('div.qode-news-list-inner-holder'));
+            if($(this).has('div.qode-news-list-inner-holder').length==0)
+            {
+                $(this).hide();
+            }
         });
     });
     obj.query_params = {};
