@@ -280,7 +280,7 @@ WHERE pm.meta_value IS NULL AND p.post_date >'2018-03-01' and n.is_video = 0");
                         }
 
                     }
-                    var_dump($r->post_content);
+                    print_r($r->post_content);
                 }
             }
 
