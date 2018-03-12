@@ -207,7 +207,7 @@ article .td-post-info-bottom {
     margin-bottom: 40px; }
 
 .td-grid-post .post_text_inner {
-  padding: 20px 15px; }
+  padding: 20px 15px !important; }
   .td-grid-post .post_text_inner p {
     text-align: left; }
 
