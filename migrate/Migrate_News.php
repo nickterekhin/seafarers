@@ -256,6 +256,35 @@ WHERE pm.meta_value IS NULL AND p.post_date >'2018-03-01' and n.is_video = 0");
             var_dump(file_exists($this->image_folder.'/'.$res->photo));
         }
     }
+    function cleanPost_Content()
+    {
+        //AND p.post_content REGEXP '[[:digit:]]+.[[:space:]]*[[:digit:]]+.[[:space:]]*[[:digit:]]+[[:space:]]*-[[:space:]]*SEAFARERS[[:space:]]*JOURNAL'
+        $sql = $this->db->prepare("SELECT p.ID, p.post_content FROM ".$this->db->prefix."posts p WHERE p.post_type='post' AND (p.post_content !='' OR p.post_content is NOT NULL) LIMIT 0,5");
+        $res = $this->db->get_results($sql);
+        if($res)
+        {
+            if(preg_match('/(\d+\.\s?\d+\.\s?\d+\s?.\s?Seafarers\s?journal\.?)/',$res->post_content,$m)==1)
+            {
+                var_dump($m);
+                $res->post_content = preg_replace('/'.$m[1].'/','',$res->post_content);
+            }
+            if(preg_match('/href="(.*?)(\/news\/view\/)(.*?)"/',$res->post_content,$m1)==1)
+            {
+                var_dump($m1);
+                $terms = get_the_terms($res->ID,'category');
+                if($terms && count($terms)>0) {
+                    $res->post_content = preg_replace('/' . $m1[2] . '/', '/'.$terms[0]->slug.'/', $res->post_content);
+                }else
+                {
+                    $res->post_content = preg_replace('/' . $m1[2] . '/', '/', $res->post_content);
+                }
+
+            }
+
+
+            var_dump($res->post_content);
+        }
+    }
     public function routes()
     {
         try {
@@ -284,6 +313,9 @@ WHERE pm.meta_value IS NULL AND p.post_date >'2018-03-01' and n.is_video = 0");
                     break;
                 case 'add-image':
                     $this->addImageForPost();
+                    break;
+                case 'clean-content':
+                    $this->cleanPost_Content();
                     break;
 
             }
