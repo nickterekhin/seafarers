@@ -122,7 +122,7 @@ if($obj){
         ?>'" title="Сбросить фильтр" class="terekhindev-clear-search"><i class="fa fa-remove"></i></button>
         <?php } ?>
         <div style="overflow: hidden">
-            <input id="terekhindev-news-text-search" value="<?php echo isset($_REQUEST['filter_search'])?$_REQUEST['filter_search']:'';?>" placeholder="Найти новостьи" name="filter_search" type="text">
+            <input id="terekhindev-news-text-search" value="<?php echo isset($_REQUEST['filter_search'])?$_REQUEST['filter_search']:'';?>" placeholder="Найти новость" name="filter_search" type="text">
         </div>
 
     </form>
