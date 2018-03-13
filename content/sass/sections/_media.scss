@@ -8,55 +8,7 @@
   }
 
 }
-@media only screen and(max-width:768px){
-  .qode-slider-td .qode-slider1-owl .owl-dots{
-    width: 210px;
-    height: 60%;
-    min-height: 110px;
-  }
-  .td-news-big-image-post{
-    h2,h2 a{
-      font-size: 13px;
-      line-height: 23px;
-    }
-  }
-  .qode-slider-td{
-    h3,h3 a{
-      font-size: 16px;
-      line-height:30px;
-    }
 
-  }
-
-  .footer_top{
-    img.image{
-      margin:0 40px 0 0;
-    }
-    .menu-item{
-      display:block;
-      &:not(:last-child):after {
-
-        margin: 0;
-        content: '';
-
-      }
-      a{
-        display:block;
-      }
-
-    }
-    .td-copyright-info{
-      li{
-        p{
-          font-size: 11px;
-          line-height: 1.7;
-          font-weight: 500;
-          color: #888;
-        }
-      }
-    }
-  }
-}
 @media only screen and(max-width:1000px)
 {
   .content .container .container_inner.default_template_holder, .content .container .container_inner.page_container_inner{
@@ -248,6 +200,21 @@
 
 }
 
+@media only screen and (max-width:1280px)
+{
+  .td-news-list {
+    .qode-news-item-image-holder {
+      display: none !important;
+    }
+  }
+  .td-news-grid-article .qode-layout1-item .qode-ni-content .qode-post-excerpt-holder
+  {
+    line-height: 19px;
+    font-size: 13px;
+  }
+
+}
+
 @media only screen and (max-width: 1024px) {
   .qode-slider-td .qode-slider1-owl .owl-dots .qode-slider1-pag-thumb {
     display: none;
@@ -275,17 +242,52 @@
     font-size:20px;
   }
 }
-@media only screen and (max-width:1280px)
-{
-  .td-news-list {
-    .qode-news-item-image-holder {
-      display: none !important;
+@media only screen and(max-width:768px){
+  .qode-slider-td .qode-slider1-owl .owl-dots{
+    width: 210px;
+    height: 60%;
+    min-height: 110px;
+  }
+  .td-news-big-image-post{
+    h2,h2 a{
+      font-size: 13px;
+      line-height: 23px;
     }
   }
-  .td-news-grid-article .qode-layout1-item .qode-ni-content .qode-post-excerpt-holder
-  {
-    line-height: 19px;
-    font-size: 13px;
+  .qode-slider-td{
+    h3,h3 a{
+      font-size: 16px;
+      line-height:30px;
+    }
+
   }
 
+  .footer_top{
+    img.image{
+      margin:0 40px 0 0;
+    }
+    .menu-item{
+      display:block;
+      &:not(:last-child):after {
+
+        margin: 0;
+        content: '';
+
+      }
+      a{
+        display:block;
+      }
+
+    }
+    .td-copyright-info{
+      li{
+        p{
+          font-size: 11px;
+          line-height: 1.7;
+          font-weight: 500;
+          color: #888;
+        }
+      }
+    }
+  }
 }
