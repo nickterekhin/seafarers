@@ -160,7 +160,7 @@ article .td-single-post-info {
       color: #bf0434 !important;
       background: #fff;
       border: 1px solid #bf0434; }
-  article .td-single-post-info i.fa-comments {
+  article .td-single-post-info i.fa.fa-comments {
     margin-right: 10px; }
 article .td-single-tags a {
   display: inline-block;
@@ -541,11 +541,11 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
     article .td-single-post-info a {
       font-size: 13px; }
 
-  .td-additional-post-info-layouts {
+  .qode-news-holder .qode-post-info-date {
     font-size: 13px; }
-    .td-additional-post-info-layouts a {
+    .qode-news-holder .qode-post-info-date a {
       font-size: 13px; }
-      .td-additional-post-info-layouts a i {
+      .qode-news-holder .qode-post-info-date a i {
         font-size: 13px !important;
         margin-right: 2px !important; } }
 @media only screen and (max-width: 1280px) {
@@ -564,11 +564,11 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
     article .td-single-post-info a {
       font-size: 12px; }
 
-  .td-additional-post-info-layouts {
+  .qode-news-holder .qode-post-info-date {
     font-size: 12px; }
-    .td-additional-post-info-layouts a {
+    .qode-news-holder .qode-post-info-date a {
       font-size: 12px; }
-      .td-additional-post-info-layouts a i {
+      .qode-news-holder .qode-post-info-date a i {
         font-size: 12px !important;
         margin-right: 1px !important; } }
 @media only screen and (max-width: 1024px) {
@@ -616,4 +616,17 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
     font-size: 11px;
     line-height: 1.7;
     font-weight: 500;
-    color: #888; } }
+    color: #888; }
+
+  article .td-single-post-info {
+    font-size: 12px; }
+    article .td-single-post-info a {
+      font-size: 11px; }
+
+  .qode-news-holder .qode-post-info-date {
+    font-size: 12px; }
+    .qode-news-holder .qode-post-info-date a {
+      font-size: 12px; }
+      .qode-news-holder .qode-post-info-date a i {
+        font-size: 12px !important;
+        margin-right: 1px !important; } }
