@@ -419,7 +419,20 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
 
   .qode-slider-td h3, .qode-slider-td h3 a {
     font-size: 16px;
-    line-height: 30px; } }
+    line-height: 30px; }
+
+  .footer_top .menu-item {
+    display: block; }
+    .footer_top .menu-item:not(:last-child):after {
+      margin: 0;
+      content: ''; }
+    .footer_top .menu-item a {
+      display: block; }
+  .footer_top .td-copyright-info li p {
+    font-size: 11px;
+    line-height: 1.7;
+    font-weight: 500;
+    color: #888; } }
 @media only screen and (max-width: 1000px) {
   .content .container .container_inner.default_template_holder, .content .container .container_inner.page_container_inner {
     padding-top: 20px; } }

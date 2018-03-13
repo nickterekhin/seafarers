@@ -27,6 +27,32 @@
     }
 
   }
+
+  .footer_top{
+    .menu-item{
+      display:block;
+      &:not(:last-child):after {
+
+        margin: 0;
+        content: '';
+
+      }
+      a{
+        display:block;
+      }
+
+    }
+    .td-copyright-info{
+      li{
+        p{
+          font-size: 11px;
+          line-height: 1.7;
+          font-weight: 500;
+          color: #888;
+        }
+      }
+    }
+  }
 }
 @media only screen and(max-width:1000px)
 {
