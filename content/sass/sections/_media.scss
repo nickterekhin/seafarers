@@ -282,6 +282,9 @@
 
 }
 @media only screen and(max-width:768px){
+  .hidden-xs {
+    display: none;
+  }
   .qode-slider-td .qode-slider1-owl .owl-dots{
     width: 210px;
     height: 60%;
