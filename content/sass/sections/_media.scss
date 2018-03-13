@@ -195,7 +195,14 @@
       }
     }
   }
-
+  article {
+    .td-single-post-info {
+      font-size:15px;
+      a{
+        font-size:13px;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width:1280px)
