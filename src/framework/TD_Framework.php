@@ -520,7 +520,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
             if (file_exists($_SERVER['DOCUMENT_ROOT'].$image_url_obj['path'])) {
                 list($image_width, $image_height, $image_type, $image_attr) = getimagesize($_SERVER['DOCUMENT_ROOT'] . $image_url_obj['path']);
 
-                if ($image_width < 1920 && $image_height < 640)
+                if ($image_width < 1920 || $image_height < 640)
                 {
                     $image = $image_category;
                 }
