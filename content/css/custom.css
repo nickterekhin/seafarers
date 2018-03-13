@@ -40,7 +40,7 @@ h2, h3, h4, h5, h6 {
 .td-news-separator span {
   text-transform: uppercase; }
 .td-news-separator > div {
-  background-color: #bf0434 !important; }
+  background-color: #cf4a37 !important; }
 
 .td-news-simple-separator {
   border-style: dotted; }
@@ -71,14 +71,14 @@ h2, h3, h4, h5, h6 {
   background: #fafafa; }
 
 .qode-news-layout-title {
-  /*border-bottom:1px dotted #bf0434 !important;*/ }
+  /*border-bottom:1px dotted #cf4a37 !important;*/ }
 
 .vc_custom_heading a:hover {
-  color: #bf0434; }
+  color: #cf4a37; }
 .vc_custom_heading a:visited {
-  color: #bf0434; }
+  color: #cf4a37; }
 .vc_custom_heading a:focus {
-  color: #bf0434; }
+  color: #cf4a37; }
 
 .qode-news-holder .qode-post-info-date a {
   font-size: 13px;
@@ -99,7 +99,7 @@ h2, h3, h4, h5, h6 {
     font-size: 10px;
     margin: 0 5px 10px; }
     .td-categories-list a span {
-      background-color: #bf0434;
+      background-color: #cf4a37;
       display: block;
       position: relative;
       line-height: 22px;
@@ -157,9 +157,9 @@ article .td-single-post-info {
     position: relative;
     top: -1px; }
     article .td-single-post-info a:hover {
-      color: #bf0434 !important;
+      color: #cf4a37 !important;
       background: #fff;
-      border: 1px solid #bf0434; }
+      border: 1px solid #cf4a37; }
   article .td-single-post-info i.fa.fa-comments {
     margin-right: 10px; }
 article .td-single-tags a {
@@ -198,9 +198,9 @@ article .td-share-blog .social_share_list_holder {
     -moz-border-radius: 50%;
     border-radius: 50%; }
     article .td-share-blog .social_share_list_holder a:hover {
-      border-color: #bf0434; }
+      border-color: #cf4a37; }
       article .td-share-blog .social_share_list_holder a:hover i {
-        color: #bf0434; }
+        color: #cf4a37; }
 article .td-post-info-bottom {
   margin-top: 40px;
   padding-bottom: 30px;
@@ -313,7 +313,7 @@ article .td-post-info-bottom {
     float: right; }
     .terekhindev-news-date-filter .td-search-dropdown.open button {
       color: #fff !important;
-      background-color: #bf0434; }
+      background-color: #cf4a37; }
     .terekhindev-news-date-filter .td-search-dropdown.open ul {
       display: block; }
     .terekhindev-news-date-filter .td-search-dropdown button {
@@ -347,7 +347,7 @@ article .td-post-info-bottom {
       min-width: 160px;
       padding: 0;
       text-align: left;
-      background-color: #bf0434;
+      background-color: #cf4a37;
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
       border-left: 1px solid #e5e5e5 !important;
@@ -371,7 +371,7 @@ article .td-post-info-bottom {
         .terekhindev-news-date-filter .td-search-dropdown ul > li > a:hover {
           text-decoration: none;
           background: #fff;
-          color: #bf0434; }
+          color: #cf4a37; }
 
 div#ui-datepicker-div {
   z-index: 9999 !important; }
