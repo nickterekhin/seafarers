@@ -157,8 +157,8 @@ article .td-single-post-info {
     position: relative;
     top: -1px; }
     article .td-single-post-info a:hover {
-      color: #cf4a37 !important;
-      background: #fff;
+      color: #fff !important;
+      background: #cf4a37;
       border: 1px solid #cf4a37; }
   article .td-single-post-info i.fa.fa-comments {
     margin-right: 10px; }
