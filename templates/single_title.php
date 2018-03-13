@@ -621,9 +621,9 @@ if(!qode_is_title_hidden()) { ?>
 									<?php if(get_post_meta($id, "qode_page_text_above_title", true) != ""){ ?>
 										<span class="text_above_title" <?php echo qode_get_inline_style($text_above_title_color); ?>><?php echo get_post_meta($id, "qode_page_text_above_title", true); ?></span>
 									<?php } ?>
-									<h1 <?php print $page_title_animation_data; if(get_post_meta($id, "qode_page-title-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-title-color", true) ?>" <?php } ?>><span><?php qode_title_text(); ?></span></h1>
+									<h1 <?php print $page_title_animation_data; if(get_post_meta($id, "qode_page-title-color", true)) { ?> style="color:<?php echo get_post_meta($id, "qode_page-title-color", true) ?>;display:none;" <?php } ?>><span><?php qode_title_text(); ?></span></h1>
 									<?php if($title_separator == "yes"){ ?>
-										<span <?php qode_class_attribute(implode(' ', $separator_classes)) ?> <?php echo $separator_color; ?> <?php print $page_title_separator_animation_data; ?>></span>
+										<span <?php qode_class_attribute(implode(' ', $separator_classes)) ?> <?php echo $separator_color; ?> <?php print $page_title_separator_animation_data; ?> style="display:none;"></span>
 									<?php } ?>
 								
 									<?php if(get_post_meta($id, "qode_page_subtitle", true) != ""){ ?>
