@@ -45,7 +45,7 @@ if($obj){
         <button type="submit" class="qbutton default" name="submit" title="search">
             <i class="fa fa-2x fa-search"></i>
         </button>
-        <div class="td-search-dropdown" id="date_year">
+        <div class="td-search-dropdown hidden-xs" id="date_year">
             <button type="button" data-toggle="dropdown" aria-expanded="false">
                 <span>
                     <span><?php echo 'Год';?></span>
@@ -65,7 +65,7 @@ if($obj){
                 ?>
             </ul>
         </div>
-        <div class="td-search-dropdown" id="date_month">
+        <div class="td-search-dropdown hidden-xs" id="date_month">
             <button type="button" data-toggle="dropdown" aria-expanded="false">
                 <span>
                     <span><?php echo 'Месяц';?></span>
@@ -88,7 +88,7 @@ if($obj){
                 ?>
             </ul>
         </div>
-        <div class="td-search-dropdown" id="date_day">
+        <div class="td-search-dropdown hidden-xs" id="date_day">
             <button type="button" data-toggle="dropdown" aria-expanded="false">
                 <span>
                     <span><?php echo 'День';?></span>
