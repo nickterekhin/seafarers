@@ -530,6 +530,9 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
   .q_logo_vertical img.normal {
     height: 83px; }
 
+  h2, .h2, h2 a {
+    font-size: 25px; }
+
   h3, .h3, h3 a {
     font-size: 14px;
     line-height: 25px; }
