@@ -60,7 +60,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
         <?php } ?>
 		<div class="container_inner default_template_holder clearfix">
 			<?php if(isset($obj->description) && !empty($obj->description)):?>
-				<div class="vc_row wpb_row section vc_row-fluid " style=" text-align:left;">
+				<div class="vc_row wpb_row section vc_row-fluid hidden-xs" style=" text-align:left;">
 					<div class=" full_section_inner clearfix">
 						<div class="wpb_column vc_column_container vc_col-sm-12">
 							<div class="vc_column-inner row-bottom-margin">
