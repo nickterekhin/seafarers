@@ -162,9 +162,11 @@ article .td-single-post-info {
       border: 1px solid #cf4a37; }
   article .td-single-post-info i.fa.fa-comments {
     margin-right: 10px; }
-  article .td-single-post-info .dots i {
-    font-size: 3px;
-    vertical-align: middle; }
+  article .td-single-post-info .dots {
+    padding: 0 7px 0 4px; }
+    article .td-single-post-info .dots i {
+      font-size: 3px;
+      vertical-align: middle; }
 article .td-single-tags a {
   display: inline-block;
   font-size: 12px;
