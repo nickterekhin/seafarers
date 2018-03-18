@@ -12,6 +12,7 @@ include('src/terekhin.php');
 include('inc/config.php');
 include('src/framework/TD_Framework.php');
 include('src/short_codes/short_codes.php');
+include('src/td_news_short_codes/td_news.php');
 
 include('inc/social_config.php');
 include('inc/rewrite_rules.php');
