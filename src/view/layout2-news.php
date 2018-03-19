@@ -4,7 +4,7 @@
  * @var TD_Framework $class
 **/
 use TerekhinDevelopment\framework\TD_Framework;
-
+global $post;
 ?>
 
 <?php if(count($posts)>0){ ?>
@@ -24,7 +24,13 @@ use TerekhinDevelopment\framework\TD_Framework;
                     <div class="qode-news-item-image-holder-inner">
                         <div class="qode-post-image">
                         <?php
-                            $single['post']=$p;
+                        if(!is_single())
+                        {
+                            $post = !$post?$p:$post;
+                        }else
+                        {
+                            $post=$p;
+                        }
                             $single['class']=$class;
                             echo $class->View('parts/image',$single);
                         ?>
