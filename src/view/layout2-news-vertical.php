@@ -5,7 +5,6 @@
  **/
 use TerekhinDevelopment\framework\TD_Framework;
 global $post;
-var_dump($post);
 ?>
 
 <?php if(count($posts)>0) {
@@ -28,7 +27,14 @@ var_dump($post);
                     <div class="qode-news-item-image-holder-inner">
                         <div class="qode-post-image">
                             <?php
-                            $post = !$post?$p:$post;
+                        if(is_category() || is_tag() || is_author()) {
+                            $post = !$post ? $p : $post;
+                        }else
+                        {
+                            $post =$p;
+                        }
+
+
                             $single['class']=$class;
                             echo $class->View('parts/image',$single);
                             ?>
