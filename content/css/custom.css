@@ -48,9 +48,8 @@ h2, h3, h4, h5, h6 {
 .td-header {
   padding-bottom: 5px;
   border-bottom: 1px solid #004f8B;
-  margin-bottom: 15px; }
-  .td-header h3 {
-    color: #004f8B; }
+  margin-bottom: 15px;
+  color: #004f8B; }
 
 .qode-layout1-item .qode-post-title {
   margin-top: 10px;
