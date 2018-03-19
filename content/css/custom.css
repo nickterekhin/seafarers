@@ -269,6 +269,9 @@ article .td-post-info-bottom {
   padding-top: 5px !important;
   padding-bottom: 5px !important; }
 
+.qode-news-holder .qode-post-info-category a span, .qode-news-holder .qode-news-audio-holder .mejs-controls .mejs-time-rail .mejs-time-current, .qode-news-holder .qode-self-hosted-video-holder .mejs-controls .mejs-time-rail .mejs-time-current, .qode-news-filter-loading .qode-news-filter-loading-table-cell > div, .qode-news-pag-loading > div, .qode-post-info-hot-trending .qode-news-trending {
+  background-color: #9e2a1a; }
+
 .quform-1 .quform-label {
   color: #fff;
   text-transform: uppercase;
