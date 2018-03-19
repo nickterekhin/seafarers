@@ -218,7 +218,10 @@ article .td-post-info-bottom {
 .td-grid-post .post_text_inner {
   padding: 20px 15px !important; }
   .td-grid-post .post_text_inner p {
-    text-align: left; }
+    text-align: left;
+    color: #484848;
+    font-size: 12px;
+    line-height: 19px; }
 
 .td-news-big-image-post .qode-news-item-image-holder {
   width: 100%; }
