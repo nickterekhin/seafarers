@@ -235,7 +235,9 @@ article .td-post-info-bottom {
   padding: 10px; }
   .td-news-grid-article .qode-layout1-item .qode-ni-content .qode-post-excerpt-holder {
     text-align: left;
-    line-height: 23px; }
+    line-height: 19px;
+    font-size: 12px;
+    color: #484848; }
   .td-news-grid-article .qode-layout1-item .qode-ni-content .qode-post-info-date {
     text-align: center; }
 
