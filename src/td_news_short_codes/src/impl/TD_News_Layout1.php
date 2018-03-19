@@ -125,30 +125,37 @@ class TD_News_Layout1 extends TD_News_Base
     }
         private function render_news()
         {
-            $html='';
-            $this->short_code_params['posts_per_page']=2;
+            $html='<div class="td-news-holder td-complex-news">';
+            //first article
+            $this->short_code_params['posts_per_page']=9;
             $this->short_code_params['offset']=2;
             $query = $this->theme_tools->get_post_query($this->short_code_params);
+            wp_reset_postdata();
+
             $post_count=0;
             $class_holder=array();
             if($query->have_posts())
             {
-
-
+                if($query->post_count>1)
+                    $class_holder[]='td-news-column-2';
                 $html.= '<div class="td-news-holder '.implode(' ',$class_holder).'">';
                 while($query->have_posts()):$query->the_post();
+
+                    endwhile;
+                /*while($query->have_posts()):$query->the_post();
                     if($post_count==0 && $post_count==1)
                         $html.='<div class="top-layout1">';
                     $post_count++;
                     $this->short_code_params['post_number'] = $post_count;
-                $html.=$this->render_news_item();
+                    $html.=$this->render_news_item();
                     if($post_count==1)
                         $html.='</div>';
-                if($post_count==4)
+                    if($post_count==4)
                         $html.='</div>';
-                endwhile;
+                endwhile;*/
 
             }
+
             return $html;
         }
 
