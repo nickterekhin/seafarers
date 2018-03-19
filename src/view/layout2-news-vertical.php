@@ -27,14 +27,7 @@ global $post;
                     <div class="qode-news-item-image-holder-inner">
                         <div class="qode-post-image">
                             <?php
-                        if(is_category() || is_tag() || is_author()) {
-                            $post = !$post ? $p : $post;
-                        }else
-                        {
                             $post =$p;
-                        }
-
-
                             $single['class']=$class;
                             echo $class->View('parts/image',$single);
                             ?>
