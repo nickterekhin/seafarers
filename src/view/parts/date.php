@@ -1,15 +1,15 @@
 <?php
-$month = get_the_time('m',$post->ID);
-$year = get_the_time('Y',$post->ID);
-$title = get_the_title($post->ID);
+$month = get_the_time('m');
+$year = get_the_time('Y');
+$title = get_the_title();
 
 $date_format = isset($date_format) && $date_format !== '' ? $date_format : 'published';
-$difference = human_time_diff( get_the_time('U',$post->ID), current_time('timestamp') ) . esc_html__(' ago','qode-news');
+$difference = human_time_diff( get_the_time('U'), current_time('timestamp') ) . esc_html__(' ago','qode-news');
 
 $display_date = isset($display_date) && $display_date !== '' ? $display_date : 'yes';
 
-$comments_qty = get_comments_number($post->ID);
-$views_qty = get_post_meta($post->ID,'qode_count_post_views_meta',true);
+$comments_qty = get_comments_number();
+$views_qty = get_post_meta(get_the_ID(),'qode_count_post_views_meta',true);
 
 
 
@@ -19,14 +19,14 @@ if ($display_date == 'yes'){ ?>
 
 				<ul>
 					<li><?php if(empty($title) && qode_blog_item_has_link()) { ?>
-						<a itemprop="url" href="<?php the_permalink($post->ID) ?>">
+						<a itemprop="url" href="<?php the_permalink() ?>">
 							<?php } else { ?>
 							<a itemprop="url" href="<?php echo get_month_link($year, $month); ?>">
 								<?php } ?>
 								<i class="dripicons-alarm"></i>
 								<?php if ($date_format == 'published') {
 
-									echo get_the_time(get_option('date_format'),$post->ID);
+									echo get_the_time(get_option('date_format'));
 								} else {
 									echo esc_html($difference);
 								} ?>
