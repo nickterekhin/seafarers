@@ -46,9 +46,9 @@ h2, h3, h4, h5, h6 {
   border-style: dotted; }
 
 .td-header {
-  padding-bottom: 5px;
-  border-bottom: 1px solid #004f8B;
-  margin-bottom: 15px;
+  padding-bottom: 5px !important;
+  border-bottom: 1px solid #004f8B !important;
+  margin-bottom: 15px !important;
   color: #004f8B; }
 
 .qode-layout1-item .qode-post-title {
