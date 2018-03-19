@@ -5,6 +5,7 @@
  **/
 use TerekhinDevelopment\framework\TD_Framework;
 global $post;
+var_dump($post);
 ?>
 
 <?php if(count($posts)>0) {
