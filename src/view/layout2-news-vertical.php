@@ -15,7 +15,7 @@ global $post;
         <?php if(count($posts)>0){ ?>
     <div class="qode-news-list-title-holder">
         <?php if(isset($layout_title)) { ?>
-            <h3 class="qode-news-layout-title"><?php echo $layout_title;?></h3>
+            <h3 class="qode-news-layout-title td-header"><?php echo $layout_title;?></h3>
         <?php } ?>
     </div>
         <?php } ?>
