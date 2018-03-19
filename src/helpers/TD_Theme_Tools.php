@@ -253,10 +253,14 @@ class TD_Theme_Tools
         if (!empty($params['order'])) {
             $query_array['order'] = $params['order'];
         }
+        if (!empty($params['orderby'])) {
+            $query_array['orderby'] = $params['orderby'];
+        }
 
         if (!$return_query) {
             $query_array['sort'] = $params['sort'];
         }
+
 
         if ( ! empty( $params['next_page'] ) ) {
             $query_array['paged'] = $params['next_page'];

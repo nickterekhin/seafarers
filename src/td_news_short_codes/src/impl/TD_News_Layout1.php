@@ -29,7 +29,7 @@ class TD_News_Layout1 extends TD_News_Base
     function render($attr, $content = null)
     {
         $this->short_code_params = shortcode_atts($this->default_params,$attr);
-        return $this->render_news();
+        return $this->render_template();
     }
 
 
@@ -123,44 +123,37 @@ class TD_News_Layout1 extends TD_News_Base
 
         return $params;
     }
-        private function render_news()
+        private function render_template()
         {
-            $html='<div class="td-news-holder td-complex-news">';
-            //first article
+
             $this->short_code_params['posts_per_page']=9;
-            $this->short_code_params['offset']=2;
+
             $query = $this->theme_tools->get_post_query($this->short_code_params);
+
+            $this->short_code_params['section_1_columns_qty']='1';
+            if($query->post_count>1)
+                $this->short_code_params['section_1_columns_qty']='2';
+
+                $this->short_code_params['posts_arr']=$query->posts;
+                $this->short_code_params['posts_qty']=$query->post_count;
             wp_reset_postdata();
-
-            $post_count=0;
-            $class_holder=array();
-            if($query->have_posts())
-            {
-                if($query->post_count>1)
-                    $class_holder[]='td-news-column-2';
-                $html.= '<div class="td-news-holder '.implode(' ',$class_holder).'">';
-                while($query->have_posts()):$query->the_post();
-
-                    endwhile;
-                /*while($query->have_posts()):$query->the_post();
-                    if($post_count==0 && $post_count==1)
-                        $html.='<div class="top-layout1">';
-                    $post_count++;
-                    $this->short_code_params['post_number'] = $post_count;
-                    $html.=$this->render_news_item();
-                    if($post_count==1)
-                        $html.='</div>';
-                    if($post_count==4)
-                        $html.='</div>';
-                endwhile;*/
-
-            }
-
-            return $html;
+            return $this->View('l1/template',array_merge(array('obj'=>$this),$this->short_code_params));
         }
 
-    private function render_news_item()
+
+    public function render_article($post_q)
     {
-        return $this->View('l1/news_item',array_merge(array('obj'=>$this),$this->short_code_params));
+        global $post;
+        $post = $post_q;
+
+        return $this->View('l1/news_item',array_merge(array('obj'=>$this)));
+    }
+    public function render_articles($post_arr)
+    {
+        $html='';
+        foreach($post_arr as $p) {
+            $html.= $this->render_article($p);
+        }
+        return $html;
     }
 }
