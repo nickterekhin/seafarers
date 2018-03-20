@@ -439,6 +439,8 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
       line-height: 19px;
       font-size: 12px;
       color: #484848; }
+    .td-news-holder .td-news-item .td-news-content .qode-post-title {
+      margin-bottom: 10px; }
   .td-news-holder .td-news-section-inner-holder {
     position: relative;
     width: 100%; }
