@@ -126,7 +126,7 @@ class TD_News_Layout1 extends TD_News_Base
         private function render_template()
         {
 
-            $this->short_code_params['posts_per_page']=9;
+            $this->short_code_params['posts_per_page']=8;
             $this->short_code_params['offset']=2;
             $query = $this->theme_tools->get_post_query($this->short_code_params);
 
@@ -141,18 +141,18 @@ class TD_News_Layout1 extends TD_News_Base
         }
 
 
-    public function render_article($post_q)
+    public function render_article($post_q,$params=array())
     {
         global $post;
         $post = $post_q;
 
-        return $this->View('l1/news_item',array_merge(array('obj'=>$this)));
+        return $this->View('l1/news_item',wp_parse_args($params,array('obj'=>$this)));
     }
-    public function render_articles($post_arr)
+    public function render_articles($post_arr,$params=array())
     {
         $html='';
         foreach($post_arr as $p) {
-            $html.= $this->render_article($p);
+            $html.= $this->render_article($p,$params);
         }
         return $html;
     }
