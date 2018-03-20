@@ -11,6 +11,7 @@ if($articles>4) $articles=4;
 <?php if($posts_arr){ ?>
 
 <div class="td-news-holder">
+    <h3 style="text-align: left" class="vc_custom_heading td-header">Главные Новости</h3>
     <div class="td-news-section-1 td-news-column-<?php echo $section_1_columns_qty;?>"><div class="td-news-section-1-inner">
             <?php
                 $params['display_excerpt']='yes';

@@ -131,7 +131,6 @@ class TD_News_Layout1 extends TD_News_Base
             //add_filter('posts_where',array($this,'custom_where_filter_posts'));
             $query = $this->theme_tools->get_post_query($this->short_code_params);
             //remove_filter('posts_where',array($this,'custom_where_filter_posts'));
-            print_r($query->request);
             $this->short_code_params['section_1_columns_qty']='1';
             if($query->post_count>1)
                 $this->short_code_params['section_1_columns_qty']='2';
