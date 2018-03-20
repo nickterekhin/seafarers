@@ -127,8 +127,10 @@ class TD_News_Layout1 extends TD_News_Base
         {
 
             $this->short_code_params['posts_per_page']=9;
+            add_filter('posts_where',array($this,'custom_where_filter_posts'));
             $query = $this->theme_tools->get_post_query($this->short_code_params);
-
+            remove_filter('posts_where',array($this,'custom_where_filter_posts'));
+            print_r($query->request);
             $this->short_code_params['section_1_columns_qty']='1';
             if($query->post_count>1)
                 $this->short_code_params['section_1_columns_qty']='2';
@@ -139,7 +141,12 @@ class TD_News_Layout1 extends TD_News_Base
             return $this->View('l1/template',array_merge(array('obj'=>$this),$this->short_code_params));
         }
 
-
+    function custom_where_filter_posts($where)
+    {
+        $today = date("Y-m-d",time());
+        $where .= " AND post_date >= DATE_SUB(CURDATE(),INTERVAL 1 MONTH)";
+        return $where;
+    }
     public function render_article($post_q,$params=array())
     {
         global $post;

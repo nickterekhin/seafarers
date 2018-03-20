@@ -8,7 +8,8 @@ if($articles>4) $articles=4;
     $posts_right = array_slice($posts_arr,1,$articles);
 
 ?>
-<br/>
+<?php if($posts_arr){ ?>
+
 <div class="td-news-holder">
     <div class="td-news-section-1 td-news-column-<?php echo $section_1_columns_qty;?>"><div class="td-news-section-1-inner">
             <?php
@@ -54,3 +55,4 @@ if($articles>4) $articles=4;
         </div>
     </div>
 </div>
+<?php } ?>
