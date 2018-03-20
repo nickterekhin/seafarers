@@ -127,7 +127,7 @@ class TD_News_Layout1 extends TD_News_Base
         {
 
             $this->short_code_params['posts_per_page']=9;
-            $this->short_code_params['order']='ASC';
+            $this->short_code_params['order']='DESC';
             //add_filter('posts_where',array($this,'custom_where_filter_posts'));
             $query = $this->theme_tools->get_post_query($this->short_code_params);
             //remove_filter('posts_where',array($this,'custom_where_filter_posts'));
