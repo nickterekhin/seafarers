@@ -126,7 +126,7 @@ class TD_News_Layout1 extends TD_News_Base
         private function render_template()
         {
 
-            $this->short_code_params['posts_per_page']=8;
+            $this->short_code_params['posts_per_page']=9;
             $this->short_code_params['offset']=2;
             $query = $this->theme_tools->get_post_query($this->short_code_params);
 
