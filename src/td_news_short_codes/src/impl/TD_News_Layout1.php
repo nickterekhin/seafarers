@@ -127,9 +127,10 @@ class TD_News_Layout1 extends TD_News_Base
         {
 
             $this->short_code_params['posts_per_page']=9;
-            add_filter('posts_where',array($this,'custom_where_filter_posts'));
+            $this->short_code_params['orderby']='date';
+            //add_filter('posts_where',array($this,'custom_where_filter_posts'));
             $query = $this->theme_tools->get_post_query($this->short_code_params);
-            remove_filter('posts_where',array($this,'custom_where_filter_posts'));
+            //remove_filter('posts_where',array($this,'custom_where_filter_posts'));
             print_r($query->request);
             $this->short_code_params['section_1_columns_qty']='1';
             if($query->post_count>1)
