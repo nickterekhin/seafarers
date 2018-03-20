@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <div class="td-news-item td-news-layout1">
     <div class="td-news-item-image-holder">
         <div class="td-news-image">
