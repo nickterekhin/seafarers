@@ -7,6 +7,7 @@
         </div>
     </div>
     <div class="td-news-content">
+        <?php echo $obj->View('parts/category',$params);?>
         <?php echo $obj->View('parts/title',$params);?>
         <?php echo $obj->View('parts/date',$params);?>
         <?php echo $obj->View('parts/excerpt',$params);?>
