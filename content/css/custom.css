@@ -358,7 +358,7 @@ article .td-post-info-bottom {
     float: right; }
     .terekhindev-news-date-filter .td-search-dropdown.open button {
       color: #fff !important;
-      background-color: #cf4a37; }
+      background-color: #085e89; }
     .terekhindev-news-date-filter .td-search-dropdown.open ul {
       display: block; }
     .terekhindev-news-date-filter .td-search-dropdown button {
@@ -392,10 +392,10 @@ article .td-post-info-bottom {
       min-width: 160px;
       padding: 0;
       text-align: left;
-      background-color: #cf4a37;
+      background-color: #085e89;
       -webkit-background-clip: padding-box;
       background-clip: padding-box;
-      border-left: 1px solid #e5e5e5 !important;
+      border-left: 1px solid #085e89 !important;
       border-radius: 0;
       overflow: auto;
       max-height: 501px; }
