@@ -16,7 +16,7 @@ if($obj) {
 
 
 
-$wp_query->query_vars['posts_per_page'] = 30;
+$wp_query->query_vars['posts_per_page'] = 35;
 
 
 if((isset($_GET['date_year']) && !empty($_GET['date_year'])) || (isset($_GET['date_month']) && !empty($_GET['date_month'])) || (isset($_GET['date_day']) && !empty($_GET['date_day'])) || (isset($_REQUEST['filter_search']) && !empty($_REQUEST['filter_search']))) {
