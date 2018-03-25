@@ -715,11 +715,7 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
     width: 768px; } }
 @media only screen and (max-width: 1260px) and (min-width: 1060px) {
   .boxed div.section .section_inner, .carousel-inner .slider_content_outer, .container_inner, .full_width .parallax_content, .steps_holder_inner, div.grid_section .section_inner, nav.content_menu {
-    width: 950px; }
-
-  .qode-btn.qode-btn-icon .qode-btn-text {
-    padding-right: 17px;
-    padding-left: 17px; } }
+    width: 950px; } }
 @media only screen and (min-device-width: 1280px) {
   .blog_holder.masonry.news-category-blog-holder.td-four-item .blog_holder_grid_sizer {
     width: 22%; }
