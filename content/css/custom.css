@@ -838,13 +838,16 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
       font-size: 13px; }
 
   .qode-news-holder .qode-post-info-date {
-    font-size: 13px; }
+    font-size: 10px; }
     .qode-news-holder .qode-post-info-date a {
-      font-size: 13px; }
+      font-size: 10px; }
       .qode-news-holder .qode-post-info-date a i {
-        font-size: 13px !important;
+        font-size: 10px !important;
         margin-right: 2px !important; } }
 @media only screen and (max-width: 1280px) {
+  .td-additional-post-info-layouts ul li span {
+    font-size: 10px; }
+
   .td-news-list .qode-news-item-image-holder {
     display: none !important; }
 
