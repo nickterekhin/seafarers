@@ -43,10 +43,31 @@ add_action( 'admin_bar_menu', 'remove_wp_nodes', 999 );
 
 function remove_wp_nodes()
 {
-    global $wp_admin_bar;
-    $wp_admin_bar->remove_node( 'new-post' );
-    $wp_admin_bar->remove_node( 'new-link' );
-    $wp_admin_bar->remove_node( 'new-media' );
+    global /** @var WP_Admin_Bar $wp_admin_bar */
+    $wp_admin_bar;
+
+    if(!current_user_can('administrator'))
+    {
+        $wp_admin_bar->remove_node('updates');
+        $wp_admin_bar->remove_node('new-page');
+        $wp_admin_bar->remove_node('new-qode-quick-link');
+        $wp_admin_bar->remove_node('new-qode-restaurant-menu');
+        $wp_admin_bar->remove_node('new-portfolio_page');
+        $wp_admin_bar->remove_node('new-testimonials');
+        $wp_admin_bar->remove_node('new-slides');
+        $wp_admin_bar->remove_node('new-carousels');
+        $wp_admin_bar->remove_node('new-masonry_gallery');
+        $wp_admin_bar->remove_node('new-user');
+        $wp_admin_bar->remove_node('quform-new-form');
+        $wp_admin_bar->remove_node('quform');
+        $wp_admin_bar->remove_node('quform-dashboard');
+        $wp_admin_bar->remove_node('quform-forms');
+        $wp_admin_bar->remove_node('quform-add-new');
+
+        $wp_admin_bar->remove_node('ab-ls-add-new');
+    }
+
+
 }
 function terekhin_dev_category_template($single)
 {
