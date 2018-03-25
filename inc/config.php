@@ -71,6 +71,23 @@ function remove_wp_nodes()
 
 
 }
+add_action( 'do_meta_boxes', 'terekhin_remove_qode_meta_boxes');
+function terekhin_remove_qode_meta_boxes()
+{
+
+    if(!current_user_can('administrator')){
+        remove_meta_box('qodef-meta-box-page_general','post','advanced');
+        remove_meta_box('qodef-meta-box-page_left_menu','post','advanced');
+        //remove_meta_box('qodef-meta-box-post_layout','post','advanced');
+        remove_meta_box('qodef-meta-box-page_header','post','advanced');
+        remove_meta_box('qodef-meta-box-page_title','post','advanced');
+        remove_meta_box('qodef-meta-box-page_title_animations','post','advanced');
+        remove_meta_box('qodef-meta-box-page_content_bottom','post','advanced');
+        remove_meta_box('qodef-meta-box-page_side_bar','post','advanced');
+        //remove_meta_box('qodef-meta-box-post_seo','post','advanced');
+    }
+
+}
 function terekhin_dev_category_template($single)
 {
     global $post,$wp_query;
