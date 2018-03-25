@@ -43,7 +43,7 @@ abstract class TD_News_Base implements ITD_News
         'display_author' => 'no',
         'display_share' => 'no',
         'display_hot_trending_icons' => 'no',
-        'display_image' => 'yes',
+        'display_image' => 'no',
     );
 
     public function __construct($short_code_slug,$short_code_category=null)
@@ -174,7 +174,13 @@ abstract class TD_News_Base implements ITD_News
                 'value'       => array_flip( qode_get_title_tag( true ) ),
                 'group' 	  => esc_html__('Post Item','qode-news'),
             );
-
+        $params_array[] = array(
+            'type'		  => 'dropdown',
+            'param_name'  => 'display_image',
+            'heading'	  => esc_html__('Display Image','qode-news'),
+            'value'		  => array_flip(qode_get_yes_no_select_array()),
+            'group' 	  => esc_html__('Post Item','qode-news'),
+        );
         $params_array[] = array(
             'type'        => 'dropdown',
             'param_name'  => 'image_size',
