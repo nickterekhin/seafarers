@@ -127,18 +127,22 @@ class TD_News_Layout1 extends TD_News_Base
         {
 
             $this->short_code_params['posts_per_page']=9;
+            $this->short_code_params['offset']=2;
             $this->short_code_params['order']='DESC';
-            add_filter('posts_where',array($this,'custom_where_filter_posts'));
+            //add_filter('posts_where',array($this,'custom_where_filter_posts'));
             $query = $this->theme_tools->get_post_query($this->short_code_params);
-            remove_filter('posts_where',array($this,'custom_where_filter_posts'));
+            //remove_filter('posts_where',array($this,'custom_where_filter_posts'));
             $this->short_code_params['section_1_columns_qty']='1';
-            if($query->post_count>1)
-                $this->short_code_params['section_1_columns_qty']='2';
+            $this->short_code_params['section_1_col']='vc_col-sm-12';
+            if($query->post_count>1) {
+                $this->short_code_params['section_1_columns_qty'] = '2';
+                $this->short_code_params['section_1_col']='vc_col-sm-6';
+            }
 
                 $this->short_code_params['posts_arr']=$query->posts;
                 $this->short_code_params['posts_qty']=$query->post_count;
             wp_reset_postdata();
-            return $this->View('l1/template',array_merge(array('obj'=>$this),$this->short_code_params));
+            return $this->View('qode_template_complex',array_merge(array('obj'=>$this),$this->short_code_params));
         }
 
     function custom_where_filter_posts($where)
@@ -152,7 +156,7 @@ class TD_News_Layout1 extends TD_News_Base
         global $post;
         $post = $post_q;
 
-        return $this->View('l1/news_item',wp_parse_args($params,array('obj'=>$this)));
+        return $this->View('l1/qode_news_item_l1',wp_parse_args($params,array('obj'=>$this)));
     }
     public function render_articles($post_arr,$params=array())
     {
