@@ -39,15 +39,15 @@ switch ($thumb_size_temp) {
 
 
 	$trending_news = get_post_meta(get_the_ID(),"qode_news_post_trending_meta",true);
-	if($trending_news)
+	if($trending_news && $trending_news=='yes')
 		$post_types .= '<i class="fa fa-star"></i>';
 
 	$featured_news = get_post_meta(get_the_ID(),"qode_news_post_featured_meta",true);
-	if($featured_news)
+	if($featured_news && $featured_news=='yes')
 		$post_types .= '<i class="fa fa-anchor"></i>';
 
 	$hot_news = get_post_meta(get_the_ID(),"qode_news_post_hot_meta",true);
-	if($hot_news)
+	if($hot_news && $hot_news=='yes')
 		$post_types .= '<i class="fa fa-bolt"></i>';
 
 	if($_post_format=='video')
