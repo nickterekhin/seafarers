@@ -9,11 +9,27 @@ $has_featured = !empty($featured_image_meta) || has_post_thumbnail();
 
 $blog_list_image_src = !empty($featured_image_meta) ? $featured_image_meta : '';
 $url=null;
+
+	$_post_format = get_post_format();
+
+	switch ($_post_format) {
+		case 'video':
+			$_video_type = get_post_meta(get_the_ID(), "video_format_choose", true);
+			if ($_video_type == 'youtube') {
+				$blog_list_image_src = 'https://i3.ytimg.com/vi/' . get_post_meta(get_the_ID(), "video_format_link", true) . '/hqdefault.jpg';
+				$has_featured = true;
+
+			}
+			$image_size = 'large';
+			break;
+	}
+
 /*if(!$has_featured) {
 
 	$url = $class->getCategoryImage($post->ID);
 	if($url)$has_featured=true;
 }*/
+
 ?>
 <?php if ( $has_featured ) { ?>
 	<div class="qode-post-image">
