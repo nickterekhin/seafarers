@@ -399,7 +399,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         $obj = $wp_query->get_queried_object();
         if($obj && $obj instanceof WP_Post_Type && $obj->name=='tribe_events')
         {
-            $title = 'Мероприятия';
+            $title = 'Мероприятия - Seafarers Journal';
         }
         else if($obj && $obj->taxonomy=='post_tag')
         {
