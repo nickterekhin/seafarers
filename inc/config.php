@@ -36,7 +36,7 @@ function terekhin_dev_remove_elements()
 
 
     }
-
+        var_dump($menu);
 }
 
 function terekhin_dev_category_template($single)
