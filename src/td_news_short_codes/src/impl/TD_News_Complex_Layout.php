@@ -10,6 +10,7 @@ class TD_News_Complex_Layout extends TD_News_Base
 {
 
     private $default_params = array(
+        'news_period'=>'',
         'news_title'=>'',
         'category_name'=>'',
         'author_id'=>'',
@@ -145,11 +146,15 @@ class TD_News_Complex_Layout extends TD_News_Base
             $this->short_code_params['posts_per_page']=9;
             $this->short_code_params['offset']=2;
             $this->short_code_params['order']='DESC';
-            if(isset($this->short_code_params['news_period']))
+
+            if(isset($this->short_code_params['news_period']) && !empty($this->short_code_params['news_period']))
             add_filter('posts_where',array($this,'custom_where_filter_posts'));
+
             $query = $this->theme_tools->get_post_query($this->short_code_params);
-            if(isset($this->short_code_params['news_period']))
+
+            if(isset($this->short_code_params['news_period']) && !empty($this->short_code_params['news_period']))
             remove_filter('posts_where',array($this,'custom_where_filter_posts'));
+
             $this->short_code_params['section_1_columns_qty']='1';
             $this->short_code_params['section_1_col']='vc_col-sm-12';
             if($query->post_count>1) {
