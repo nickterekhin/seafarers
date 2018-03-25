@@ -63,10 +63,10 @@ function remove_wp_nodes()
         $wp_admin_bar->remove_node('quform-dashboard');
         $wp_admin_bar->remove_node('quform-forms');
         $wp_admin_bar->remove_node('quform-add-new');
-
+        $wp_admin_bar->remove_node('link-add');
         $wp_admin_bar->remove_node('ab-ls-add-new');
     }
-
+    var_dump($wp_admin_bar);
 
 }
 function terekhin_dev_category_template($single)
