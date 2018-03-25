@@ -892,7 +892,10 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
     display: none; }
 
   .td-news-big-image-post h2 a {
-    line-height: 33px; } }
+    line-height: 33px; }
+
+  .qode-news-holder.qode-news-columns-2 .qode-news-item {
+    width: 100%; } }
 @media only screen and (max-width: 768px) {
   .hidden-xs {
     display: none; }
