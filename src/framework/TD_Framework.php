@@ -351,7 +351,7 @@ class TD_Framework extends TD_Framework_Base
 
 
             $content = $this->set_counter($content,1,"Морские новости",'marine-news');
-            $content = $this->set_counter($content,2,"Происшествия",'accident');
+            $content = $this->set_counter($content,2,"Происшествия",'incidents');
             $content = $this->set_counter($content,3,"Финансы",'money');
             $content = $this->set_counter($content,4,"Общесвто",'sociaty');
         }
