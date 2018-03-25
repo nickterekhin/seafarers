@@ -144,7 +144,6 @@ class TD_News_Complex_Layout extends TD_News_Base
         {
 
             $this->short_code_params['posts_per_page']=9;
-            $this->short_code_params['offset']=2;
             $this->short_code_params['order']='DESC';
 
             if(isset($this->short_code_params['news_period']) && !empty($this->short_code_params['news_period']))
