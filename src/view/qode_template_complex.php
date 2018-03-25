@@ -6,9 +6,9 @@ use TerekhinDevelopment\td_news_short_codes\src\impl\TD_News_Layout1;
 $articles =count($posts_arr);
 if($articles>4) $articles=4;
 $posts_right = array_slice($posts_arr,1,$articles);
-
 ?>
 <?php if($posts_arr){ ?>
+    <h3 style="text-align: left" class="vc_custom_heading td-header"><?php echo $news_title?></h3>
 <div class="vc_row wpb_row section vc_row-fluid vc_inner td-news-container td-news-holder-column-<?php echo $section_1_columns_qty;?>" style=" text-align:left;"><div class=" full_section_inner clearfix"><div class="td-news-section-1 wpb_column vc_column_container <?php echo $section_1_col;?>"><div class="vc_column-inner "><div class="wpb_wrapper"><div class="qode-news-holder qode-layout1 qode-news-columns-1 qode-nl-tiny-space qode-center-alignment" data-post-status="publish" data-category-name="marine-news" data-ignore-sticky-posts="1" data-orderby="date" data-posts-per-page="1" data-sort="latest" data-paged="1" data-offset="1" data-max-num-pages="14597" data-next-page="2" data-title-tag="h2" data-image-size="portfolio-landscape" data-display-categories="no" data-display-excerpt="yes" data-display-date="yes" data-date-format="published" data-display-author="no" data-display-share="no" data-display-hot-trending-icons="no" data-layout="qode_layout1"><div class="qode-news-list-inner-holder" data-number-of-items="1"><?php
                             $params['display_excerpt']='yes';
                             $params['title_tag']='h2';
