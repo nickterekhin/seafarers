@@ -22,6 +22,7 @@ function terekhin_dev_remove_elements()
         remove_menu_page('admin.php?page=bulk-delete-posts');
         remove_menu_page('admin.php?page=wpcf7');
     }
+    var_dump($menu);
 }
 
 function terekhin_dev_category_template($single)
