@@ -24,7 +24,10 @@ function terekhin_dev_remove_elements()
     }
     if(current_user_can('editor'))
     {
-        remove_menu_page('options-general');
+        remove_menu_page('options-general.php');
+        remove_menu_page('edit.php?post_type=acf-field-group');
+        remove_menu_page('layerslider');
+        remove_menu_page('revslider');
     }
     var_dump($menu);
 }
