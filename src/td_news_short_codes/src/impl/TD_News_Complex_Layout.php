@@ -39,6 +39,14 @@ class TD_News_Complex_Layout extends TD_News_Base
         $params = array(
             array (
                 'type' =>'textfield' ,
+                'heading' =>'Period (in months)' ,
+                'param_name' =>'news_period' ,
+
+                'description' =>'Set period in months to show the news' ,
+                'group' =>'General' ,
+            ),
+            array (
+                'type' =>'textfield' ,
                 'heading' =>'Title' ,
                 'param_name' =>'news_title' ,
 
@@ -137,9 +145,11 @@ class TD_News_Complex_Layout extends TD_News_Base
             $this->short_code_params['posts_per_page']=9;
             $this->short_code_params['offset']=2;
             $this->short_code_params['order']='DESC';
-            //add_filter('posts_where',array($this,'custom_where_filter_posts'));
+            if(isset($this->short_code_params['news_period']))
+            add_filter('posts_where',array($this,'custom_where_filter_posts'));
             $query = $this->theme_tools->get_post_query($this->short_code_params);
-            //remove_filter('posts_where',array($this,'custom_where_filter_posts'));
+            if(isset($this->short_code_params['news_period']))
+            remove_filter('posts_where',array($this,'custom_where_filter_posts'));
             $this->short_code_params['section_1_columns_qty']='1';
             $this->short_code_params['section_1_col']='vc_col-sm-12';
             if($query->post_count>1) {
@@ -155,8 +165,7 @@ class TD_News_Complex_Layout extends TD_News_Base
 
     function custom_where_filter_posts($where)
     {
-        $today = date("Y-m-d",time());
-        $where .= " AND post_date >= DATE_SUB(CURDATE(),INTERVAL 1 MONTH)";
+        $where .= " AND post_date >= DATE_SUB(CURDATE(),INTERVAL ".$this->short_code_params['news_period']." MONTH)";
         return $where;
     }
     public function render_article($post_q,$params=array())
