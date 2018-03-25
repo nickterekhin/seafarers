@@ -486,7 +486,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         return $join;
     }
 
-    public function get_post_featured_image($post_id)
+    public function get_post_featured_image($post_id,&$is_image_category=false)
     {
 
         $image_category = null;
@@ -510,6 +510,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
                 if ($image_width < 1920 || $image_height < 640)
                 {
                     $image = $image_category;
+                    $is_image_category=true;
                 }
             }
 

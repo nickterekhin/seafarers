@@ -28,8 +28,9 @@ $params = array(
     'enable_social_share' => $enable_social_share,
     'qode_like' => $qode_like
 );
-$custom_title_image = $terekhin_framework->get_post_featured_image(get_the_ID());
-var_dump($custom_title_image);
+$is_image_category = true;
+$terekhin_framework->get_post_featured_image(get_the_ID(),$is_image_category);
+var_dump($is_image_category);
 $_post_format = get_post_format();
 ?>
 <?php
@@ -89,7 +90,7 @@ $_post_format = get_post_format();
 			<div class="post_content_holder">
 				<div class="post_image">
 					<?php if(qode_options()->getOptionValue('show_image_on_audio_post') == 'yes' && get_post_meta(get_the_ID(), "qode_hide-featured-image", true) != "yes") {
-						if ( has_post_thumbnail() && !$custom_title_image) { ?>
+						if ( has_post_thumbnail() && $is_image_category) { ?>
 								<?php the_post_thumbnail('full'); ?>
 						<?php }
 					} ?>
@@ -242,7 +243,7 @@ $_post_format = get_post_format();
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="post_content_holder">
 				<?php if(get_post_meta(get_the_ID(), "qode_hide-featured-image", true) != "yes") {
-					if ( has_post_thumbnail() && !$custom_title_image ) { ?>
+					if ( has_post_thumbnail() && $is_image_category ) { ?>
 						<div class="post_image">
 	                        <?php the_post_thumbnail('full'); ?>
 						</div>
