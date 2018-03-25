@@ -28,9 +28,8 @@ $params = array(
     'enable_social_share' => $enable_social_share,
     'qode_like' => $qode_like
 );
-$is_image_category = true;
+$is_image_category = false;
 $terekhin_framework->get_post_featured_image(get_the_ID(),$is_image_category);
-var_dump($is_image_category);
 $_post_format = get_post_format();
 ?>
 <?php
