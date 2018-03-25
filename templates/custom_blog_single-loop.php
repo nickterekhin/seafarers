@@ -1,5 +1,5 @@
 <?php 
-global $qode_options_proya;
+global $qode_options_proya,$terekhin_framework;
 $blog_hide_comments = "";
 if (isset($qode_options_proya['blog_hide_comments'])) {
 	$blog_hide_comments = $qode_options_proya['blog_hide_comments'];
@@ -28,7 +28,7 @@ $params = array(
     'enable_social_share' => $enable_social_share,
     'qode_like' => $qode_like
 );
-
+$custom_title_image = $terekhin_framework->get_post_featured_image(get_the_ID());
 $_post_format = get_post_format();
 ?>
 <?php
@@ -88,7 +88,7 @@ $_post_format = get_post_format();
 			<div class="post_content_holder">
 				<div class="post_image">
 					<?php if(qode_options()->getOptionValue('show_image_on_audio_post') == 'yes' && get_post_meta(get_the_ID(), "qode_hide-featured-image", true) != "yes") {
-						if ( has_post_thumbnail() ) { ?>
+						if ( has_post_thumbnail() && !$custom_title_image) { ?>
 								<?php the_post_thumbnail('full'); ?>
 						<?php }
 					} ?>
@@ -240,12 +240,12 @@ $_post_format = get_post_format();
 ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="post_content_holder">
-				<?php /*if(get_post_meta(get_the_ID(), "qode_hide-featured-image", true) != "yes") {
-					if ( has_post_thumbnail() ) { */?><!--
+				<?php if(get_post_meta(get_the_ID(), "qode_hide-featured-image", true) != "yes") {
+					if ( has_post_thumbnail() && !$custom_title_image ) { ?>
 						<div class="post_image">
-	                        <?php /*the_post_thumbnail('full'); */?>
+	                        <?php the_post_thumbnail('full'); ?>
 						</div>
-				--><?php /*} } */?>
+				<?php } } ?>
 				<div class="post_text">
 					<div class="post_text_inner td-single-post-text-inner">
 						<h2 itemprop="name" class="entry_title"><?php the_title(); ?></h2>
