@@ -200,7 +200,8 @@ class TD_Framework extends TD_Framework_Base
             'layout_title'=>$title,
             'title_align'=>$title_align,
             'column_number' =>3,
-            'image_size'=>'thumbnail'
+            'image_size'=>'thumbnail',
+            'news_period'=>'2'
         );
 
         if($obj && $obj->taxonomy=='category') {
