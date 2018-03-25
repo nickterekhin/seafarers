@@ -9,23 +9,10 @@ use TerekhinDevelopment\td_news_short_codes\src\TD_News_Base;
 class TD_News_Complex_Layout extends TD_News_Base
 {
 
-    private $default_params = array(
-        'news_period'=>'',
-        'news_title'=>'',
-        'category_name'=>'',
-        'author_id'=>'',
-        'sort'=>'',
-        'order'=>'',
-        'offset'=>'',
-        'display_category_image'=>'',
-        'extra_class_name'=>''
-
-    );
-
     public function __construct()
     {
-        parent::__construct('td_news_l1');
-        $this->short_code_title = "Show News Layout 1";
+        parent::__construct('td_news_complex');
+        $this->short_code_title = "Show News Complex View";
     }
 
     function render($attr, $content = null)
@@ -37,110 +24,9 @@ class TD_News_Complex_Layout extends TD_News_Base
 
     function init_params()
     {
-        $params = array(
-            array (
-                'type' =>'textfield' ,
-                'heading' =>'Period (in months)' ,
-                'param_name' =>'news_period' ,
-
-                'description' =>'Set period in months to show the news' ,
-                'group' =>'General' ,
-            ),
-            array (
-                'type' =>'textfield' ,
-                'heading' =>'Title' ,
-                'param_name' =>'news_title' ,
-
-                'description' =>'Title of the news block' ,
-                'group' =>'General' ,
-            ),
-            array (
-                'type' =>'textfield' ,
-                'heading' =>'Category' ,
-                'param_name' =>'category_name' ,
-
-                'description' =>'Enter the categories of the posts you want to display (comma separate) (leave empty for showing all categories)' ,
-                'group' =>'General' ,
-            ),
-            array (
-                'type' =>'textfield' ,
-                'heading' =>'Author' ,
-                'param_name' =>'author_id' ,
-                'settings' =>
-                    array (
-                        'multiple' => true,
-                        'sortable' => true,
-                        'unique_values' => true,
-                    ),
-                'description' =>'Enter the authors of the posts you want to display (comma separate) (leave empty for showing all authors)' ,
-                'group' =>'General' ,
-            ),
-        array (
-            'type' =>'dropdown' ,
-            'heading' =>'Sort' ,
-            'param_name' =>'sort' ,
-            'value' =>
-                array (
-                    '' =>'' ,
-                    'Latest' =>'latest' ,
-                    'Random' =>'random' ,
-                    'Random Posts Today' =>'random_today' ,
-                    'Random in Last 7 Days' =>'random_seven_days' ,
-                    'Most Commented' =>'comments' ,
-                    'Title' =>'title' ,
-                    'Popular' =>'popular' ,
-                    'Featured Posts First' =>'featured_first' ,
-                    'Trending Posts First' =>'trending_first' ,
-                    'Hot Posts First' =>'hot_first' ,
-                    'By Reaction' =>'reactions' ,
-                ),
-            'description' =>'' ,
-            'group' =>'General' ,
-
-            ),
-            array(
-                'type'       => 'dropdown',
-                'param_name' => 'order',
-                'heading'    => esc_html__('Order', 'qode-news'),
-                'value'      => array_flip(qode_get_query_order_array()),
-                'dependency'    => array(
-                    'element' => 'sort',
-                    'value' => array(
-                        'title'
-                    )
-                ),
-                'save_always' => true,
-                'group' => esc_html__('General','qode-news')
-            ),
-            array(
-                'type'       => 'textfield',
-                'param_name' => 'offset',
-                'heading'    => esc_html__('Offset', 'qode-news'),
-                'save_always' => true,
-                'group' => esc_html__('General','qode-news')
-            ),
-             array(
-                 'type' => 'dropdown',
-                 'heading' => esc_html__('Use Only Category Image','qode-news'),
-                 'param_name' => 'display_category_image',
-                 'value' => array(
-                     esc_html__('Default', 'qode-news') => '',
-                     esc_html__('Yes', 'qode-news') => 'yes',
-                     esc_html__('No', 'qode-news') => 'no'
-                 ),
-                 'group' => esc_html__('General','qode-news')
-             ),
-            array (
-                'type' =>'textfield' ,
-                'heading' =>'Extra Class Name' ,
-                'param_name' =>'extra_class_name' ,
-                'group' =>'General' ,
-            ),
-        );
-
-        return $params;
+        return array();
     }
-        private function render_template()
+    private function render_template()
         {
 
             $this->short_code_params['posts_per_page']=9;
@@ -167,17 +53,13 @@ class TD_News_Complex_Layout extends TD_News_Base
             return $this->View('qode_template_complex',array_merge(array('obj'=>$this),$this->short_code_params));
         }
 
-    function custom_where_filter_posts($where)
-    {
-        $where .= " AND post_date >= DATE_SUB(CURDATE(),INTERVAL ".$this->short_code_params['news_period']." MONTH)";
-        return $where;
-    }
+
     public function render_article($post_q,$params=array())
     {
         global $post;
         $post = $post_q;
 
-        return $this->View('l1/qode_news_item_l1',wp_parse_args($params,array('obj'=>$this)));
+        return $this->View('l1/qode_news_item',wp_parse_args($params,array('obj'=>$this)));
     }
     public function render_articles($post_arr,$params=array())
     {
@@ -186,5 +68,10 @@ class TD_News_Complex_Layout extends TD_News_Base
             $html.= $this->render_article($p,$params);
         }
         return $html;
+    }
+
+    function item_render($params)
+    {
+        // TODO: Implement item_render() method.
     }
 }
