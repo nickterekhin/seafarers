@@ -29,6 +29,7 @@ function terekhin_dev_remove_elements()
         remove_menu_page('edit.php?post_type=masonry_gallery');
         remove_menu_page('edit.php?post_type=testimonials');
         remove_menu_page('edit.php?post_type=portfolio_page');
+        remove_menu_page('admin.php?page=envato-market');
     }
     if(current_user_can('editor'))
     {
@@ -52,10 +53,12 @@ function terekhin_dev_category_template($single)
 
 add_filter('category_template','terekhin_dev_category_template',11);
 add_filter('archive_template','terekhin_dev_category_template',11);
-add_filter('after_setup_theme','terekhin_dev_remove_post_formats',11);
-function terekhin_dev_remove_post_formats()
-{
-    add_theme_support('post-formats',array('video'));
+if(!current_user_can('administrator')) {
+    add_filter('after_setup_theme', 'terekhin_dev_remove_post_formats', 11);
+    function terekhin_dev_remove_post_formats()
+    {
+        add_theme_support('post-formats', array('video'));
+    }
 }
 function terekhin_dev_comments_template($single)
 {
