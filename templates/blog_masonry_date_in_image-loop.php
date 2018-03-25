@@ -34,12 +34,48 @@ switch ($thumb_size_temp) {
 }
 ?>
 <?php
+
+	$post_types = '';
+
+
+	$trending_news = get_post_meta(get_the_ID(),"qode_news_post_trending_meta",true);
+	if($trending_news)
+		$post_types .= '<i class="fa fa-star"></i>';
+
+	$featured_news = get_post_meta(get_the_ID(),"qode_news_post_featured_meta",true);
+	if($featured_news)
+		$post_types .= '<i class="fa fa-anchor"></i>';
+
+	$hot_news = get_post_meta(get_the_ID(),"qode_news_post_hot_meta",true);
+	if($hot_news)
+		$post_types .= '<i class="fa fa-bolt"></i>';
+
+	if($_post_format=='video')
+		$post_types .= '<i class="fa fa-video-camera"></i>';
+
+
+?>
+<?php
 	switch ($_post_format) {
 		case "video":
 ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="post_image">
 				<?php $_video_type = get_post_meta(get_the_ID(), "video_format_choose", true);?>
+
+					<?php if(has_post_thumbnail(get_the_ID())){?>
+				<a itemprop="url" href="<?php the_permalink(); ?>" target="_self" title="<?php the_title_attribute(); ?>">
+					<?php the_post_thumbnail($thumb_size); ?>
+				</a>
+					<?php } else if($_video_type=='youtube') {?>
+						<a itemprop="url" href="<?php the_permalink(); ?>" target="_self" title="<?php the_title_attribute(); ?>">
+						<?php $blog_list_image_src = 'https://i3.ytimg.com/vi/' . get_post_meta(get_the_ID(), "video_format_link", true) . '/hqdefault.jpg';?>
+						<img itemprop="image" src="<?php echo esc_url($blog_list_image_src); ?>"
+							 alt="<?php the_permalink(); ?>"/>
+							 </a>
+					<?php }else {?>
+
+
 				<?php if($_video_type == "youtube") { ?>
 					<iframe name="fitvid-<?php the_ID(); ?>" src="//www.youtube.com/embed/<?php echo get_post_meta(get_the_ID(), "video_format_link", true);  ?>?wmode=transparent" wmode="Opaque" width="805" height="403" allowfullscreen></iframe>
 				<?php } elseif ($_video_type == "vimeo"){ ?>
@@ -60,6 +96,7 @@ switch ($thumb_size_temp) {
 						</video>   
 					</div></div> 
 				<?php } ?>
+				<?php } ?>
 				<div itemprop="dateCreated" class="time entry_date updated">
 					<span class="time_day"><?php the_time('d'); ?></span>
 					<span class="time_month"><?php the_time('M'); ?></span>
@@ -68,7 +105,7 @@ switch ($thumb_size_temp) {
 			</div>
 			<div class="post_text">
 				<div class="post_text_inner">
-					<h5 itemprop="name" class="entry_title"><a itemprop="url" href="<?php the_permalink(); ?>" target="_self" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h5>
+					<h5 itemprop="name" class="entry_title"><a itemprop="url" href="<?php the_permalink(); ?>" target="_self" title="<?php the_title_attribute(); ?>"><?php echo $post_types; ?><?php the_title(); ?></a></h5>
 					<?php qode_excerpt(); ?>
 					<div class="post_info">
 						<?php if($blog_enable_social_share == "yes"){

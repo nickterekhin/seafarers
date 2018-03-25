@@ -141,6 +141,16 @@ h2, h3, h4, h5, h6 {
     top: 2px !important;
     color: #8d8d8d !important; }
 
+article .fa {
+  margin-right: 5px; }
+  article .fa.fa-video-camera {
+    color: #5067ed; }
+  article .fa.fa-bolt {
+    color: #dc1919; }
+  article .fa.fa-anchor {
+    color: #098221; }
+  article .fa.fa-star {
+    color: #ebb70c; }
 article .td-single-post-text-inner {
   padding-top: 0 !important; }
 article .td-single-post-info {
