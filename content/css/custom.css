@@ -895,7 +895,10 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
     line-height: 33px; }
 
   .qode-news-holder.qode-news-columns-2 .qode-news-item {
-    width: 100%; } }
+    width: 100%; }
+
+  .qode-slider-td h2 {
+    line-height: 40px; } }
 @media only screen and (max-width: 768px) {
   .hidden-xs {
     display: none; }
@@ -915,6 +918,8 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
   .qode-slider-td h3, .qode-slider-td h3 a {
     font-size: 16px;
     line-height: 30px; }
+  .qode-slider-td h2, .qode-slider-td .h2 {
+    line-height: 27px; }
 
   .footer_top img.image {
     margin: 0 40px 0 0; }
