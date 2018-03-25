@@ -339,6 +339,8 @@ article .td-post-info-bottom {
     border-radius: 0 2px 0 0;
     outline: none;
     cursor: pointer; }
+    .terekhindev-news-date-filter form button.default {
+      background-color: #085e89; }
     .terekhindev-news-date-filter form button i {
       margin: 8px 0 0 5px; }
     .terekhindev-news-date-filter form button.terekhindev-clear-search {

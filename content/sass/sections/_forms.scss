@@ -59,6 +59,11 @@
       border-radius: 0 2px 0 0;
       outline: none;
       cursor: pointer;
+
+      &.default{
+        background-color: #085e89;
+      }
+
       i{
         margin:8px 0 0 5px;
       }
