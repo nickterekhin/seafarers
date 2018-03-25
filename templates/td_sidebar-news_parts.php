@@ -85,12 +85,12 @@ if($obj) {
 }
 ?>
 <div class="column_inner">
-    <?php $terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - Популярное':'Популярные Новости'),array('sort'=>'popular','news_period'=>'2','extra_class_name'=>'td-news-list','posts_per_page'=>15));?>
-    <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."События",'events',array('display_read_more_button'=>'yes','extra_class_name'=>'td-news-list','posts_per_page'=>10));?>
-    <?php $terekhin_framework->show_news_in_section_by_category($obj, ($sub_title?$sub_title.' - ':'')."Мнения", 'opinions',array('display_read_more_button'=>'yes','extra_class_name'=>'td-news-list','posts_per_page'=>10));
+    <?php $terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - Популярное':'Популярные Новости'),array('sort'=>'popular','news_period'=>'2','extra_class_name'=>'td-news-list','posts_per_page'=>15,'display_categories'=>'no'));?>
+    <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."События",'journal-events',array('display_read_more_button'=>'yes','extra_class_name'=>'td-news-list','posts_per_page'=>10));?>
+    <?php $terekhin_framework->show_news_in_section_by_category($obj, ($sub_title?$sub_title.' - ':'')."Мнения", 'opinions',array('display_read_more_button'=>'yes','extra_class_name'=>'td-news-list','posts_per_page'=>10,'display_categories'=>'no'));
 
     ?>
-    <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."Видеo",'videos',array('layout_view'=>'layout1','image_size'=>'large','display_read_more_button'=>'yes','column_number'=>2,'posts_per_page'=>10));?>
+    <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."Видеo",'videos',array('layout_view'=>'layout1','image_size'=>'large','display_read_more_button'=>'yes','column_number'=>2,'posts_per_page'=>10,'display_categories'=>'no'));?>
 
 </div>
 <?php } ?>
