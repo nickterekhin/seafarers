@@ -29,7 +29,7 @@ function terekhin_dev_remove_elements()
         remove_menu_page('layerslider');
         remove_menu_page('revslider');
     }
-    var_dump($menu);
+
 }
 
 function terekhin_dev_category_template($single)
