@@ -729,6 +729,9 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
     width: 3.2%; }
   .blog_holder.masonry.news-category-blog-holder.td-three-item article {
     width: 30.1%; } }
+@media only screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+  .boxed div.section .section_inner, .carousel-inner .slider_content_outer, .container_inner, .full_width .parallax_content, .steps_holder_inner, div.grid_section .section_inner, nav.content_menu {
+    width: 700px; } }
 @media only screen and (min-width: 1024px) and (max-width: 1280px) and (orientation: landscape) {
   .vertical_menu_enabled .full_screen_holder {
     padding-left: 180px; }
