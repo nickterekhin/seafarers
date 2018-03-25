@@ -190,20 +190,21 @@ class TD_Framework extends TD_Framework_Base
 
     }
 
-    function show_popular_news_in_section($obj,$title=null,$title_align='separator_align_left')
+    function show_news_in_section($obj,$title=null,$attr)
     {
         global $wp_query;
 
         $args = array(
-            'sort'=>'popular',
+            'sort'=>'featured_first',
             'posts_per_page'=>6,
             'layout_title'=>$title,
-            'title_align'=>$title_align,
-            'column_number' =>3,
+            'title_align'=>'separator_align_left',
+            'column_number' =>1,
             'image_size'=>'thumbnail',
             'news_period'=>'2'
         );
 
+        $args = wp_parse_args($attr,$args);
         if($obj && $obj->taxonomy=='category') {
             $args['category_name'] = $obj->slug;
         }else if($obj && $obj->taxonomy=='post_tag')

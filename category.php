@@ -88,7 +88,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 								<div class="wpb_wrapper">
 									<?php //$terekhin_framework->showSeparator('Популярное в разделе','separator_align_left');?>
 									<?php
-									$terekhin_framework->show_popular_news_in_section($obj,($sub_title?$sub_title.' - ':'').'Популярное');
+									$terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - ':'').'Главные Новости',array('column_number'=>3));
 									?>
 								</div>
 							</div>

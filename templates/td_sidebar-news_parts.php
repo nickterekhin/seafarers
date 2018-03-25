@@ -26,7 +26,7 @@ if($obj) {
 }
 ?>
 <div class="column_inner">
-    <?php $terekhin_framework->show_hot_news_in_section($obj,($sub_title?$sub_title.' - Горячие':'Горячие Новости'));?>
+    <?php $terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - Популярное':'Популярные Новости'),array('sort'=>'popular','news_period'=>'2'));?>
     <?php $terekhin_framework->show_post_in_section($obj,($sub_title?$sub_title.' - ':'')."События в разделе",'events');?>
     <?php $terekhin_framework->show_post_in_section($obj, ($sub_title?$sub_title.' - ':'')."Мнения в разделе", 'opinions');
 
