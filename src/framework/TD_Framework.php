@@ -2,6 +2,7 @@
 namespace TerekhinDevelopment\framework;
 
 use WP_Post;
+use WP_Post_Type;
 use WP_Query;
 use WP_Term;
 include(CHILD_THEME_PATH.'/libs/simple_html_dom.php');
@@ -396,8 +397,11 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         global $wp_query;
 
         $obj = $wp_query->get_queried_object();
-        var_dump($obj);
-        if($obj && $obj->taxonomy=='post_tag')
+        if($obj && $obj instanceof WP_Post_Type && $obj->name=='tribe_events')
+        {
+            $title = 'Мероприятия';
+        }
+        else if($obj && $obj->taxonomy=='post_tag')
         {
             $title = preg_replace('/tag/i','',$title);
             $title = preg_replace('/(^\s+|\s+$)/','',$title);
