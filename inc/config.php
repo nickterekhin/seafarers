@@ -29,7 +29,7 @@ function terekhin_dev_remove_elements()
         remove_menu_page('edit.php?post_type=masonry_gallery');
         remove_menu_page('edit.php?post_type=testimonials');
         remove_menu_page('edit.php?post_type=portfolio_page');
-        remove_menu_page('envato-market');
+        remove_menu_page('admin.php?page=envato-market');
     }
     if(current_user_can('editor'))
     {
