@@ -4,7 +4,7 @@
 namespace TerekhinDevelopment\td_news_short_codes;
 
 
-use TerekhinDevelopment\td_news_short_codes\src\impl\TD_News_Layout1;
+use TerekhinDevelopment\td_news_short_codes\src\impl\TD_News_Complex_Layout;
 
 class TD_News
 {
@@ -37,7 +37,7 @@ class TD_News
     function vc_integration()
     {
 
-        $this->short_codes[] = new TD_News_Layout1();
+        $this->short_codes[] = new TD_News_Complex_Layout();
 
         foreach($this->short_codes as $sc)
         {
