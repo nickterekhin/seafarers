@@ -28,7 +28,7 @@ abstract class TD_News_Base implements ITD_News
         'display_categories'=>'yes',
         'layout_title'=>'',
         'year'=>0,
-        'month'=>0,
+        'monthnum'=>0,
         'day'=>0
 
 
