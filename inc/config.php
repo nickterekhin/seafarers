@@ -15,6 +15,8 @@ function terekhin_dev_remove_elements()
         remove_menu_page('vc-general');
         remove_menu_page('vc-welcome');
         remove_menu_page('tools.php');
+        remove_menu_page('edit.php?post_type=slides');
+        remove_menu_page('edit.php?post_type=carousels');
     }
 }
 
