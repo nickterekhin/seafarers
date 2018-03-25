@@ -66,6 +66,7 @@ if(is_single())
         $args_video['post_not_in']=$obj->ID;
         $args_video['display_read_more_button']='yes';
         $args_video['read_more_button_slug']='videos';
+        $args_video['column_number']=2;
     if($format!='video')
             $terekhin_framework->show_news_in_section(null,'Видео',$args_video);
             ?>
