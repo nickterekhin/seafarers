@@ -709,8 +709,9 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
   .content .container .container_inner.default_template_holder, .content .container .container_inner.page_container_inner {
     padding-top: 20px; } }
 @media only screen and (max-width: 1060px) and (min-width: 1000px) {
-  .boxed div.section .section_inner, .carousel-inner .slider_content_outer, .container_inner, .full_width .parallax_content, .steps_holder_inner, div.grid_section .section_inner, nav.content_menu {
-    width: 768px; } }
+  /*.boxed div.section .section_inner, .carousel-inner .slider_content_outer, .container_inner, .full_width .parallax_content, .steps_holder_inner, div.grid_section .section_inner, nav.content_menu{
+    width:768px;
+  }*/ }
 @media only screen and (min-device-width: 1280px) {
   .blog_holder.masonry.news-category-blog-holder.td-four-item .blog_holder_grid_sizer {
     width: 22%; }
