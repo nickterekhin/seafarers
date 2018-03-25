@@ -29,6 +29,7 @@ $params = array(
     'qode_like' => $qode_like
 );
 $custom_title_image = $terekhin_framework->get_post_featured_image(get_the_ID());
+var_dump($custom_title_image);
 $_post_format = get_post_format();
 ?>
 <?php
