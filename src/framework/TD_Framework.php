@@ -199,7 +199,8 @@ class TD_Framework extends TD_Framework_Base
             'posts_per_page'=>6,
             'layout_title'=>$title,
             'title_align'=>$title_align,
-            'columns_number' =>3
+            'column_number' =>3,
+            'image_size'=>'thumbnail'
         );
 
         if($obj && $obj->taxonomy=='category') {
@@ -216,7 +217,10 @@ class TD_Framework extends TD_Framework_Base
             $args['single']=array( 'display_categories' => 'yes');
         }
 
-        $this->show_grid_post($args,'layout2-news-vertical');
+
+
+        echo qode_execute_shortcode('td_news_layout2',$args,null);
+        //$this->show_grid_post($args,'layout2-news-vertical');
     }
     function show_post_in_section($obj,$title,$category_slug,$title_align='separator_align_left')
     {

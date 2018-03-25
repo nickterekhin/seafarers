@@ -15,12 +15,22 @@ $url=null;
 	switch ($_post_format) {
 		case 'video':
 			$_video_type = get_post_meta(get_the_ID(), "video_format_choose", true);
+
 			if ($_video_type == 'youtube') {
-				$blog_list_image_src = 'https://i3.ytimg.com/vi/' . get_post_meta(get_the_ID(), "video_format_link", true) . '/hqdefault.jpg';
+				if(isset($layout) && $layout=='layout2') {
+					$image_size = '1.jpg';
+				}
+				else {
+					$image_size = 'hqdefault.jpg';
+				}
+				$blog_list_image_src = 'https://i3.ytimg.com/vi/' . get_post_meta(get_the_ID(), "video_format_link", true) . '/'.$image_size;
 				$has_featured = true;
 
+			}else
+			{
+
 			}
-			$image_size = 'large';
+
 			break;
 	}
 

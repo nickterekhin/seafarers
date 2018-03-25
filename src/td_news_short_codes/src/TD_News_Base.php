@@ -347,7 +347,7 @@ abstract class TD_News_Base implements ITD_News
     protected function render_news_holder()
     {
         $html='';
-
+        $this->short_code_params['layout']=$this->template_layout;
         if(isset($this->short_code_params['news_period']) && !empty($this->short_code_params['news_period']))
             add_filter('posts_where',array($this,'custom_where_filter_posts'));
 
