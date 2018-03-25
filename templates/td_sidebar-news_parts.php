@@ -66,7 +66,6 @@ if(is_single())
         $args_video['post_not_in']=$obj->ID;
         $args_video['display_read_more_button']='yes';
         $args_video['read_more_button_slug']='videos';
-        $args_video['extra_class_name']='td-news-list';
     if($format!='video')
             $terekhin_framework->show_news_in_section(null,'Видео',$args_video);
             ?>
@@ -90,7 +89,7 @@ if($obj) {
     <?php $terekhin_framework->show_news_in_section_by_category($obj, ($sub_title?$sub_title.' - ':'')."Мнения", 'opinions',array('display_read_more_button'=>'yes','extra_class_name'=>'td-news-list'));
 
     ?>
-    <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."Видеo",'videos',array('layout_view'=>'layout1','image_size'=>'large','display_read_more_button'=>'yes','extra_class_name'=>'td-news-list'));?>
+    <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."Видеo",'videos',array('layout_view'=>'layout1','image_size'=>'large','display_read_more_button'=>'yes'));?>
 
 </div>
 <?php } ?>
