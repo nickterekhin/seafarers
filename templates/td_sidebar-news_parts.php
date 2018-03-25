@@ -5,12 +5,53 @@ $obj=$wp_query->get_queried_object();
 $sub_title = null;
 if(is_single())
 {
+    $terms = wp_get_post_terms($obj->ID,'category');
+    $terms_slugs_arr = array_map(function($e){
+        return $e->slug;
+    },$terms);
+
 ?>
 
-        <?php $terekhin_framework->show_news_in_single_post('','Горячие Новости','hot_first');?>
-        <?php $terekhin_framework->show_news_in_single_post('opinions','Мнения');?>
-        <?php $terekhin_framework->show_news_in_single_post('videos','Видео');?>
+        <?php
+        $terekhin_framework->show_news_in_section(null,'Популярные',array('category_name'=>implode(',',$terms_slugs_arr),'display_categories'=>'yes'));
+        ?>
+        <?php
+            $args = array('tax_query'=>array(
+                'relation'=>'OR',
+                array(
+                    'taxonomy'=>'category',
+                    'field'=>'slug',
+                    'terms'=>$terms_slugs_arr,
+                    'operator'=>'AND'
+                ),
+                array(
+                    'taxonomy'=>'category',
+                    'field'=>'slug',
+                    'terms'=>array('opinions')
+                )
+            ));
 
+            $terekhin_framework->show_news_in_section(null,'Мнения',$args);
+
+    $args = array('tax_query'=>array(
+        'relation'=>'OR',
+        array(
+            'taxonomy'=>'category',
+            'field'=>'slug',
+            'terms'=>$terms_slugs_arr,
+            'operator'=>'AND'
+        ),
+        array(
+            'taxonomy'=>'category',
+            'field'=>'slug',
+            'terms'=>array('videos')
+        )
+    ));
+        $args['only_videos']='yes';
+        $args['layout_view']='layout1';
+        $args['image_size']='large';
+            $terekhin_framework->show_news_in_section(null,'Видео',$args);
+            ?>
 
 <?php
 }else
@@ -27,11 +68,11 @@ if($obj) {
 ?>
 <div class="column_inner">
     <?php $terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - Популярное':'Популярные Новости'),array('sort'=>'popular','news_period'=>'2'));?>
-    <?php $terekhin_framework->show_post_in_section($obj,($sub_title?$sub_title.' - ':'')."События в разделе",'events');?>
-    <?php $terekhin_framework->show_post_in_section($obj, ($sub_title?$sub_title.' - ':'')."Мнения в разделе", 'opinions');
+    <?php $terekhin_framework->show_post_in_section($obj,($sub_title?$sub_title.' - ':'')."События",'events');?>
+    <?php $terekhin_framework->show_post_in_section($obj, ($sub_title?$sub_title.' - ':'')."Мнения", 'opinions');
 
     ?>
-    <?php $terekhin_framework->show_post_in_section($obj,($sub_title?$sub_title.' - ':'')."Видеo в разделе",'videos');?>
+    <?php $terekhin_framework->show_post_in_section($obj,($sub_title?$sub_title.' - ':'')."Видеo",'videos',array('layout_view'=>'layout1','image_size'=>'large'));?>
 
 </div>
 <?php } ?>

@@ -201,7 +201,8 @@ class TD_Framework extends TD_Framework_Base
             'title_align'=>'separator_align_left',
             'column_number' =>1,
             'image_size'=>'thumbnail',
-            'news_period'=>'2'
+            'news_period'=>'2',
+            'layout_view'=>'layout2'
         );
 
         $args = wp_parse_args($attr,$args);
@@ -224,10 +225,10 @@ class TD_Framework extends TD_Framework_Base
 
 
 
-        echo qode_execute_shortcode('td_news_layout2',$args,null);
+        echo qode_execute_shortcode('td_news_'.$args['layout_view'],$args,null);
         //$this->show_grid_post($args,'layout2-news-vertical');
     }
-    function show_post_in_section($obj,$title,$category_slug,$title_align='separator_align_left')
+    function show_post_in_section($obj,$title,$category_slug,$attr=array())
     {
         global $wp_query;
 
@@ -237,9 +238,12 @@ class TD_Framework extends TD_Framework_Base
         $args = array(
             'sort'=>'latest',
             'layout_title'=>$title,
-            'title_align'=>$title_align,
-            'posts_per_page'=>6
+            'title_align'=>'separator_align_left',
+            'posts_per_page'=>6,
+            'layout_view'=>'layout2',
+            'image_size'=>'thumbnail'
         );
+        $args = wp_parse_args($attr,$args);
         $tax = get_term_by('slug', $category_slug, 'category');
         if ($tax) {
             if($tax->slug=='videos')
@@ -258,7 +262,8 @@ class TD_Framework extends TD_Framework_Base
                             'field' => 'slug',
                             'terms' => array($obj->slug),
                         );
-                    $args['single']=array( 'display_categories' => 'yes');
+                    //$args['single']=array( 'display_categories' => 'yes');
+                    $args['display_categories']='yes';
                 }else {
                  $args['tax_query'][]=
                         array(
@@ -274,7 +279,8 @@ class TD_Framework extends TD_Framework_Base
             } else if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year']!=0 && $wp_query->query_vars['monthnum']!=0) {
                 $args['year'] = $wp_query->query_vars['year'];
                 $args['monthnum'] = $wp_query->query_vars['monthnum'];
-                $args['single']=array( 'display_categories' => 'yes');
+                //$args['single']=array( 'display_categories' => 'yes');
+                $args['display_categories']='yes';
             }
             $args['tax_query'][]= array(
                         'taxonomy' => 'category',
@@ -282,7 +288,8 @@ class TD_Framework extends TD_Framework_Base
                         'terms' => $tax->slug
                     );
         }
-        $this->show_grid_post($args);
+        echo qode_execute_shortcode('td_news_'.$args['layout_view'],$args);
+        //$this->show_grid_post($args);
     }
 
     /**

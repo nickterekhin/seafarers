@@ -30,7 +30,9 @@ abstract class TD_News_Base implements ITD_News
         'year'=>0,
         'monthnum'=>0,
         'day'=>0,
-        'tag'=>''
+        'tag'=>'',
+        'tax_query'=>'',
+        'only_videos'=>''
 
 
     );
