@@ -848,6 +848,9 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
         font-size: 10px !important;
         margin-right: 2px !important; } }
 @media only screen and (max-width: 1280px) {
+  .qode-news-holder .qode-post-info-category a {
+    font-size: 9px; }
+
   .td-additional-post-info-layouts ul li span {
     font-size: 10px; }
 
