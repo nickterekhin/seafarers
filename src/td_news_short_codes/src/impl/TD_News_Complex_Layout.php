@@ -6,7 +6,7 @@ namespace TerekhinDevelopment\td_news_short_codes\src\impl;
 
 use TerekhinDevelopment\td_news_short_codes\src\TD_News_Base;
 
-class TD_News_Layout1 extends TD_News_Base
+class TD_News_Complex_Layout extends TD_News_Base
 {
 
     private $default_params = array(

@@ -1,8 +1,8 @@
 <?php
 /**
- * @var TD_News_Layout1 $obj
+ * @var TD_News_Complex_Layout $obj
  */
-use TerekhinDevelopment\td_news_short_codes\src\impl\TD_News_Layout1;
+use TerekhinDevelopment\td_news_short_codes\src\impl\TD_News_Complex_Layout;
 $articles =count($posts_arr);
 if($articles>4) $articles=4;
 $posts_right = array_slice($posts_arr,1,$articles);
