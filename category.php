@@ -16,7 +16,7 @@ if($obj) {
 
 
 
-$wp_query->query_vars['posts_per_page'] = 40;
+$wp_query->query_vars['posts_per_page'] = 30;
 
 
 if((isset($_GET['date_year']) && !empty($_GET['date_year'])) || (isset($_GET['date_month']) && !empty($_GET['date_month'])) || (isset($_GET['date_day']) && !empty($_GET['date_day'])) || (isset($_REQUEST['filter_search']) && !empty($_REQUEST['filter_search']))) {
@@ -88,7 +88,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 								<div class="wpb_wrapper">
 									<?php //$terekhin_framework->showSeparator('Популярное в разделе','separator_align_left');?>
 									<?php
-									$terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - ':'').'Главные Новости',array('column_number'=>3,'news_period'=>2,'extra_class_name'=>'td-news-list'));
+									$terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - ':'').'Главные Новости',array('column_number'=>3,'news_period'=>2,'extra_class_name'=>'td-news-list','display_categories'=>'no'));
 									?>
 								</div>
 							</div>
