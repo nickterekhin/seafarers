@@ -260,11 +260,6 @@
     line-height: 15px;
     font-size: 10px;
   }
-  .qode-btn.qode-btn-icon .qode-btn-text
-  {
-    padding-right: 17px;
-    padding-left: 17px;
-  }
 
 }
 @media only screen and (max-width: 1024px) and (min-width:768px){
@@ -401,5 +396,10 @@
         }
       }
     }
+  }
+  .qode-btn.qode-btn-icon .qode-btn-text
+  {
+    padding-right: 17px;
+    padding-left: 17px;
   }
 }
