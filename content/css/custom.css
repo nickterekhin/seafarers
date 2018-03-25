@@ -866,7 +866,10 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
   {
     line-height: 19px;
     font-size: 13px;
-  }*/ }
+  }*/
+  .qode-news-holder .qode-ni-content .qode-post-excerpt-holder {
+    line-height: 15px;
+    font-size: 10px; } }
 @media only screen and (max-width: 1024px) and (min-width: 768px) {
   h2, .h2, h2 a {
     font-size: 20px; }
