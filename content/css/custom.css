@@ -436,6 +436,13 @@ div#ui-datepicker-div {
   color: #888; }
 .footer_top .q_social_icon_holder {
   display: none; }
+.footer_top .td-contact.td-phone span {
+  color: #fff;
+  line-height: 40px;
+  font-size: 25px;
+  letter-spacing: 2px; }
+  .footer_top .td-contact.td-phone span i.fa {
+    margin-right: 10px; }
 
 body.page-id-30631.vertical_menu_enabled .full_screen_holder {
   padding-left: 0; }

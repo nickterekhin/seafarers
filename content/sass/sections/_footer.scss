@@ -28,4 +28,17 @@
   .q_social_icon_holder{
     display:none;
   }
+  .td-contact{
+    &.td-phone{
+      span{
+        color:#fff;
+        line-height: 40px;
+        font-size: 25px;
+        letter-spacing: 2px;
+        i.fa{
+          margin-right:10px;
+        }
+      }
+    }
+  }
 }
