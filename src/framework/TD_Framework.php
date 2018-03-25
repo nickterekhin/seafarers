@@ -539,6 +539,28 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
             update_post_meta($postID,$views_key,$count);
         }
     }
+    function get_post_typeicon($post_id)
+    {
+
+        $_post_format = get_post_format($post_id);
+        $post_types = '';
+        $trending_news = get_post_meta($post_id,"qode_news_post_trending_meta",true);
+        if($trending_news && $trending_news=='yes')
+            $post_types .= '<i class="fa fa-star"></i>';
+
+        $featured_news = get_post_meta($post_id,"qode_news_post_featured_meta",true);
+        if($featured_news && $featured_news=='yes')
+            $post_types .= '<i class="fa fa-anchor"></i>';
+
+        $hot_news = get_post_meta($post_id,"qode_news_post_hot_meta",true);
+        if($hot_news && $hot_news=='yes')
+            $post_types .= '<i class="fa fa-bolt"></i>';
+
+        if($_post_format=='video')
+            $post_types .= '<i class="fa fa-video-camera"></i>';
+
+        return $post_types;
+    }
 }
 
 function init_framework()

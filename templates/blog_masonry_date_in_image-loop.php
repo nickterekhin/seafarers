@@ -1,5 +1,5 @@
 <?php 
-global $qode_options_proya, $wp_query;
+global $qode_options_proya, $wp_query,$terekhin_framework;
 $blog_enable_social_share = "";
 if(isset($qode_options_proya['enable_social_share'])){
 	$blog_enable_social_share = $qode_options_proya['enable_social_share'];
@@ -35,25 +35,7 @@ switch ($thumb_size_temp) {
 ?>
 <?php
 
-	$post_types = '';
-
-
-	$trending_news = get_post_meta(get_the_ID(),"qode_news_post_trending_meta",true);
-	if($trending_news && $trending_news=='yes')
-		$post_types .= '<i class="fa fa-star"></i>';
-
-	$featured_news = get_post_meta(get_the_ID(),"qode_news_post_featured_meta",true);
-	if($featured_news && $featured_news=='yes')
-		$post_types .= '<i class="fa fa-anchor"></i>';
-
-	$hot_news = get_post_meta(get_the_ID(),"qode_news_post_hot_meta",true);
-	if($hot_news && $hot_news=='yes')
-		$post_types .= '<i class="fa fa-bolt"></i>';
-
-	if($_post_format=='video')
-		$post_types .= '<i class="fa fa-video-camera"></i>';
-
-
+	$post_types = $terekhin_framework->get_post_typeicon(get_the_ID());
 ?>
 <?php
 	switch ($_post_format) {
