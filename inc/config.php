@@ -68,7 +68,7 @@ function remove_wp_nodes()
         $wp_admin_bar->remove_node('new-tribe_events');
         $wp_admin_bar->remove_node('archive');
     }
-    var_dump($wp_admin_bar);
+
 
 }
 function terekhin_dev_category_template($single)
