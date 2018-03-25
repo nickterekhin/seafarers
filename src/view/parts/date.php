@@ -23,10 +23,10 @@ if ($display_date == 'yes'){ ?>
 							<?php } else { ?>
 							<a itemprop="url" href="<?php echo get_month_link($year, $month); ?>">
 								<?php } ?>
-								<i class="dripicons-alarm"></i>
+
 								<?php if ($date_format == 'published') {
 
-									echo get_the_time(get_option('date_format'));
+									echo get_the_time('H:i d.m.Y');
 								} else {
 									echo esc_html($difference);
 								} ?>

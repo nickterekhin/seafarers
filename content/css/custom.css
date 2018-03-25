@@ -427,6 +427,11 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
 .td-counter-holder p {
   font-family: Oswald,sans-serif; }
 
+.qode-news-holder .qode-post-info-category a {
+  font-size: 10px; }
+  .qode-news-holder .qode-post-info-category a span {
+    line-height: 22px;
+    padding: 0 7px; }
 .qode-news-holder .qode-ni-content .qode-post-excerpt-holder {
   text-align: left; }
 .qode-news-holder .qode-ni-content .qode-post-info-date {
