@@ -209,13 +209,15 @@ class TD_Framework extends TD_Framework_Base
         }else if($obj && $obj->taxonomy=='post_tag')
         {
             $args['tag']=$obj->slug;
-            $args['single']=array( 'display_categories' => 'yes');
+            //$args['single']=array( 'display_categories' => 'yes');
+            $args['display_categories']= 'yes';
         }
 
         if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year'] && $wp_query->query_vars['monthnum']) {
             $args['year'] = $wp_query->query_vars['year'];
             $args['monthnum'] = $wp_query->query_vars['monthnum'];
-            $args['single']=array( 'display_categories' => 'yes');
+            //$args['single']=array( 'display_categories' => 'yes');
+            $args['display_categories']= 'yes';
             unset($args['news_period']);
         }
 

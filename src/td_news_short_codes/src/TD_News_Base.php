@@ -90,6 +90,13 @@ abstract class TD_News_Base implements ITD_News
                 'description' =>'Enter the categories of the posts you want to display (comma separate) (leave empty for showing all categories)' ,
                 'group' =>'General' ,
             ),
+            array(
+                'type' => 'textfield',
+                'heading' => esc_html__('Tag','qode-news'),
+                'param_name' => 'tag',
+                'description' => esc_html__('Enter the tags of the posts you want to display (leave empty for showing all tags)','qode-news'),
+                'group' => esc_html__('General','qode-news')
+            ),
             array (
                 'type' =>'textfield' ,
                 'heading' =>'Author' ,
