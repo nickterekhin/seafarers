@@ -29,7 +29,8 @@ abstract class TD_News_Base implements ITD_News
         'layout_title'=>'',
         'year'=>0,
         'monthnum'=>0,
-        'day'=>0
+        'day'=>0,
+        'tag'=>''
 
 
     );
