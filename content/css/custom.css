@@ -733,6 +733,10 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
   .boxed div.section .section_inner, .carousel-inner .slider_content_outer, .container_inner, .full_width .parallax_content, .steps_holder_inner, div.grid_section .section_inner, nav.content_menu {
     width: 700px; } }
 @media only screen and (min-width: 1024px) and (max-width: 1280px) and (orientation: landscape) {
+  .qode-btn.qode-btn-icon .qode-btn-text {
+    padding-right: 15px;
+    padding-left: 15px; }
+
   .vertical_menu_enabled .full_screen_holder {
     padding-left: 180px; }
 
