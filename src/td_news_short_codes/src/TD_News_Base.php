@@ -25,7 +25,8 @@ abstract class TD_News_Base implements ITD_News
         'offset'=>'',
         'display_category_image'=>'',
         'extra_class_name'=>'',
-        'display_categories'=>'yes'
+        'display_categories'=>'yes',
+        'layout_title'=>''
 
     );
     protected $item_options = array(

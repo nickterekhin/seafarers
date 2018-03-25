@@ -44,10 +44,11 @@ class TD_News_Layout2 extends TD_News_Base
 
     function render($attr, $content = null)
     {
+        var_dump($attr);
         $this->default_params = wp_parse_args($this->item_options,$this->default_params);
 
         $this->short_code_params = shortcode_atts($this->default_params,$attr);
-
+        var_dump($this->short_code_params);
         return $this->render_news_holder();
     }
 
