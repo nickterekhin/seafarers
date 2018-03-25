@@ -278,6 +278,8 @@ article .td-post-info-bottom {
   font-size: 13px; }
   .qode-slider-td .qode-slider1-pag-date i {
     top: 1px; }
+.qode-slider-td h2, .qode-slider-td .h2 {
+  line-height: 45px; }
 
 .td-layout2-news .qode-layout2-item {
   padding-top: 5px !important;
