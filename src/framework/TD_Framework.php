@@ -159,36 +159,6 @@ class TD_Framework extends TD_Framework_Base
         $this->show_grid_post($args,'layout2-news-vertical');
     }
 
-    /**
-     * @param WP_Term $obj
-     * @param string $title
-     */
-    function show_hot_news_in_section($obj,$title="Горячие новости")
-    {
-        global $wp_query;
-
-        $args = array(
-            'sort'=>'hot_first',
-            'layout_title'=>$title,
-            'posts_per_page'=>6
-        );
-        if($obj && $obj->taxonomy=='category') {
-            $args['category_name'] = $obj->slug;
-        }else if($obj && $obj->taxonomy=='post_tag')
-        {
-            $args['tag']=$obj->slug;
-            $args['single']=array( 'display_categories' => 'yes');
-        }
-
-        if (isset($wp_query->query_vars['year']) && isset($wp_query->query_vars['monthnum']) && $wp_query->query_vars['year'] && $wp_query->query_vars['monthnum']) {
-            $args['year'] = $wp_query->query_vars['year'];
-            $args['monthnum'] = $wp_query->query_vars['monthnum'];
-            $args['single']=array( 'display_categories' => 'yes');
-        }
-
-        $this->show_grid_post($args);
-
-    }
 
     function show_news_in_section($obj,$title=null,$attr)
     {
@@ -201,11 +171,12 @@ class TD_Framework extends TD_Framework_Base
             'title_align'=>'separator_align_left',
             'column_number' =>1,
             'image_size'=>'thumbnail',
-            'news_period'=>'2',
+            'news_period'=>null,
             'layout_view'=>'layout2'
         );
 
         $args = wp_parse_args($attr,$args);
+
         if($obj && $obj->taxonomy=='category') {
             $args['category_name'] = $obj->slug;
         }else if($obj && $obj->taxonomy=='post_tag')
@@ -228,7 +199,7 @@ class TD_Framework extends TD_Framework_Base
         echo qode_execute_shortcode('td_news_'.$args['layout_view'],$args,null);
         //$this->show_grid_post($args,'layout2-news-vertical');
     }
-    function show_post_in_section($obj,$title,$category_slug,$attr=array())
+    function show_news_in_section_by_category($obj,$title,$category_slug,$attr=array())
     {
         global $wp_query;
 

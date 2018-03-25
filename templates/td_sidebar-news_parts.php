@@ -13,7 +13,7 @@ if(is_single())
 ?>
 
         <?php
-        $terekhin_framework->show_news_in_section(null,'Популярные',array('category_name'=>implode(',',$terms_slugs_arr),'display_categories'=>'yes'));
+        $terekhin_framework->show_news_in_section(null,'Популярные',array('category_name'=>implode(',',$terms_slugs_arr),'display_categories'=>'yes','news_period'=>'2'));
         ?>
         <?php
             $args = array('tax_query'=>array(
@@ -68,11 +68,11 @@ if($obj) {
 ?>
 <div class="column_inner">
     <?php $terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - Популярное':'Популярные Новости'),array('sort'=>'popular','news_period'=>'2'));?>
-    <?php $terekhin_framework->show_post_in_section($obj,($sub_title?$sub_title.' - ':'')."События",'events');?>
-    <?php $terekhin_framework->show_post_in_section($obj, ($sub_title?$sub_title.' - ':'')."Мнения", 'opinions');
+    <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."События",'events');?>
+    <?php $terekhin_framework->show_news_in_section_by_category($obj, ($sub_title?$sub_title.' - ':'')."Мнения", 'opinions');
 
     ?>
-    <?php $terekhin_framework->show_post_in_section($obj,($sub_title?$sub_title.' - ':'')."Видеo",'videos',array('layout_view'=>'layout1','image_size'=>'large'));?>
+    <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."Видеo",'videos',array('layout_view'=>'layout1','image_size'=>'large'));?>
 
 </div>
 <?php } ?>
