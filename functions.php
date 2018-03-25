@@ -1,5 +1,5 @@
 <?php
-
+define('TRIBE_DISABLE_TOOLBAR_ITEMS', true);
 define("PARENT_THEME_PATH",get_template_directory());
 define("PARENT_THEME_PATH_URI",get_template_directory_uri());
 
