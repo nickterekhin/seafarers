@@ -216,6 +216,7 @@ class TD_Framework extends TD_Framework_Base
             $args['year'] = $wp_query->query_vars['year'];
             $args['monthnum'] = $wp_query->query_vars['monthnum'];
             $args['single']=array( 'display_categories' => 'yes');
+            unset($args['news_period']);
         }
 
 
