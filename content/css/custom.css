@@ -26,6 +26,9 @@ aside .widget a {
   box-shadow: 0px 2px 2px 0px rgba(0, 6, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.01);
   background: #fafafa; }
 
+.td-news-logo {
+  display: none; }
+
 h2, h3, h4, h5, h6 {
   text-align: left; }
 
@@ -966,4 +969,7 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
       font-size: 12px; }
       .qode-news-holder .qode-post-info-date a i {
         font-size: 12px !important;
-        margin-right: 1px !important; } }
+        margin-right: 1px !important; }
+
+  .td-news-logo {
+    display: block; } }
