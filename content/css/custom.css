@@ -430,6 +430,8 @@ div#ui-datepicker-div {
   line-height: 1.7;
   font-weight: 500;
   color: #888; }
+.footer_top .q_social_icon_holder {
+  display: none; }
 
 body.page-id-30631.vertical_menu_enabled .full_screen_holder {
   padding-left: 0; }
@@ -971,4 +973,7 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
         margin-right: 1px !important; }
 
   .td-news-logo {
-    display: block; } }
+    display: block; }
+
+  .footer_top .q_social_icon_holder {
+    display: inline-block; } }
