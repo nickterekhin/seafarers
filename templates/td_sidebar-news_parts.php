@@ -89,7 +89,7 @@ if($obj) {
     <?php $terekhin_framework->show_news_in_section_by_category($obj, ($sub_title?$sub_title.' - ':'')."Мнения", 'opinions',array('display_read_more_button'=>'yes','extra_class_name'=>'td-news-list'));
 
     ?>
-    <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."Видеo",'videos',array('layout_view'=>'layout1','image_size'=>'large','display_read_more_button'=>'yes','column-number'=>2));?>
+    <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."Видеo",'videos',array('layout_view'=>'layout1','image_size'=>'large','display_read_more_button'=>'yes','column_number'=>2));?>
 
 </div>
 <?php } ?>
