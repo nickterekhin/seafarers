@@ -27,7 +27,6 @@ $posts_right = array_slice($posts_arr,1,$articles);
                             echo $obj->render_articles($posts_right,$params);
                             ?>
                         </div></div></div></div></div></div></div>
-    <div class="separator  transparent   " style="margin-top: 10px;margin-bottom: 10px;"></div>
     <div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner">
 			<span class="empty_space_image"></span>
 		</span></div>
