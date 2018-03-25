@@ -910,7 +910,14 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
     width: 100%; }
 
   .qode-slider-td h2 {
-    line-height: 40px; } }
+    line-height: 40px; }
+
+  .qode-btn.qode-btn-icon .qode-btn-text {
+    padding-right: 17px;
+    padding-left: 17px; }
+
+  .qode-btn {
+    font-size: 12px; } }
 @media only screen and (max-width: 768px) {
   .hidden-xs {
     display: none; }
@@ -963,4 +970,7 @@ body.page-id-30631.vertical_menu_enabled .full_screen_holder {
 
   .qode-btn.qode-btn-icon .qode-btn-text {
     padding-right: 17px;
-    padding-left: 17px; } }
+    padding-left: 17px; }
+
+  .qode-btn {
+    font-size: 12px; } }
