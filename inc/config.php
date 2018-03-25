@@ -22,7 +22,11 @@ function terekhin_dev_remove_elements()
         remove_menu_page('bulk-delete-posts');
         remove_menu_page('wpcf7');
     }
-   
+    if(current_user_can('editor'))
+    {
+        remove_menu_page('options-general');
+    }
+
 }
 
 function terekhin_dev_category_template($single)
