@@ -16,7 +16,7 @@ if(is_single())
         $terekhin_framework->show_news_in_section(null,'Популярные',array('category_name'=>implode(',',$terms_slugs_arr),'display_categories'=>'yes','news_period'=>'2'));
         ?>
         <?php
-            $args = array('tax_query'=>array(
+            $args_opinion = array('tax_query'=>array(
                 'relation'=>'OR',
                 array(
                     'taxonomy'=>'category',
@@ -30,10 +30,10 @@ if(is_single())
                     'terms'=>array('opinions')
                 )
             ));
+            $args_opinion['sort']='latest';
+            $terekhin_framework->show_news_in_section(null,'Мнения',$args_opinion);
 
-            $terekhin_framework->show_news_in_section(null,'Мнения',$args);
-
-    $args = array('tax_query'=>array(
+    $args_video = array('tax_query'=>array(
         'relation'=>'OR',
         array(
             'taxonomy'=>'category',
@@ -47,10 +47,11 @@ if(is_single())
             'terms'=>array('videos')
         )
     ));
-        $args['only_videos']='yes';
-        $args['layout_view']='layout1';
-        $args['image_size']='large';
-            $terekhin_framework->show_news_in_section(null,'Видео',$args);
+        $args_video['only_videos']='yes';
+        $args_video['layout_view']='layout1';
+        $args_video['image_size']='large';
+        $args_video['sort']='latest';
+            $terekhin_framework->show_news_in_section(null,'Видео',$args_video);
             ?>
 
 <?php
