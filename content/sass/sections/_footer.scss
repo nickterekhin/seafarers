@@ -30,6 +30,9 @@
   }
   .td-contact{
     &.td-phone{
+      &:hover{
+        color:#02b0ea !important;
+      }
       span{
         color:#fff;
         line-height: 40px;
@@ -37,6 +40,10 @@
         letter-spacing: 2px;
         i.fa{
           margin-right:10px;
+          color:#02b0ea;
+          &.fa-phone{
+
+          }
         }
       }
     }
