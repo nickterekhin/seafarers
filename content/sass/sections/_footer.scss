@@ -31,7 +31,9 @@
   .td-contact{
     &.td-phone{
       &:hover{
-        color:#02b0ea !important;
+        span {
+          color: #02b0ea !important;
+        }
       }
       span{
         color:#fff;
