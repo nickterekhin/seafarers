@@ -43,7 +43,7 @@ abstract class TD_News_Base implements ITD_News
         'display_author' => 'no',
         'display_share' => 'no',
         'display_hot_trending_icons' => 'no',
-        'display_image' => 'no',
+        'display_image' => 'yes',
     );
 
     public function __construct($short_code_slug,$short_code_category=null)
