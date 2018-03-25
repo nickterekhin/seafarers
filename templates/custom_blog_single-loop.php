@@ -91,7 +91,7 @@ $_post_format = get_post_format();
 				<div class="post_image">
 					<?php if(qode_options()->getOptionValue('show_image_on_audio_post') == 'yes' && get_post_meta(get_the_ID(), "qode_hide-featured-image", true) != "yes") {
 						if ( has_post_thumbnail() && $is_image_category) { ?>
-								<?php the_post_thumbnail('full'); ?>
+								<?php the_post_thumbnail('large'); ?>
 						<?php }
 					} ?>
 					<audio class="blog_audio" src="<?php echo get_post_meta(get_the_ID(), "audio_link", true) ?>" controls="controls">
@@ -245,7 +245,7 @@ $_post_format = get_post_format();
 				<?php if(get_post_meta(get_the_ID(), "qode_hide-featured-image", true) != "yes") {
 					if ( has_post_thumbnail() && $is_image_category ) { ?>
 						<div class="post_image">
-	                        <?php the_post_thumbnail('full'); ?>
+	                        <?php the_post_thumbnail('large'); ?>
 						</div>
 				<?php } } ?>
 				<div class="post_text">
