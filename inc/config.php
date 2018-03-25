@@ -52,6 +52,11 @@ function terekhin_dev_category_template($single)
 
 add_filter('category_template','terekhin_dev_category_template',11);
 add_filter('archive_template','terekhin_dev_category_template',11);
+add_filter('after_setup_theme','terekhin_dev_remove_post_formats',11);
+function terekhin_dev_remove_post_formats()
+{
+    add_theme_support('post-formats',array('video'));
+}
 function terekhin_dev_comments_template($single)
 {
     global $post;
