@@ -32,7 +32,10 @@ abstract class TD_News_Base implements ITD_News
         'day'=>0,
         'tag'=>'',
         'tax_query'=>'',
-        'only_videos'=>''
+        'only_videos'=>'',
+        'post_not_in'=>null,
+        'display_read_more_button'=>null,
+        'read_more_button_slug'=>null
 
 
     );
@@ -54,8 +57,13 @@ abstract class TD_News_Base implements ITD_News
         'display_image' => 'yes',
     );
 
+    protected $framework;
+
     public function __construct($short_code_slug,$short_code_category=null)
     {
+
+        global $terekhin_framework;
+        $this->framework = $terekhin_framework;
         if($short_code_category)
             $this->short_code_category = $short_code_category;
         $this->short_code_slug = $short_code_slug;
@@ -361,6 +369,8 @@ abstract class TD_News_Base implements ITD_News
 
     protected function render_news_holder()
     {
+
+
         $html='';
         $this->short_code_params['layout']=$this->template_layout;
         if(isset($this->short_code_params['news_period']) && !empty($this->short_code_params['news_period']))
@@ -387,6 +397,18 @@ abstract class TD_News_Base implements ITD_News
                 endwhile;
                     $html.='</div>';
                 $html.='</div>';
+                if(isset($this->short_code_params['display_read_more_button']) && $this->short_code_params['display_read_more_button']=='yes') {
+                    $html .= $this->framework->showSeparator('20', '20', null, 'transparent');
+                    $html .= '<div style="text-align:right">';
+                    $category_name = $this->short_code_params['category_name'];
+                    if(!$category_name){
+                        $category_name= $this->short_code_params['read_more_button_slug'];
+                    }
+
+                    $html .= $this->framework->showQ2Button($category_name);
+                    $html .= '</div>';
+                    $html .= $this->framework->showSeparator('20', '20', null, 'transparent');
+                }
             }
 
 

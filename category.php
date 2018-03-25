@@ -77,7 +77,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 						</div>
 					</div>
 				</div>
-				<?php $terekhin_framework->showSeparator('20','40',null,'transparent'); ?>
+				<?php echo $terekhin_framework->showSeparator('20','40',null,'transparent'); ?>
 			<?php endif;?>
 			<?php //get_template_part( 'templates/opinion','single' ); ?>
 			<div class="vc_row wpb_row section vc_row-fluid  grid_section" style=" text-align:left;">
@@ -102,7 +102,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 			<?php if(($sidebar == "default")||($sidebar == "")) : ?>
 				<?php
 				$terekhin_framework->showHeader(($sub_title?$sub_title.' - ':'').'Все Новости',3,'left','td-header');
-				$terekhin_framework->showSeparator('10','30',null,'transparent');
+				echo $terekhin_framework->showSeparator('10','30',null,'transparent');
 				?>
 				<?php 
 					get_template_part('templates/category_blog', 'structure');
@@ -113,7 +113,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 					<div class="column1">
 						<?php
 						$terekhin_framework->showHeader(($sub_title?$sub_title.' - ':'').'Все Новости',3,'left','td-header');
-						$terekhin_framework->showSeparator('10','30',null,'transparent');
+						echo $terekhin_framework->showSeparator('10','30',null,'transparent');
 						?>
 							<?php 
 								get_template_part('templates/category_blog', 'structure');
@@ -148,7 +148,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 						<div class="wpb_column vc_column_container vc_col-sm-12">
 							<div class="vc_column-inner ">
 								<div class="wpb_wrapper">
-									<?php $terekhin_framework->showSeparator('20','20',null,'transparent'); ?>
+									<?php echo $terekhin_framework->showSeparator('20','20',null,'transparent'); ?>
 									<?php $terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - ':'').'Комментируют',array('sort'=>'comments','image_size'=>'thumbnail','column_number'=>3));?>
 									<?php //$terekhin_framework->show_most_comments_in_section($obj,($sub_title?$sub_title.' - ':'').'Комментируют');?>
 								</div>

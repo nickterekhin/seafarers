@@ -110,7 +110,7 @@ class TD_Framework extends TD_Framework_Base
             'custom_class'=>'td-all-news-btn'
 
         );
-        echo qode_execute_shortcode('qode_button_v2',$args);
+        return qode_execute_shortcode('qode_button_v2',$args);
 
     }
     function showSeparator($margin_top='20',$margin_bottom='20',$color='#a9a9a9',$type='normal')
@@ -122,7 +122,7 @@ class TD_Framework extends TD_Framework_Base
             'down'=>$margin_bottom,
             'el_class'=>'td-news-simple-separator'
         );
-        echo qode_execute_shortcode('vc_separator',$attr);
+        return qode_execute_shortcode('vc_separator',$attr);
     }
 
     function showSeparatorWithText($text,$title_align=null)

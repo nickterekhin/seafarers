@@ -7,12 +7,22 @@ $terms = get_the_terms($obj->ID,'category');
 
 ?>
 <?php foreach($terms as $term){ ?>
-<?php $terekhin_framework->show_news_in_single_post($term->slug,'Читать так же в '.$term->name,'latest',6,'layout1-news','310px','190px');?>
-    <?php $terekhin_framework->showSeparator('20','20',null,'transparent');?>
-    <div style="text-align:right">
-        <?php $terekhin_framework->showQ2Button($term->slug)?>
-    </div>
+<?php
+    $args=array(
+        'layout_view'=>'layout1',
+        'sort'=>'latest',
+        'post_not_in'=>$obj->ID,
+        'image_size'=>'large',
+        'posts_per_page'=>9,
+        'category_name'=>$term->slug,
+        'column_number'=>3,
+        'display_read_more_button'=>'yes'
+    );
 
-    <?php $terekhin_framework->showSeparator('20','20',null,'transparent');?>
+    $terekhin_framework->show_news_in_section(null,'Читать так же в '.$term->name,$args);
+    //$terekhin_framework->show_news_in_single_post($term->slug,'Читать так же в '.$term->name,'latest',6,'layout1-news','310px','190px');
+
+    ?>
+
 
 <?php } ?>
