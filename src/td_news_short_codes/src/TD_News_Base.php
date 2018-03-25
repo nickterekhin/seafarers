@@ -362,6 +362,10 @@ abstract class TD_News_Base implements ITD_News
 
                 $this->short_code_params['posts_qty']=$query->post_count;
                 $html.='<div class="qode-news-holder qode-'.$this->template_layout.' qode-news-columns-'.$this->short_code_params['column_number'].' qode-nl-tiny-space qode-center-alignment '.$this->short_code_params['extra_class_name'].'">';
+                if(isset($this->short_code_params['layout_title']) && !empty($this->short_code_params['layout_title']))
+                {
+                    $html .='<div class="qode-news-list-title-holder"><h3 class="qode-news-layout-title td-header">'.$this->short_code_params['layout_title'].'</h3></div>';
+                }
                     $html.='<div class="qode-news-list-inner-holder" data-number-of-items="'.$query->post_count.'">';
                 while($query->have_posts()):$query->the_post();
                     $html.=$this->item_render($this->short_code_params);
