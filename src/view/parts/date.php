@@ -26,7 +26,7 @@ if ($display_date == 'yes'){ ?>
 
 								<?php if ($date_format == 'published') {
 
-									echo get_the_time('H:i d.m.Y');
+									echo get_the_time('d.m.Y');
 								} else {
 									echo esc_html($difference);
 								} ?>
