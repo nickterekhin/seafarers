@@ -19,10 +19,10 @@ function terekhin_dev_remove_elements()
         remove_menu_page('edit.php?post_type=carousels');
         remove_menu_page('edit.php?post_type=tribe_events');
         remove_menu_page('edit.php?post_type=page');
-        remove_menu_page('admin.php?page=bulk-delete-posts');
-        remove_menu_page('admin.php?page=wpcf7');
+        remove_menu_page('bulk-delete-posts');
+        remove_menu_page('wpcf7');
     }
-    var_dump($menu);
+   
 }
 
 function terekhin_dev_category_template($single)
