@@ -558,7 +558,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
             $post_types .= '<i class="fa fa-bolt" title="Топовая Новость"></i>';
 
         if($_post_format=='video')
-            $post_types .= '<i class="fa fa-video-camera"></i>';
+            $post_types .= '<i class="fa fa-video-camera" title="Видео новость"></i>';
 
         return $post_types;
     }
