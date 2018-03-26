@@ -149,7 +149,7 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 							<div class="vc_column-inner ">
 								<div class="wpb_wrapper">
 									<?php echo $terekhin_framework->showSeparator('20','20',null,'transparent'); ?>
-									<?php $terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - ':'').'Комментируют',array('sort'=>'comments','image_size'=>'thumbnail','column_number'=>3,'news_period'=>3,'extra_class_name'=>'td-news-list'));?>
+									<?php $terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - ':'').'Комментируют',array('sort'=>'comments','image_size'=>'thumbnail','column_number'=>3,'news_period'=>3,'extra_class_name'=>'td-news-list','display_categories'=>'no'));?>
 									<?php //$terekhin_framework->show_most_comments_in_section($obj,($sub_title?$sub_title.' - ':'').'Комментируют');?>
 								</div>
 							</div>
