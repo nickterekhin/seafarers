@@ -215,6 +215,7 @@ class TD_Framework extends TD_Framework_Base
             'layout_view'=>'layout2',
             'image_size'=>'thumbnail'
         );
+        $attr['read_more_button_slug']=$category_slug;
         $args = wp_parse_args($attr,$args);
         $tax = get_term_by('slug', $category_slug, 'category');
         if ($tax) {
