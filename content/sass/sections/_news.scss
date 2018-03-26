@@ -188,22 +188,22 @@ text-align:left;
   }
 
 }
-article {
-  .fa{
-    margin-right:5px;
-    &.fa-video-camera{
-      color:#5067ed;
-    }
-    &.fa-bolt{
-      color:#dc1919;
-    }
-    &.fa-anchor{
-      color:#098221;
-    }
-    &.fa-star{
-      color: #ebb70c
-    }
+.fa{
+  margin-right:5px;
+  &.fa-video-camera{
+    color:#5067ed;
   }
+  &.fa-bolt{
+    color:#dc1919;
+  }
+  &.fa-anchor{
+    color:#098221;
+  }
+  &.fa-star{
+    color: #ebb70c
+  }
+}
+article {
 
   .td-single-post-text-inner{
     padding-top:0 !important;
