@@ -145,6 +145,9 @@ h2, h3, h4, h5, h6 {
     top: 2px !important;
     color: #8d8d8d !important; }
 
+h1 .fa, h2 .fa, h3 .fa {
+  display: none; }
+
 .fa {
   margin-right: 5px; }
   .fa.fa-video-camera {

@@ -188,6 +188,11 @@ text-align:left;
   }
 
 }
+h1,h2,h3{
+  .fa{
+    display:none;
+  }
+}
 .fa{
   margin-right:5px;
   &.fa-video-camera{
