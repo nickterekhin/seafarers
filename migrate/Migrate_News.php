@@ -64,7 +64,7 @@ FROM news n
 INNEr JOIN topics t ON n.topic_id = t.id
 INNER JOIN users u ON n.creator_id = u.id
 
-WHERE (n.opinion ='' OR n.opinion = '0') AND n.is_video!=1 AND n.timestamp  > DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1 DAY) ORDER BY n.timestamp DESC LIMIT $qty,1000");
+WHERE (n.opinion ='' OR n.opinion = '0') AND n.is_video!=1 AND n.timestamp  > DATE_SUB(CURDATE(),INTERVAL DAY(CURDATE())-1+28 DAY) ORDER BY n.timestamp DESC LIMIT $qty,1000");
         $index = 0;
         while($res=$sql->FetchRow())
         {
@@ -150,7 +150,7 @@ v.source
 FROM news n
 INNER JOIN videos v ON n.id = v.news_id
 
-WHERE n.is_video=1 ".$limit);
+WHERE n.is_video=1 and n.timestamp > '2018-02-16 16:00' ".$limit);
         $index=0;
         echo $sql->NumRows();
         $added_posts = array();
@@ -205,7 +205,7 @@ WHERE n.is_video=1 ".$limit);
                                         INNER JOIN users u ON n.creator_id = u.id
                                         #INNER JOIN videos v ON n.id = v.news_id
 
-                                        WHERE n.opinion != '' AND n.is_video=0 ".$limit);
+                                        WHERE n.opinion != '' AND n.is_video=0 AND n.timestamp > '2018-02-16 16:00'".$limit);
         $index = 0;
         $added_posts = array();
         while($res = $sql->FetchRow())

@@ -141,7 +141,7 @@ WHERE tr.news_id = ".$news_id);
                  'qode_show-sidebar'=>'default',
                         'qode_news_post_hot_meta'=>'no',
                         'qode_news_post_trending_meta'=>'no',
-                        'qode_news_post_featured_meta'=>'no',
+                        'qode_news_post_featured_meta'=>(isset($res->bold) && $res->bold==1)?'yes':'no',
                         'qode_post_style_masonry_date_image'=>'full',
                         'qode_post_style_masonry_gallery'=>'default',
                         'qode_hide-featured-image'=>'no',
