@@ -167,6 +167,7 @@ WHERE n.is_video=1 and n.timestamp > '2018-02-16 16:00' ".$limit);
                 $arr_posts = array(
                     'post_author'=>1
                 );
+                $res->creator_id=1;
                 $post_id = $this->add_post($res,$arr_posts,$arr_meta_posts,false);
                 set_post_format($post_id,'video');
                 $added_posts[]=$post_id;

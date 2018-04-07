@@ -124,7 +124,7 @@ WHERE tr.news_id = ".$news_id);
 
             'comment_status' => 'open',
             'ping_status'    => 'open',
-            'post_author'    => $res->creator_id==1?$this->getPostAuthor('dmitriy@sj.com'):$this->getPostAuthor($res->username),
+            'post_author'    => (isset($res->creator_id) && $res->creator_id==1)?$this->getPostAuthor('dmitriy@sj.com'):$this->getPostAuthor($res->username),
             'post_content'   => $res->text,
             'post_date'      => $res->timestamp,
             'post_date_gmt'  => $res->timestamp,
@@ -176,7 +176,7 @@ WHERE tr.news_id = ".$news_id);
 
 
                 $tags = $this->getTags($res->id);
-                $category = $this->getCategoryByName($res->slug);
+                $category = $this->getCategoryByName(isset($res->slug)?$res->slug:'videos');
 
                 if ($category)
                     wp_set_post_categories($post_ID, $category);

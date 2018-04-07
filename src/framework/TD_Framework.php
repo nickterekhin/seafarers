@@ -347,7 +347,7 @@ class TD_Framework extends TD_Framework_Base
 
         global $post;
 
-        if($post->ID==30631) {
+        if($post && $post->ID==30631) {
 
 
 
