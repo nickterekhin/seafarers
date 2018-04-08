@@ -193,8 +193,13 @@ h1,h2,h3{
     display:none;
   }
 }
+.qode-post-title{
+  .fa {
+    margin-right: 5px;
+  }
+}
 .fa{
-  margin-right:5px;
+
   &.fa-video-camera{
     color:#5067ed;
   }
