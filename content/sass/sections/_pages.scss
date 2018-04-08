@@ -7,6 +7,31 @@ body{
       }
     }
   }
+  &.page-template-landing_page{
+    background-color: #083651;
+    .td-contact{
+      &.td-phone{
+        &:hover{
+          span {
+            color: #02b0ea !important;
+          }
+        }
+        span{
+          color:#fff;
+          line-height: 40px;
+          font-size: 25px;
+          letter-spacing: 2px;
+          i.fa{
+            margin-right:10px;
+            color:#02b0ea;
+            &.fa-phone{
+
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .td-about-text-block{
@@ -26,3 +51,4 @@ body{
 
   }
 }
+

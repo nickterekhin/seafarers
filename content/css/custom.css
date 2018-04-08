@@ -453,6 +453,18 @@ div#ui-datepicker-div {
 
 body.page-id-30631.vertical_menu_enabled .full_screen_holder {
   padding-left: 0; }
+body.page-template-landing_page {
+  background-color: #083651; }
+  body.page-template-landing_page .td-contact.td-phone:hover span {
+    color: #02b0ea !important; }
+  body.page-template-landing_page .td-contact.td-phone span {
+    color: #fff;
+    line-height: 40px;
+    font-size: 25px;
+    letter-spacing: 2px; }
+    body.page-template-landing_page .td-contact.td-phone span i.fa {
+      margin-right: 10px;
+      color: #02b0ea; }
 
 .td-about-text-block {
   text-align: left; }
