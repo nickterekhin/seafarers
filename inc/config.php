@@ -67,6 +67,7 @@ function remove_wp_nodes()
         $wp_admin_bar->remove_node('ab-ls-add-new');
         $wp_admin_bar->remove_node('new-tribe_events');
         $wp_admin_bar->remove_node('archive');
+        $wp_admin_bar->remove_menu('edit');
     }
 
 
