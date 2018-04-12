@@ -40,7 +40,8 @@ if(!empty($title_image)){
 }
 if($title_image_width<1920 && $title_image_height<640)
 {
-	$title_image = $custom_title_image['featured'];
+	//var_dump($custom_title_image);
+	$title_image = $custom_title_image;//['featured'];
 }
 
 if(get_post_meta($id, "qode_title-overlay-image", true) != ""){
