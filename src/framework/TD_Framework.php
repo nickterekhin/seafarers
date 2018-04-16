@@ -564,11 +564,31 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
     }
     function save_news_types($post_id,$post,$update)
     {
+        global $qodeFramework;
+
         $post_type = get_post_type($post_id);
-        //var_dump($post_type);
+        //var_dump($post_type);\
+
+        $postTypes = apply_filters('qode_meta_box_post_types_save', array("page", "post", "portfolio_page", "testimonials", "slides", "carousels","masonry_gallery"));
 
         if($post_type!='post') return;
+        if ( !isset( $_POST[ '_wpnonce' ] ))
+            return;
+        if ( !current_user_can( 'edit_post', $post_id ) )
+            return;
+        if ( ! in_array( $post->post_type, $postTypes ) )
+            return;
+        foreach ($qodeFramework->qodeMetaBoxes->options as $key=>$box ) {
 
+            if ( isset( $_POST[ $key ] ) && trim( $_POST[ $key ] !== '') ) {
+
+                $value = $_POST[ $key ];
+                // Auto-paragraphs for any WYSIWYG
+                update_post_meta( $post_id, $key, $value );
+            } else {
+                delete_post_meta( $post_id, $key );
+            }
+        }
             $this->save_post_meta_type($post_id,'qode_news_post_featured_meta');
         //var_dump($_POST);
         //exit;
