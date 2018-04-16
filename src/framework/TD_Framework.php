@@ -571,7 +571,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
 
             $this->save_post_meta_type($post_id,'qode_news_post_featured_meta');
         var_dump($_POST);
-        exit;
+        //exit;
     }
 
     private function save_post_meta_type($post_id,$meta_value)
