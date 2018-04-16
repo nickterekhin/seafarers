@@ -565,6 +565,9 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
     function save_news_types($post_id,$post,$update)
     {
         $post_type = get_post_type($post_id);
+        var_dump($post_type);
+        var_dump($_POST);
+            exit;
         if($post_type!='post') return;
 
             $this->save_post_meta_type($post_id,'qode_news_post_featured_meta');
