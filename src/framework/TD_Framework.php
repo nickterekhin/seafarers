@@ -566,12 +566,12 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
     {
         $post_type = get_post_type($post_id);
         var_dump($post_type);
-        var_dump($_POST);
-            exit;
+
         if($post_type!='post') return;
 
             $this->save_post_meta_type($post_id,'qode_news_post_featured_meta');
-
+        var_dump($_POST);
+        exit;
     }
 
     private function save_post_meta_type($post_id,$meta_value)
@@ -579,6 +579,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         if ( isset( $_POST[ $meta_value ] ) && trim( $_POST[ $meta_value ] !== '') ) {
 
             $value = $_POST[ $meta_value ];
+            var_dump($value);
             // Auto-paragraphs for any WYSIWYG
             update_post_meta( $post_id, $meta_value, $value );
         } else {
