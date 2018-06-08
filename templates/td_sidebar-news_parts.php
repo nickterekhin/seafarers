@@ -13,6 +13,7 @@ if(is_single())
 ?>
 
         <?php
+         echo $terekhin_framework->get_ads_zone('z1a');
         $terekhin_framework->show_news_in_section(null,'Популярные',array('category_name'=>implode(',',$terms_slugs_arr),'display_categories'=>'yes','news_period'=>'2','post_not_in'=>$obj->ID,'posts_per_page'=>15,'extra_class_name'=>'td-news-list'));
         ?>
         <?php
@@ -42,6 +43,8 @@ if(is_single())
     $args_opinion['display_read_more_button']='yes';
     $args_opinion['read_more_button_slug']='opinions';
     $args_opinion['extra_class_name']='td-news-list';
+
+            echo $terekhin_framework->get_ads_zone('z2a');
             $terekhin_framework->show_news_in_section(null,'Мнения',$args_opinion);
 
     $args_video = array('tax_query'=>array(
@@ -67,8 +70,10 @@ if(is_single())
         $args_video['display_read_more_button']='yes';
         $args_video['read_more_button_slug']='videos';
         $args_video['column_number']=2;
-    if($format!='video')
-            $terekhin_framework->show_news_in_section(null,'Видео',$args_video);
+    if($format!='video') {
+        echo $terekhin_framework->get_ads_zone('z3a');
+        $terekhin_framework->show_news_in_section(null, 'Видео', $args_video);
+    }
             ?>
 
 <?php
@@ -85,11 +90,15 @@ if($obj) {
 }
 ?>
 <div class="column_inner">
+    <?php echo $terekhin_framework->get_ads_zone('z1a');?>
     <?php $terekhin_framework->show_news_in_section($obj,($sub_title?$sub_title.' - Популярное':'Популярные Новости'),array('sort'=>'popular','news_period'=>'2','extra_class_name'=>'td-news-list','posts_per_page'=>15,'display_categories'=>'no'));?>
+
     <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."События",'journal-events',array('display_read_more_button'=>'yes','extra_class_name'=>'td-news-list','posts_per_page'=>10));?>
+    <?php echo $terekhin_framework->get_ads_zone('z2a');?>
     <?php $terekhin_framework->show_news_in_section_by_category($obj, ($sub_title?$sub_title.' - ':'')."Мнения", 'opinions',array('display_read_more_button'=>'yes','extra_class_name'=>'td-news-list','posts_per_page'=>10,'display_categories'=>'no'));
 
     ?>
+    <?php echo $terekhin_framework->get_ads_zone('z3a');?>
     <?php $terekhin_framework->show_news_in_section_by_category($obj,($sub_title?$sub_title.' - ':'')."Видеo",'videos',array('layout_view'=>'layout1','image_size'=>'large','display_read_more_button'=>'yes','column_number'=>2,'posts_per_page'=>10,'display_categories'=>'no'));?>
 
 </div>

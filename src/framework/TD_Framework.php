@@ -594,6 +594,19 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         //exit;
     }
 
+    function get_ads_zone($zone_slug)
+    {
+
+        /** @var WP_Term $term */
+        $term = get_term_by('slug',$zone_slug,'td_ads_zone');
+
+        if(!$term) return '';
+        //td_ads_single_zone
+        $attr = array(
+            'ads_zone'=>$term->term_id
+        );
+        return qode_execute_shortcode('td_ads_single_zone', $attr);
+    }
     private function save_post_meta_type($post_id,$meta_value)
     {
         if ( isset( $_POST[ $meta_value ] ) && trim( $_POST[ $meta_value ] !== '') ) {
@@ -606,6 +619,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
             delete_post_meta( $post_id, $meta_value );
         }
     }
+
 }
 
 function init_framework()
