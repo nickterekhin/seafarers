@@ -67,11 +67,13 @@
 											get_template_part('templates/' . $single_loop, 'loop');
 											?>
 										</div>
+										<?php echo $terekhin_framework->get_ads_zone('z1w');?>
 										<div class="td-additional-news">
 											<?php
 											get_template_part('templates/additional_news');
 											?>
 										</div>
+										<?php echo $terekhin_framework->get_ads_zone('z2w');?>
 										<?php
 											if($blog_hide_comments != "yes"){
 												comments_template('', true); 
