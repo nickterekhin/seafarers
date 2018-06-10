@@ -16,7 +16,7 @@ if($obj) {
 
 
 
-$wp_query->query_vars['posts_per_page'] = 30;
+$wp_query->query_vars['posts_per_page'] = 40;
 
 
 if((isset($_GET['date_year']) && !empty($_GET['date_year'])) || (isset($_GET['date_month']) && !empty($_GET['date_month'])) || (isset($_GET['date_day']) && !empty($_GET['date_day'])) || (isset($_REQUEST['filter_search']) && !empty($_REQUEST['filter_search']))) {
@@ -112,11 +112,14 @@ if(isset($qode_options_proya['blog_page_range']) && $qode_options_proya['blog_pa
 				<div class="<?php if($sidebar == "1"):?>two_columns_66_33<?php elseif($sidebar == "2") : ?>two_columns_75_25<?php endif; ?> background_color_sidebar grid2 clearfix">
 					<div class="column1">
 						<?php
+						echo $terekhin_framework->get_ads_zone('z1w');
 						$terekhin_framework->showHeader(($sub_title?$sub_title.' - ':'').'Все Новости',3,'left','td-header');
 						echo $terekhin_framework->showSeparator('10','30',null,'transparent');
 						?>
 							<?php 
 								get_template_part('templates/category_blog', 'structure');
+
+						echo $terekhin_framework->get_ads_zone('z2w');
 							?>
 
 
