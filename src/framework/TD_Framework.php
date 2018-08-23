@@ -527,7 +527,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
     public function set_post_views($postID)
     {
         $views_key = 'qode_count_post_views_meta';
-        var_dump("ok");
+        var_dump($postID);
         $page_views = apc_fetch("post_{$postID}_views")?apc_fetch("post_{$postID}_views"):get_post_meta($postID,$views_key,true);
 
 // if it exists, increase the counter (again, only in memory)
