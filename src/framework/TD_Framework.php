@@ -527,9 +527,9 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
     public function set_post_views($postID)
     {
         $views_key = 'qode_count_post_views_meta';
-
+        var_dump("ok");
         $count = get_post_meta($postID,$views_key,true);
-        var_dump($count);
+
         if(!isset($count) || empty($count)){
             $count=1;
             delete_post_meta($postID,$views_key);
