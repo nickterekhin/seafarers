@@ -30,6 +30,7 @@ $params = array(
 );
 $is_image_category = false;
 $terekhin_framework->get_post_featured_image(get_the_ID(),$is_image_category);
+$terekhin_framework->set_post_views(get_the_ID());
 $_post_format = get_post_format();
 ?>
 <?php

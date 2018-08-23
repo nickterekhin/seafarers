@@ -8,7 +8,7 @@
 <?php if (have_posts()) : ?>
 <?php while (have_posts()) : the_post(); ?>
 	<?php
-		$terekhin_framework->set_post_views(get_the_ID());
+		//$terekhin_framework->set_post_views(get_the_ID());
 
 	if(get_post_meta(get_the_ID(), "qode_page_scroll_amount_for_sticky", true)) { ?>
 		<script>
