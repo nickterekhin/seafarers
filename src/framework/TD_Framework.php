@@ -527,13 +527,11 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
     public function set_post_views($postID)
     {
         $views_key = 'qode_count_post_views_meta';
-        var_dump($postID);
-        $page_views = apc_fetch("post_{$postID}_views")?apc_fetch("post_{$postID}_views"):get_post_meta($postID,$views_key,true);
+
+        $page_views = apc_fetch("post_{$postID}_views")?apc_inc("post_{$postID}_views"):get_post_meta($postID,$views_key,true);
 
 // if it exists, increase the counter (again, only in memory)
         if($page_views !== false){
-            $page_views = apc_inc("post_{$postID}_views");
-
             // write the data to the database every ...let's say 100 views
             //if(($page_views % 1) == 100)
                 update_post_meta($postID,$views_key,$page_views);
