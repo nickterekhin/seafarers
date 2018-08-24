@@ -524,11 +524,46 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         return $image;
     }
 
+    public function post_views_js_ctrl()
+    {
+
+        ?>
+        <script type="text/javascript">
+            (function($) {
+                $(document).ready(function () {
+                    $.ajax({
+                        type: 'POST',
+                        dataType: 'json',
+                        url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                        data: {
+                            action: 'views_counting',
+                            post_id: <?php echo get_the_ID() ?>
+                        },
+                        success: function (data) {
+                           console.log(data);
+                        }
+                    });
+                });
+            })(jQuery);
+        </script>
+    <?php
+    }
+    public function save_post_views()
+    {
+        var_dump($_POST['post_id']);
+        if(isset($_POST['post_id']) && !empty($_POST['post_id']))
+        {
+            $this->set_post_views($_POST['post_id']);
+            echo 'ok';
+        }
+
+        die();
+    }
     public function set_post_views($postID)
     {
         $views_key = 'qode_count_post_views_meta';
 
-        $page_views = apc_fetch("post_{$postID}_views")?apc_inc("post_{$postID}_views"):get_post_meta($postID,$views_key,true);
+        /*$page_views = apc_fetch("post_{$postID}_views")?apc_inc("post_{$postID}_views"):get_post_meta($postID,$views_key,true);
 
 // if it exists, increase the counter (again, only in memory)
         if($page_views !== false){
@@ -541,10 +576,10 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         else{
             apc_store("post_{$postID}_views", 1);
             $page_views = 1;
-        }
-        /*$count = get_post_meta($postID,$views_key,true);
-
-        if(!isset($count) || empty($count)){
+        }*/
+        $count = get_post_meta($postID,$views_key,true);
+        var_dump($count);
+        if($count===false){
             $count=1;
             delete_post_meta($postID,$views_key);
             add_post_meta($postID,$views_key,$count);
@@ -552,8 +587,9 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         else
         {
             $count++;
+            var_dump($count);
             update_post_meta($postID,$views_key,$count);
-        }*/
+        }
     }
     function get_post_typeicon($post_id)
     {
