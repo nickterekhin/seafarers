@@ -540,7 +540,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
                             post_id: <?php echo get_the_ID() ?>
                         },
                         success: function (data) {
-                           console.log(data);
+                           //console.log(data);
                         }
                     });
                 });
