@@ -550,7 +550,6 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
     }
     public function save_post_views()
     {
-        var_dump($_POST['post_id']);
         if(isset($_POST['post_id']) && !empty($_POST['post_id']))
         {
             $this->set_post_views($_POST['post_id']);
@@ -578,7 +577,6 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
             $page_views = 1;
         }*/
         $count = get_post_meta($postID,$views_key,true);
-        var_dump($count);
         if($count===false){
             $count=1;
             delete_post_meta($postID,$views_key);
@@ -587,7 +585,6 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
         else
         {
             $count++;
-            var_dump($count);
             update_post_meta($postID,$views_key,$count);
         }
     }
