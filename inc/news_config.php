@@ -9,6 +9,6 @@ add_filter('vc_gitem_template_attribute_post_image_background_image_css_value',a
 add_filter("qode_title_text",array($terekhin_framework,'format_page_title'));
 if(wp_doing_ajax()) {
     add_action('wp_ajax_nopriv_views_counting', array($terekhin_framework, 'save_post_views'));
-    add_action('wp_ajax_views_counting', array($terekhin_framework, 'save_post_views'));
+    //add_action('wp_ajax_views_counting', array($terekhin_framework, 'save_post_views'));
 }
 //add_action('save_post',array($terekhin_framework,'save_news_types'),10,3);
