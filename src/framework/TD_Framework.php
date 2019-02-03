@@ -534,7 +534,7 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
                     $.ajax({
                         type: 'POST',
                         dataType: 'json',
-                        url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                        url: 'http://www.seafarersjournal.com/wp-admin/admin-ajax.php',
                         data: {
                             action: 'views_counting',
                             post_id: <?php echo get_the_ID() ?>
