@@ -8,7 +8,7 @@ add_filter('vc_gitem_template_attribute_post_image_url_value',array($terekhin_fr
 add_filter('vc_gitem_template_attribute_post_image_background_image_css_value',array($terekhin_framework,'set_post_image_css_value_from_category'));
 add_filter("qode_title_text",array($terekhin_framework,'format_page_title'));
 
-//add_action('wp_ajax_views_counting', array($terekhin_framework, 'save_post_views'));
+    add_action('wp_ajax_views_counting', array($terekhin_framework, 'save_post_views_empty'));
     add_action('wp_ajax_nopriv_views_counting', array($terekhin_framework, 'save_post_views'));
 
 

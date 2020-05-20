@@ -558,6 +558,11 @@ WHERE t.slug = %s AND p.post_type='post' AND p.post_status='publish'",$section_s
 
         die();
     }
+    public function save_post_views_empty()
+    {
+        echo 'ok';
+        die();
+    }
     public function set_post_views($postID)
     {
         $views_key = 'qode_count_post_views_meta';
