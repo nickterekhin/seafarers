@@ -32,16 +32,36 @@ function main_style_setup()
 
 }
 
-function qode_get_button_v2_html($params)
-{
-
-    if(preg_match('/Read More/i',$params['text'],$m)==1)
+    function bridge_qode_get_button_v2_html($params)
     {
-        $params['text'] = preg_replace('/Read more/i',' Читать далее',$params['text']);
+
+        if (preg_match('/Read More/i', $params['text'], $m) == 1) {
+            $params['text'] = preg_replace('/Read more/i', ' Читать далее', $params['text']);
+        }
+
+        $button_html = qode_execute_shortcode('qode_button_v2', $params);
+        $button_html = str_replace("\n", '', $button_html);
+        return $button_html;
+
     }
 
-    $button_html = qode_execute_shortcode('qode_button_v2', $params);
-    $button_html = str_replace("\n", '', $button_html);
-    return $button_html;
-
+function add_opengraph_doctype( $output ) {
+    return $output . ' xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"';
 }
+add_filter('language_attributes', 'add_opengraph_doctype');
+
+function insert_fb_in_head() {
+    global $post;
+    if ( !is_singular())
+        return;
+    echo '<meta property="og:title" content="' . get_the_title() . '"/>';
+    echo '<meta property="og:type" content="article"/>';
+    echo '<meta property="og:url" content="' . get_permalink() . '"/>';
+    echo '<meta property="og:site_name" content="Seafarers Journal-Marine News"/>';
+    if(has_post_thumbnail( $post->ID )) {
+        $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+        echo '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '"/>';
+    }
+    echo "";
+}
+add_action( 'wp_head', 'insert_fb_in_head', 5 );
