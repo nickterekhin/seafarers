@@ -61,6 +61,8 @@ function insert_fb_in_head() {
     if(has_post_thumbnail( $post->ID )) {
         $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
         echo '<meta property="og:image" content="' . esc_attr( $thumbnail_src[0] ) . '"/>';
+        echo '<meta property="og:image:width" content="960" />';
+        echo '<meta property="og:image:height" content="480" />';
     }
     echo "";
 }
